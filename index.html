@@ -6,12 +6,12 @@
 
   <!-- ================================================================
        FAVICON
-       SVG favicon works in all modern browsers (Chrome 80+, Firefox,
-       Safari 14+). The apple-touch-icon uses the same SVG; iOS Safari
-       renders it as the home-screen bookmark icon.
+       app-icon.jpg is the official Journey Tracker app icon.
+       - rel="icon"            → browser tab favicon (all modern browsers)
+       - rel="apple-touch-icon" → iOS/macOS bookmark / home-screen icon
        ================================================================ -->
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="apple-touch-icon" href="/favicon.svg" />
+  <link rel="icon" type="image/jpeg" href="/app-icon.jpg" />
+  <link rel="apple-touch-icon" href="/app-icon.jpg" />
 
   <!--
     ================================================================
@@ -280,12 +280,10 @@
     .nav-logo-icon {
       width: 32px;
       height: 32px;
-      background: linear-gradient(135deg, var(--forest-mid) 0%, var(--forest-light) 100%);
       border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1rem;
+      object-fit: cover;
+      display: block;
+      flex-shrink: 0;
     }
 
     .nav-links {
@@ -1323,9 +1321,9 @@
   <header id="top-nav">
     <nav class="container nav-inner" aria-label="Primary navigation">
       <a href="#home" class="nav-logo">
-        <!-- Emoji is decorative; aria-hidden hides it from screen readers
-             who would otherwise hear "snow-capped mountain emoji" — WCAG 1.1.1 -->
-        <span class="nav-logo-icon" aria-hidden="true">🏔️</span>
+        <!-- App icon image — aria-hidden because "Journey Tracker" text next
+             to it already names the link; no need to read it twice — WCAG 1.1.1 -->
+        <img src="/app-icon.jpg" class="nav-logo-icon" alt="" aria-hidden="true" width="32" height="32" />
         Journey Tracker
       </a>
 
