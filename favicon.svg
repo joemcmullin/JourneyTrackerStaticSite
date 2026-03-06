@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Background: dark forest rounded square -->
+  <rect width="64" height="64" rx="12" fill="#1a3a2a"/>
+
+  <!-- Compass ring -->
+  <circle cx="32" cy="32" r="22" fill="none" stroke="#4a8a5e" stroke-width="2.5"/>
+
+  <!-- Tick marks at cardinal points -->
+  <line x1="32" y1="10" x2="32" y2="14" stroke="#4a8a5e" stroke-width="1.5"/>
+  <line x1="32" y1="50" x2="32" y2="54" stroke="#4a8a5e" stroke-width="1.5"/>
+  <line x1="10" y1="32" x2="14" y2="32" stroke="#4a8a5e" stroke-width="1.5"/>
+  <line x1="50" y1="32" x2="54" y2="32" stroke="#4a8a5e" stroke-width="1.5"/>
+
+  <!-- North needle (forest green — points up) -->
+  <polygon points="32,13 36.5,31 32,28 27.5,31" fill="#4a8a5e"/>
+
+  <!-- South needle (gold — points down) -->
+  <polygon points="32,51 36.5,33 32,36 27.5,33" fill="#c4a97d"/>
+
+  <!-- Center pivot dot -->
+  <circle cx="32" cy="32" r="3.5" fill="white"/>
+
+  <!-- N label above the ring -->
+  <text x="32" y="9" text-anchor="middle"
+        font-family="system-ui, -apple-system, sans-serif"
+        font-weight="700" font-size="7"
+        fill="white" opacity="0.9">N</text>
+</svg>
