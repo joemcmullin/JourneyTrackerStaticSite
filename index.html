@@ -71,7 +71,74 @@
   -->
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
 
-  <title>Journey Tracker — Track Your GLP‑1 & Weight Loss Journey</title>
+  <!--
+    ================================================================
+    SEO — PRIMARY META TAGS
+    ================================================================
+    Title: 60 chars max; primary keyword near the front.
+    Description: 150-160 chars; unique value proposition + CTA.
+    Robots: explicit index/follow (default, but stated clearly).
+    Canonical: prevents duplicate-content penalties if the page
+               is ever served from www. or with trailing params.
+    Theme-color: colors the browser chrome on Android Chrome &
+                 Safari for iOS — small brand-consistency win.
+    ================================================================
+  -->
+  <title>Journey Tracker — GLP‑1 &amp; Weight Loss Tracker for iPhone, iPad &amp; Mac</title>
+  <meta name="description" content="Track your GLP-1 therapy, weight loss, lab results &amp; injections with Journey Tracker — a private, secure iOS app for semaglutide, Ozempic, Wegovy &amp; tirzepatide users." />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <link rel="canonical" href="https://journeytracker.app/" />
+  <meta name="theme-color" content="#1a3a2a" />
+  <meta name="author" content="Journey Tracker" />
+
+  <!--
+    ================================================================
+    SEO — PERFORMANCE HINTS (Core Web Vitals)
+    ================================================================
+    preload: fetches the hero image at the highest priority the
+             moment the browser parses the <head>, before it would
+             normally discover it in the <body>. The hero image is
+             the Largest Contentful Paint (LCP) element — a direct
+             Google ranking signal. This typically shaves 200-600ms
+             off LCP on cold loads.
+    dns-prefetch: resolves the Formspree DNS early so the contact
+             form submit feels instant when the user gets there.
+    ================================================================
+  -->
+  <link rel="preload" as="image" href="/images/dashboard-overview.png" fetchpriority="high" />
+  <link rel="dns-prefetch" href="https://formspree.io" />
+
+  <!--
+    ================================================================
+    SEO — OPEN GRAPH (Facebook, LinkedIn, iMessage link previews)
+    ================================================================
+    og:image should be at least 1200×630 for optimal display.
+    Our app icon is 1024×1024 — square crops cleanly on all platforms.
+    ================================================================
+  -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://journeytracker.app/" />
+  <meta property="og:site_name"   content="Journey Tracker" />
+  <meta property="og:locale"      content="en_US" />
+  <meta property="og:title"       content="Journey Tracker — GLP‑1 &amp; Weight Loss Tracker" />
+  <meta property="og:description" content="Track your GLP-1 therapy, weight loss, lab results &amp; injections. Private, encrypted, and built for iPhone, iPad &amp; Mac." />
+  <meta property="og:image"       content="https://journeytracker.app/app-icon.jpg" />
+  <meta property="og:image:width"  content="1024" />
+  <meta property="og:image:height" content="1024" />
+  <meta property="og:image:alt"    content="Journey Tracker app icon — pine tree, mountains, and winding path on an orange background" />
+
+  <!--
+    ================================================================
+    SEO — TWITTER / X CARD
+    ================================================================
+    summary_large_image renders a big image card in the tweet.
+    ================================================================
+  -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="Journey Tracker — GLP‑1 &amp; Weight Loss Tracker" />
+  <meta name="twitter:description" content="Track your GLP-1 therapy, weight loss, lab results &amp; injections. Private, encrypted, built for iPhone, iPad &amp; Mac." />
+  <meta name="twitter:image"       content="https://journeytracker.app/app-icon.jpg" />
+  <meta name="twitter:image:alt"   content="Journey Tracker app icon" />
   <style>
     /*
     ================================================================
@@ -1299,6 +1366,191 @@
     }
 
   </style>
+
+  <!--
+    ================================================================
+    SEO — JSON-LD STRUCTURED DATA
+    ================================================================
+    JSON-LD is Google's preferred format for structured data.
+    These schemas enable rich results in Google Search:
+
+    1. WebSite       — tells Google the site name and URL
+    2. Organization  — brand knowledge panel signals
+    3. SoftwareApplication — enables app-specific rich result features
+    4. FAQPage       — FAQ accordion entries can appear directly in
+                       Google Search results as expandable answers,
+                       dramatically increasing click-through rate.
+
+    Validate at: https://search.google.com/test/rich-results
+    ================================================================
+  -->
+
+  <!-- 1. WebSite schema — site name + sitelinks searchbox eligibility -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Journey Tracker",
+    "url": "https://journeytracker.app/",
+    "description": "GLP-1 therapy and weight loss tracking app for iPhone, iPad, and Mac",
+    "inLanguage": "en-US"
+  }
+  </script>
+
+  <!-- 2. Organization schema — brand entity signals for Knowledge Graph -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Journey Tracker",
+    "url": "https://journeytracker.app/",
+    "logo": "https://journeytracker.app/app-icon.jpg",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "support@journeytracker.app",
+      "contactType": "customer support",
+      "availableLanguage": "English"
+    }
+  }
+  </script>
+
+  <!-- 3. SoftwareApplication schema — app-specific rich result signals -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Journey Tracker",
+    "description": "Journey Tracker is a private, encrypted health tracking app for individuals on GLP-1 therapy (semaglutide, tirzepatide, Ozempic, Wegovy, Zepbound) and anyone tracking weight loss progress. Features include weight & body composition tracking, GLP-1 injection logging, lab results with AI analysis, symptom tracking, hydration, fasting, HealthKit integration, and iCloud sync.",
+    "applicationCategory": "HealthApplication",
+    "applicationSubCategory": "Weight Loss, GLP-1 Therapy Tracking",
+    "operatingSystem": "iOS 17, iPadOS 17, macOS 14 Sonoma",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD",
+      "description": "Free with optional Journey Tracker Pro subscription via Apple App Store"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "Journey Tracker",
+      "url": "https://journeytracker.app/"
+    },
+    "url": "https://journeytracker.app/",
+    "image": "https://journeytracker.app/app-icon.jpg",
+    "screenshot": [
+      "https://journeytracker.app/images/dashboard-overview.png",
+      "https://journeytracker.app/images/dashboard-detail.png",
+      "https://journeytracker.app/images/feature-labs.png",
+      "https://journeytracker.app/images/feature-symptoms.png",
+      "https://journeytracker.app/images/feature-therapy.png"
+    ],
+    "featureList": [
+      "GLP-1 injection logging and dose tracking",
+      "Weight and body composition tracking",
+      "Lab results tracking with AI-powered analysis",
+      "Symptom and side effect logging",
+      "HealthKit integration",
+      "iCloud sync across iPhone, iPad, and Mac",
+      "AES-256 encrypted local storage",
+      "Face ID / Touch ID protection",
+      "Hydration tracking",
+      "Intermittent fasting tracker",
+      "Milestone celebrations and progress charts"
+    ],
+    "keywords": "GLP-1 tracker, weight loss app, semaglutide tracker, Ozempic tracker, Wegovy tracker, tirzepatide tracker, Zepbound tracker, health tracking app, lab results tracker, injection log"
+  }
+  </script>
+
+  <!-- 4. FAQPage schema — FAQ answers can appear as expandable rich results in Google -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is Journey Tracker and who is it for?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Journey Tracker is a personal health tracking application designed to help individuals undergoing GLP-1 therapy—including medications such as semaglutide, tirzepatide, and similar agents—monitor their health progress, medication history, laboratory results, and related health markers. It works equally well as a general weight management and body composition tracker, with no medication required to get value from the app."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need to be on GLP-1 medication to use Journey Tracker?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Not at all. While the app was built with GLP-1 users in mind, every core feature—weight tracking, body composition, hydration, fasting, and milestones—works great on its own. The GLP-1 Therapy feature can be enabled or disabled in Settings. You can simply leave it off if it doesn't apply to you."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Where is my data stored? Is it in the cloud?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "All of your health data is stored locally on your device using AES-256 encryption. If you have iCloud enabled, data syncs to your personal iCloud account through Apple's CloudKit framework—stored in your iCloud account, not any server controlled by us. Journey Tracker developers cannot access your personal health records under any circumstances."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does Journey Tracker use Apple Health?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "With your explicit permission, Journey Tracker may read from and write to Apple HealthKit. Data types accessed may include body weight and body composition metrics, blood glucose, blood pressure, and dietary water intake. You control HealthKit access entirely and can revoke permissions at any time through iOS Settings > Privacy & Security > Health > Journey Tracker."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is my information shared with my doctor, employer, or insurer?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Journey Tracker does not automatically share your data with any third party—including healthcare providers, employers, or insurance companies. We do not sell, rent, or trade your personal or health information to any third party for any purpose, including advertising."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is there a free version? What's included in Pro?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Journey Tracker offers a free tier that includes basic health tracking features, including the ability to log up to two laboratory result sessions. Journey Tracker Pro is available as a monthly or annual subscription, or as a one-time lifetime purchase. Pro features include unlimited laboratory result tracking, AI-powered lab analysis, OCR lab report import, and additional features. All subscriptions are billed through Apple's App Store."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does Journey Tracker give medical advice?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Journey Tracker is not a medical device, does not provide medical diagnoses, and does not constitute medical advice. Nothing in Journey Tracker is intended to diagnose any disease or health condition, recommend or prescribe any medication or treatment, or replace the advice of a licensed healthcare provider. Always consult your physician before making decisions about your health or medications."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I use Journey Tracker outside the United States?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Journey Tracker supports multiple units of measure. Weight can be displayed in pounds (lbs), kilograms (kg), or stones (st). Blood glucose can be shown in mg/dL or mmol/L. Water intake in ounces or milliliters. App Store availability may vary by region."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What devices are supported?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Journey Tracker is a native SwiftUI multiplatform app built for iPhone, iPad, and Mac. It takes advantage of the full screen on each device, with adaptive layouts designed for each platform. Sync across your devices is handled automatically through your personal iCloud account."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I contact support?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You can reach the support team by emailing support@journeytracker.app or by using the contact form at journeytracker.app. We aim to respond to all inquiries within 2 business days."
+        }
+      }
+    ]
+  }
+  </script>
+
 </head>
 
 <body>
@@ -1454,7 +1706,7 @@
 
       <div class="feature-row reversed">
         <div class="feature-phone">
-          <img src="images/feature-labs.png" alt="Lab Results screen showing HbA1c, LDL cholesterol, and metabolic markers with calendar view" />
+          <img src="images/feature-labs.png" alt="Lab Results screen showing HbA1c, LDL cholesterol, and metabolic markers with calendar view" loading="lazy" decoding="async" />
         </div>
         <div class="feature-text">
           <div class="feature-icon icon-blue" aria-hidden="true">🧪</div>
@@ -1471,7 +1723,7 @@
 
       <div class="feature-row">
         <div class="feature-phone">
-          <img src="images/feature-symptoms.png" alt="Trail Conditions screen showing symptom log with nausea and fatigue entries" />
+          <img src="images/feature-symptoms.png" alt="Trail Conditions screen showing symptom log with nausea and fatigue entries" loading="lazy" decoding="async" />
         </div>
         <div class="feature-text">
           <div class="feature-icon icon-orange" aria-hidden="true">🌡️</div>
@@ -1488,7 +1740,7 @@
 
       <div class="feature-row dual">
         <div class="feature-phone">
-          <img src="images/dashboard-overview.png" alt="My Journey dashboard showing summit goal progress" />
+          <img src="images/dashboard-overview.png" alt="My Journey dashboard showing summit goal progress" loading="lazy" decoding="async" />
         </div>
         <div class="feature-text">
           <div class="feature-icon icon-green" aria-hidden="true">🗺️</div>
@@ -1502,13 +1754,13 @@
           </ul>
         </div>
         <div class="feature-phone">
-          <img src="images/dashboard-detail.png" alt="Dose tracker and weight trend chart showing all-time progress" />
+          <img src="images/dashboard-detail.png" alt="Dose tracker and weight trend chart showing all-time progress" loading="lazy" decoding="async" />
         </div>
       </div>
 
       <div class="feature-row reversed">
         <div class="feature-phone">
-          <img src="images/feature-therapy.png" alt="Therapy Trend screen showing Zepbound tirzepatide dose timeline" />
+          <img src="images/feature-therapy.png" alt="Therapy Trend screen showing Zepbound tirzepatide dose timeline" loading="lazy" decoding="async" />
         </div>
         <div class="feature-text">
           <div class="feature-icon icon-orange" aria-hidden="true">💉</div>
@@ -1525,7 +1777,7 @@
 
       <div class="feature-row">
         <div class="feature-phone">
-          <img src="images/feature-hydration.png" alt="Hydration tracking screen showing daily water intake chart" />
+          <img src="images/feature-hydration.png" alt="Hydration tracking screen showing daily water intake chart" loading="lazy" decoding="async" />
         </div>
         <div class="feature-text">
           <div class="feature-icon icon-blue" aria-hidden="true">💧</div>
@@ -1542,7 +1794,7 @@
 
       <div class="feature-row reversed">
         <div class="feature-phone">
-          <img src="images/feature-security.png" alt="Journey Tracker locked screen with Face ID authentication" />
+          <img src="images/feature-security.png" alt="Journey Tracker locked screen with Face ID authentication" loading="lazy" decoding="async" />
         </div>
         <div class="feature-text">
           <div class="feature-icon icon-purple" aria-hidden="true">🔒</div>

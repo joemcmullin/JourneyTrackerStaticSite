@@ -1,0 +1,8 @@
+# robots.txt — Journey Tracker (journeytracker.app)
+# Allow all crawlers full access to the site.
+# Sitemap reference tells crawlers where to find the sitemap.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://journeytracker.app/sitemap.xml
