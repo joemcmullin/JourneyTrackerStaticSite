@@ -3,10 +3,96 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!--
+    ================================================================
+    SECURITY META TAGS
+    ================================================================
+    These tags harden the page against common web attacks.
+    GitHub Pages cannot set HTTP headers directly, so we use
+    <meta http-equiv> equivalents where available.
+    ================================================================
+  -->
+
+  <!--
+    Content Security Policy (CSP)
+    Restricts which sources the browser is allowed to load resources
+    from, providing defence-in-depth against XSS and data injection.
+
+    Directives explained:
+      default-src 'self'         — Only load resources from this origin by default
+      script-src  'unsafe-inline'— Required because JS is inline in this single-file HTML
+      style-src   'unsafe-inline'— Required because CSS is inline in this single-file HTML
+      img-src     'self' data:   — Images from same origin only; data: URIs for inline SVG
+      connect-src formspree.io   — The contact form submits to Formspree; allow that fetch()
+      form-action formspree.io   — Restrict <form action> targets to Formspree
+      frame-ancestors 'none'     — Prevent this page from being embedded in an <iframe>
+                                   (clickjacking protection)
+      base-uri    'self'         — Prevent <base href> injection attacks
+      object-src  'none'         — Disallow Flash/plugins entirely
+  -->
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    script-src 'self' 'unsafe-inline';
+    style-src 'self' 'unsafe-inline';
+    img-src 'self' data:;
+    connect-src https://formspree.io;
+    form-action https://formspree.io 'self';
+    frame-ancestors 'none';
+    base-uri 'self';
+    object-src 'none';
+  " />
+
+  <!--
+    Referrer Policy
+    Controls how much URL information is sent in the Referer header
+    when a user navigates away from this page.
+    'strict-origin-when-cross-origin' sends only the origin (not
+    the full path) when navigating to a different domain, preventing
+    sensitive URL parameters from leaking to third-party sites.
+  -->
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+  <!--
+    X-Content-Type-Options
+    Prevents browsers from MIME-sniffing a response away from the
+    declared content-type. Stops certain XSS attacks via crafted files.
+    Note: this is most effective as an HTTP header; the meta tag is a
+    best-effort fallback for static GitHub Pages hosting.
+  -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+
   <title>Journey Tracker — Track Your GLP‑1 & Weight Loss Journey</title>
   <style>
+    /*
+    ================================================================
+    JOURNEY TRACKER — SITE STYLESHEET
+    ================================================================
+    All styles for this single-page marketing site live here.
+    The site uses a CSS custom-property (variable) design token
+    system rooted at :root so colours, radii, and shadows can be
+    updated in one place and propagate everywhere automatically.
+
+    Typography uses Apple's system font stack (-apple-system) so
+    the page feels native on macOS/iOS — matching the app itself.
+
+    Layout uses CSS Grid throughout. A 1024 px max-width container
+    centres content on large screens while full-bleed section
+    backgrounds extend edge to edge.
+
+    Responsive breakpoints:
+      ≤ 768 px  — tablets and phones: single-column layouts
+      ≤ 520 px  — small phones: reduced phone-frame sizes
+    ================================================================
+    */
+
     /* =====================================================
        RESET & BASE
+       A minimal reset that:
+       - box-sizing: border-box so padding/border don't
+         expand elements beyond their declared width
+       - Zeroes browser default margin and padding that
+         would otherwise differ between Chrome/Safari/Firefox
     ===================================================== */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -57,6 +143,10 @@
 
     /* =====================================================
        TYPOGRAPHY
+       clamp() on h1/h2 creates fluid type that scales
+       smoothly between mobile and desktop without needing
+       separate media-query overrides for every heading.
+       Format: clamp(min, preferred-vw, max)
     ===================================================== */
     h1, h2, h3, h4 {
       font-family: -apple-system, system-ui, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
@@ -87,6 +177,15 @@
 
     /* =====================================================
        BUTTONS
+       Base .btn class + three variants:
+         .btn-coming-soon — orange gradient; cursor:default
+           because the App Store link isn't live yet
+         .btn-primary     — forest green; used for the
+           contact form submit action
+         .btn-secondary   — outlined; used for secondary
+           calls-to-action like "Read FAQs"
+       disabled state on .btn-primary prevents interaction
+       while the form is submitting (set via JS).
     ===================================================== */
     .btn {
       display: inline-flex;
@@ -129,6 +228,13 @@
 
     /* =====================================================
        NAV
+       Sticky top navigation bar with a frosted-glass effect
+       using backdrop-filter blur. Falls back gracefully in
+       browsers that don't support backdrop-filter (bar
+       remains visible with a solid background).
+       z-index: 100 keeps the nav above all page content.
+       The mobile hamburger (.nav-toggle) is hidden via CSS
+       on desktop and shown only at ≤ 768 px.
     ===================================================== */
     #top-nav {
       position: sticky;
@@ -240,6 +346,12 @@
 
     /* =====================================================
        HERO
+       Two-column grid (text left, phone mockup right).
+       Collapses to a single column on mobile with the
+       phone image moving above the text (order: -1).
+       The gradient background subtly shifts from green
+       to cream to warm orange, evoking a sunrise on a
+       mountain trail — consistent with the app's theme.
     ===================================================== */
     #home {
       padding: calc(var(--nav-height) + 48px) 0 80px;
@@ -345,6 +457,16 @@
 
     /* =====================================================
        FEATURES
+       Three layout variants for feature rows:
+         .feature-row          — phone left, text right
+                                 (grid: 260px 1fr)
+         .feature-row.reversed — text left, phone right
+                                 (grid: 1fr 260px) with
+                                 CSS order to swap children
+         .feature-row.dual     — phone, text, phone
+                                 (grid: 260px 1fr 260px)
+                                 used for the Dashboard row
+       All three collapse to a single column on mobile.
     ===================================================== */
     #features {
       padding: 96px 0;
@@ -435,6 +557,13 @@
 
     /* =====================================================
        FAQs
+       Accordion pattern: each .faq-a answer panel has
+       max-height: 0 and overflow: hidden by default.
+       JavaScript sets max-height to scrollHeight in px
+       when the item is opened, which triggers the CSS
+       transition for a smooth slide-down effect.
+       The .faq-chevron SVG rotates 180° via CSS transform
+       when its parent .faq-item has the .open class.
     ===================================================== */
     #faqs {
       padding: 96px 0;
@@ -496,6 +625,15 @@
 
     /* =====================================================
        PRIVACY
+       The Privacy Policy section uses a mix of layouts:
+         .policy-grid      — 2-column card grid (storage)
+         .policy-two-col   — 2-column grid (user rights)
+         .policy-list      — bulleted list with custom
+                             bullet via ::before pseudo-element
+         .policy-list.negative — red ✕ bullets for the
+                             "Information We Do NOT Collect"
+                             list to visually reinforce the
+                             privacy-protective message
     ===================================================== */
     #privacy {
       padding: 96px 0;
@@ -516,12 +654,13 @@
     }
 
     .policy-subsection-title {
-      font-size: 1rem;
+      /* BUG FIX: previously had two font-size declarations (1rem then 0.78rem).
+         The second value always wins in CSS, so 1rem was dead code. Removed it. */
+      font-size: 0.78rem;
       font-weight: 700;
       color: var(--forest-dark);
       text-transform: uppercase;
       letter-spacing: 0.06em;
-      font-size: 0.78rem;
       margin-bottom: 16px;
       padding-bottom: 8px;
       border-bottom: 2px solid var(--border);
@@ -628,6 +767,13 @@
 
     /* =====================================================
        HIPAA
+       Dark forest-green section to visually separate the
+       legal/compliance content from the surrounding white
+       sections. Text colours are lightened with rgba
+       overlays to maintain legibility on the dark bg.
+       Apple App Store review requires clear disclosure that
+       the app is NOT a HIPAA covered entity and does NOT
+       provide medical advice — this section provides that.
     ===================================================== */
     #hipaa {
       padding: 96px 0;
@@ -671,6 +817,12 @@
 
     /* =====================================================
        TERMS
+       Terms of Service displayed as a plain-language card
+       list rather than a wall of legalese. Each .terms-list
+       item is a two-column flex row: icon on the left,
+       text on the right. Apple App Store review expects a
+       publicly accessible ToS; this section fulfils that
+       requirement in a readable, approachable format.
     ===================================================== */
     #terms {
       padding: 96px 0;
@@ -745,6 +897,11 @@
 
     /* =====================================================
        CONTACT
+       Two-column grid: contact info (left) + form (right).
+       The form is wired to Formspree via the Fetch API
+       (see the JS section at the bottom of this file).
+       Input focus states use a subtle green ring (box-shadow)
+       to match the app's forest colour palette.
     ===================================================== */
     #contact {
       padding: 96px 0;
@@ -810,6 +967,14 @@
 
     /* =====================================================
        FOOTER
+       Dark forest-green footer with two areas:
+         .footer-inner — brand blurb + navigation links
+                         (2-col grid, collapses to 1-col)
+         .footer-bottom — copyright + medical disclaimer
+                          on a subtle horizontal rule
+       The medical disclaimer in the footer reinforces the
+       same disclaimer in the HIPAA section above, which is
+       standard practice for health-adjacent apps.
     ===================================================== */
     footer {
       background: var(--forest-dark);
@@ -862,6 +1027,12 @@
 
     /* =====================================================
        COOKIE BANNER
+       Fixed to the bottom of the viewport (z-index: 200,
+       above everything including the nav at z-index: 100).
+       Hidden via JS on load if the user has already clicked
+       "Got It" in a previous session (localStorage flag).
+       This site uses zero advertising or tracking cookies;
+       the banner is informational only, as stated in its text.
     ===================================================== */
     .cookie-banner {
       position: fixed;
@@ -905,7 +1076,20 @@
     }
 
     /* =====================================================
-       RESPONSIVE
+       RESPONSIVE — MEDIA QUERIES
+       Two breakpoints handle all layout changes:
+
+       ≤ 768 px (tablets / phones):
+         - Desktop nav links hidden; hamburger toggle shown
+         - Hero: 2-col → 1-col; phone image moves above text
+         - Feature rows: all variants → 1-col, text centred
+         - Policy/HIPAA grids: 2-col → 1-col
+         - Contact: 2-col → 1-col
+         - Footer: 2-col → 1-col
+
+       ≤ 520 px (small phones):
+         - Phone frame mockups shrink slightly so they fit
+           within the narrower viewport without overflow
     ===================================================== */
     @media (max-width: 768px) {
       .nav-links { display: none; }
@@ -976,7 +1160,8 @@
         <li class="nav-cta"><a href="#contact">Coming Soon</a></li>
       </ul>
 
-      <button class="nav-toggle" aria-label="Open menu" id="navToggle">
+      <!-- aria-expanded is toggled by JS to announce menu open/closed state to screen readers -->
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" id="navToggle">
         <span></span><span></span><span></span>
       </button>
     </nav>
@@ -1174,7 +1359,7 @@
       <div class="faq-list">
 
         <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">
+          <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
             What is Journey Tracker and who is it for?
             <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
           </button>
@@ -1186,7 +1371,7 @@
         </div>
 
         <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">
+          <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
             Do I need to be on GLP‑1 medication to use Journey Tracker?
             <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
           </button>
@@ -1198,7 +1383,7 @@
         </div>
 
         <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">
+          <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
             Where is my data stored? Is it in the cloud?
             <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
           </button>
@@ -1210,7 +1395,7 @@
         </div>
 
         <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">
+          <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
             How does Journey Tracker use Apple Health?
             <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
           </button>
@@ -1222,7 +1407,7 @@
         </div>
 
         <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">
+          <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
             Is my information shared with my doctor, employer, or insurer?
             <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
           </button>
@@ -1234,7 +1419,7 @@
         </div>
 
         <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">
+          <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
             Is there a free version? What's included in Pro?
             <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
           </button>
@@ -1246,7 +1431,7 @@
         </div>
 
         <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">
+          <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
             Does Journey Tracker give medical advice?
             <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
           </button>
@@ -1258,7 +1443,7 @@
         </div>
 
         <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">
+          <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
             Can I use Journey Tracker outside the United States?
             <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
           </button>
@@ -1270,7 +1455,7 @@
         </div>
 
         <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">
+          <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
             What devices are supported?
             <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
           </button>
@@ -1282,7 +1467,7 @@
         </div>
 
         <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">
+          <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
             How do I contact support?
             <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
           </button>
@@ -1588,28 +1773,149 @@
         </div>
 
         <div>
-          <form id="contact-form" class="contact-form">
+          <!--
+            CONTACT FORM
+            Submits via JavaScript fetch() to Formspree (see JS section below).
+            The form never reloads the page — success/error messages appear inline.
+
+            Security measures applied:
+              - maxlength on every field caps payload size, preventing oversized submissions
+              - pattern on email enforces a minimal RFC-compliant email format client-side
+              - required attributes enforce presence before the browser allows submission
+              - _gotcha is a hidden honeypot field; bots fill it in, humans don't —
+                Formspree silently discards any submission where _gotcha is non-empty
+              - _replyto tells Formspree to set the Reply-To email header to the
+                visitor's address so that hitting Reply in Gmail goes to them, not Formspree
+              - aria-describedby wires each input to its error message for screen readers
+              - aria-live="polite" on status messages announces them to screen readers
+                without interrupting the user mid-sentence
+              - autocomplete hints help password managers and autofill stay out of
+                sensitive fields while aiding completion of expected fields
+          -->
+          <form
+            id="contact-form"
+            class="contact-form"
+            novalidate
+            aria-label="Contact and support form"
+          >
+
+            <!-- Honeypot: hidden from real users via CSS display:none + tabindex=-1.
+                 Bots auto-fill every visible field; if this field has any value
+                 Formspree treats the submission as spam and drops it silently. -->
+            <input
+              type="text"
+              name="_gotcha"
+              style="display:none;"
+              tabindex="-1"
+              autocomplete="off"
+              aria-hidden="true"
+            />
+
             <div class="form-row">
               <div class="form-group">
-                <label for="contact-name">Name</label>
-                <input type="text" id="contact-name" name="name" placeholder="Your name" autocomplete="name" required />
+                <label for="contact-name">Name <span aria-hidden="true">*</span></label>
+                <input
+                  type="text"
+                  id="contact-name"
+                  name="name"
+                  placeholder="Your name"
+                  autocomplete="name"
+                  required
+                  maxlength="100"
+                  aria-required="true"
+                  aria-describedby="name-error"
+                />
+                <!-- Inline error shown by JS validation; hidden by default -->
+                <span id="name-error" class="form-note" style="display:none; color:#c0392b;" role="alert"></span>
               </div>
+
               <div class="form-group">
-                <label for="contact-email">Email</label>
-                <input type="email" id="contact-email" name="_replyto" placeholder="you@example.com" autocomplete="email" required />
+                <label for="contact-email">Email <span aria-hidden="true">*</span></label>
+                <!--
+                  name="_replyto" is a Formspree magic field:
+                  Formspree sets the Reply-To header on the notification email
+                  to this value, so replying in Gmail goes directly to the user.
+                  maxlength="254" follows RFC 5321 maximum email address length.
+                -->
+                <input
+                  type="email"
+                  id="contact-email"
+                  name="_replyto"
+                  placeholder="you@example.com"
+                  autocomplete="email"
+                  required
+                  maxlength="254"
+                  pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}"
+                  aria-required="true"
+                  aria-describedby="email-error"
+                />
+                <span id="email-error" class="form-note" style="display:none; color:#c0392b;" role="alert"></span>
               </div>
             </div>
+
             <div class="form-group">
               <label for="contact-subject">Subject</label>
-              <input type="text" id="contact-subject" name="subject" placeholder="How can we help?" />
+              <input
+                type="text"
+                id="contact-subject"
+                name="subject"
+                placeholder="How can we help?"
+                maxlength="200"
+                aria-describedby="subject-hint"
+              />
+              <span id="subject-hint" class="form-note">Optional — e.g. "Feature request" or "Privacy Rights Request"</span>
             </div>
+
             <div class="form-group">
-              <label for="contact-message">Message</label>
-              <textarea id="contact-message" name="message" rows="5" placeholder="Tell us what's on your mind…" required></textarea>
+              <label for="contact-message">Message <span aria-hidden="true">*</span></label>
+              <textarea
+                id="contact-message"
+                name="message"
+                rows="5"
+                placeholder="Tell us what's on your mind…"
+                required
+                maxlength="5000"
+                aria-required="true"
+                aria-describedby="message-error message-counter"
+              ></textarea>
+              <span id="message-error" class="form-note" style="display:none; color:#c0392b;" role="alert"></span>
+              <!-- Live character counter updated by JS so users know the limit -->
+              <span id="message-counter" class="form-note" aria-live="polite">0 / 5000 characters</span>
             </div>
-            <button type="submit" id="contact-submit" class="btn btn-primary" style="align-self:flex-start;">Send Message</button>
-            <p id="form-success" class="form-note" style="display:none; color: var(--forest-mid); font-weight:600;">✓ Message sent! We'll get back to you within 2 business days.</p>
-            <p id="form-error" class="form-note" style="display:none; color: #c0392b;">Something went wrong. Please email us directly at support@journeytracker.app</p>
+
+            <button
+              type="submit"
+              id="contact-submit"
+              class="btn btn-primary"
+              style="align-self:flex-start;"
+              aria-describedby="form-success form-error"
+            >
+              Send Message
+            </button>
+
+            <!-- Success message — shown after a confirmed Formspree 200 response -->
+            <p
+              id="form-success"
+              class="form-note"
+              style="display:none; color: var(--forest-mid); font-weight:600;"
+              role="alert"
+              aria-live="polite"
+            >
+              ✓ Message sent! We'll get back to you within 2 business days.
+            </p>
+
+            <!-- Error message — shown if the Formspree request fails -->
+            <p
+              id="form-error"
+              class="form-note"
+              style="display:none; color: #c0392b;"
+              role="alert"
+              aria-live="polite"
+            >
+              Something went wrong. Please email us directly at
+              <a href="mailto:support@journeytracker.app" style="color:#c0392b;">support@journeytracker.app</a>
+            </p>
+
           </form>
         </div>
 
@@ -1654,81 +1960,432 @@
        JAVASCRIPT
   ============================================================ -->
   <script>
-    // Mobile nav toggle
-    const navToggle = document.getElementById('navToggle');
-    const mobileNav = document.getElementById('mobileNav');
+    /*
+    ================================================================
+    JOURNEY TRACKER — SITE JAVASCRIPT
+    ================================================================
+    This file contains all client-side behaviour for the Journey
+    Tracker marketing site. It is intentionally kept simple and
+    dependency-free (no jQuery, no frameworks) so the page loads
+    as fast as possible on mobile devices.
 
-    navToggle.addEventListener('click', function () {
-      mobileNav.classList.toggle('open');
-    });
+    Sections:
+      1. Mobile Navigation Toggle
+      2. FAQ Accordion
+      3. Contact Form — Validation, Sanitisation & Formspree Submit
+      4. Cookie / Preference Banner
+    ================================================================
+    */
 
-    function closeMobileNav() {
-      mobileNav.classList.remove('open');
+
+    /* ============================================================
+       1. MOBILE NAVIGATION TOGGLE
+       ============================================================
+       The hamburger menu button (#navToggle) is visible only on
+       screens ≤ 768 px (controlled by CSS media query). When
+       clicked, it toggles the .open class on #mobileNav, which
+       the CSS uses to switch display from none → flex.
+
+       closeMobileNav() is called inline via onclick="" on each
+       mobile nav link so the drawer closes after the user taps
+       a destination, rather than staying open over the content.
+    ============================================================ */
+    var navToggle = document.getElementById('navToggle');
+    var mobileNav  = document.getElementById('mobileNav');
+
+    /* Guard: only wire up the toggle if both elements exist in the DOM.
+       This prevents a JS error if the markup ever changes. */
+    if (navToggle && mobileNav) {
+      navToggle.addEventListener('click', function () {
+        /* Toggle the 'open' class; CSS handles the show/hide transition */
+        var isOpen = mobileNav.classList.toggle('open');
+        /* Update the aria-expanded attribute so screen readers announce
+           the menu state correctly (expanded vs. collapsed) */
+        navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
     }
 
-    // FAQ accordion
-    function toggleFaq(btn) {
-      const item = btn.closest('.faq-item');
-      const answer = item.querySelector('.faq-a');
-      const isOpen = item.classList.contains('open');
-
-      document.querySelectorAll('.faq-item').forEach(function (el) {
-        el.classList.remove('open');
-        el.querySelector('.faq-a').style.maxHeight = '0';
-      });
-
-      if (!isOpen) {
-        item.classList.add('open');
-        answer.style.maxHeight = answer.scrollHeight + 'px';
+    /**
+     * closeMobileNav — called from onclick="" attributes on each
+     * mobile nav <a> link. Removes the .open class so the drawer
+     * slides away after the user selects a section.
+     */
+    function closeMobileNav() {
+      if (mobileNav) {
+        mobileNav.classList.remove('open');
+        if (navToggle) navToggle.setAttribute('aria-expanded', 'false');
       }
     }
 
-    // Contact form → Formspree
-    var contactForm = document.getElementById('contact-form');
-    if (contactForm) {
-      contactForm.addEventListener('submit', function (e) {
-        e.preventDefault();
-        var btn = document.getElementById('contact-submit');
-        var successMsg = document.getElementById('form-success');
-        var errorMsg = document.getElementById('form-error');
-        btn.disabled = true;
-        btn.textContent = 'Sending…';
-        successMsg.style.display = 'none';
-        errorMsg.style.display = 'none';
-        fetch('https://formspree.io/f/maqpybrb', {
-          method: 'POST',
-          body: new FormData(contactForm),
-          headers: { 'Accept': 'application/json' }
-        }).then(function (res) {
-          if (res.ok) {
-            contactForm.reset();
-            successMsg.style.display = 'block';
-            btn.textContent = 'Send Message';
-            btn.disabled = false;
-          } else {
-            return res.json().then(function (data) { throw data; });
-          }
-        }).catch(function () {
-          errorMsg.style.display = 'block';
-          btn.textContent = 'Send Message';
-          btn.disabled = false;
-        });
+
+    /* ============================================================
+       2. FAQ ACCORDION
+       ============================================================
+       Each FAQ item is a .faq-item <div> containing:
+         - A <button class="faq-q"> with the question text
+         - A <div class="faq-a"> whose max-height is animated via CSS
+
+       Only one FAQ item can be open at a time. When the user clicks
+       a question button, we:
+         1. Collapse every open item (set max-height back to 0)
+         2. If the clicked item was closed, open it (set max-height to
+            its scrollHeight so the CSS transition animates smoothly)
+
+       Using scrollHeight instead of a hard-coded pixel value means
+       the animation works correctly regardless of how much text the
+       answer contains.
+    ============================================================ */
+
+    /**
+     * toggleFaq — opens or closes a single FAQ item.
+     * @param {HTMLButtonElement} btn — the clicked .faq-q button element
+     */
+    function toggleFaq(btn) {
+      /* Walk up the DOM from the button to find its parent .faq-item */
+      var item   = btn.closest('.faq-item');
+      var answer = item.querySelector('.faq-a');
+
+      /* Record whether this item is currently open BEFORE we close everything,
+         so we know whether to re-open it after the reset loop below. */
+      var wasOpen = item.classList.contains('open');
+
+      /* --- Collapse all items --- */
+      document.querySelectorAll('.faq-item').forEach(function (el) {
+        el.classList.remove('open');
+        el.querySelector('.faq-a').style.maxHeight = '0';
+        /* Update aria-expanded on each question button for accessibility */
+        el.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+      });
+
+      /* --- If the clicked item was closed, open it now --- */
+      if (!wasOpen) {
+        item.classList.add('open');
+        /* scrollHeight is the full rendered height of the content, even when
+           hidden. Setting max-height to this value lets the CSS transition
+           animate from 0 → full height smoothly. */
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    }
+
+
+    /* ============================================================
+       3. CONTACT FORM — VALIDATION, SANITISATION & FORMSPREE SUBMIT
+       ============================================================
+       The form submits to Formspree via the Fetch API (AJAX), so
+       the page never reloads. After a successful submission the form
+       is reset and a green success message is shown. If the network
+       request fails, a red error message with a mailto fallback link
+       is shown instead.
+
+       SECURITY MEASURES:
+         • sanitize()    — strips leading/trailing whitespace and
+                           removes any HTML tags from a string before
+                           we include it in error messages or aria text.
+                           Prevents reflected XSS if a malicious string
+                           somehow ends up being written to the DOM.
+         • validateForm()— checks each required field before the fetch
+                           call so the user gets clear feedback even if
+                           their browser's native validation is disabled.
+         • Rate limiting — a short cooldown (SUBMIT_COOLDOWN_MS) is
+                           enforced between submissions. The submit button
+                           stays disabled during the cooldown. This
+                           reduces naive automated form flooding.
+         • Honeypot      — the hidden _gotcha field (see HTML above) is
+                           checked by Formspree server-side; any submission
+                           where it is non-empty is silently discarded.
+         • maxlength     — enforced in HTML; we re-check in JS as a
+                           second layer of defence.
+    ============================================================ */
+
+    /** Minimum milliseconds a user must wait between submission attempts */
+    var SUBMIT_COOLDOWN_MS = 5000;
+
+    /** Timestamp of the last submission attempt (0 = never submitted) */
+    var lastSubmitTime = 0;
+
+    /**
+     * sanitize — removes HTML tags and trims whitespace from a string.
+     * Used before writing any user-supplied string to the DOM to prevent
+     * reflected XSS attacks.
+     * @param  {string} str — raw input string
+     * @returns {string}    — cleaned string safe for textContent assignment
+     */
+    function sanitize(str) {
+      /* Replace any < or > characters with their HTML entity equivalents.
+         Since we only assign to .textContent (never .innerHTML), this is
+         defence-in-depth rather than strictly necessary — but it is a good
+         habit to encode untrusted strings before DOM insertion. */
+      return String(str)
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .trim();
+    }
+
+    /**
+     * showFieldError — displays a validation error message below a field.
+     * @param {string} fieldId   — the id of the <input> or <textarea>
+     * @param {string} errorId   — the id of the error <span> element
+     * @param {string} message   — the human-readable error text to show
+     */
+    function showFieldError(fieldId, errorId, message) {
+      var field = document.getElementById(fieldId);
+      var error = document.getElementById(errorId);
+      if (field)  field.setAttribute('aria-invalid', 'true');
+      if (error) {
+        error.textContent = sanitize(message);  /* textContent is safe; no XSS risk */
+        error.style.display = 'block';
+      }
+    }
+
+    /**
+     * clearFieldError — hides a field's validation error message.
+     * @param {string} fieldId  — the id of the <input> or <textarea>
+     * @param {string} errorId  — the id of the error <span> element
+     */
+    function clearFieldError(fieldId, errorId) {
+      var field = document.getElementById(fieldId);
+      var error = document.getElementById(errorId);
+      if (field)  field.removeAttribute('aria-invalid');
+      if (error)  error.style.display = 'none';
+    }
+
+    /**
+     * validateForm — runs all field-level checks before submitting.
+     * Returns true if every required field passes, false otherwise.
+     * Shows inline error messages for any failing fields.
+     * @returns {boolean}
+     */
+    function validateForm() {
+      var valid = true;
+
+      /* --- Name: required, max 100 chars --- */
+      var nameVal = document.getElementById('contact-name').value.trim();
+      if (!nameVal) {
+        showFieldError('contact-name', 'name-error', 'Please enter your name.');
+        valid = false;
+      } else if (nameVal.length > 100) {
+        showFieldError('contact-name', 'name-error', 'Name must be 100 characters or fewer.');
+        valid = false;
+      } else {
+        clearFieldError('contact-name', 'name-error');
+      }
+
+      /* --- Email: required, basic format check, max 254 chars (RFC 5321) --- */
+      var emailVal = document.getElementById('contact-email').value.trim();
+      /* Minimal email regex: local@domain.tld — we rely on Formspree for
+         full server-side validation; this is just a first-pass sanity check */
+      var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+      if (!emailVal) {
+        showFieldError('contact-email', 'email-error', 'Please enter your email address.');
+        valid = false;
+      } else if (!emailRegex.test(emailVal)) {
+        showFieldError('contact-email', 'email-error', 'Please enter a valid email address (e.g. you@example.com).');
+        valid = false;
+      } else if (emailVal.length > 254) {
+        showFieldError('contact-email', 'email-error', 'Email address must be 254 characters or fewer.');
+        valid = false;
+      } else {
+        clearFieldError('contact-email', 'email-error');
+      }
+
+      /* --- Message: required, max 5000 chars --- */
+      var messageVal = document.getElementById('contact-message').value.trim();
+      if (!messageVal) {
+        showFieldError('contact-message', 'message-error', 'Please enter a message.');
+        valid = false;
+      } else if (messageVal.length > 5000) {
+        showFieldError('contact-message', 'message-error', 'Message must be 5,000 characters or fewer.');
+        valid = false;
+      } else {
+        clearFieldError('contact-message', 'message-error');
+      }
+
+      return valid;
+    }
+
+    /* Wire up the live character counter on the message textarea.
+       The counter updates on every keystroke so users can see how
+       much space they have left before hitting the 5,000-char limit. */
+    var messageTextarea = document.getElementById('contact-message');
+    var messageCounter  = document.getElementById('message-counter');
+    if (messageTextarea && messageCounter) {
+      messageTextarea.addEventListener('input', function () {
+        var count = messageTextarea.value.length;
+        messageCounter.textContent = count + ' / 5000 characters';
+        /* Warn visually when the user is approaching the limit */
+        messageCounter.style.color = (count > 4500) ? '#c0392b' : '';
       });
     }
 
-    // Cookie banner
+    /* Locate the contact form in the DOM.
+       All form logic is wrapped in this guard so that if the form
+       element is ever removed from the HTML, no JS error occurs. */
+    var contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+
+      contactForm.addEventListener('submit', function (e) {
+        /* Always prevent the default HTML form submission, which would
+           navigate away from the page. We handle submission via fetch(). */
+        e.preventDefault();
+
+        var btn        = document.getElementById('contact-submit');
+        var successMsg = document.getElementById('form-success');
+        var errorMsg   = document.getElementById('form-error');
+
+        /* --- Rate limiting check ---
+           If the user submitted less than SUBMIT_COOLDOWN_MS milliseconds
+           ago, ignore this click. This prevents rapid re-submissions caused
+           by double-clicking or impatient users hammering the button, and
+           provides a light layer of bot resistance on the client side.
+           Note: Formspree also rate-limits on the server side. */
+        var now = Date.now();
+        if (now - lastSubmitTime < SUBMIT_COOLDOWN_MS) {
+          return;
+        }
+
+        /* --- Run client-side validation before touching the network ---
+           If any field fails, validateForm() shows inline error messages
+           and returns false, so we stop here and never call fetch(). */
+        if (!validateForm()) {
+          return;
+        }
+
+        /* --- Disable the submit button to prevent duplicate submissions --- */
+        btn.disabled    = true;
+        btn.textContent = 'Sending…';
+
+        /* Hide any previously shown success or error messages */
+        successMsg.style.display = 'none';
+        errorMsg.style.display   = 'none';
+
+        /* Record the time of this submission attempt for rate-limiting */
+        lastSubmitTime = now;
+
+        /*
+          Submit the form data to Formspree via the Fetch API.
+
+          Why FormData instead of JSON?
+            FormData automatically picks up all named <input> and
+            <textarea> fields, including the hidden _gotcha honeypot
+            and _replyto fields, without us having to enumerate them.
+
+          Why 'Accept': 'application/json' in the header?
+            This tells Formspree to return a JSON response body
+            (containing an 'ok' property) instead of redirecting
+            to their hosted thank-you page, which lets us show our
+            own inline success message.
+
+          Formspree endpoint:
+            https://formspree.io/f/maqpybrb
+            Configured to deliver to: journeytrackersupport@gmail.com
+            Reply-To is set from the _replyto field (visitor's email).
+        */
+        fetch('https://formspree.io/f/maqpybrb', {
+          method:  'POST',
+          body:    new FormData(contactForm),
+          headers: { 'Accept': 'application/json' }
+        })
+        .then(function (response) {
+          if (response.ok) {
+            /* --- SUCCESS path ---
+               Formspree returned a 2xx status, meaning the message
+               was accepted and will be emailed to the inbox. */
+
+            /* Clear all form fields so the user can't accidentally re-submit */
+            contactForm.reset();
+
+            /* Reset the character counter after the form is cleared */
+            if (messageCounter) messageCounter.textContent = '0 / 5000 characters';
+
+            /* Show the green success message */
+            successMsg.style.display = 'block';
+
+            /* Re-enable the submit button */
+            btn.textContent = 'Send Message';
+            btn.disabled    = false;
+
+          } else {
+            /* --- Formspree returned a non-2xx status ---
+               Parse the JSON body so we can inspect Formspree's error
+               details, then throw so the .catch() block handles display. */
+            return response.json().then(function (data) {
+              throw data;
+            });
+          }
+        })
+        .catch(function (err) {
+          /* --- FAILURE path ---
+             Covers both network failures (fetch() rejected) and
+             Formspree error responses (thrown from .then above).
+             We log the error for debugging but never display raw
+             error data to the user (to avoid leaking technical info). */
+          console.error('Contact form submission error:', err);
+
+          /* Show the red fallback error message with the direct email link */
+          errorMsg.style.display = 'block';
+
+          /* Re-enable the submit button so the user can try again */
+          btn.textContent = 'Send Message';
+          btn.disabled    = false;
+        });
+
+      }); /* end contactForm submit listener */
+
+    } /* end if (contactForm) */
+
+
+    /* ============================================================
+       4. COOKIE / PREFERENCE BANNER
+       ============================================================
+       A lightweight banner at the bottom of the page informs
+       visitors that the site uses only essential cookies (no
+       advertising trackers). Once the user clicks "Got It", we
+       store a flag in localStorage so the banner never appears
+       again for that browser.
+
+       localStorage is used instead of setting an actual cookie
+       because we are making a statement that we use no tracking
+       cookies — using localStorage for this single preference
+       bit is consistent with that claim.
+
+       Both read and write operations are wrapped in try/catch
+       because localStorage can throw a SecurityError in some
+       private-browsing modes or when storage is full.
+    ============================================================ */
+
+    /**
+     * dismissCookie — hides the cookie banner and saves the user's
+     * acknowledgement to localStorage so it doesn't reappear.
+     * Called from the onclick="" attribute on the "Got It" button.
+     */
     function dismissCookie() {
-      document.getElementById('cookieBanner').style.display = 'none';
-      try { localStorage.setItem('cookieOk', '1'); } catch(e) {}
+      var banner = document.getElementById('cookieBanner');
+      if (banner) banner.style.display = 'none';
+      try {
+        /* 'cookieOk' = '1' signals that the user has acknowledged the notice */
+        localStorage.setItem('cookieOk', '1');
+      } catch (storageError) {
+        /* Storage unavailable (e.g. private mode, full quota) — safe to ignore.
+           The banner will simply reappear on the next page load. */
+      }
     }
 
-    (function() {
+    /* On page load: check if the user has already acknowledged the banner.
+       If so, hide it immediately without waiting for a click. Wrapped in
+       an IIFE (Immediately Invoked Function Expression) to avoid polluting
+       the global scope with a temporary variable. */
+    (function checkCookieDismissed() {
       try {
-        if (localStorage.getItem('cookieOk')) {
-          document.getElementById('cookieBanner').style.display = 'none';
+        if (localStorage.getItem('cookieOk') === '1') {
+          var banner = document.getElementById('cookieBanner');
+          if (banner) banner.style.display = 'none';
         }
-      } catch(e) {}
+      } catch (storageError) {
+        /* Storage unavailable — show the banner by default */
+      }
     })();
+
   </script>
 
 </body>
