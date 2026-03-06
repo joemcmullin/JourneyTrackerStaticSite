@@ -1,0 +1,1651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Journey Tracker — Track Your GLP‑1 & Weight Loss Journey</title>
+  <style>
+    /* =====================================================
+       RESET & BASE
+    ===================================================== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --forest-dark:   #1a3a2a;
+      --forest-mid:    #2d5a3d;
+      --forest-light:  #4a8a5e;
+      --earth-tan:     #c4a97d;
+      --earth-warm:    #8b6914;
+      --sunrise:       #e8792a;
+      --sunrise-light: #f59c55;
+      --cream:         #faf7f2;
+      --white:         #ffffff;
+      --text-dark:     #1a2a1a;
+      --text-mid:      #3a4a3a;
+      --text-muted:    #6a7a6a;
+      --card-bg:       #ffffff;
+      --border:        #e0e8df;
+      --shadow-sm:     0 2px 8px rgba(26,58,42,0.08);
+      --shadow-md:     0 6px 24px rgba(26,58,42,0.12);
+      --shadow-lg:     0 16px 48px rgba(26,58,42,0.16);
+      --radius-sm:     8px;
+      --radius-md:     16px;
+      --radius-lg:     24px;
+      --nav-height:    64px;
+      --max-w:         1024px;
+      font-size: 16px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, system-ui, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+      background: var(--cream);
+      color: var(--text-dark);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* =====================================================
+       TYPOGRAPHY
+    ===================================================== */
+    h1, h2, h3, h4 {
+      font-family: -apple-system, system-ui, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--forest-dark);
+    }
+
+    h1 { font-size: clamp(2.2rem, 5vw, 3.4rem); }
+    h2 { font-size: clamp(1.6rem, 3.5vw, 2.2rem); }
+    h3 { font-size: 1.15rem; }
+    h4 { font-size: 0.95rem; font-weight: 600; }
+
+    p { color: var(--text-mid); line-height: 1.7; }
+
+    .section-label {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--forest-light);
+      background: rgba(74,138,94,0.12);
+      padding: 4px 12px;
+      border-radius: 100px;
+      margin-bottom: 12px;
+    }
+
+    /* =====================================================
+       BUTTONS
+    ===================================================== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 100px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+      border: none;
+      white-space: nowrap;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn:active { transform: translateY(0); }
+
+    .btn-coming-soon {
+      background: linear-gradient(135deg, var(--sunrise) 0%, var(--sunrise-light) 100%);
+      color: var(--white);
+      box-shadow: 0 4px 16px rgba(232,121,42,0.35);
+      cursor: default;
+    }
+    .btn-coming-soon:hover { transform: none; box-shadow: 0 4px 16px rgba(232,121,42,0.35); }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--forest-mid);
+      border: 2px solid var(--forest-mid);
+    }
+    .btn-secondary:hover { background: var(--forest-mid); color: var(--white); }
+
+    /* =====================================================
+       NAV
+    ===================================================== */
+    #top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: var(--nav-height);
+      background: rgba(250,247,242,0.92);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    .nav-logo {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--forest-dark);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-logo-icon {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, var(--forest-mid) 0%, var(--forest-light) 100%);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      display: block;
+      padding: 6px 12px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--text-mid);
+      border-radius: 6px;
+      transition: color 0.15s, background 0.15s;
+    }
+    .nav-links a:hover { color: var(--forest-dark); background: rgba(74,138,94,0.1); }
+
+    .nav-cta { margin-left: 8px; }
+    .nav-cta a {
+      background: linear-gradient(135deg, var(--sunrise), var(--sunrise-light));
+      color: var(--white) !important;
+      padding: 8px 18px !important;
+      border-radius: 100px !important;
+      font-weight: 600 !important;
+      font-size: 0.82rem !important;
+      cursor: default !important;
+    }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--forest-dark);
+      border-radius: 2px;
+      transition: transform 0.2s, opacity 0.2s;
+    }
+
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: var(--nav-height);
+      left: 0;
+      right: 0;
+      background: var(--cream);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 24px 24px;
+      z-index: 99;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+      padding: 12px 16px;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text-mid);
+      border-radius: 8px;
+    }
+    .mobile-nav a:hover { background: rgba(74,138,94,0.1); color: var(--forest-dark); }
+
+    /* =====================================================
+       HERO
+    ===================================================== */
+    #home {
+      padding: calc(var(--nav-height) + 48px) 0 80px;
+      background: linear-gradient(160deg, #f0f7f2 0%, var(--cream) 60%, #fdf3ea 100%);
+      overflow: hidden;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(232,121,42,0.1);
+      border: 1px solid rgba(232,121,42,0.25);
+      border-radius: 100px;
+      padding: 6px 14px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--sunrise);
+      margin-bottom: 20px;
+    }
+
+    .hero-title { margin-bottom: 20px; }
+
+    .hero-title span {
+      background: linear-gradient(135deg, var(--forest-mid) 0%, var(--forest-light) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-subtitle {
+      font-size: 1.1rem;
+      color: var(--text-mid);
+      margin-bottom: 36px;
+      max-width: 480px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .coming-soon-note {
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .coming-soon-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--sunrise);
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.75); }
+    }
+
+    .hero-social-proof {
+      margin-top: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .phone-frame {
+      width: 260px;
+      border-radius: 44px;
+      border: 8px solid #111;
+      overflow: hidden;
+      box-shadow:
+        0 32px 80px rgba(26,58,42,0.35),
+        0 8px 24px rgba(0,0,0,0.2),
+        0 0 0 1px rgba(255,255,255,0.08) inset;
+      background: #111;
+    }
+
+    .phone-frame img { width: 100%; display: block; }
+
+    .device-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* =====================================================
+       FEATURES
+    ===================================================== */
+    #features {
+      padding: 96px 0;
+      background: var(--white);
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 72px;
+    }
+
+    .section-header p {
+      max-width: 580px;
+      margin: 16px auto 0;
+      font-size: 1.05rem;
+    }
+
+    .feature-row {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 72px;
+      align-items: center;
+      padding: 64px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .feature-row:last-child { border-bottom: none; }
+
+    .feature-row.reversed { grid-template-columns: 1fr 260px; }
+    .feature-row.reversed .feature-phone { order: 2; }
+    .feature-row.reversed .feature-text  { order: 1; }
+
+    .feature-phone {
+      width: 260px;
+      border-radius: 40px;
+      border: 7px solid #111;
+      overflow: hidden;
+      box-shadow: 0 24px 64px rgba(26,58,42,0.25), 0 6px 20px rgba(0,0,0,0.15);
+      background: #111;
+      flex-shrink: 0;
+    }
+
+    .feature-phone img { width: 100%; display: block; }
+
+    .feature-text { max-width: 440px; }
+    .feature-row.reversed .feature-text { justify-self: end; }
+
+    .feature-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+
+    .icon-green  { background: linear-gradient(135deg, #d4edda, #a8d5b5); }
+    .icon-orange { background: linear-gradient(135deg, #fde8d0, #f5c09a); }
+    .icon-blue   { background: linear-gradient(135deg, #d0e8fd, #9ac3f5); }
+    .icon-purple { background: linear-gradient(135deg, #ead0fd, #c59af5); }
+
+    .feature-text h3 { font-size: 1.5rem; margin-bottom: 14px; }
+
+    .feature-text p { font-size: 1rem; line-height: 1.7; margin-bottom: 20px; }
+
+    .feature-bullets { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+
+    .feature-bullets li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.92rem;
+      color: var(--text-mid);
+    }
+
+    .feature-bullets li::before {
+      content: '✓';
+      color: var(--forest-light);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* =====================================================
+       FAQs
+    ===================================================== */
+    #faqs {
+      padding: 96px 0;
+      background: linear-gradient(180deg, #f0f7f2 0%, var(--cream) 100%);
+    }
+
+    .faq-list {
+      max-width: 740px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .faq-item {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+
+    .faq-q {
+      width: 100%;
+      text-align: left;
+      padding: 20px 24px;
+      background: none;
+      border: none;
+      font-size: 0.98rem;
+      font-weight: 600;
+      color: var(--forest-dark);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      transition: background 0.15s;
+      font-family: inherit;
+    }
+    .faq-q:hover { background: rgba(74,138,94,0.04); }
+
+    .faq-chevron {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      color: var(--forest-light);
+      transition: transform 0.25s ease;
+    }
+
+    .faq-item.open .faq-chevron { transform: rotate(180deg); }
+
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+
+    .faq-a-inner {
+      padding: 0 24px 20px;
+      color: var(--text-mid);
+      font-size: 0.93rem;
+      line-height: 1.7;
+    }
+
+    /* =====================================================
+       PRIVACY
+    ===================================================== */
+    #privacy {
+      padding: 96px 0;
+      background: var(--white);
+    }
+
+    .policy-intro {
+      max-width: 720px;
+      margin: 0 auto 48px;
+      text-align: center;
+      font-size: 1rem;
+      color: var(--text-mid);
+      line-height: 1.7;
+    }
+
+    .policy-subsection {
+      margin-bottom: 48px;
+    }
+
+    .policy-subsection-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--forest-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-size: 0.78rem;
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--border);
+    }
+
+    .policy-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .policy-card {
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 24px;
+    }
+
+    .policy-card-icon { font-size: 1.4rem; margin-bottom: 10px; }
+    .policy-card h3 { font-size: 0.95rem; margin-bottom: 8px; }
+    .policy-card p { font-size: 0.88rem; line-height: 1.65; }
+
+    .policy-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .policy-list li {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      font-size: 0.9rem;
+      color: var(--text-mid);
+      line-height: 1.6;
+      padding: 10px 14px;
+      background: var(--cream);
+      border-radius: var(--radius-sm);
+    }
+
+    .policy-list li::before {
+      content: '•';
+      color: var(--forest-light);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .policy-list.negative li::before { content: '✕'; color: #c0392b; }
+
+    .policy-two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .policy-rights-box {
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 20px 24px;
+    }
+
+    .policy-rights-box h4 {
+      color: var(--forest-dark);
+      margin-bottom: 10px;
+      font-size: 0.9rem;
+    }
+
+    .policy-rights-box ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .policy-rights-box ul li {
+      font-size: 0.86rem;
+      color: var(--text-mid);
+      padding-left: 14px;
+      position: relative;
+      line-height: 1.55;
+    }
+
+    .policy-rights-box ul li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--forest-light);
+      font-size: 0.8rem;
+    }
+
+    .disclaimer-box {
+      margin-top: 32px;
+      padding: 20px 24px;
+      background: rgba(232,121,42,0.06);
+      border: 1px solid rgba(232,121,42,0.2);
+      border-radius: var(--radius-md);
+      font-size: 0.88rem;
+      color: var(--text-mid);
+      line-height: 1.65;
+    }
+    .disclaimer-box strong { color: var(--earth-warm); }
+
+    /* =====================================================
+       HIPAA
+    ===================================================== */
+    #hipaa {
+      padding: 96px 0;
+      background: linear-gradient(180deg, #1a3a2a 0%, #2d5a3d 100%);
+      color: var(--white);
+    }
+
+    #hipaa h2, #hipaa h3, #hipaa h4 { color: var(--white); }
+    #hipaa p { color: rgba(255,255,255,0.78); }
+    #hipaa .section-label { color: rgba(255,255,255,0.9); background: rgba(255,255,255,0.15); }
+    #hipaa .section-header p { color: rgba(255,255,255,0.65); }
+
+    .hipaa-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .hipaa-card {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: var(--radius-md);
+      padding: 24px 28px;
+    }
+
+    .hipaa-card-icon { font-size: 1.4rem; margin-bottom: 10px; }
+    .hipaa-card h3 { font-size: 0.98rem; margin-bottom: 8px; color: rgba(255,255,255,0.95); }
+    .hipaa-card p { font-size: 0.88rem; color: rgba(255,255,255,0.65); line-height: 1.65; }
+
+    .hipaa-disclaimer {
+      margin-top: 32px;
+      padding: 20px 24px;
+      background: rgba(232,121,42,0.12);
+      border: 1px solid rgba(232,121,42,0.3);
+      border-radius: var(--radius-md);
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.7;
+    }
+
+    /* =====================================================
+       TERMS
+    ===================================================== */
+    #terms {
+      padding: 96px 0;
+      background: var(--cream);
+    }
+
+    .terms-intro {
+      max-width: 700px;
+      margin: 0 auto 40px;
+      text-align: center;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    .terms-list {
+      max-width: 760px;
+      margin: 0 auto;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .terms-list li {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 20px 24px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+    }
+
+    .terms-icon {
+      width: 36px;
+      height: 36px;
+      flex-shrink: 0;
+      background: linear-gradient(135deg, #d4edda, #a8d5b5);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+    }
+
+    .terms-text strong {
+      display: block;
+      font-size: 0.95rem;
+      color: var(--forest-dark);
+      margin-bottom: 6px;
+    }
+
+    .terms-text span {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    .terms-disclaimer {
+      max-width: 760px;
+      margin: 24px auto 0;
+      padding: 18px 22px;
+      background: rgba(74,138,94,0.07);
+      border: 1px solid rgba(74,138,94,0.2);
+      border-radius: var(--radius-md);
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      text-align: center;
+      line-height: 1.65;
+    }
+
+    /* =====================================================
+       CONTACT
+    ===================================================== */
+    #contact {
+      padding: 96px 0;
+      background: var(--white);
+    }
+
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .contact-info h2 { margin-bottom: 16px; }
+    .contact-info p { margin-bottom: 24px; }
+
+    .contact-email-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--forest-mid);
+      font-weight: 600;
+      font-size: 1rem;
+      border-bottom: 2px solid rgba(45,90,61,0.25);
+      padding-bottom: 2px;
+      transition: border-color 0.15s, color 0.15s;
+    }
+    .contact-email-link:hover { color: var(--forest-dark); border-color: var(--forest-dark); }
+
+    .contact-form { display: flex; flex-direction: column; gap: 16px; }
+
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+
+    .form-group label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--forest-dark);
+    }
+
+    .form-group input,
+    .form-group textarea {
+      padding: 12px 16px;
+      background: var(--cream);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-size: 0.95rem;
+      font-family: inherit;
+      color: var(--text-dark);
+      transition: border-color 0.15s, box-shadow 0.15s;
+      outline: none;
+      resize: vertical;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--forest-light);
+      box-shadow: 0 0 0 3px rgba(74,138,94,0.12);
+    }
+
+    .form-note { font-size: 0.78rem; color: var(--text-muted); margin-top: 4px; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+    /* =====================================================
+       FOOTER
+    ===================================================== */
+    footer {
+      background: var(--forest-dark);
+      color: rgba(255,255,255,0.7);
+      padding: 48px 0 32px;
+    }
+
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 40px;
+      align-items: start;
+      padding-bottom: 32px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      margin-bottom: 24px;
+    }
+
+    .footer-brand p {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.5);
+      margin-top: 8px;
+      max-width: 380px;
+      line-height: 1.6;
+    }
+
+    .footer-nav h4 {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 14px;
+    }
+
+    .footer-nav ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+
+    .footer-nav a { font-size: 0.9rem; color: rgba(255,255,255,0.65); transition: color 0.15s; }
+    .footer-nav a:hover { color: var(--white); }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-bottom p { font-size: 0.82rem; color: rgba(255,255,255,0.4); }
+    .footer-medical-note { font-size: 0.78rem; color: rgba(255,255,255,0.35); font-style: italic; }
+
+    /* =====================================================
+       COOKIE BANNER
+    ===================================================== */
+    .cookie-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 200;
+      background: var(--forest-dark);
+      color: rgba(255,255,255,0.85);
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      font-size: 0.85rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .cookie-banner p { color: rgba(255,255,255,0.85); margin: 0; }
+
+    .cookie-banner a { color: var(--sunrise-light); text-decoration: underline; }
+
+    .cookie-btn {
+      background: var(--sunrise);
+      color: var(--white);
+      border: none;
+      border-radius: 100px;
+      padding: 6px 18px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.15s;
+    }
+    .cookie-btn:hover { background: var(--sunrise-light); }
+
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+    }
+
+    /* =====================================================
+       RESPONSIVE
+    ===================================================== */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-toggle { display: flex; }
+
+      .hero-inner { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+      .hero-subtitle { margin: 0 auto 36px; }
+      .hero-actions { justify-content: center; }
+      .coming-soon-note { justify-content: center; }
+      .device-wrap { order: -1; }
+
+      .feature-row,
+      .feature-row.reversed { grid-template-columns: 1fr; gap: 36px; text-align: center; }
+      .feature-row.reversed .feature-phone,
+      .feature-row.reversed .feature-text { order: unset; }
+      .feature-phone { width: 220px; margin: 0 auto; }
+      .feature-row.reversed .feature-text { justify-self: auto; }
+      .feature-bullets { text-align: left; }
+
+      .policy-grid { grid-template-columns: 1fr; }
+      .policy-two-col { grid-template-columns: 1fr; }
+      .hipaa-grid { grid-template-columns: 1fr; }
+
+      .contact-inner { grid-template-columns: 1fr; gap: 40px; }
+      .form-row { grid-template-columns: 1fr; }
+
+      .footer-inner { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
+
+    @media (max-width: 520px) {
+      .phone-frame { width: 220px; }
+      .feature-phone { width: 190px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ============================================================
+       COOKIE BANNER
+  ============================================================ -->
+  <div class="cookie-banner" id="cookieBanner">
+    <p>Journey Tracker's website uses only essential cookies required for the site to function. We do not use advertising trackers or sell your data. <a href="#privacy">Privacy Policy</a></p>
+    <button class="cookie-btn" onclick="dismissCookie()">Got It</button>
+  </div>
+
+  <!-- ============================================================
+       TOP NAV
+  ============================================================ -->
+  <header id="top-nav">
+    <nav class="container nav-inner">
+      <a href="#home" class="nav-logo">
+        <span class="nav-logo-icon">🏔️</span>
+        Journey Tracker
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#faqs">FAQs</a></li>
+        <li><a href="#privacy">Privacy</a></li>
+        <li><a href="#hipaa">HIPAA</a></li>
+        <li><a href="#terms">Terms</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li class="nav-cta"><a href="#contact">Coming Soon</a></li>
+      </ul>
+
+      <button class="nav-toggle" aria-label="Open menu" id="navToggle">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <nav class="mobile-nav" id="mobileNav">
+      <a href="#home" onclick="closeMobileNav()">Home</a>
+      <a href="#features" onclick="closeMobileNav()">Features</a>
+      <a href="#faqs" onclick="closeMobileNav()">FAQs</a>
+      <a href="#privacy" onclick="closeMobileNav()">Privacy</a>
+      <a href="#hipaa" onclick="closeMobileNav()">HIPAA</a>
+      <a href="#terms" onclick="closeMobileNav()">Terms of Service</a>
+      <a href="#contact" onclick="closeMobileNav()">Contact</a>
+    </nav>
+  </header>
+
+  <!-- ============================================================
+       HERO
+  ============================================================ -->
+  <section id="home">
+    <div class="container hero-inner">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span>🌿</span> GLP‑1 &amp; Weight Loss Tracker
+        </div>
+
+        <h1 class="hero-title">
+          Your <span>journey</span> deserves<br>a trail map.
+        </h1>
+
+        <p class="hero-subtitle">
+          Journey Tracker turns your GLP‑1 therapy and weight loss progress into a clear, beautiful trail—with waypoints for every measurement, milestones to celebrate, and a private, secure log only you can see.
+        </p>
+
+        <div class="hero-actions">
+          <span class="btn btn-coming-soon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+            Coming Soon to the App Store
+          </span>
+          <a href="#faqs" class="btn btn-secondary">Read FAQs</a>
+        </div>
+
+        <div class="coming-soon-note">
+          <span class="coming-soon-dot"></span>
+          We're putting the final trail markers in place. <a href="#contact" style="color: var(--forest-light); font-weight:600; margin-left: 4px;">Get notified at launch →</a>
+        </div>
+
+        <div class="hero-social-proof">
+          <span>📱 iPhone &nbsp;·&nbsp; iPad &nbsp;·&nbsp; Mac</span>
+        </div>
+      </div>
+
+      <div class="device-wrap">
+        <div class="phone-frame">
+          <img
+            src="images/hero-dashboard.png"
+            alt="Journey Tracker My Journey dashboard showing weight progress"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FEATURES
+  ============================================================ -->
+  <section id="features">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Features</span>
+        <h2>Everything your journey needs,<br>nothing it doesn't.</h2>
+        <p>A calm, focused companion for the long trail ahead—beautifully designed for Apple platforms.</p>
+      </div>
+
+      <div class="feature-row">
+        <div class="feature-phone">
+          <img src="images/feature-dashboard.png" alt="My Journey dashboard showing weight progress card" />
+        </div>
+        <div class="feature-text">
+          <div class="feature-icon icon-green">🗺️</div>
+          <h3>My Journey Dashboard</h3>
+          <p>See your whole story at a glance. Your dashboard brings together everything that matters—current weight, lbs lost, days active, weigh-in count, and your progress toward your summit goal—in one beautiful, motivating view.</p>
+          <ul class="feature-bullets">
+            <li>Weight trend charts from 1 week to all time</li>
+            <li>Milestone badges you can share (down 5, 10, 25 lbs and more)</li>
+            <li>Hero cards for every metric: weight, hydration, therapy, fasting</li>
+            <li>Journey Points and Trail Level gamification to keep you motivated</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="feature-row reversed">
+        <div class="feature-phone">
+          <img src="images/feature-therapy.png" alt="Therapy Trend screen showing Zepbound tirzepatide dose timeline" />
+        </div>
+        <div class="feature-text">
+          <div class="feature-icon icon-orange">💉</div>
+          <h3>GLP‑1 Therapy Tracking</h3>
+          <p>Journey Tracker was built alongside the GLP‑1 experience. Log every injection or oral dose, track dose escalations over time, and see how your weight responds as your therapy progresses.</p>
+          <ul class="feature-bullets">
+            <li>Log medication name, dose, injection site, and notes</li>
+            <li>Dose timeline and weight-vs-dose correlation charts</li>
+            <li>Recurring reminders so you never miss a dose</li>
+            <li>Supports Zepbound, Ozempic, Wegovy, and more</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="feature-row">
+        <div class="feature-phone">
+          <img src="images/feature-hydration.png" alt="Hydration tracking screen showing daily water intake chart" />
+        </div>
+        <div class="feature-text">
+          <div class="feature-icon icon-blue">💧</div>
+          <h3>Fasting &amp; Hydration</h3>
+          <p>Staying on top of hydration and fasting is essential on any GLP‑1 journey. Track your daily water intake against personal goals, monitor fasting windows, and celebrate consistency streaks.</p>
+          <ul class="feature-bullets">
+            <li>Daily water log with intake history and goal tracking</li>
+            <li>Fasting window start/end with streak milestones</li>
+            <li>Calendar activity view across all your logged days</li>
+            <li>Syncs water intake to Apple Health</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="feature-row reversed">
+        <div class="feature-phone">
+          <img src="images/feature-security.png" alt="Journey Tracker locked screen with Face ID authentication" />
+        </div>
+        <div class="feature-text">
+          <div class="feature-icon icon-purple">🔒</div>
+          <h3>Private by Design</h3>
+          <p>Your health data belongs to you—and only you. Journey Tracker is built from the ground up around Apple's privacy infrastructure. We collect no advertising identifiers and operate no servers that store your health data.</p>
+          <ul class="feature-bullets">
+            <li>Sign in with Apple keeps your identity private</li>
+            <li>Face ID / Touch ID app lock for physical security</li>
+            <li>Data stored in your personal iCloud via CloudKit—not our servers</li>
+            <li>No ads, no analytics SDKs, no data sales—ever</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ============================================================
+       FAQs
+  ============================================================ -->
+  <section id="faqs">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">FAQs</span>
+        <h2>Questions &amp; answers</h2>
+        <p>Everything you need to know before you start your journey.</p>
+      </div>
+
+      <div class="faq-list">
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            What is Journey Tracker and who is it for?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-a">
+            <div class="faq-a-inner">
+              Journey Tracker is a personal health tracking application designed to help individuals undergoing GLP-1 therapy—including medications such as semaglutide, tirzepatide, and similar agents—monitor their health progress, medication history, laboratory results, and related health markers. It works equally well as a general weight management and body composition tracker, with no medication required to get value from the app.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            Do I need to be on GLP‑1 medication to use Journey Tracker?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-a">
+            <div class="faq-a-inner">
+              Not at all. While the app was built with GLP‑1 users in mind, every core feature—weight tracking, body composition, hydration, fasting, and milestones—works great on its own. The GLP-1 Therapy feature can be enabled or disabled in Settings → Features. You can simply leave it off if it doesn't apply to you.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            Where is my data stored? Is it in the cloud?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-a">
+            <div class="faq-a-inner">
+              All of your health data is stored locally on your device using AES-256 encryption. If you have iCloud enabled, data syncs to your personal iCloud account through Apple's CloudKit framework—stored in <em>your</em> iCloud account, not any server controlled by us. Journey Tracker developers cannot access your personal health records under any circumstances.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            How does Journey Tracker use Apple Health?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-a">
+            <div class="faq-a-inner">
+              With your explicit permission, Journey Tracker may read from and write to Apple HealthKit. Data types accessed may include body weight and body composition metrics, blood glucose, blood pressure, and dietary water intake. You control HealthKit access entirely. You can review and revoke any HealthKit permission at any time through iOS Settings → Privacy &amp; Security → Health → Journey Tracker.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            Is my information shared with my doctor, employer, or insurer?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-a">
+            <div class="faq-a-inner">
+              No. Journey Tracker does not automatically share your data with any third party—including healthcare providers, employers, or insurance companies. We do not sell, rent, or trade your personal or health information to any third party for any purpose, including advertising. If you choose to share information (for example, exporting or screenshotting a milestone card), that is entirely your decision.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            Is there a free version? What's included in Pro?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-a">
+            <div class="faq-a-inner">
+              Journey Tracker offers a free tier that includes basic health tracking features, including the ability to log up to two laboratory result sessions. Journey Tracker Pro is available as a monthly or annual subscription, or as a one-time lifetime purchase. Pro features include unlimited laboratory result tracking, AI-powered lab analysis, OCR lab report import, and additional features as described in the app. All subscriptions are billed through Apple's App Store—we do not store payment information.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            Does Journey Tracker give medical advice?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-a">
+            <div class="faq-a-inner">
+              No. Journey Tracker is not a medical device, does not provide medical diagnoses, and does not constitute medical advice. Nothing in Journey Tracker is intended to diagnose any disease or health condition, recommend or prescribe any medication or treatment, or replace the advice of a licensed healthcare provider. Always consult with your prescribing physician or other qualified healthcare provider before making any decisions about your health, medications, or treatment plan. In a medical emergency, call 911 or your local emergency number immediately.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            Can I use Journey Tracker outside the United States?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-a">
+            <div class="faq-a-inner">
+              Yes. Journey Tracker supports multiple units of measure so you can use the app in any country. Weight can be displayed in pounds (lbs), kilograms (kg), or stones (st). Height and length use inches (in) or centimeters (cm). Blood glucose can be shown in mg/dL (US standard) or mmol/L (international standard). Water and fluid intake display in ounces (fl oz) or milliliters (ml). App Store availability may vary by region. Note that certain medications may have different names, availability, or regulatory status in your country—always consult a local healthcare provider.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            What devices are supported?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-a">
+            <div class="faq-a-inner">
+              Journey Tracker is a native SwiftUI multiplatform app built for iPhone, iPad, and Mac. It takes advantage of the full screen on each device, with adaptive layouts designed for each platform. Sync across your devices is handled automatically through your personal iCloud account.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            How do I contact support?
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-a">
+            <div class="faq-a-inner">
+              You can reach the support team by emailing <a href="mailto:support@journeytracker.app" style="color: var(--forest-light);">support@journeytracker.app</a> or by using the contact form at the bottom of this page. For privacy rights requests, please use the subject line "Privacy Rights Request." We aim to respond to all inquiries within 2 business days.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ============================================================
+       PRIVACY
+  ============================================================ -->
+  <section id="privacy">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Privacy Policy</span>
+        <h2>Your health data stays yours.</h2>
+      </div>
+
+      <p class="policy-intro">
+        Journey Tracker is committed to protecting your privacy. We are not a healthcare provider, health plan, or healthcare clearinghouse. We collect only the information necessary to operate the app's features, and we never sell, rent, or trade your personal or health information to any third party for any purpose, including advertising.
+      </p>
+
+      <!-- What We Collect -->
+      <div class="policy-subsection">
+        <div class="policy-subsection-title">Information You Provide Directly</div>
+        <ul class="policy-list">
+          <li><strong>Body measurements:</strong> Weight, body fat percentage, muscle mass, BMI, and related metrics</li>
+          <li><strong>Medication information:</strong> GLP-1 medication name, dose, injection dates, and injection site rotation</li>
+          <li><strong>Side effect logs:</strong> Symptoms experienced during therapy, severity, and associated notes</li>
+          <li><strong>Laboratory results:</strong> HbA1c, lipid panel, metabolic markers, thyroid markers, and other health markers you choose to enter</li>
+          <li><strong>Health goals:</strong> Target weight and hydration goals</li>
+          <li><strong>Notes:</strong> Free-text notes you add to any health entry</li>
+        </ul>
+      </div>
+
+      <!-- HealthKit -->
+      <div class="policy-subsection">
+        <div class="policy-subsection-title">Information Collected Through Apple Health (HealthKit)</div>
+        <p style="margin-bottom: 14px; font-size: 0.9rem;">With your explicit permission, Journey Tracker may read from and write to Apple HealthKit. Data types accessed may include:</p>
+        <ul class="policy-list">
+          <li>Body weight and body composition metrics</li>
+          <li>Blood glucose readings</li>
+          <li>Blood pressure measurements</li>
+          <li>Dietary water intake</li>
+          <li>Laboratory results, if you connect your health system through Apple Health Records</li>
+        </ul>
+        <p style="margin-top: 14px; font-size: 0.88rem; color: var(--text-muted);">You control HealthKit access entirely. Revoke any permission at any time: iOS Settings → Privacy &amp; Security → Health → Journey Tracker.</p>
+      </div>
+
+      <!-- What We Don't Collect -->
+      <div class="policy-subsection">
+        <div class="policy-subsection-title">Information We Do NOT Collect</div>
+        <ul class="policy-list negative">
+          <li>Your full name</li>
+          <li>Your physical address or precise location</li>
+          <li>Your date of birth</li>
+          <li>Your Social Security Number or government-issued identifiers</li>
+          <li>Your health insurance information</li>
+          <li>Your prescribing physician's information</li>
+          <li>Payment card information — payments are processed entirely by Apple's App Store</li>
+        </ul>
+        <p style="margin-top: 14px; font-size: 0.88rem; color: var(--text-muted);">Sign in with Apple provides us only with a stable, opaque user identifier — not your Apple ID or real name.</p>
+      </div>
+
+      <!-- How We Store -->
+      <div class="policy-subsection">
+        <div class="policy-subsection-title">How We Store Your Information</div>
+        <div class="policy-grid">
+          <div class="policy-card">
+            <div class="policy-card-icon">📱</div>
+            <h3>On Your Device</h3>
+            <p>All health data is stored locally using Apple's Core Data framework with AES-256 encryption via iOS FileProtection. Your data is accessible only when your device is unlocked.</p>
+          </div>
+          <div class="policy-card">
+            <div class="policy-card-icon">☁️</div>
+            <h3>Your iCloud Account</h3>
+            <p>If you have iCloud enabled, data syncs to <em>your personal iCloud account</em> via Apple's CloudKit framework — not any server controlled by us. Journey Tracker developers cannot access your data under any circumstances. You can disable iCloud backup at any time: iOS Settings → [Your Name] → iCloud → Apps Using iCloud.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- AI Analysis -->
+      <div class="policy-subsection">
+        <div class="policy-subsection-title">AI-Powered Lab Analysis (Pro Feature)</div>
+        <p style="margin-bottom: 14px; font-size: 0.9rem;">If you subscribe to Journey Tracker Pro and choose to use the AI Lab Analysis feature, a <strong>de-identified</strong> version of your laboratory results and medication information is transmitted to Anthropic's Claude AI. <strong>Before this feature is activated, you will be shown a separate consent screen</strong> explaining exactly what data is transmitted.</p>
+        <div class="policy-grid">
+          <div class="policy-card">
+            <div class="policy-card-icon">✅</div>
+            <h3>What Is Transmitted to the AI</h3>
+            <p>Your lab values as numbers (e.g., "HbA1c: 6.2") · GLP-1 medication name and current dose · Relative therapy duration (e.g., "Week 14") · Relative changes in your values over time</p>
+          </div>
+          <div class="policy-card">
+            <div class="policy-card-icon">🚫</div>
+            <h3>What Is NEVER Transmitted</h3>
+            <p>Your name or any identifier · Exact dates or timestamps · Your Apple ID or account information · Any information that could identify you as an individual</p>
+          </div>
+        </div>
+        <p style="margin-top: 14px; font-size: 0.88rem; color: var(--text-muted);">Analysis results are cached on your device and in your personal iCloud account. We do not retain a copy on any server we control. You can disable AI Lab Analysis at any time: Settings → Privacy &amp; Security → AI Lab Analysis.</p>
+      </div>
+
+      <!-- Information Sharing -->
+      <div class="policy-subsection">
+        <div class="policy-subsection-title">Information Sharing</div>
+        <ul class="policy-list">
+          <li><strong>Apple:</strong> We use Apple's platform services (HealthKit, CloudKit, Sign in with Apple, StoreKit). Your use of these services is subject to Apple's Privacy Policy (apple.com/privacy).</li>
+          <li><strong>Anthropic (AI Analysis feature only):</strong> If you consent, de-identified health data is transmitted to Anthropic, PBC for processing. Data is de-identified as described above and does not include any information that identifies you. Anthropic's privacy policy is available at anthropic.com/privacy.</li>
+          <li><strong>RevenueCat (subscription management):</strong> Subscription status information is shared with RevenueCat to verify your Pro subscription. RevenueCat's privacy policy is available at revenuecat.com/privacy.</li>
+          <li><strong>No other third-party sharing.</strong> We do not share your health or personal information with any other parties.</li>
+        </ul>
+      </div>
+
+      <!-- Your Rights -->
+      <div class="policy-subsection">
+        <div class="policy-subsection-title">Your Rights and Choices</div>
+        <div class="policy-two-col">
+          <div class="policy-rights-box">
+            <h4>Access &amp; Delete Your Data</h4>
+            <ul>
+              <li>View all data within the Journey Tracker app at any time</li>
+              <li>Delete individual entries within the app</li>
+              <li>Use Settings → Data → Clear All Data to remove all on-device data</li>
+              <li>Delete the app to remove all on-device data</li>
+              <li>Manage iCloud backups: iOS Settings → [Your Name] → iCloud → Manage Account Storage</li>
+            </ul>
+          </div>
+          <div class="policy-rights-box">
+            <h4>State Privacy Rights</h4>
+            <ul>
+              <li><strong>California (CCPA/CPRA):</strong> Right to know, delete, opt out of sale (we do not sell data), and non-discrimination for exercising privacy rights</li>
+              <li><strong>Virginia (CDPA), Colorado (CPA), and other states:</strong> Similar rights to access, delete, and correct your personal information</li>
+              <li>To exercise these rights, contact us at support@journeytracker.app with the subject line "Privacy Rights Request"</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Security -->
+      <div class="policy-subsection">
+        <div class="policy-subsection-title">Data Security</div>
+        <ul class="policy-list">
+          <li><strong>On-device encryption:</strong> All health data is encrypted using AES-256 encryption</li>
+          <li><strong>Secure authentication:</strong> Sign in with Apple with optional biometric lock (Face ID / Touch ID)</li>
+          <li><strong>Secure transmission:</strong> All data transmitted over the internet uses TLS 1.3 encryption</li>
+          <li><strong>De-identification:</strong> Health data transmitted for AI analysis is de-identified before transmission</li>
+          <li><strong>No developer server access:</strong> We do not operate servers that store your health data</li>
+        </ul>
+        <p style="margin-top: 14px; font-size: 0.88rem; color: var(--text-muted);">No security system is perfect. In the event of a security breach affecting your health information, we will notify affected users in accordance with the FTC Health Breach Notification Rule and applicable state law.</p>
+      </div>
+
+      <!-- Children -->
+      <div class="policy-subsection">
+        <div class="policy-subsection-title">Children's Privacy</div>
+        <p style="font-size: 0.9rem;">Journey Tracker is not intended for use by individuals under the age of 18. We do not knowingly collect personal information from children under 18. If you believe a child under 18 has provided health information through Journey Tracker, please contact us at <a href="mailto:support@journeytracker.app" style="color: var(--forest-light);">support@journeytracker.app</a> and we will take steps to delete that information.</p>
+      </div>
+
+      <div class="disclaimer-box">
+        <strong>Note:</strong> This is a summary of our Privacy Policy, provided here for convenience. It is not a substitute for the full Privacy Policy, which will be made available within the app and on this page before public release. For questions, contact us at <a href="mailto:support@journeytracker.app" style="color: var(--forest-light);">support@journeytracker.app</a>.
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       HIPAA
+  ============================================================ -->
+  <section id="hipaa">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">HIPAA &amp; Health Information</span>
+        <h2>Not medical advice.<br>Not a covered entity.</h2>
+        <p>Plain-language disclosures about how Journey Tracker relates to healthcare regulations and your responsibilities as a user.</p>
+      </div>
+
+      <div class="hipaa-grid">
+        <div class="hipaa-card">
+          <div class="hipaa-card-icon">📋</div>
+          <h3>Not a HIPAA Covered Entity</h3>
+          <p>Journey Tracker is developed and operated as a consumer health application. We are not a healthcare provider, health plan, or healthcare clearinghouse. As a consumer app, Journey Tracker is not automatically subject to HIPAA as a "covered entity."</p>
+        </div>
+
+        <div class="hipaa-card">
+          <div class="hipaa-card-icon">🩺</div>
+          <h3>Not a Medical Device</h3>
+          <p>Journey Tracker is not a medical device, does not provide medical diagnoses, and does not constitute medical advice. The information and features provided by Journey Tracker are intended for general informational and personal tracking purposes only. Nothing in Journey Tracker is intended to diagnose any disease or health condition, or to recommend or prescribe any medication or treatment.</p>
+        </div>
+
+        <div class="hipaa-card">
+          <div class="hipaa-card-icon">🏥</div>
+          <h3>No Automatic Clinical Sharing</h3>
+          <p>Journey Tracker does not automatically transmit your data to doctors, clinics, insurance companies, or employers. Your records remain personal and under your control. Do not disregard or delay seeking professional medical advice based on anything you read or see in Journey Tracker.</p>
+        </div>
+
+        <div class="hipaa-card">
+          <div class="hipaa-card-icon">🚨</div>
+          <h3>Emergency Situations</h3>
+          <p>Do not rely on Journey Tracker for emergency medical decisions or urgent clinical situations. If you believe you are experiencing a medical emergency, call 911 or your local emergency number immediately. Journey Tracker is for personal tracking and wellness logging only.</p>
+        </div>
+      </div>
+
+      <div class="hipaa-disclaimer">
+        <strong>Medical Disclaimer:</strong> Journey Tracker is not a medical device, does not provide medical diagnoses, and does not constitute medical advice. The information, features, and AI-generated analysis provided by Journey Tracker are intended for general informational and personal tracking purposes only. Nothing in Journey Tracker is intended to replace the advice of a licensed healthcare provider or constitute the practice of medicine, nursing, or any other healthcare profession. <strong>Always consult with your prescribing physician or other qualified healthcare provider before making any decisions about your health, medications, or treatment plan.</strong> Journey Tracker expressly disclaims all liability for any health outcomes or adverse events resulting from reliance on the app's tracking features or AI analysis.
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       TERMS
+  ============================================================ -->
+  <section id="terms">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Terms of Service</span>
+        <h2>Plain-language summary</h2>
+      </div>
+
+      <p class="terms-intro">
+        By downloading, installing, or using Journey Tracker, you confirm that you are at least 18 years of age, have read and understood these terms and our Privacy Policy, and agree to be bound by them. A complete, legally binding Terms of Service document will be made available before general release.
+      </p>
+
+      <ul class="terms-list">
+        <li>
+          <div class="terms-icon">🩺</div>
+          <div class="terms-text">
+            <strong>Not Medical Advice — Important Disclaimer</strong>
+            <span>Journey Tracker is not a medical device, does not provide medical diagnoses, and does not constitute medical advice. Nothing in Journey Tracker is intended to diagnose any disease or health condition; recommend or prescribe any medication or treatment; replace the advice of a licensed healthcare provider; or constitute the practice of medicine, nursing, or any other healthcare profession. Always consult with your prescribing physician or other qualified healthcare provider before making any decisions about your health, medications, or treatment plan.</span>
+          </div>
+        </li>
+        <li>
+          <div class="terms-icon">🤖</div>
+          <div class="terms-text">
+            <strong>AI Lab Analysis Feature (Pro)</strong>
+            <span>The AI Lab Analysis feature is powered by Anthropic's Claude AI and may produce inaccurate, incomplete, or inapplicable results. It does not have access to your complete medical history, does not consider all medications or health conditions you may have, and is not reviewed or approved by a licensed healthcare provider before delivery to you. All AI-generated analysis is clearly labeled as informational only. Journey Tracker expressly disclaims any liability for decisions made based on AI-generated analysis.</span>
+          </div>
+        </li>
+        <li>
+          <div class="terms-icon">📱</div>
+          <div class="terms-text">
+            <strong>Subscriptions and Payments</strong>
+            <span>The free tier includes basic health tracking and up to two (2) laboratory result sessions. Journey Tracker Pro is available as a monthly subscription, annual subscription, or one-time lifetime purchase, and includes unlimited laboratory result tracking, AI-powered lab analysis, OCR lab report import, and additional features. All subscriptions are billed through Apple's App Store — we do not store payment card information. Subscriptions automatically renew unless cancelled at least 24 hours before the end of the current billing period. Cancellations and refunds are subject to Apple's App Store refund policy.</span>
+          </div>
+        </li>
+        <li>
+          <div class="terms-icon">👤</div>
+          <div class="terms-text">
+            <strong>You Own Your Health Data</strong>
+            <span>You own your health data. Journey Tracker does not claim any ownership over the health information you enter into the app. Our right to process your data is limited to operating the features of Journey Tracker as described in these terms and our Privacy Policy.</span>
+          </div>
+        </li>
+        <li>
+          <div class="terms-icon">🔧</div>
+          <div class="terms-text">
+            <strong>Provided "As Is" — No Warranty</strong>
+            <span>Journey Tracker is provided "as is" without warranty of any kind. We do not warrant that Journey Tracker will be error-free, uninterrupted, or that AI analysis will be accurate or applicable to your situation. The app and this website may change or be discontinued at any time.</span>
+          </div>
+        </li>
+        <li>
+          <div class="terms-icon">⚖️</div>
+          <div class="terms-text">
+            <strong>Limitation of Liability</strong>
+            <span>To the maximum extent permitted by applicable law, Journey Tracker shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including damages arising from health decisions made based on Journey Tracker or its AI analysis feature. Our total liability for any claims arising from your use of Journey Tracker shall not exceed the amount you paid for Journey Tracker in the twelve (12) months preceding the claim. Journey Tracker expressly disclaims all liability for any health outcomes or adverse events resulting from reliance on the app.</span>
+          </div>
+        </li>
+        <li>
+          <div class="terms-icon">📋</div>
+          <div class="terms-text">
+            <strong>Your Responsibilities</strong>
+            <span>You agree to use Journey Tracker only if you are at least 18 years of age; use it only for lawful personal health tracking purposes; maintain the security of your Apple ID and device; and not attempt to reverse-engineer, decompile, or extract the source code of Journey Tracker.</span>
+          </div>
+        </li>
+      </ul>
+
+      <div class="terms-disclaimer">
+        This is a non-binding plain-language summary only. A complete, legally binding Terms of Service document will be made available within the app and on this page before the general public release of Journey Tracker. For questions, contact <a href="mailto:support@journeytracker.app" style="color: var(--forest-light);">support@journeytracker.app</a>.
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- ============================================================
+       CONTACT
+  ============================================================ -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-inner">
+
+        <div class="contact-info">
+          <span class="section-label">Contact &amp; Support</span>
+          <h2>We'd love to hear from you.</h2>
+          <p>Interested in Journey Tracker? Have a question or want to be notified when we launch? Reach out—we read every message and reply within 2 business days. For privacy rights requests, use the subject line "Privacy Rights Request."</p>
+
+          <a href="mailto:apexdevsupport@gmail.com" class="contact-email-link">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            apexdevsupport@gmail.com
+          </a>
+        </div>
+
+        <div>
+          <form class="contact-form" onsubmit="return false;">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="contact-name">Name</label>
+                <input type="text" id="contact-name" placeholder="Your name" autocomplete="name" />
+              </div>
+              <div class="form-group">
+                <label for="contact-email">Email</label>
+                <input type="email" id="contact-email" placeholder="you@example.com" autocomplete="email" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="contact-subject">Subject</label>
+              <input type="text" id="contact-subject" placeholder="How can we help?" />
+            </div>
+            <div class="form-group">
+              <label for="contact-message">Message</label>
+              <textarea id="contact-message" rows="5" placeholder="Tell us what's on your mind…"></textarea>
+            </div>
+            <button type="submit" class="btn btn-coming-soon" style="align-self:flex-start;">Send Message</button>
+            <p class="form-note">This form is for illustrative purposes; in the final site this will submit to a secure support inbox.</p>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <div class="nav-logo" style="color: #fff;">
+            <span class="nav-logo-icon">🏔️</span>
+            Journey Tracker
+          </div>
+          <p>A private, beautiful health companion for your GLP‑1 and weight loss journey. Coming soon to the App Store for iPhone, iPad, and Mac.</p>
+        </div>
+
+        <div class="footer-nav">
+          <h4>Legal &amp; Support</h4>
+          <ul>
+            <li><a href="#privacy">Privacy Policy</a></li>
+            <li><a href="#hipaa">HIPAA &amp; Health Information</a></li>
+            <li><a href="#terms">Terms of Service</a></li>
+            <li><a href="#contact">Contact Support</a></li>
+            <li><a href="#faqs">FAQs</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 Journey Tracker. All rights reserved.</p>
+        <p class="footer-medical-note">Journey Tracker is not a medical device and does not provide medical advice. Always consult a qualified healthcare provider.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       JAVASCRIPT
+  ============================================================ -->
+  <script>
+    // Mobile nav toggle
+    const navToggle = document.getElementById('navToggle');
+    const mobileNav = document.getElementById('mobileNav');
+
+    navToggle.addEventListener('click', function () {
+      mobileNav.classList.toggle('open');
+    });
+
+    function closeMobileNav() {
+      mobileNav.classList.remove('open');
+    }
+
+    // FAQ accordion
+    function toggleFaq(btn) {
+      const item = btn.closest('.faq-item');
+      const answer = item.querySelector('.faq-a');
+      const isOpen = item.classList.contains('open');
+
+      document.querySelectorAll('.faq-item').forEach(function (el) {
+        el.classList.remove('open');
+        el.querySelector('.faq-a').style.maxHeight = '0';
+      });
+
+      if (!isOpen) {
+        item.classList.add('open');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
+    }
+
+    // Cookie banner
+    function dismissCookie() {
+      document.getElementById('cookieBanner').style.display = 'none';
+      try { localStorage.setItem('cookieOk', '1'); } catch(e) {}
+    }
+
+    (function() {
+      try {
+        if (localStorage.getItem('cookieOk')) {
+          document.getElementById('cookieBanner').style.display = 'none';
+        }
+      } catch(e) {}
+    })();
+  </script>
+
+</body>
+</html>
