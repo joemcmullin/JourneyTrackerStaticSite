@@ -1559,6 +1559,78 @@
       .legal-a-inner { padding: 20px 18px; max-height: 60vh; }
     }
 
+    /* ================================================================
+       SCROLL-TO-TOP BUTTON
+       Fixed circle in the bottom-right corner. Hidden (visibility:hidden
+       + opacity:0) until the user scrolls past the hero section, then
+       fades in. visibility:hidden (not display:none) keeps the element
+       in the accessibility tree only when visible — screen readers skip
+       it when hidden. WCAG 2.4.1 / Section 508 §1194.22(a).
+    ================================================================ */
+    #scrollTopBtn {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 300;
+
+      /* Circle shape */
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+
+      /* Brand colours */
+      background: var(--forest-mid);
+      color: var(--white);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.22);
+
+      /* Center the arrow icon */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      /* Hidden by default — fades in once user passes the hero */
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition:
+        opacity      0.25s ease,
+        visibility   0.25s ease,
+        transform    0.25s ease,
+        background   0.2s ease,
+        box-shadow   0.2s ease;
+    }
+
+    /* Visible state — toggled by JS when scrollY > heroBottom */
+    #scrollTopBtn.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    #scrollTopBtn:hover {
+      background: var(--forest-dark);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+      transform: translateY(-2px);
+    }
+
+    #scrollTopBtn:active {
+      transform: translateY(0) scale(0.93);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+
+    /* Respect reduced-motion — disable all transitions */
+    @media (prefers-reduced-motion: reduce) {
+      #scrollTopBtn { transition: opacity 0.01ms, visibility 0.01ms; }
+      #scrollTopBtn:hover { transform: none; }
+    }
+
+    /* Slightly smaller on mobile so it doesn't crowd content */
+    @media (max-width: 480px) {
+      #scrollTopBtn { width: 42px; height: 42px; bottom: 20px; right: 16px; }
+    }
+
   </style>
 
   <!--
@@ -3224,6 +3296,30 @@
   </div>
 
   <!-- ============================================================
+       SCROLL-TO-TOP BUTTON
+       Positioned here (after <main>, before JS) so it sits above
+       the cookie banner in z-index stacking context.
+       aria-label names it for screen readers — WCAG 1.1.1 / 2.4.6.
+       aria-hidden="true" is toggled by JS when the button is hidden
+       so screen readers skip it completely when not visible.
+  ============================================================ -->
+  <button
+    id="scrollTopBtn"
+    aria-label="Scroll to top of page"
+    aria-hidden="true"
+    onclick="scrollToTop()"
+    title="Back to top"
+  >
+    <!-- Upward chevron arrow — decorative, label is on the button -->
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
+         stroke="currentColor" stroke-width="2.5"
+         stroke-linecap="round" stroke-linejoin="round"
+         aria-hidden="true" focusable="false">
+      <path d="M18 15l-6-6-6 6"/>
+    </svg>
+  </button>
+
+  <!-- ============================================================
        JAVASCRIPT
   ============================================================ -->
   <script>
@@ -3731,6 +3827,80 @@
         /* Storage unavailable — show the banner by default */
       }
     })();
+
+
+    /* ============================================================
+       5. SCROLL-TO-TOP BUTTON
+       ============================================================
+       Shows the floating ↑ button only after the user has scrolled
+       past the bottom of the hero section (#home). This means the
+       button is invisible when the user is already at or near the
+       top — no need to scroll to top from the top.
+
+       Implementation notes:
+         • We cache the hero element once on DOMContentLoaded rather
+           than querying it on every scroll event (performance).
+         • The scroll handler is throttled with requestAnimationFrame
+           so it fires at most once per frame (~60×/sec) instead of
+           hundreds of times per scroll tick.
+         • aria-hidden is toggled in sync with the CSS visibility so
+           screen readers only discover the button when it is usable.
+         • scrollToTop() respects prefers-reduced-motion: if the user
+           has requested reduced motion the jump is instant (no smooth
+           scroll animation).
+    ============================================================ */
+
+    (function initScrollTopButton() {
+      var btn      = document.getElementById('scrollTopBtn');
+      var heroSec  = document.getElementById('home');
+      if (!btn || !heroSec) { return; }
+
+      var ticking  = false;   /* rAF throttle flag */
+      var isVisible = false;  /* track current state to avoid redundant DOM writes */
+
+      function updateButton() {
+        /* Show the button only after the hero section has scrolled
+           fully out of view (its bottom edge has passed the viewport top). */
+        var heroBottom   = heroSec.getBoundingClientRect().bottom;
+        var shouldShow   = heroBottom < 0;
+
+        if (shouldShow === isVisible) { return; } /* no change — skip DOM write */
+        isVisible = shouldShow;
+
+        if (shouldShow) {
+          btn.classList.add('visible');
+          btn.setAttribute('aria-hidden', 'false');
+        } else {
+          btn.classList.remove('visible');
+          btn.setAttribute('aria-hidden', 'true');
+        }
+      }
+
+      /* Throttle scroll events to one rAF tick for smooth performance */
+      window.addEventListener('scroll', function () {
+        if (!ticking) {
+          window.requestAnimationFrame(function () {
+            updateButton();
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }, { passive: true });
+
+      /* Run once on load in case the page is loaded mid-scroll
+         (e.g. browser restores scroll position on back-navigation). */
+      updateButton();
+    })();
+
+    /**
+     * scrollToTop — called from the button's onclick attribute.
+     * Respects prefers-reduced-motion: uses instant jump if the user
+     * has requested reduced motion, smooth scroll otherwise.
+     */
+    function scrollToTop() {
+      var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      window.scrollTo({ top: 0, behavior: prefersReduced ? 'auto' : 'smooth' });
+    }
 
   </script>
 
