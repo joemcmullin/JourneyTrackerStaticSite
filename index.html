@@ -369,6 +369,9 @@
     .feature-row.reversed .feature-phone { order: 2; }
     .feature-row.reversed .feature-text  { order: 1; }
 
+    .feature-row.dual { grid-template-columns: 260px 1fr 260px; gap: 48px; }
+    .feature-row.dual .feature-text { max-width: none; }
+
     .feature-phone {
       width: 260px;
       border-radius: 40px;
@@ -907,11 +910,13 @@
       .device-wrap { order: -1; }
 
       .feature-row,
-      .feature-row.reversed { grid-template-columns: 1fr; gap: 36px; text-align: center; }
+      .feature-row.reversed,
+      .feature-row.dual { grid-template-columns: 1fr; gap: 36px; text-align: center; }
       .feature-row.reversed .feature-phone,
       .feature-row.reversed .feature-text { order: unset; }
       .feature-phone { width: 220px; margin: 0 auto; }
       .feature-row.reversed .feature-text { justify-self: auto; }
+      .feature-row.dual .feature-text { max-width: 440px; margin: 0 auto; }
       .feature-bullets { text-align: left; }
 
       .policy-grid { grid-template-columns: 1fr; }
@@ -1018,7 +1023,7 @@
       <div class="device-wrap">
         <div class="phone-frame">
           <img
-            src="images/hero-dashboard.png"
+            src="images/dashboard-overview.png"
             alt="Journey Tracker My Journey dashboard showing weight progress"
           />
         </div>
@@ -1037,9 +1042,9 @@
         <p>A calm, focused companion for the long trail ahead—beautifully designed for Apple platforms.</p>
       </div>
 
-      <div class="feature-row">
+      <div class="feature-row dual">
         <div class="feature-phone">
-          <img src="images/hero-dashboard.png" alt="My Journey dashboard showing weight progress card" />
+          <img src="images/dashboard-overview.png" alt="My Journey dashboard showing summit goal progress" />
         </div>
         <div class="feature-text">
           <div class="feature-icon icon-green">🗺️</div>
@@ -1051,6 +1056,9 @@
             <li>Hero cards for every metric: weight, hydration, therapy, fasting</li>
             <li>Journey Points and Trail Level gamification to keep you motivated</li>
           </ul>
+        </div>
+        <div class="feature-phone">
+          <img src="images/dashboard-detail.png" alt="Dose tracker and weight trend chart showing all-time progress" />
         </div>
       </div>
 
