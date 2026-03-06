@@ -1365,6 +1365,200 @@
       }
     }
 
+    /* ================================================================
+       LEGAL DOCUMENTATION SECTION
+       Full-document accordion at the bottom of the page.
+       One-at-a-time mutual exclusion (set by toggleLegal() in JS).
+       Scrollable inner pane caps height so the page doesn't grow by
+       thousands of pixels — users scroll within the panel instead.
+    ================================================================ */
+
+    #documentation {
+      background: var(--cream);
+      padding: 80px 0;
+    }
+
+    .docs-intro {
+      max-width: 640px;
+      margin: 0 auto 40px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* Pending-review notice strip at the top of the section */
+    .docs-review-notice {
+      background: rgba(196,169,125,0.18);
+      border: 1px solid rgba(139,105,20,0.35);
+      border-radius: 10px;
+      padding: 14px 20px;
+      margin-bottom: 28px;
+      font-size: 0.85rem;
+      color: var(--earth-warm);
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    .legal-accordion {
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    .legal-item {
+      border: 1px solid rgba(45,90,61,0.18);
+      border-radius: 12px;
+      margin-bottom: 12px;
+      overflow: hidden;
+      background: var(--white);
+    }
+
+    /* The clickable header button for each legal document */
+    .legal-q {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 20px 24px;
+      text-align: left;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--forest-dark);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      transition: background 0.2s;
+    }
+
+    .legal-q:hover { background: rgba(74,138,94,0.05); }
+
+    /* Highlight the button row when its panel is open */
+    .legal-q[aria-expanded="true"] {
+      background: rgba(74,138,94,0.08);
+      border-bottom: 1px solid rgba(45,90,61,0.12);
+      color: var(--forest-mid);
+    }
+
+    /* Chevron rotates 180° when open — same pattern as FAQ */
+    .legal-chevron {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      color: var(--forest-mid);
+      transition: transform 0.3s ease;
+    }
+
+    .legal-q[aria-expanded="true"] .legal-chevron {
+      transform: rotate(180deg);
+    }
+
+    /* Panel: starts collapsed, opens to a scrollable 680px pane */
+    .legal-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+    }
+
+    /* Inner scrollable area — capped height with internal scroll */
+    .legal-a-inner {
+      max-height: 680px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      padding: 28px 32px;
+      font-size: 0.88rem;
+      line-height: 1.75;
+      color: var(--text-mid);
+      /* Smooth scrollbar on macOS */
+      scrollbar-width: thin;
+      scrollbar-color: rgba(45,90,61,0.3) transparent;
+    }
+
+    .legal-a-inner::-webkit-scrollbar { width: 6px; }
+    .legal-a-inner::-webkit-scrollbar-track { background: transparent; }
+    .legal-a-inner::-webkit-scrollbar-thumb {
+      background: rgba(45,90,61,0.25);
+      border-radius: 3px;
+    }
+
+    /* Legal document typography */
+    .legal-a-inner h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--forest-dark);
+      margin: 28px 0 8px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid rgba(45,90,61,0.12);
+    }
+
+    .legal-a-inner h3:first-child { margin-top: 4px; }
+
+    .legal-a-inner h4 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--forest-mid);
+      margin: 18px 0 6px;
+    }
+
+    .legal-a-inner p { margin: 0 0 12px; }
+
+    .legal-a-inner ul, .legal-a-inner ol {
+      padding-left: 22px;
+      margin: 8px 0 12px;
+    }
+
+    .legal-a-inner li { margin-bottom: 5px; }
+
+    .legal-a-inner hr {
+      border: none;
+      border-top: 1px solid rgba(45,90,61,0.1);
+      margin: 20px 0;
+    }
+
+    .legal-a-inner strong { color: var(--text-dark); }
+
+    /* Inline placeholder highlight for items pending completion */
+    .legal-ph {
+      background: rgba(196,169,125,0.25);
+      border: 1px dashed rgba(139,105,20,0.5);
+      border-radius: 4px;
+      padding: 1px 5px;
+      font-style: italic;
+      font-size: 0.83rem;
+      color: var(--earth-warm);
+    }
+
+    /* Callout blocks for warnings / medical disclaimers inside docs */
+    .legal-callout {
+      background: rgba(45,90,61,0.06);
+      border-left: 3px solid var(--forest-mid);
+      border-radius: 0 8px 8px 0;
+      padding: 12px 16px;
+      margin: 14px 0;
+    }
+
+    .legal-callout.warning {
+      background: rgba(196,169,125,0.12);
+      border-left-color: var(--earth-warm);
+    }
+
+    .legal-a-inner .legal-footer-note {
+      font-size: 0.8rem;
+      font-style: italic;
+      color: var(--text-muted);
+      margin-top: 24px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(45,90,61,0.1);
+    }
+
+    /* Responsive: slightly tighter padding on mobile */
+    @media (max-width: 640px) {
+      .legal-q    { padding: 16px 18px; font-size: 0.93rem; }
+      .legal-a-inner { padding: 20px 18px; max-height: 60vh; }
+    }
+
   </style>
 
   <!--
@@ -1587,6 +1781,7 @@
         <li><a href="#hipaa">HIPAA</a></li>
         <li><a href="#terms">Terms</a></li>
         <li><a href="#contact">Contact</a></li>
+        <li><a href="#documentation">Docs</a></li>
         <li class="nav-cta"><a href="#contact">Coming Soon</a></li>
       </ul>
 
@@ -1621,6 +1816,7 @@
       <a href="#hipaa" onclick="closeMobileNav()">HIPAA</a>
       <a href="#terms" onclick="closeMobileNav()">Terms of Service</a>
       <a href="#contact" onclick="closeMobileNav()">Contact</a>
+      <a href="#documentation" onclick="closeMobileNav()">Docs</a>
     </nav>
   </header>
 
@@ -2420,6 +2616,548 @@
     </div>
   </section>
 
+  <!-- ============================================================
+       DOCUMENTATION — Full Legal Documents
+       Three mutually exclusive accordions. All closed by default.
+       toggleLegal() in JS enforces one-at-a-time behaviour.
+       508 / WCAG 2.1 AA: aria-expanded, aria-controls, role="region",
+       aria-labelledby on every panel.
+  ============================================================ -->
+  <div class="section-divider"></div>
+
+  <section id="documentation" aria-labelledby="documentation-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Documentation</span>
+        <h2 id="documentation-heading">Legal Documents</h2>
+      </div>
+
+      <p class="docs-intro">
+        Full versions of our Privacy Policy, Health Information &amp; HIPAA Disclosure,
+        and Terms of Service. Click any document to expand it.
+      </p>
+
+      <div class="docs-review-notice" role="note" aria-label="Legal review notice">
+        <span aria-hidden="true">⚖️</span>
+        <span>These documents are drafts pending final legal review before the public launch of Journey Tracker.
+        Bracketed items <span class="legal-ph">[like this]</span> will be completed upon launch.
+        For questions, email <a href="mailto:support@journeytracker.app" style="color:var(--earth-warm);">support@journeytracker.app</a>.</span>
+      </div>
+
+      <div class="legal-accordion">
+
+        <!-- ── ACCORDION 1: FULL PRIVACY POLICY ── -->
+        <div class="legal-item">
+          <button id="legal-btn-1" class="legal-q"
+                  onclick="toggleLegal(this)"
+                  aria-expanded="false"
+                  aria-controls="legal-panel-1">
+            <span>Full Privacy Policy</span>
+            <svg class="legal-chevron" aria-hidden="true" focusable="false"
+                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M6 9l6 6 6-6"/>
+            </svg>
+          </button>
+          <div class="legal-a" id="legal-panel-1" role="region" aria-labelledby="legal-btn-1">
+            <div class="legal-a-inner">
+
+              <p><strong>Journey Tracker</strong><br>
+              <strong>Effective Date:</strong> <span class="legal-ph">Effective upon public launch</span><br>
+              <strong>Last Updated:</strong> <span class="legal-ph">To be updated upon launch</span></p>
+
+              <p>Journey Tracker ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, store, and protect your health and personal information when you use the Journey Tracker iOS application and associated website (journeytracker.app).</p>
+
+              <p><strong>Please read this policy carefully.</strong> By using Journey Tracker, you agree to the practices described here.</p>
+
+              <hr>
+
+              <h3>1. Who We Are</h3>
+              <p>Journey Tracker is an iOS application designed to help individuals undergoing GLP-1 therapy (including medications such as semaglutide, tirzepatide, and similar agents) track their health progress, medication history, laboratory results, and related health markers.</p>
+              <p>Journey Tracker is developed and operated as a consumer health application. We are not a healthcare provider, health plan, or healthcare clearinghouse.</p>
+
+              <hr>
+
+              <h3>2. Information We Collect</h3>
+
+              <h4>2.1 Information You Provide Directly</h4>
+              <p>When you use Journey Tracker, you may enter the following health information:</p>
+              <ul>
+                <li><strong>Body measurements:</strong> Weight, body fat percentage, muscle mass, BMI, and related metrics</li>
+                <li><strong>Medication information:</strong> GLP-1 medication name, dose, injection dates, and injection site rotation</li>
+                <li><strong>Side effect logs:</strong> Symptoms experienced during therapy, severity, and associated notes</li>
+                <li><strong>Laboratory results:</strong> Blood test values including HbA1c, lipid panel, metabolic markers, thyroid markers, and other health markers you choose to enter</li>
+                <li><strong>Health goals:</strong> Target weight and hydration goals</li>
+                <li><strong>Notes:</strong> Free-text notes you add to any health entry</li>
+              </ul>
+
+              <h4>2.2 Information Collected Through Apple Health (HealthKit)</h4>
+              <p>With your explicit permission, Journey Tracker may read from and write to Apple HealthKit. The specific data types accessed are listed during the permission request and may include:</p>
+              <ul>
+                <li>Body weight and body composition metrics</li>
+                <li>Blood glucose readings</li>
+                <li>Blood pressure measurements</li>
+                <li>Dietary water intake</li>
+                <li>Laboratory results (if you connect your health system through Apple Health Records)</li>
+              </ul>
+              <p><strong>You control HealthKit access entirely.</strong> You can review and revoke any HealthKit permission at any time through iOS Settings → Privacy &amp; Security → Health → Journey Tracker.</p>
+
+              <h4>2.3 Information Collected Through Sign in with Apple</h4>
+              <p>We use Sign in with Apple for authentication. Apple provides us only with a stable, opaque user identifier — not your Apple ID or real name or email address.</p>
+
+              <h4>2.4 Information We Do NOT Collect</h4>
+              <p>Journey Tracker does not collect:</p>
+              <ul>
+                <li>Your full name</li>
+                <li>Your physical address or precise location</li>
+                <li>Your date of birth</li>
+                <li>Your Social Security Number or government-issued identifiers</li>
+                <li>Your health insurance information</li>
+                <li>Your prescribing physician's information</li>
+                <li>Payment card information (payments are processed by Apple App Store)</li>
+              </ul>
+
+              <hr>
+
+              <h3>3. How We Use Your Information</h3>
+
+              <h4>3.1 To Provide the Application</h4>
+              <p>Your health data is used solely to operate the features of Journey Tracker — displaying your health trends, generating charts, tracking your GLP-1 progress, and providing the features you use.</p>
+
+              <h4>3.2 AI-Powered Lab Analysis (Pro Feature)</h4>
+              <p>If you subscribe to Journey Tracker Pro and use the AI Lab Analysis feature, a <strong>de-identified</strong> version of your laboratory results and medication information is transmitted to Anthropic's Claude AI to generate a personalized interpretation of your results.</p>
+              <p><strong>Before this feature is activated, you will be shown a separate consent screen</strong> explaining exactly what data is transmitted and giving you the opportunity to consent or decline.</p>
+              <p><strong>What is transmitted to the AI:</strong></p>
+              <ul>
+                <li>Your lab values as numbers (e.g., "HbA1c: 6.2")</li>
+                <li>Your GLP-1 medication name and current dose</li>
+                <li>How long you have been on therapy (relative duration, not a specific date)</li>
+                <li>Changes in your lab values over time (relative timeframes)</li>
+              </ul>
+              <p><strong>What is NEVER transmitted:</strong></p>
+              <ul>
+                <li>Your name or any identifier</li>
+                <li>Exact dates or timestamps</li>
+                <li>Your Apple ID or account information</li>
+                <li>Any information that could identify you as an individual</li>
+              </ul>
+              <p>The AI analysis result is returned to your device and stored locally. It is informational only and does not constitute medical advice.</p>
+
+              <h4>3.3 We Do Not Sell Your Data</h4>
+              <p>We do not sell, rent, or trade your personal or health information to any third party for any purpose, including advertising.</p>
+
+              <h4>3.4 We Do Not Use Your Data for Advertising</h4>
+              <p>Journey Tracker does not display advertisements and does not use your health data for advertising or marketing purposes of any kind, including by any third party.</p>
+
+              <hr>
+
+              <h3>4. How We Store Your Information</h3>
+
+              <h4>4.1 On Your Device</h4>
+              <p>All of your health data is stored locally on your iPhone using Apple's Core Data framework. This data is encrypted at rest using iOS FileProtection (AES-256 encryption). Your data is only accessible when your device is unlocked.</p>
+
+              <h4>4.2 iCloud Backup</h4>
+              <p>If you have iCloud enabled, your Journey Tracker data may be backed up to your personal iCloud account through Apple's CloudKit framework. This data is:</p>
+              <ul>
+                <li>Stored in <strong>your personal iCloud account</strong>, not any server controlled by us</li>
+                <li>Subject to Apple's privacy policy and security practices</li>
+                <li>Accessible only to you through your Apple ID</li>
+                <li>Not accessible to Journey Tracker developers under any circumstances</li>
+              </ul>
+              <p>You can disable iCloud backup for Journey Tracker at any time through iOS Settings → [Your Name] → iCloud → Apps Using iCloud.</p>
+
+              <h4>4.3 AI Analysis Results</h4>
+              <p>Analysis results generated by the AI Lab Analysis feature are cached on your device in encrypted Core Data storage and synced to your personal iCloud account. We do not retain a copy of your analysis results on any server we control.</p>
+
+              <hr>
+
+              <h3>5. Information Sharing</h3>
+
+              <h4>5.1 Apple</h4>
+              <p>We use Apple's platform services (HealthKit, CloudKit, Sign in with Apple, StoreKit) to operate Journey Tracker. Your use of these services is subject to Apple's Privacy Policy (apple.com/privacy).</p>
+
+              <h4>5.2 Anthropic (AI Analysis Feature Only)</h4>
+              <p>If you consent to use the AI Lab Analysis feature, de-identified health data is transmitted to Anthropic, PBC for processing. Anthropic's privacy policy is available at anthropic.com/privacy. The data transmitted is de-identified as described in Section 3.2 and does not include any information that identifies you.</p>
+
+              <h4>5.3 RevenueCat (Subscription Management)</h4>
+              <p>Subscription management is handled by RevenueCat. RevenueCat receives subscription status information to verify your Pro subscription. RevenueCat's privacy policy is available at revenuecat.com/privacy.</p>
+
+              <h4>5.4 No Other Third-Party Sharing</h4>
+              <p>We do not share your health or personal information with any other third parties.</p>
+
+              <hr>
+
+              <h3>6. Your Rights and Choices</h3>
+
+              <h4>6.1 Access Your Data</h4>
+              <p>You can view all of your health data within the Journey Tracker app at any time.</p>
+
+              <h4>6.2 Delete Your Data</h4>
+              <p>You can delete all of your Journey Tracker data by:</p>
+              <ul>
+                <li>Deleting individual entries within the app</li>
+                <li>Using Settings → Data → Clear All Data within the app (removes all on-device data)</li>
+                <li>Deleting the app (removes all on-device data)</li>
+                <li>Managing your iCloud storage to remove Journey Tracker backups via iOS Settings</li>
+              </ul>
+
+              <h4>6.3 Opt Out of AI Analysis</h4>
+              <p>You can disable the AI Lab Analysis feature at any time through Settings → Privacy &amp; Security → AI Lab Analysis. Disabling this feature immediately prevents any further transmission of data to the Anthropic API.</p>
+
+              <h4>6.4 HealthKit Permissions</h4>
+              <p>You can review and revoke any HealthKit permission at any time through iOS Settings → Privacy &amp; Security → Health → Journey Tracker.</p>
+
+              <h4>6.5 California Residents (CCPA/CPRA)</h4>
+              <p>If you are a California resident, you have the right to: know what personal information we collect and how it is used; request deletion of your personal information; opt out of the sale of your personal information (we do not sell personal information); and non-discrimination for exercising your privacy rights. To exercise these rights, contact us at <a href="mailto:support@journeytracker.app">support@journeytracker.app</a>.</p>
+
+              <h4>6.6 Virginia, Colorado, and Other State Residents</h4>
+              <p>Residents of Virginia (CDPA), Colorado (CPA), and other states with consumer privacy laws have similar rights to access, delete, and correct their personal information. Contact us at <a href="mailto:support@journeytracker.app">support@journeytracker.app</a> to exercise these rights.</p>
+
+              <hr>
+
+              <h3>7. AI Lab Analysis — Important Disclosures</h3>
+
+              <h4>7.1 Informational Purpose Only</h4>
+              <div class="legal-callout warning">
+                <p><strong>The AI Lab Analysis feature is not a medical device, does not provide medical diagnoses, and does not constitute medical advice.</strong> Always discuss your laboratory results with your prescribing physician or other qualified healthcare provider.</p>
+              </div>
+              <p>The analysis is intended to help you understand general trends in your health markers in the context of GLP-1 therapy. It is not a substitute for the advice of a qualified healthcare provider.</p>
+
+              <h4>7.2 AI Limitations</h4>
+              <p>AI-generated analysis may contain errors, omissions, or information that does not apply to your specific situation. The AI does not know your complete medical history, other medications you may be taking, or other factors relevant to interpreting your health markers.</p>
+
+              <h4>7.3 Emergency Situations</h4>
+              <p>If you believe you are experiencing a medical emergency, call 911 or your local emergency number immediately. Do not rely on Journey Tracker or its AI analysis feature in an emergency.</p>
+
+              <hr>
+
+              <h3>8. Children's Privacy</h3>
+              <p>Journey Tracker is not intended for use by individuals under the age of 18. We do not knowingly collect personal information from children under 18. If you believe a child under 18 has provided health information through Journey Tracker, please contact us at <a href="mailto:support@journeytracker.app">support@journeytracker.app</a> and we will take steps to delete that information.</p>
+
+              <hr>
+
+              <h3>9. Data Security</h3>
+              <p>We implement technical and organizational measures to protect your health information, including:</p>
+              <ul>
+                <li><strong>On-device encryption:</strong> All health data is encrypted using AES-256 encryption</li>
+                <li><strong>Secure authentication:</strong> Sign in with Apple with optional biometric lock</li>
+                <li><strong>Secure transmission:</strong> All data transmitted over the internet uses TLS 1.3 encryption</li>
+                <li><strong>De-identification:</strong> Health data transmitted for AI analysis is de-identified before transmission</li>
+                <li><strong>No developer server access:</strong> We do not operate servers that store your health data</li>
+                <li><strong>Debug code exclusion:</strong> Developer and debug features are excluded from the production app</li>
+              </ul>
+              <p>No security system is perfect. If we become aware of a security breach that affects your health information, we will notify you as required by applicable law.</p>
+
+              <hr>
+
+              <h3>10. Breach Notification</h3>
+              <p>In the event of a security breach involving your health information, we will notify affected users in accordance with the FTC Health Breach Notification Rule and applicable state law. Notification will be provided through in-app notification within the timeframe required by law.</p>
+
+              <hr>
+
+              <h3>11. Changes to This Policy</h3>
+              <p>We may update this Privacy Policy from time to time. When we make material changes, we will notify you through the app and update the "Last Updated" date at the top of this policy. Your continued use of Journey Tracker after such notification constitutes your acceptance of the updated policy. For material changes that affect how we process your health data, we will seek your renewed consent where required by law.</p>
+
+              <hr>
+
+              <h3>12. Contact Us</h3>
+              <p>If you have questions about this Privacy Policy or how we handle your health information, please contact us:</p>
+              <p><strong>Email:</strong> <a href="mailto:support@journeytracker.app">support@journeytracker.app</a><br>
+              <strong>Website:</strong> journeytracker.app<br>
+              <strong>Mailing Address:</strong> <span class="legal-ph">Available upon request at support@journeytracker.app</span></p>
+              <p>For data deletion requests or to exercise your privacy rights, please email <a href="mailto:support@journeytracker.app">support@journeytracker.app</a> with the subject line "Privacy Rights Request."</p>
+
+              <p class="legal-footer-note">This Privacy Policy is pending final legal review before the public launch of Journey Tracker. <span class="legal-ph">Legal review date and counsel information to be added upon completion.</span></p>
+
+            </div><!-- /.legal-a-inner -->
+          </div><!-- /#legal-panel-1 -->
+        </div><!-- /.legal-item -->
+
+        <!-- ── ACCORDION 2: HEALTH INFORMATION & HIPAA DISCLOSURE ── -->
+        <div class="legal-item">
+          <button id="legal-btn-2" class="legal-q"
+                  onclick="toggleLegal(this)"
+                  aria-expanded="false"
+                  aria-controls="legal-panel-2">
+            <span>Health Information &amp; HIPAA Disclosure</span>
+            <svg class="legal-chevron" aria-hidden="true" focusable="false"
+                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M6 9l6 6 6-6"/>
+            </svg>
+          </button>
+          <div class="legal-a" id="legal-panel-2" role="region" aria-labelledby="legal-btn-2">
+            <div class="legal-a-inner">
+
+              <p><strong>Journey Tracker</strong><br>
+              <strong>Effective Date:</strong> <span class="legal-ph">Effective upon public launch</span></p>
+
+              <hr>
+
+              <h3>1. HIPAA Status</h3>
+              <p>Journey Tracker is a consumer mobile application. We are <strong>not</strong> a HIPAA-covered entity as defined by 45 C.F.R. § 160.103. Journey Tracker is not a healthcare provider, health plan, or healthcare clearinghouse.</p>
+              <p>Your health data entered into Journey Tracker is <strong>not</strong> protected by HIPAA. However, we take the privacy and security of your health information seriously and have implemented strong protections described in our Privacy Policy.</p>
+
+              <h4>Why HIPAA Does Not Apply</h4>
+              <p>HIPAA protects health information when it is created, received, maintained, or transmitted by a covered entity or their business associates. Journey Tracker is a personal wellness application. The health data you enter is generated by you, stored on your personal device, and used only to operate the features you choose to use.</p>
+
+              <h4>Applicable State Health Privacy Laws</h4>
+              <p>Some states have enacted consumer health data privacy laws — such as Washington's My Health MY Data Act — that provide rights regarding health information beyond HIPAA. Even though HIPAA does not apply, we are committed to honoring applicable state health information privacy rights. Contact us at <a href="mailto:support@journeytracker.app">support@journeytracker.app</a> to exercise any applicable rights.</p>
+
+              <hr>
+
+              <h3>2. Health Information We Process</h3>
+              <p>Through the app, you may voluntarily enter the following health information:</p>
+              <ul>
+                <li>Body weight, body fat percentage, muscle mass, and BMI</li>
+                <li>GLP-1 medication name, dose, injection dates, and injection site rotation</li>
+                <li>Symptoms experienced during therapy (such as nausea, fatigue, or constipation)</li>
+                <li>Laboratory results including HbA1c, lipid panel, metabolic markers, and other values</li>
+                <li>Hydration intake and fasting windows</li>
+                <li>Health goals and personal notes</li>
+              </ul>
+              <p>Additionally, with your permission, Journey Tracker may read certain health data from Apple Health (HealthKit), including body weight, blood glucose, blood pressure, and dietary water intake. See our Privacy Policy for full details on HealthKit integration.</p>
+
+              <hr>
+
+              <h3>3. Not a Medical Device</h3>
+              <p>Journey Tracker is <strong>not</strong> a medical device as defined by the Food and Drug Administration (21 U.S.C. § 321(h)). Journey Tracker does not:</p>
+              <ul>
+                <li>Diagnose any disease or health condition</li>
+                <li>Treat, cure, or prevent any disease</li>
+                <li>Provide medical diagnoses or recommendations</li>
+                <li>Constitute medical advice of any kind</li>
+              </ul>
+              <p>Journey Tracker is a personal health data organization and tracking tool. All information displayed by Journey Tracker is derived from data you enter and is provided for personal informational purposes only.</p>
+
+              <hr>
+
+              <h3>4. Medical Disclaimer</h3>
+              <div class="legal-callout warning">
+                <p><strong>The information, features, and AI-generated analysis provided by Journey Tracker are intended for general informational and personal tracking purposes only.</strong></p>
+                <p>Nothing in Journey Tracker is intended to diagnose any disease or health condition; recommend or prescribe any medication or treatment; replace the advice of a licensed healthcare provider; or constitute the practice of medicine, nursing, or any other healthcare profession.</p>
+                <p><strong>Always consult with your prescribing physician or other qualified healthcare provider before making any decisions about your health, medications, or treatment plan.</strong> Do not disregard or delay seeking professional medical advice based on anything you read or see in Journey Tracker.</p>
+              </div>
+
+              <hr>
+
+              <h3>5. AI Lab Analysis Disclosures</h3>
+
+              <h4>5.1 Nature of AI Analysis</h4>
+              <p>Journey Tracker Pro includes an AI-powered laboratory result analysis feature that:</p>
+              <ul>
+                <li>Uses Anthropic's Claude AI to generate plain-language interpretations of your lab values</li>
+                <li>Processes de-identified data only — no personal identifiers are transmitted</li>
+                <li>Is designed to help you understand what your lab values may mean in the context of GLP-1 therapy</li>
+                <li>Is <strong>informational only</strong> and does not constitute medical advice</li>
+              </ul>
+
+              <h4>5.2 AI Limitations</h4>
+              <p>AI-generated analysis:</p>
+              <ul>
+                <li>May contain errors, omissions, or information that does not apply to your specific situation</li>
+                <li>Does not have access to your complete medical history</li>
+                <li>Does not consider other medications, supplements, or health conditions you may have</li>
+                <li>Is not reviewed by a licensed healthcare provider before being presented to you</li>
+                <li>Should not be relied upon as a substitute for professional medical interpretation of your laboratory results</li>
+              </ul>
+
+              <h4>5.3 Explicit Consent Required</h4>
+              <p>Before the AI Lab Analysis feature is activated for the first time, you will be presented with a separate consent screen explaining exactly what data is transmitted. You must affirmatively consent before any data is transmitted. You may withdraw this consent at any time through Settings → Privacy &amp; Security → AI Lab Analysis.</p>
+
+              <hr>
+
+              <h3>6. GLP-1 Medication Tracking</h3>
+              <p>Journey Tracker supports tracking of GLP-1 receptor agonist medications including, but not limited to, semaglutide (Ozempic®, Wegovy®, Rybelsus®), tirzepatide (Mounjaro®, Zepbound®), and other GLP-1 agents.</p>
+              <div class="legal-callout">
+                <p><strong>The medication tracking features in Journey Tracker are for personal logging purposes only.</strong> Journey Tracker does not provide dosing recommendations, does not verify medication prescriptions, and does not communicate with healthcare providers on your behalf. All medication decisions must be made in consultation with your prescribing physician.</p>
+              </div>
+
+              <hr>
+
+              <h3>7. Emergency Situations</h3>
+              <div class="legal-callout warning">
+                <p><strong>If you believe you are experiencing a medical emergency, call 911 or your local emergency number immediately.</strong></p>
+                <p>Do not rely on Journey Tracker or its AI analysis feature in any emergency situation. Journey Tracker is not designed for and must not be used in emergency medical situations.</p>
+              </div>
+
+              <hr>
+
+              <h3>8. Reporting Adverse Events</h3>
+              <p>If you experience an adverse event or side effect that you believe is related to your GLP-1 medication, consult your healthcare provider immediately. You can also report adverse events directly to the FDA through MedWatch at <strong>fda.gov/safety/medwatch</strong>.</p>
+
+              <hr>
+
+              <h3>9. Regulatory Notices</h3>
+
+              <h4>9.1 FDA Regulation</h4>
+              <p>Journey Tracker has not been submitted to or reviewed by the FDA. It is not a regulated medical device.</p>
+
+              <h4>9.2 No Prescription Verification</h4>
+              <p>Journey Tracker does not verify that any medication entered in the app has been prescribed to the user or is being used as directed. Users are responsible for using all medications only as prescribed by a licensed healthcare provider.</p>
+
+              <hr>
+
+              <h3>10. Contact</h3>
+              <p>If you have questions about this Health Information Disclosure, please contact us:</p>
+              <p><strong>Email:</strong> <a href="mailto:support@journeytracker.app">support@journeytracker.app</a><br>
+              <strong>Website:</strong> journeytracker.app</p>
+
+              <p class="legal-footer-note">This Health Information &amp; HIPAA Disclosure is pending final legal review before the public launch of Journey Tracker. <span class="legal-ph">Legal review date and counsel information to be added upon completion.</span></p>
+
+            </div><!-- /.legal-a-inner -->
+          </div><!-- /#legal-panel-2 -->
+        </div><!-- /.legal-item -->
+
+        <!-- ── ACCORDION 3: FULL TERMS OF SERVICE ── -->
+        <div class="legal-item">
+          <button id="legal-btn-3" class="legal-q"
+                  onclick="toggleLegal(this)"
+                  aria-expanded="false"
+                  aria-controls="legal-panel-3">
+            <span>Full Terms of Service</span>
+            <svg class="legal-chevron" aria-hidden="true" focusable="false"
+                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M6 9l6 6 6-6"/>
+            </svg>
+          </button>
+          <div class="legal-a" id="legal-panel-3" role="region" aria-labelledby="legal-btn-3">
+            <div class="legal-a-inner">
+
+              <p><strong>Journey Tracker</strong><br>
+              <strong>Effective Date:</strong> <span class="legal-ph">Effective upon public launch</span><br>
+              <strong>Last Updated:</strong> <span class="legal-ph">To be updated upon launch</span></p>
+
+              <p>Please read these Terms of Service ("Terms") carefully before using Journey Tracker. By downloading, installing, or using Journey Tracker, you agree to be bound by these Terms.</p>
+
+              <hr>
+
+              <h3>1. Acceptance of Terms</h3>
+              <p>By using Journey Tracker, you confirm that you are at least 18 years of age, have read and understood these Terms and our Privacy Policy, and agree to be bound by them. If you do not agree, do not use Journey Tracker.</p>
+
+              <hr>
+
+              <h3>2. Description of Service</h3>
+              <p>Journey Tracker is a personal health tracking application designed to help individuals undergoing GLP-1 therapy monitor their health progress. Journey Tracker provides tools for tracking weight, body composition, medication history, side effects, laboratory results, and related health markers.</p>
+              <p>Journey Tracker also offers an AI-powered laboratory result analysis feature (Pro subscription required) that provides general health information based on your laboratory values in the context of GLP-1 therapy.</p>
+
+              <hr>
+
+              <h3>3. Not Medical Advice — Important Disclaimer</h3>
+              <div class="legal-callout warning">
+                <p><strong>Journey Tracker is not a medical device, does not provide medical diagnoses, and does not constitute medical advice.</strong></p>
+                <p>Nothing in Journey Tracker is intended to diagnose any disease or health condition; recommend or prescribe any medication or treatment; replace the advice of a licensed healthcare provider; or constitute the practice of medicine, nursing, or any other healthcare profession.</p>
+                <p><strong>Always consult with your prescribing physician or other qualified healthcare provider before making any decisions about your health, medications, or treatment plan.</strong> Do not disregard or delay seeking professional medical advice based on anything you read or see in Journey Tracker.</p>
+                <p><strong>In a medical emergency, call 911 or your local emergency number immediately.</strong></p>
+              </div>
+
+              <hr>
+
+              <h3>4. AI Lab Analysis Feature</h3>
+
+              <h4>4.1 Feature Description</h4>
+              <p>Journey Tracker Pro includes an AI-powered lab analysis feature that generates plain-language interpretations of your laboratory results in the context of GLP-1 therapy. This feature uses Anthropic's Claude AI technology.</p>
+
+              <h4>4.2 AI Limitations and Disclaimer</h4>
+              <p>The AI analysis feature:</p>
+              <ul>
+                <li>Is powered by artificial intelligence and may produce inaccurate, incomplete, or inapplicable results</li>
+                <li>Does not have access to your complete medical history</li>
+                <li>Does not consider all medications, supplements, or health conditions you may have</li>
+                <li>Is not reviewed or approved by a licensed healthcare provider before delivery to you</li>
+                <li>Should not be relied upon as a substitute for professional medical interpretation of your laboratory results</li>
+              </ul>
+
+              <h4>4.3 Your Consent to AI Processing</h4>
+              <p>By using the AI Lab Analysis feature, you consent to the transmission of de-identified health data (as described in our Privacy Policy) to Anthropic's AI system for the purpose of generating your analysis. You may withdraw this consent at any time by disabling the feature in Settings.</p>
+
+              <h4>4.4 Informational Nature of Analysis</h4>
+              <p>All AI-generated analysis is clearly labeled as informational only. Journey Tracker expressly disclaims any liability for decisions made based on AI-generated analysis.</p>
+
+              <hr>
+
+              <h3>5. Subscriptions and Payments</h3>
+
+              <h4>5.1 Free Tier</h4>
+              <p>Journey Tracker offers a free tier that includes basic health tracking features, including the ability to log up to two (2) laboratory result sessions. Free tier users do not have access to AI lab analysis, unlimited lab tracking, or other Pro features.</p>
+
+              <h4>5.2 Journey Tracker Pro</h4>
+              <p>Journey Tracker Pro is available as a monthly or annual subscription, or as a one-time lifetime purchase. Pro features include unlimited laboratory result tracking, AI-powered lab analysis, OCR lab report import, and additional features as described in the app.</p>
+
+              <h4>5.3 Free Trial</h4>
+              <p>Pro subscriptions may include a free trial period. Your subscription will automatically convert to a paid subscription at the end of the free trial unless you cancel before the trial ends.</p>
+
+              <h4>5.4 Billing</h4>
+              <p>All subscriptions are billed through Apple's App Store. Your payment information is managed entirely by Apple. We do not store payment card information. Subscriptions automatically renew unless cancelled at least 24 hours before the end of the current billing period.</p>
+
+              <h4>5.5 Cancellation and Refunds</h4>
+              <p>You may cancel your subscription at any time through iOS Settings → [Your Name] → Subscriptions. Cancellation takes effect at the end of the current billing period. Refunds are subject to Apple's App Store refund policy.</p>
+
+              <hr>
+
+              <h3>6. User Responsibilities</h3>
+              <p>You agree to:</p>
+              <ul>
+                <li>Provide accurate health information to the extent you choose to use the tracking features</li>
+                <li>Use Journey Tracker only for lawful personal health tracking purposes</li>
+                <li>Not attempt to reverse-engineer, decompile, or extract the source code of Journey Tracker</li>
+                <li>Not use Journey Tracker in any way that could harm other users or third parties</li>
+                <li>Maintain the security of your Apple ID and device</li>
+              </ul>
+
+              <hr>
+
+              <h3>7. Data Ownership</h3>
+              <p>You own your health data. We do not claim any ownership over the health information you enter into Journey Tracker. Our right to process your data is limited to operating the features of Journey Tracker as described in these Terms and our Privacy Policy.</p>
+
+              <hr>
+
+              <h3>8. Intellectual Property</h3>
+              <p>Journey Tracker, including its design, features, code, branding, and content (excluding your personal health data), is owned by Journey Tracker and protected by applicable intellectual property laws. You may not copy, modify, distribute, or create derivative works based on Journey Tracker without our express written permission.</p>
+
+              <hr>
+
+              <h3>9. Disclaimers and Limitation of Liability</h3>
+
+              <h4>9.1 No Warranty</h4>
+              <p>Journey Tracker is provided "as is" without warranty of any kind. We do not warrant that Journey Tracker will be error-free, uninterrupted, or that AI analysis will be accurate or applicable to your situation.</p>
+
+              <h4>9.2 Limitation of Liability</h4>
+              <p>To the maximum extent permitted by applicable law, Journey Tracker shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including but not limited to damages arising from health decisions made based on Journey Tracker or its AI analysis feature.</p>
+              <p>Our total liability to you for any claims arising from your use of Journey Tracker shall not exceed the amount you paid for Journey Tracker in the twelve (12) months preceding the claim.</p>
+
+              <h4>9.3 Health Decisions</h4>
+              <p>We expressly disclaim all liability for any health outcomes, adverse events, or consequences resulting from reliance on Journey Tracker's tracking features or AI analysis. Health decisions must be made in consultation with qualified healthcare providers.</p>
+
+              <hr>
+
+              <h3>10. Indemnification</h3>
+              <p>You agree to indemnify and hold harmless Journey Tracker from any claims, damages, or expenses (including reasonable attorney's fees) arising from your use of Journey Tracker in violation of these Terms or applicable law.</p>
+
+              <hr>
+
+              <h3>11. Changes to Terms</h3>
+              <p>We may update these Terms from time to time. We will notify you of material changes through the app. Continued use of Journey Tracker after such notification constitutes acceptance of the updated Terms.</p>
+
+              <hr>
+
+              <h3>12. Governing Law and Dispute Resolution</h3>
+              <p>These Terms are governed by the laws of the State of <span class="legal-ph">[State — to be confirmed by legal counsel]</span>, without regard to conflict of law principles. Any disputes arising under these Terms shall be resolved through binding arbitration in accordance with the American Arbitration Association's Consumer Arbitration Rules.</p>
+
+              <hr>
+
+              <h3>13. Contact</h3>
+              <p>For questions about these Terms, please contact us at <a href="mailto:support@journeytracker.app">support@journeytracker.app</a> or through journeytracker.app/contact.</p>
+              <p>A complete copy of these Terms of Service is available to the general public upon request by emailing <a href="mailto:support@journeytracker.app">support@journeytracker.app</a>.</p>
+
+              <p class="legal-footer-note">These Terms of Service are pending final legal review before the public launch of Journey Tracker. <span class="legal-ph">Legal review date and counsel information to be added upon completion.</span></p>
+
+            </div><!-- /.legal-a-inner -->
+          </div><!-- /#legal-panel-3 -->
+        </div><!-- /.legal-item -->
+
+      </div><!-- /.legal-accordion -->
+    </div><!-- /.container -->
+  </section><!-- /#documentation -->
+
   </main><!-- /#main-content — closes the <main> landmark opened before the hero section -->
 
   <!-- ============================================================
@@ -2622,7 +3360,63 @@
 
 
     /* ============================================================
-       3. CONTACT FORM — VALIDATION, SANITISATION & FORMSPREE SUBMIT
+       3. LEGAL DOCUMENTATION ACCORDION — toggleLegal()
+       ============================================================
+       Mutual exclusion: only one legal document can be open at a
+       time. Clicking an already-open item closes it (toggle).
+
+       508 / WCAG 2.1 AA compliance:
+         • aria-expanded is kept in sync on every button
+         • Closed panels: max-height 0 (hidden from screen readers
+           via overflow:hidden — content is still in the DOM so
+           in-page search can find it, but AT skips overflow:hidden
+           content when max-height is 0)
+         • Open panel: max-height set to the inner scrollable
+           container height (680 px per CSS) so the panel animates
+           open neatly regardless of document length
+         • Focus stays on the clicked button — no focus jump
+    ============================================================ */
+
+    /**
+     * toggleLegal — opens or closes a single legal document accordion.
+     * Closes all other legal items before opening the target.
+     * @param {HTMLButtonElement} btn — the clicked .legal-q button
+     */
+    function toggleLegal(btn) {
+      /* Read current state BEFORE we start mutating anything */
+      var wasOpen = btn.getAttribute('aria-expanded') === 'true';
+
+      /* ── Close every legal accordion ── */
+      document.querySelectorAll('.legal-q').forEach(function (b) {
+        b.setAttribute('aria-expanded', 'false');
+        var p = document.getElementById(b.getAttribute('aria-controls'));
+        if (p) { p.style.maxHeight = '0'; }
+      });
+
+      /* ── Re-open the clicked one if it was previously closed ── */
+      if (!wasOpen) {
+        btn.setAttribute('aria-expanded', 'true');
+        var panel = document.getElementById(btn.getAttribute('aria-controls'));
+        if (panel) {
+          /* The inner .legal-a-inner is the scrollable container capped at
+             680 px by CSS. We animate the outer .legal-a to that same value
+             so it reveals the scrollable pane without animating to a huge
+             pixel height. Adding a small buffer (2 px) prevents sub-pixel
+             clipping on some browsers. */
+          panel.style.maxHeight = '682px';
+
+          /* Smoothly scroll the button into view so users immediately see
+             the top of the document they opened, even on small screens. */
+          setTimeout(function () {
+            btn.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          }, 50);
+        }
+      }
+    }
+
+
+    /* ============================================================
+       4. CONTACT FORM — VALIDATION, SANITISATION & FORMSPREE SUBMIT
        ============================================================
        The form submits to Formspree via the Fetch API (AJAX), so
        the page never reloads. After a successful submission the form
