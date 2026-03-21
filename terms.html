@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/jpeg" href="/app-icon.jpg" />
+  <link rel="apple-touch-icon" href="/app-icon.jpg" />
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    script-src 'self' 'unsafe-inline';
+    style-src 'self' 'unsafe-inline';
+    img-src 'self' data:;
+    frame-ancestors 'none';
+    base-uri 'self';
+    object-src 'none';
+  " />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <title>Terms of Service — Journey Tracker</title>
+  <meta name="description" content="Journey Tracker Terms of Service — the agreement between you and Apex Development Studio LLC when using the Journey Tracker app." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://journeytracker.app/terms.html" />
+  <meta name="theme-color" content="#1a3a2a" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --forest-dark:  #1a3a2a;
+      --forest-mid:   #2d5a3d;
+      --forest-light: #4a8a5e;
+      --sunrise:      #e8792a;
+      --cream:        #faf7f2;
+      --white:        #ffffff;
+      --text-dark:    #1a2a1a;
+      --text-mid:     #3a4a3a;
+      --text-muted:   #585e58;
+      --border:       #e0e8df;
+    }
+    @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+    body {
+      font-family: -apple-system, system-ui, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+      background: var(--cream);
+      color: var(--text-dark);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--forest-light); text-decoration: underline; text-underline-offset: 2px; }
+    a:hover { color: var(--forest-dark); }
+    img { max-width: 100%; display: block; }
+
+    .top-nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(250,247,242,0.95);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px; height: 60px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-brand {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 1.05rem; font-weight: 700; color: var(--forest-dark);
+      text-decoration: none;
+    }
+    .nav-brand img { width: 30px; height: 30px; border-radius: 7px; }
+    .nav-back {
+      font-size: 0.88rem; font-weight: 500; color: var(--forest-mid);
+      text-decoration: none; padding: 6px 14px;
+      border: 1.5px solid var(--forest-mid); border-radius: 100px;
+      transition: background 0.15s, color 0.15s;
+    }
+    .nav-back:hover { background: var(--forest-mid); color: var(--white); text-decoration: none; }
+
+    .doc-hero {
+      background: linear-gradient(160deg, #f0f7f2, var(--cream));
+      padding: 56px 24px 40px; text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+    .doc-label {
+      display: inline-block;
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--forest-light);
+      background: rgba(74,138,94,0.1);
+      padding: 4px 12px; border-radius: 100px; margin-bottom: 14px;
+    }
+    .doc-hero h1 {
+      font-family: -apple-system, system-ui, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 700; color: var(--forest-dark); line-height: 1.2; margin-bottom: 12px;
+    }
+    .doc-meta { font-size: 0.85rem; color: var(--text-muted); margin-top: 8px; }
+
+    .doc-content {
+      max-width: 760px; margin: 0 auto; padding: 56px 24px 80px;
+    }
+    .doc-content h3 {
+      font-size: 1.05rem; font-weight: 700; color: var(--forest-dark);
+      margin: 36px 0 10px; padding-bottom: 8px; border-bottom: 1px solid var(--border);
+    }
+    .doc-content h3:first-child { margin-top: 0; }
+    .doc-content h4 { font-size: 0.92rem; font-weight: 700; color: var(--forest-mid); margin: 20px 0 8px; }
+    .doc-content p { color: var(--text-mid); font-size: 0.94rem; line-height: 1.75; margin-bottom: 14px; }
+    .doc-content ul, .doc-content ol { padding-left: 22px; margin: 10px 0 16px; }
+    .doc-content li { font-size: 0.93rem; color: var(--text-mid); line-height: 1.65; margin-bottom: 6px; }
+    .doc-content hr { border: none; border-top: 1px solid var(--border); margin: 28px 0; }
+    .doc-content strong { color: var(--text-dark); }
+
+    .callout {
+      background: rgba(45,90,61,0.06);
+      border-left: 3px solid var(--forest-mid);
+      border-radius: 0 8px 8px 0;
+      padding: 14px 18px; margin: 16px 0;
+    }
+    .callout.warning { background: rgba(232,121,42,0.07); border-left-color: var(--sunrise); }
+    .callout p { margin-bottom: 8px; }
+    .callout p:last-child { margin-bottom: 0; }
+
+    .doc-footer-note {
+      font-size: 0.82rem; font-style: italic; color: var(--text-muted);
+      margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--border);
+    }
+
+    .site-footer {
+      background: var(--forest-dark); color: rgba(255,255,255,0.72);
+      padding: 32px 24px; text-align: center;
+    }
+    .site-footer p { font-size: 0.85rem; margin-bottom: 8px; color: rgba(255,255,255,0.72); }
+    .site-footer a { color: rgba(255,255,255,0.82); }
+    .site-footer a:hover { color: #fff; }
+
+    .skip-link {
+      position: absolute; top: -100%; left: 0; z-index: 9999;
+      background: var(--forest-dark); color: #fff;
+      padding: 12px 24px; font-weight: 700; text-decoration: underline;
+    }
+    .skip-link:focus { top: 0; }
+
+    a:focus-visible, button:focus-visible {
+      outline: 3px solid var(--forest-light); outline-offset: 3px; border-radius: 4px;
+    }
+
+    @media (max-width: 600px) {
+      .doc-content { padding: 36px 16px 60px; }
+      .doc-hero { padding: 40px 16px 28px; }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="top-nav">
+    <a href="/" class="nav-brand" aria-label="Journey Tracker home">
+      <img src="/app-icon.jpg" alt="" aria-hidden="true" width="30" height="30" />
+      Journey Tracker
+    </a>
+    <a href="/" class="nav-back">← Back to site</a>
+  </header>
+
+  <main id="main-content">
+
+    <div class="doc-hero">
+      <div class="doc-label">Legal Document</div>
+      <h1>Terms of Service</h1>
+      <p class="doc-meta">
+        Developed and operated by Apex Development Studio LLC &nbsp;·&nbsp;
+        Effective: March 16, 2026 &nbsp;·&nbsp; Last Updated: March 16, 2026
+      </p>
+    </div>
+
+    <div class="doc-content">
+
+      <p>Please read these Terms of Service ("Terms") carefully before using Journey Tracker. By downloading, installing, or using Journey Tracker, you agree to be bound by these Terms. These Terms constitute a binding agreement between you and Apex Development Studio LLC.</p>
+
+      <hr>
+
+      <h3>1. Acceptance of Terms</h3>
+      <p>By using Journey Tracker, you confirm that you are at least 18 years of age, have read and understood these Terms and our Privacy Policy, and agree to be bound by them. If you do not agree, do not use Journey Tracker.</p>
+
+      <hr>
+
+      <h3>2. Description of Service</h3>
+      <p>Journey Tracker is a personal health tracking application designed to help individuals undergoing GLP-1 therapy monitor their health progress. Journey Tracker provides tools for tracking weight, body composition, medication history, side effects, laboratory results, and related health markers.</p>
+      <p>Journey Tracker also offers an AI-powered laboratory result analysis feature (Pro subscription required) that provides general health information based on your laboratory values in the context of GLP-1 therapy.</p>
+
+      <hr>
+
+      <h3>3. Not Medical Advice — Important Disclaimer</h3>
+      <div class="callout warning">
+        <p><strong>Journey Tracker is not a medical device, does not provide medical diagnoses, and does not constitute medical advice.</strong></p>
+        <p>Nothing in Journey Tracker is intended to diagnose any disease or health condition; recommend or prescribe any medication or treatment; replace the advice of a licensed healthcare provider; or constitute the practice of medicine, nursing, or any other healthcare profession.</p>
+        <p><strong>Always consult with your prescribing physician or other qualified healthcare provider before making any decisions about your health, medications, or treatment plan.</strong> Do not disregard or delay seeking professional medical advice based on anything you read or see in Journey Tracker.</p>
+        <p><strong>In a medical emergency, call 911 or your local emergency number immediately.</strong></p>
+      </div>
+
+      <hr>
+
+      <h3>4. AI Lab Analysis Feature</h3>
+
+      <h4>4.1 Feature Description</h4>
+      <p>Journey Tracker Pro includes an AI-powered lab analysis feature that generates plain-language interpretations of your laboratory results in the context of GLP-1 therapy. This feature uses Anthropic's Claude AI technology.</p>
+
+      <h4>4.2 AI Limitations and Disclaimer</h4>
+      <p>The AI analysis feature:</p>
+      <ul>
+        <li>Is powered by artificial intelligence and may produce inaccurate, incomplete, or inapplicable results</li>
+        <li>Does not have access to your complete medical history</li>
+        <li>Does not consider all medications, supplements, or health conditions you may have</li>
+        <li>Is not reviewed or approved by a licensed healthcare provider before delivery to you</li>
+        <li>Should not be relied upon as a substitute for professional medical interpretation of your laboratory results</li>
+      </ul>
+
+      <h4>4.3 Your Consent to AI Processing</h4>
+      <p>By using the AI Lab Analysis feature, you consent to the transmission of de-identified health data (as described in our Privacy Policy) to Anthropic's AI system for the purpose of generating your analysis. You may withdraw this consent at any time by disabling the feature in Settings.</p>
+
+      <h4>4.4 Informational Nature of Analysis</h4>
+      <p>All AI-generated analysis is clearly labeled as informational only. Journey Tracker expressly disclaims any liability for decisions made based on AI-generated analysis.</p>
+
+      <hr>
+
+      <h3>5. Subscriptions and Payments</h3>
+
+      <h4>5.1 Free Tier</h4>
+      <p>Journey Tracker offers a free tier that includes basic health tracking features, including the ability to log up to two (2) laboratory result sessions. Free tier users do not have access to AI lab analysis, unlimited lab tracking, or other Pro features.</p>
+
+      <h4>5.2 Journey Tracker Pro</h4>
+      <p>Journey Tracker Pro is available as a monthly or annual subscription, or as a one-time lifetime purchase. Pro features include unlimited laboratory result tracking, AI-powered lab analysis, OCR lab report import, and additional features as described in the app.</p>
+
+      <h4>5.3 Free Trial</h4>
+      <p>Pro subscriptions may include a free trial period. Your subscription will automatically convert to a paid subscription at the end of the free trial unless you cancel before the trial ends.</p>
+
+      <h4>5.4 Billing</h4>
+      <p>All subscriptions are billed through Apple's App Store. Your payment information is managed entirely by Apple. We do not store payment card information. Subscriptions automatically renew unless cancelled at least 24 hours before the end of the current billing period.</p>
+
+      <h4>5.5 Cancellation and Refunds</h4>
+      <p>You may cancel your subscription at any time through iOS Settings → [Your Name] → Subscriptions. Cancellation takes effect at the end of the current billing period. Refunds are subject to Apple's App Store refund policy.</p>
+
+      <hr>
+
+      <h3>6. User Responsibilities</h3>
+      <p>You agree to:</p>
+      <ul>
+        <li>Provide accurate health information to the extent you choose to use the tracking features</li>
+        <li>Use Journey Tracker only for lawful personal health tracking purposes</li>
+        <li>Not attempt to reverse-engineer, decompile, or extract the source code of Journey Tracker</li>
+        <li>Not use Journey Tracker in any way that could harm other users or third parties</li>
+        <li>Maintain the security of your Apple ID and device</li>
+      </ul>
+
+      <hr>
+
+      <h3>7. Data Ownership</h3>
+      <p>You own your health data. We do not claim any ownership over the health information you enter into Journey Tracker. Our right to process your data is limited to operating the features of Journey Tracker as described in these Terms and our Privacy Policy.</p>
+
+      <hr>
+
+      <h3>8. Intellectual Property</h3>
+      <p>Journey Tracker, including its design, features, code, branding, and content (excluding your personal health data), is owned by Apex Development Studio LLC and protected by applicable intellectual property laws. You may not copy, modify, distribute, or create derivative works based on Journey Tracker without our express written permission.</p>
+
+      <hr>
+
+      <h3>9. Disclaimers and Limitation of Liability</h3>
+
+      <h4>9.1 No Warranty</h4>
+      <p>Journey Tracker is provided "as is" without warranty of any kind. We do not warrant that Journey Tracker will be error-free, uninterrupted, or that AI analysis will be accurate or applicable to your situation.</p>
+
+      <h4>9.2 Limitation of Liability</h4>
+      <p>To the maximum extent permitted by applicable law, Journey Tracker shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including but not limited to damages arising from health decisions made based on Journey Tracker or its AI analysis feature.</p>
+      <p>Our total liability to you for any claims arising from your use of Journey Tracker shall not exceed the amount you paid for Journey Tracker in the twelve (12) months preceding the claim.</p>
+
+      <h4>9.3 Health Decisions</h4>
+      <p>We expressly disclaim all liability for any health outcomes, adverse events, or consequences resulting from reliance on Journey Tracker's tracking features or AI analysis. Health decisions must be made in consultation with qualified healthcare providers.</p>
+
+      <hr>
+
+      <h3>10. Indemnification</h3>
+      <p>You agree to indemnify and hold harmless Journey Tracker from any claims, damages, or expenses (including reasonable attorney's fees) arising from your use of Journey Tracker in violation of these Terms or applicable law.</p>
+
+      <hr>
+
+      <h3>11. Changes to Terms</h3>
+      <p>We may update these Terms from time to time. We will notify you of material changes through the app. Continued use of Journey Tracker after such notification constitutes acceptance of the updated Terms.</p>
+
+      <hr>
+
+      <h3>12. Governing Law and Dispute Resolution</h3>
+      <p>These Terms are governed by the laws of the State of Delaware, without regard to conflict of law principles.</p>
+
+      <h4>12.1 Binding Arbitration</h4>
+      <p>Any dispute or claim arising from or relating to these Terms, your use of Journey Tracker, or any related matters between you and Apex Development Studio LLC shall be resolved through binding arbitration conducted in accordance with the rules of the American Arbitration Association (AAA) Consumer Arbitration Rules, rather than in court. Arbitration proceedings shall take place in the State of Delaware, or at a mutually agreed upon location.</p>
+
+      <h4>12.2 Class Action Waiver</h4>
+      <p><strong>You agree that any arbitration or legal proceeding shall be conducted on an individual basis only and not as a class, consolidated, or representative action.</strong> You waive your right to participate as a plaintiff or class member in any class action lawsuit, class-wide arbitration, or any other proceeding where a person acts in a representative capacity. If this class action waiver is found unenforceable for any reason, the entirety of Section 12.1 shall be deemed void.</p>
+
+      <h4>12.3 Exceptions</h4>
+      <p>Notwithstanding the above, either party may seek injunctive or other equitable relief in any court of competent jurisdiction to prevent the actual or threatened infringement, misappropriation, or violation of intellectual property rights or confidential information.</p>
+
+      <hr>
+
+      <h3>13. Contact</h3>
+      <p>For questions about these Terms, please contact Apex Development Studio LLC:</p>
+      <p>
+        <strong>Company:</strong> Apex Development Studio LLC<br>
+        <strong>Email:</strong> <a href="mailto:support@journeytracker.app">support@journeytracker.app</a><br>
+        <strong>Website:</strong> <a href="https://journeytracker.app">journeytracker.app</a>
+      </p>
+      <p>A complete copy of these Terms of Service is available to the general public upon request by emailing <a href="mailto:support@journeytracker.app">support@journeytracker.app</a>.</p>
+
+      <p class="doc-footer-note">These Terms of Service are effective as of March 16, 2026. Journey Tracker is developed and operated by Apex Development Studio LLC. For questions, contact <a href="mailto:support@journeytracker.app">support@journeytracker.app</a>.</p>
+
+    </div><!-- /.doc-content -->
+
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 Apex Development Studio LLC. All rights reserved.</p>
+    <p><a href="/">journeytracker.app</a> &nbsp;·&nbsp; <a href="mailto:support@journeytracker.app">support@journeytracker.app</a></p>
+    <p style="margin-top:12px; font-style:italic; font-size:0.82rem; color:rgba(255,255,255,0.5);">Journey Tracker is not a medical device and does not provide medical advice. Always consult a qualified healthcare provider.</p>
+  </footer>
+
+</body>
+</html>

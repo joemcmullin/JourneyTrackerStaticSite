@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/jpeg" href="/app-icon.jpg" />
+  <link rel="apple-touch-icon" href="/app-icon.jpg" />
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    script-src 'self' 'unsafe-inline';
+    style-src 'self' 'unsafe-inline';
+    img-src 'self' data:;
+    frame-ancestors 'none';
+    base-uri 'self';
+    object-src 'none';
+  " />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <title>Privacy Policy — Journey Tracker</title>
+  <meta name="description" content="Journey Tracker Privacy Policy — how Apex Development Studio LLC collects, uses, and protects your health information." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://journeytracker.app/privacy.html" />
+  <meta name="theme-color" content="#1a3a2a" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --forest-dark:  #1a3a2a;
+      --forest-mid:   #2d5a3d;
+      --forest-light: #4a8a5e;
+      --sunrise:      #e8792a;
+      --cream:        #faf7f2;
+      --white:        #ffffff;
+      --text-dark:    #1a2a1a;
+      --text-mid:     #3a4a3a;
+      --text-muted:   #585e58;
+      --border:       #e0e8df;
+    }
+    @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+    body {
+      font-family: -apple-system, system-ui, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+      background: var(--cream);
+      color: var(--text-dark);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--forest-light); text-decoration: underline; text-underline-offset: 2px; }
+    a:hover { color: var(--forest-dark); }
+    img { max-width: 100%; display: block; }
+
+    /* NAV */
+    .top-nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(250,247,242,0.95);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+      height: 60px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-brand {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 1.05rem; font-weight: 700; color: var(--forest-dark);
+      text-decoration: none;
+    }
+    .nav-brand img { width: 30px; height: 30px; border-radius: 7px; }
+    .nav-back {
+      font-size: 0.88rem; font-weight: 500; color: var(--forest-mid);
+      text-decoration: none;
+      padding: 6px 14px;
+      border: 1.5px solid var(--forest-mid);
+      border-radius: 100px;
+      transition: background 0.15s, color 0.15s;
+    }
+    .nav-back:hover { background: var(--forest-mid); color: var(--white); text-decoration: none; }
+
+    /* HERO BAND */
+    .doc-hero {
+      background: linear-gradient(160deg, #f0f7f2, var(--cream));
+      padding: 56px 24px 40px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+    .doc-label {
+      display: inline-block;
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--forest-light);
+      background: rgba(74,138,94,0.1);
+      padding: 4px 12px; border-radius: 100px; margin-bottom: 14px;
+    }
+    .doc-hero h1 {
+      font-family: -apple-system, system-ui, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 700; color: var(--forest-dark); line-height: 1.2; margin-bottom: 12px;
+    }
+    .doc-meta {
+      font-size: 0.85rem; color: var(--text-muted); margin-top: 8px;
+    }
+
+    /* CONTENT */
+    .doc-content {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 56px 24px 80px;
+    }
+    .doc-content h3 {
+      font-size: 1.05rem; font-weight: 700;
+      color: var(--forest-dark);
+      margin: 36px 0 10px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+    .doc-content h3:first-child { margin-top: 0; }
+    .doc-content h4 {
+      font-size: 0.92rem; font-weight: 700;
+      color: var(--forest-mid);
+      margin: 20px 0 8px;
+    }
+    .doc-content p { color: var(--text-mid); font-size: 0.94rem; line-height: 1.75; margin-bottom: 14px; }
+    .doc-content ul, .doc-content ol {
+      padding-left: 22px; margin: 10px 0 16px;
+    }
+    .doc-content li { font-size: 0.93rem; color: var(--text-mid); line-height: 1.65; margin-bottom: 6px; }
+    .doc-content hr { border: none; border-top: 1px solid var(--border); margin: 28px 0; }
+    .doc-content strong { color: var(--text-dark); }
+
+    .callout {
+      background: rgba(45,90,61,0.06);
+      border-left: 3px solid var(--forest-mid);
+      border-radius: 0 8px 8px 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+    }
+    .callout.warning {
+      background: rgba(232,121,42,0.07);
+      border-left-color: var(--sunrise);
+    }
+    .callout p { margin-bottom: 8px; }
+    .callout p:last-child { margin-bottom: 0; }
+
+    .doc-footer-note {
+      font-size: 0.82rem; font-style: italic; color: var(--text-muted);
+      margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--border);
+    }
+
+    /* FOOTER */
+    .site-footer {
+      background: var(--forest-dark);
+      color: rgba(255,255,255,0.72);
+      padding: 32px 24px;
+      text-align: center;
+    }
+    .site-footer p { font-size: 0.85rem; margin-bottom: 8px; color: rgba(255,255,255,0.72); }
+    .site-footer a { color: rgba(255,255,255,0.82); }
+    .site-footer a:hover { color: #fff; }
+
+    /* SKIP LINK */
+    .skip-link {
+      position: absolute; top: -100%; left: 0; z-index: 9999;
+      background: var(--forest-dark); color: #fff;
+      padding: 12px 24px; font-weight: 700; text-decoration: underline;
+    }
+    .skip-link:focus { top: 0; }
+
+    /* ACCESSIBILITY FOCUS */
+    a:focus-visible, button:focus-visible {
+      outline: 3px solid var(--forest-light); outline-offset: 3px; border-radius: 4px;
+    }
+
+    @media (max-width: 600px) {
+      .doc-content { padding: 36px 16px 60px; }
+      .doc-hero { padding: 40px 16px 28px; }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="top-nav">
+    <a href="/" class="nav-brand" aria-label="Journey Tracker home">
+      <img src="/app-icon.jpg" alt="" aria-hidden="true" width="30" height="30" />
+      Journey Tracker
+    </a>
+    <a href="/" class="nav-back">← Back to site</a>
+  </header>
+
+  <main id="main-content">
+
+    <div class="doc-hero">
+      <div class="doc-label">Legal Document</div>
+      <h1>Privacy Policy</h1>
+      <p class="doc-meta">
+        Developed and operated by Apex Development Studio LLC &nbsp;·&nbsp;
+        Effective: March 16, 2026 &nbsp;·&nbsp; Last Updated: March 16, 2026
+      </p>
+    </div>
+
+    <div class="doc-content">
+
+      <p>Apex Development Studio LLC ("we," "our," or "us") develops and operates Journey Tracker and is committed to protecting your privacy. This Privacy Policy explains how we collect, use, store, and protect your health and personal information when you use the Journey Tracker iOS application and associated website (journeytracker.app).</p>
+      <p><strong>Please read this policy carefully.</strong> By using Journey Tracker, you agree to the practices described here.</p>
+
+      <hr>
+
+      <h3>1. Who We Are</h3>
+      <p>Journey Tracker is an iOS application developed and operated by <strong>Apex Development Studio LLC</strong>. It is designed to help individuals undergoing GLP-1 therapy (including medications such as semaglutide, tirzepatide, and similar agents) track their health progress, medication history, laboratory results, and related health markers.</p>
+      <p>Apex Development Studio LLC operates Journey Tracker as a consumer health application. We are not a healthcare provider, health plan, or healthcare clearinghouse.</p>
+
+      <hr>
+
+      <h3>2. Information We Collect</h3>
+
+      <h4>2.1 Information You Provide Directly</h4>
+      <p>When you use Journey Tracker, you may enter the following health information:</p>
+      <ul>
+        <li><strong>Body measurements:</strong> Weight, body fat percentage, muscle mass, BMI, and related metrics</li>
+        <li><strong>Medication information:</strong> GLP-1 medication name, dose, injection dates, and injection site rotation</li>
+        <li><strong>Side effect logs:</strong> Symptoms experienced during therapy, severity, and associated notes</li>
+        <li><strong>Laboratory results:</strong> Blood test values including HbA1c, lipid panel, metabolic markers, thyroid markers, and other health markers you choose to enter</li>
+        <li><strong>Health goals:</strong> Target weight and hydration goals</li>
+        <li><strong>Notes:</strong> Free-text notes you add to any health entry</li>
+      </ul>
+
+      <h4>2.2 Information Collected Through Apple Health (HealthKit)</h4>
+      <p>With your explicit permission, Journey Tracker may read from and write to Apple HealthKit. The specific data types accessed are listed during the permission request and may include:</p>
+      <ul>
+        <li>Body weight and body composition metrics</li>
+        <li>Blood glucose readings</li>
+        <li>Blood pressure measurements</li>
+        <li>Dietary water intake</li>
+        <li>Laboratory results (if you connect your health system through Apple Health Records)</li>
+      </ul>
+      <p><strong>You control HealthKit access entirely.</strong> You can review and revoke any HealthKit permission at any time through iOS Settings → Privacy &amp; Security → Health → Journey Tracker.</p>
+
+      <h4>2.3 Information Collected Through Sign in with Apple</h4>
+      <p>We use Sign in with Apple for authentication. Apple provides us only with a stable, opaque user identifier — not your Apple ID, real name, or email address.</p>
+
+      <h4>2.4 Information We Do NOT Collect</h4>
+      <p>Journey Tracker does not collect:</p>
+      <ul>
+        <li>Your full name</li>
+        <li>Your physical address or precise location</li>
+        <li>Your date of birth</li>
+        <li>Your Social Security Number or government-issued identifiers</li>
+        <li>Your health insurance information</li>
+        <li>Your prescribing physician's information</li>
+        <li>Payment card information (payments are processed by Apple App Store)</li>
+      </ul>
+
+      <hr>
+
+      <h3>3. How We Use Your Information</h3>
+
+      <h4>3.1 To Provide the Application</h4>
+      <p>Your health data is used solely to operate the features of Journey Tracker — displaying your health trends, generating charts, tracking your GLP-1 progress, and providing the features you use.</p>
+
+      <h4>3.2 AI-Powered Lab Analysis (Pro Feature)</h4>
+      <p>If you subscribe to Journey Tracker Pro and use the AI Lab Analysis feature, a <strong>de-identified</strong> version of your laboratory results and medication information is transmitted to Anthropic's Claude AI to generate a personalized interpretation of your results.</p>
+      <p><strong>Before this feature is activated, you will be shown a separate consent screen</strong> explaining exactly what data is transmitted and giving you the opportunity to consent or decline.</p>
+      <p><strong>What is transmitted to the AI:</strong></p>
+      <ul>
+        <li>Your lab values as numbers (e.g., "HbA1c: 6.2")</li>
+        <li>Your GLP-1 medication name and current dose</li>
+        <li>How long you have been on therapy (relative duration, not a specific date)</li>
+        <li>Changes in your lab values over time (relative timeframes)</li>
+      </ul>
+      <p><strong>What is NEVER transmitted:</strong></p>
+      <ul>
+        <li>Your name or any identifier</li>
+        <li>Exact dates or timestamps</li>
+        <li>Your Apple ID or account information</li>
+        <li>Any information that could identify you as an individual</li>
+      </ul>
+      <p>The AI analysis result is returned to your device and stored locally. It is informational only and does not constitute medical advice.</p>
+
+      <h4>3.3 We Do Not Sell Your Data</h4>
+      <p>We do not sell, rent, or trade your personal or health information to any third party for any purpose, including advertising.</p>
+
+      <h4>3.4 We Do Not Use Your Data for Advertising</h4>
+      <p>Journey Tracker does not display advertisements and does not use your health data for advertising or marketing purposes of any kind.</p>
+
+      <hr>
+
+      <h3>4. How We Store Your Information</h3>
+
+      <h4>4.1 On Your Device</h4>
+      <p>All of your health data is stored locally on your iPhone using Apple's Core Data framework. This data is encrypted at rest using iOS FileProtection (AES-256 encryption). Your data is only accessible when your device is unlocked.</p>
+
+      <h4>4.2 iCloud Backup</h4>
+      <p>If you have iCloud enabled, your Journey Tracker data may be backed up to your personal iCloud account through Apple's CloudKit framework. This data is:</p>
+      <ul>
+        <li>Stored in <strong>your personal iCloud account</strong>, not any server controlled by us</li>
+        <li>Subject to Apple's privacy policy and security practices</li>
+        <li>Accessible only to you through your Apple ID</li>
+        <li>Not accessible to Journey Tracker developers under any circumstances</li>
+      </ul>
+      <p>You can disable iCloud backup for Journey Tracker at any time through iOS Settings → [Your Name] → iCloud → Apps Using iCloud.</p>
+
+      <h4>4.3 AI Analysis Results</h4>
+      <p>Analysis results generated by the AI Lab Analysis feature are cached on your device in encrypted Core Data storage and synced to your personal iCloud account. We do not retain a copy of your analysis results on any server we control.</p>
+
+      <hr>
+
+      <h3>5. Information Sharing</h3>
+
+      <h4>5.1 Apple</h4>
+      <p>We use Apple's platform services (HealthKit, CloudKit, Sign in with Apple, StoreKit) to operate Journey Tracker. Your use of these services is subject to Apple's Privacy Policy (apple.com/privacy).</p>
+
+      <h4>5.2 Anthropic (AI Analysis Feature Only)</h4>
+      <p>If you consent to use the AI Lab Analysis feature, de-identified health data is transmitted to Anthropic, PBC for processing. Anthropic's privacy policy is available at anthropic.com/privacy. The data transmitted is de-identified as described in Section 3.2 and does not include any information that identifies you.</p>
+
+      <h4>5.3 RevenueCat (Subscription Management)</h4>
+      <p>Subscription management is handled by RevenueCat. RevenueCat receives subscription status information to verify your Pro subscription. RevenueCat's privacy policy is available at revenuecat.com/privacy.</p>
+
+      <h4>5.4 No Other Third-Party Sharing</h4>
+      <p>We do not share your health or personal information with any other third parties.</p>
+
+      <hr>
+
+      <h3>6. Your Rights and Choices</h3>
+
+      <h4>6.1 Access Your Data</h4>
+      <p>You can view all of your health data within the Journey Tracker app at any time.</p>
+
+      <h4>6.2 Delete Your Data</h4>
+      <p>You can delete all of your Journey Tracker data by:</p>
+      <ul>
+        <li>Deleting individual entries within the app</li>
+        <li>Using Settings → Data → Clear All Data within the app (removes all on-device data)</li>
+        <li>Deleting the app (removes all on-device data)</li>
+        <li>Managing your iCloud storage to remove Journey Tracker backups via iOS Settings</li>
+      </ul>
+
+      <h4>6.3 Opt Out of AI Analysis</h4>
+      <p>You can disable the AI Lab Analysis feature at any time through Settings → Privacy &amp; Security → AI Lab Analysis. Disabling this feature immediately prevents any further transmission of data to the Anthropic API.</p>
+
+      <h4>6.4 HealthKit Permissions</h4>
+      <p>You can review and revoke any HealthKit permission at any time through iOS Settings → Privacy &amp; Security → Health → Journey Tracker.</p>
+
+      <h4>6.5 California Residents (CCPA/CPRA)</h4>
+      <p>If you are a California resident, you have the right to: know what personal information we collect and how it is used; request deletion of your personal information; opt out of the sale of your personal information (we do not sell personal information); and non-discrimination for exercising your privacy rights. To exercise these rights, contact us at <a href="mailto:support@journeytracker.app">support@journeytracker.app</a>.</p>
+
+      <h4>6.6 Virginia, Colorado, and Other State Residents</h4>
+      <p>Residents of Virginia (CDPA), Colorado (CPA), and other states with consumer privacy laws have similar rights to access, delete, and correct their personal information. Contact us at <a href="mailto:support@journeytracker.app">support@journeytracker.app</a> to exercise these rights.</p>
+
+      <hr>
+
+      <h3>7. AI Lab Analysis — Important Disclosures</h3>
+
+      <h4>7.1 Informational Purpose Only</h4>
+      <div class="callout warning">
+        <p><strong>The AI Lab Analysis feature is not a medical device, does not provide medical diagnoses, and does not constitute medical advice.</strong> Always discuss your laboratory results with your prescribing physician or other qualified healthcare provider.</p>
+      </div>
+      <p>The analysis is intended to help you understand general trends in your health markers in the context of GLP-1 therapy. It is not a substitute for the advice of a qualified healthcare provider.</p>
+
+      <h4>7.2 AI Limitations</h4>
+      <p>AI-generated analysis may contain errors, omissions, or information that does not apply to your specific situation. The AI does not know your complete medical history, other medications you may be taking, or other factors relevant to interpreting your health markers.</p>
+
+      <h4>7.3 Emergency Situations</h4>
+      <p>If you believe you are experiencing a medical emergency, call 911 or your local emergency number immediately. Do not rely on Journey Tracker or its AI analysis feature in an emergency.</p>
+
+      <hr>
+
+      <h3>8. Children's Privacy</h3>
+      <p>Journey Tracker is not intended for use by individuals under the age of 18. We do not knowingly collect personal information from children under 18. If you believe a child under 18 has provided health information through Journey Tracker, please contact us at <a href="mailto:support@journeytracker.app">support@journeytracker.app</a> and we will take steps to delete that information.</p>
+
+      <hr>
+
+      <h3>9. Data Security</h3>
+      <p>We implement technical and organizational measures to protect your health information, including:</p>
+      <ul>
+        <li><strong>On-device encryption:</strong> All health data is encrypted using AES-256 encryption</li>
+        <li><strong>Secure authentication:</strong> Sign in with Apple with optional biometric lock</li>
+        <li><strong>Secure transmission:</strong> All data transmitted over the internet uses TLS 1.3 encryption</li>
+        <li><strong>De-identification:</strong> Health data transmitted for AI analysis is de-identified before transmission</li>
+        <li><strong>No developer server access:</strong> We do not operate servers that store your health data</li>
+        <li><strong>Debug code exclusion:</strong> Developer and debug features are excluded from the production app</li>
+      </ul>
+      <p>No security system is perfect. If we become aware of a security breach that affects your health information, we will notify you as required by applicable law.</p>
+
+      <hr>
+
+      <h3>10. Breach Notification</h3>
+      <p>In the event of a security breach involving your health information, we will notify affected users in accordance with the FTC Health Breach Notification Rule and applicable state law. Notification will be provided through in-app notification within the timeframe required by law.</p>
+
+      <hr>
+
+      <h3>11. Changes to This Policy</h3>
+      <p>We may update this Privacy Policy from time to time. When we make material changes, we will notify you through the app and update the "Last Updated" date at the top of this policy. Your continued use of Journey Tracker after such notification constitutes your acceptance of the updated policy. For material changes that affect how we process your health data, we will seek your renewed consent where required by law.</p>
+
+      <hr>
+
+      <h3>12. Contact Us</h3>
+      <p>If you have questions about this Privacy Policy or how we handle your health information, please contact us:</p>
+      <p>
+        <strong>Company:</strong> Apex Development Studio LLC<br>
+        <strong>Email:</strong> <a href="mailto:support@journeytracker.app">support@journeytracker.app</a><br>
+        <strong>Website:</strong> <a href="https://journeytracker.app">journeytracker.app</a><br>
+        <strong>Mailing Address:</strong> Available upon request — email support@journeytracker.app
+      </p>
+      <p>For data deletion requests or to exercise your privacy rights, please email <a href="mailto:support@journeytracker.app">support@journeytracker.app</a> with the subject line "Privacy Rights Request."</p>
+
+      <p class="doc-footer-note">This Privacy Policy is effective as of March 16, 2026. Journey Tracker is developed and operated by Apex Development Studio LLC. For questions, contact <a href="mailto:support@journeytracker.app">support@journeytracker.app</a>.</p>
+
+    </div><!-- /.doc-content -->
+
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 Apex Development Studio LLC. All rights reserved.</p>
+    <p><a href="/">journeytracker.app</a> &nbsp;·&nbsp; <a href="mailto:support@journeytracker.app">support@journeytracker.app</a></p>
+    <p style="margin-top:12px; font-style:italic; font-size:0.82rem; color:rgba(255,255,255,0.5);">Journey Tracker is not a medical device and does not provide medical advice. Always consult a qualified healthcare provider.</p>
+  </footer>
+
+</body>
+</html>

@@ -1631,6 +1631,353 @@
       #scrollTopBtn { width: 42px; height: 42px; bottom: 20px; right: 16px; }
     }
 
+    /* ================================================================
+       TRUST STRIP
+       Dark band immediately below the hero. Four proof points in a
+       horizontal row, each with an icon, bold label, and one-line
+       detail. Forest-dark background signals safety and reliability —
+       Maslow foundation layer applied to product messaging.
+    ================================================================ */
+    #trust {
+      background: var(--forest-dark);
+      padding: 48px 0;
+    }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      align-items: start;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .trust-icon-wrap {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .trust-text strong {
+      display: block;
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.95);
+      margin-bottom: 4px;
+    }
+
+    .trust-text span {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.5;
+    }
+
+    @media (max-width: 768px) {
+      .trust-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
+    }
+    @media (max-width: 480px) {
+      .trust-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ================================================================
+       HOW IT HELPS — 3-CARD SECTION
+       Outcome-first framing before any feature detail. Each card
+       answers "what does this do for me" not "what can the app do."
+    ================================================================ */
+    #how-it-helps {
+      padding: 96px 0;
+      background: var(--white);
+    }
+
+    .help-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .help-card {
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 36px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .help-card-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      flex-shrink: 0;
+    }
+
+    .help-card h3 {
+      font-size: 1.1rem;
+      color: var(--forest-dark);
+      line-height: 1.3;
+    }
+
+    .help-card p {
+      font-size: 0.93rem;
+      color: var(--text-mid);
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    @media (max-width: 768px) {
+      .help-cards { grid-template-columns: 1fr; gap: 16px; }
+    }
+
+    /* ================================================================
+       WALKTHROUGH — PRODUCT STEPS
+       Reframes screenshots as a 4-step user story. Uses the existing
+       .feature-row CSS — only the step-badge overlay is new.
+       Section background alternates with the white how-it-helps section
+       to maintain visual rhythm.
+    ================================================================ */
+    #walkthrough {
+      padding: 96px 0;
+      background: var(--cream);
+    }
+
+    .step-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, var(--forest-mid), var(--forest-light));
+      color: var(--white);
+      border-radius: 100px;
+      padding: 5px 14px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    /* ================================================================
+       MINI FEATURES GRID
+       Secondary features (symptoms, hydration) shown as compact cards
+       below the main walkthrough — visible but not dominant.
+    ================================================================ */
+    #more-features {
+      padding: 0 0 80px;
+      background: var(--cream);
+    }
+
+    .mini-features-header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .mini-features-header h3 {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .mini-features-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    .mini-feature-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 24px 28px;
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+    }
+
+    .mini-feature-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+
+    .mini-feature-text h4 {
+      font-size: 0.95rem;
+      color: var(--forest-dark);
+      margin-bottom: 6px;
+    }
+
+    .mini-feature-text p {
+      font-size: 0.87rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    @media (max-width: 640px) {
+      .mini-features-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ================================================================
+       PRIVACY & CREDIBILITY SECTION
+       Compact dark-background section replacing the three dense
+       mid-page legal sections. Four plain-language promise cards
+       in a 2x2 grid, with links to standalone legal pages.
+    ================================================================ */
+    #privacy-trust {
+      padding: 80px 0;
+      background: linear-gradient(180deg, var(--forest-dark) 0%, #1f4433 100%);
+      color: var(--white);
+    }
+
+    #privacy-trust .section-label {
+      color: rgba(255,255,255,0.9);
+      background: rgba(255,255,255,0.12);
+    }
+
+    #privacy-trust h2 {
+      color: var(--white);
+    }
+
+    #privacy-trust .section-header p {
+      color: rgba(255,255,255,0.72);
+    }
+
+    .privacy-promises {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 48px;
+    }
+
+    .privacy-promise-card {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: var(--radius-md);
+      padding: 28px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .privacy-promise-icon {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .privacy-promise-card h3 {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.95);
+      margin-bottom: 6px;
+      font-weight: 700;
+    }
+
+    .privacy-promise-card p {
+      font-size: 0.87rem;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    .legal-links-row {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      margin-top: 40px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .legal-links-row span {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.5);
+    }
+
+    .legal-links-row a {
+      color: var(--sunrise-light);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.15s;
+    }
+
+    .legal-links-row a:hover { color: var(--white); }
+
+    @media (max-width: 640px) {
+      .privacy-promises { grid-template-columns: 1fr; }
+    }
+
+    /* ================================================================
+       FAQ SHOW-MORE
+       Items 7-10 are hidden by default. A toggle button reveals them.
+    ================================================================ */
+    .faq-more-group {
+      display: none;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .faq-more-group.expanded {
+      display: flex;
+    }
+
+    .faq-more-btn {
+      display: block;
+      margin: 16px auto 0;
+      background: none;
+      border: 1.5px solid var(--forest-mid);
+      color: var(--forest-mid);
+      border-radius: 100px;
+      padding: 10px 24px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .faq-more-btn:hover {
+      background: var(--forest-mid);
+      color: var(--white);
+    }
+
+    .faq-support-line {
+      text-align: center;
+      margin-top: 32px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .faq-support-line a {
+      color: var(--forest-light);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      font-weight: 600;
+    }
+
   </style>
 
   <!--
@@ -1848,14 +2195,12 @@
 
       <ul class="nav-links">
         <li><a href="#home">Home</a></li>
-        <li><a href="#features">Features</a></li>
+        <li><a href="#walkthrough">Features</a></li>
         <li><a href="#faqs">FAQs</a></li>
-        <li><a href="#privacy">Privacy</a></li>
-        <li><a href="#hipaa">HIPAA</a></li>
-        <li><a href="#terms">Terms</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
         <li><a href="#contact">Contact</a></li>
         <li><a href="#documentation">Docs</a></li>
-        <li class="nav-cta"><a href="#contact">Coming Soon</a></li>
+        <li class="nav-cta"><a href="#contact">Notify Me</a></li>
       </ul>
 
       <!--
@@ -1883,11 +2228,10 @@
     -->
     <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation" aria-hidden="true">
       <a href="#home" onclick="closeMobileNav()">Home</a>
-      <a href="#features" onclick="closeMobileNav()">Features</a>
+      <a href="#walkthrough" onclick="closeMobileNav()">Features</a>
       <a href="#faqs" onclick="closeMobileNav()">FAQs</a>
-      <a href="#privacy" onclick="closeMobileNav()">Privacy</a>
-      <a href="#hipaa" onclick="closeMobileNav()">HIPAA</a>
-      <a href="#terms" onclick="closeMobileNav()">Terms of Service</a>
+      <a href="privacy.html" onclick="closeMobileNav()">Privacy Policy</a>
+      <a href="terms.html" onclick="closeMobileNav()">Terms of Service</a>
       <a href="#contact" onclick="closeMobileNav()">Contact</a>
       <a href="#documentation" onclick="closeMobileNav()">Docs</a>
     </nav>
@@ -1909,44 +2253,43 @@
     <div class="container hero-inner">
       <div class="hero-content">
         <div class="hero-badge">
-          <!-- Decorative herb emoji hidden from AT — WCAG 1.1.1 -->
-          <span aria-hidden="true">🌿</span> GLP‑1 &amp; Weight Loss Tracker
+          <!-- Decorative emoji hidden from AT — WCAG 1.1.1 -->
+          <span aria-hidden="true">🌿</span> GLP‑1 &amp; Weight Loss Companion
         </div>
 
         <h1 id="hero-heading" class="hero-title">
-          Your <span>journey</span> deserves<br>a trail map.
+          Everything about your<br><span>GLP‑1 treatment</span>,<br>in one private place.
         </h1>
 
         <p class="hero-subtitle">
-          Journey Tracker turns your GLP‑1 therapy and weight loss progress into a clear, beautiful trail—with waypoints for every measurement, milestones to celebrate, and a private, secure log only you can see.
+          Track your weight, lab results, and medication — organized, private, and always with you. Understand what's changing over time and walk into every appointment more informed.
         </p>
 
         <div class="hero-actions">
           <!--
-            "Coming Soon" status announcement — WCAG 4.1.2 Name/Role/Value
-            This is informational, not interactive. role="status" tells AT
-            it conveys status information. aria-label provides full accessible name.
-            SVG bell icon is decorative — aria-hidden + focusable="false" — WCAG 1.1.1
+            Primary CTA — links to the contact/notification form.
+            Uses an <a> tag so it is keyboard-operable and announces correctly
+            as a link. Orange gradient keeps the Coming Soon visual identity.
+            WCAG 4.1.2 Name/Role/Value
           -->
-          <p class="btn btn-coming-soon" role="status" aria-label="Coming soon to the App Store">
+          <a href="#contact" class="btn btn-coming-soon">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
-            Coming Soon to the App Store
-          </p>
-          <a href="#faqs" class="btn btn-secondary">Read FAQs</a>
+            Notify Me at Launch
+          </a>
+          <a href="#walkthrough" class="btn btn-secondary">See How It Works</a>
         </div>
 
         <div class="coming-soon-note">
           <span class="coming-soon-dot" aria-hidden="true"></span>
-          We're putting the final trail markers in place.
+          In development — coming soon to iPhone, iPad &amp; Mac.
           <a href="#contact" style="color: var(--forest-light); font-weight:600; margin-left: 4px;">
-            Get notified at launch
-            <!-- Arrow is decorative — WCAG 2.4.4 Link Purpose -->
+            Let us know you're interested
             <span aria-hidden="true"> →</span>
           </a>
         </div>
 
         <div class="hero-social-proof">
-          <!-- Phone emoji is decorative — WCAG 1.1.1 -->
+          <!-- Platform callout — decorative emoji — WCAG 1.1.1 -->
           <span><span aria-hidden="true">📱</span> iPhone &nbsp;·&nbsp; iPad &nbsp;·&nbsp; Mac</span>
         </div>
       </div>
@@ -1955,7 +2298,7 @@
         <div class="phone-frame">
           <img
             src="images/dashboard-overview.png"
-            alt="Journey Tracker My Journey dashboard showing weight progress"
+            alt="Journey Tracker dashboard showing weight progress and milestones"
           />
         </div>
       </div>
@@ -1963,63 +2306,136 @@
   </section>
 
   <!-- ============================================================
-       FEATURES
+       TRUST STRIP
+       Four proof points directly below the hero.
+       Addresses privacy and safety concerns before any features.
+       WCAG: aria-labelledby on section, decorative emojis hidden.
   ============================================================ -->
-  <section id="features">
+  <section id="trust" aria-labelledby="trust-heading">
+    <div class="container">
+      <!-- Visually hidden heading for landmark navigation — WCAG 2.4.1 -->
+      <h2 id="trust-heading" class="sr-only">Privacy and trust commitments</h2>
+      <div class="trust-grid">
+
+        <div class="trust-item">
+          <div class="trust-icon-wrap" aria-hidden="true">🔒</div>
+          <div class="trust-text">
+            <strong>Private by design</strong>
+            <span>Your data never touches our servers</span>
+          </div>
+        </div>
+
+        <div class="trust-item">
+          <div class="trust-icon-wrap" aria-hidden="true">📱</div>
+          <div class="trust-text">
+            <strong>On your device &amp; iCloud</strong>
+            <span>Stored in your personal iCloud, not ours</span>
+          </div>
+        </div>
+
+        <div class="trust-item">
+          <div class="trust-icon-wrap" aria-hidden="true">🚫</div>
+          <div class="trust-text">
+            <strong>No ads. No data sales.</strong>
+            <span>We do not sell or share your health information</span>
+          </div>
+        </div>
+
+        <div class="trust-item">
+          <div class="trust-icon-wrap" aria-hidden="true">✋</div>
+          <div class="trust-text">
+            <strong>Your HealthKit. Your call.</strong>
+            <span>You control access — revoke it anytime in iOS Settings</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       HOW IT HELPS — 3 OUTCOME CARDS
+       Outcome-first framing before screenshot detail.
+       Answers "what does this do for me" not "what the app does."
+  ============================================================ -->
+  <section id="how-it-helps" aria-labelledby="help-heading">
     <div class="container">
       <div class="section-header">
-        <span class="section-label">Features</span>
-        <h2>Everything your journey needs,<br>nothing it doesn't.</h2>
-        <p>A calm, focused companion for the long trail ahead—beautifully designed for Apple platforms.</p>
+        <span class="section-label">What it does for you</span>
+        <h2 id="help-heading">Three things Journey Tracker<br>does, every day.</h2>
+        <p>Built for the practical questions: What do my labs mean? Am I consistent with my treatment? How far have I come?</p>
       </div>
 
+      <div class="help-cards">
+
+        <div class="help-card">
+          <div class="help-card-icon icon-blue" aria-hidden="true">🧪</div>
+          <h3>Understand your lab results over time</h3>
+          <p>Log each blood test — HbA1c, cholesterol, metabolic markers — and watch your trends across months of treatment. Walk into your next appointment with your full lab history organized and visible.</p>
+        </div>
+
+        <div class="help-card">
+          <div class="help-card-icon icon-orange" aria-hidden="true">💉</div>
+          <h3>Stay consistent with your treatment</h3>
+          <p>Log each dose, track how your body responds, and keep a symptom record that's accurate when your doctor asks. No more trying to remember what happened three weeks ago.</p>
+        </div>
+
+        <div class="help-card">
+          <div class="help-card-icon icon-green" aria-hidden="true">📈</div>
+          <h3>See how far you've come</h3>
+          <p>Weight trends, milestone markers, and streak data — organized over time. Seeing your progress clearly is part of staying motivated to continue.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       WALKTHROUGH — 4-STEP PRODUCT STORY
+       Screenshots reframed as a user journey, not a feature list.
+       Reuses .feature-row CSS. Step badges provide narrative flow.
+       WCAG: all images have descriptive alt text — WCAG 1.1.1
+  ============================================================ -->
+  <section id="walkthrough" aria-labelledby="walkthrough-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">How it works</span>
+        <h2 id="walkthrough-heading">Your whole health picture,<br>one step at a time.</h2>
+        <p>Journey Tracker keeps everything in one organized place so you can focus on the journey, not the paperwork.</p>
+      </div>
+
+      <!-- Step 1: Log or import -->
       <div class="feature-row reversed">
         <div class="feature-phone">
           <img src="images/feature-labs.png" alt="Lab Results screen showing HbA1c, LDL cholesterol, and metabolic markers with calendar view" loading="lazy" decoding="async" />
         </div>
         <div class="feature-text">
-          <div class="feature-icon icon-blue" aria-hidden="true">🧪</div>
-          <h3>Lab Results Tracking</h3>
-          <p>Keep every blood test result in one place and watch your biomarkers improve over time. Log HbA1c, cholesterol, metabolic panels, thyroid markers, and more—with a beautiful calendar view that puts your lab history at your fingertips.</p>
+          <div class="step-badge" aria-label="Step 1">Step 1</div>
+          <h3>Log or import your data</h3>
+          <p>Add a weigh-in, record a lab result, or log a dose in seconds. Import from Apple Health or type it in manually — Journey Tracker keeps everything in one organized place.</p>
           <ul class="feature-bullets">
-            <li>Track HbA1c, LDL, total cholesterol, and 20+ biomarkers</li>
+            <li>HbA1c, LDL, cholesterol, and 20+ biomarkers</li>
             <li>Calendar view shows exactly when each test was taken</li>
-            <li>Trend charts reveal how labs improve as therapy progresses</li>
+            <li>Trend charts reveal how labs shift as therapy progresses</li>
             <li>AI-powered lab analysis available with Pro subscription</li>
           </ul>
         </div>
       </div>
 
-      <div class="feature-row">
-        <div class="feature-phone">
-          <img src="images/feature-symptoms.png" alt="Trail Conditions screen showing symptom log with nausea and fatigue entries" loading="lazy" decoding="async" />
-        </div>
-        <div class="feature-text">
-          <div class="feature-icon icon-orange" aria-hidden="true">🌡️</div>
-          <h3>Trail Conditions (Symptoms)</h3>
-          <p>GLP-1 therapy comes with a learning curve. Track every symptom—nausea, fatigue, and more—with severity ratings so you can see patterns, share accurate reports with your doctor, and understand how your body responds to each dose change.</p>
-          <ul class="feature-bullets">
-            <li>Log symptoms with mild, moderate, or severe ratings</li>
-            <li>Automatically linked to the dose that preceded each symptom</li>
-            <li>Timeline view shows which symptoms resolve as therapy continues</li>
-            <li>Exportable summary for your next provider appointment</li>
-          </ul>
-        </div>
-      </div>
-
+      <!-- Step 2: Review your trends (dual dashboard) -->
       <div class="feature-row dual">
         <div class="feature-phone">
-          <img src="images/dashboard-overview.png" alt="My Journey dashboard showing summit goal progress" loading="lazy" decoding="async" />
+          <img src="images/dashboard-overview.png" alt="My Journey dashboard showing summit goal progress and weight trend" loading="lazy" decoding="async" />
         </div>
         <div class="feature-text">
-          <div class="feature-icon icon-green" aria-hidden="true">🗺️</div>
-          <h3>My Journey Dashboard</h3>
-          <p>See your whole story at a glance. Your dashboard brings together everything that matters—current weight, lbs lost, days active, weigh-in count, and your progress toward your summit goal—in one beautiful, motivating view.</p>
+          <div class="step-badge" aria-label="Step 2">Step 2</div>
+          <h3>Review your trends</h3>
+          <p>Charts and calendar views show what's changing — and when it changed. See the full picture at a glance or drill into any date for more detail. Every weigh-in, every milestone, all in context.</p>
           <ul class="feature-bullets">
             <li>Weight trend charts from 1 week to all time</li>
             <li>Milestone badges you can share (down 5, 10, 25 lbs and more)</li>
             <li>Hero cards for every metric: weight, hydration, therapy, fasting</li>
-            <li>Journey Points and Trail Level gamification to keep you motivated</li>
+            <li>Journey Points to mark consistent progress</li>
           </ul>
         </div>
         <div class="feature-phone">
@@ -2027,14 +2443,15 @@
         </div>
       </div>
 
+      <!-- Step 3: Track your treatment -->
       <div class="feature-row reversed">
         <div class="feature-phone">
           <img src="images/feature-therapy.png" alt="Therapy Trend screen showing Zepbound tirzepatide dose timeline" loading="lazy" decoding="async" />
         </div>
         <div class="feature-text">
-          <div class="feature-icon icon-orange" aria-hidden="true">💉</div>
-          <h3>GLP‑1 Therapy Tracking</h3>
-          <p>Journey Tracker was built alongside the GLP‑1 experience. Log every injection or oral dose, track dose escalations over time, and see how your weight responds as your therapy progresses.</p>
+          <div class="step-badge" aria-label="Step 3">Step 3</div>
+          <h3>Track your treatment</h3>
+          <p>Dose history, escalation timelines, and how your weight responds at each stage — all in one place. Know exactly where you are in your protocol, and have an accurate record ready for your next appointment.</p>
           <ul class="feature-bullets">
             <li>Log medication name, dose, injection site, and notes</li>
             <li>Dose timeline and weight-vs-dose correlation charts</li>
@@ -2044,40 +2461,56 @@
         </div>
       </div>
 
+      <!-- Step 4: Notice progress you can trust -->
       <div class="feature-row">
         <div class="feature-phone">
-          <img src="images/feature-hydration.png" alt="Hydration tracking screen showing daily water intake chart" loading="lazy" decoding="async" />
+          <img src="images/feature-security.png" alt="Journey Tracker locked screen with Face ID biometric authentication" loading="lazy" decoding="async" />
         </div>
         <div class="feature-text">
-          <div class="feature-icon icon-blue" aria-hidden="true">💧</div>
-          <h3>Fasting &amp; Hydration</h3>
-          <p>Staying on top of hydration and fasting is essential on any GLP‑1 journey. Track your daily water intake against personal goals, monitor fasting windows, and celebrate consistency streaks.</p>
-          <ul class="feature-bullets">
-            <li>Daily water log with intake history and goal tracking</li>
-            <li>Fasting window start/end with streak milestones</li>
-            <li>Calendar activity view across all your logged days</li>
-            <li>Syncs water intake to Apple Health</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="feature-row reversed">
-        <div class="feature-phone">
-          <img src="images/feature-security.png" alt="Journey Tracker locked screen with Face ID authentication" loading="lazy" decoding="async" />
-        </div>
-        <div class="feature-text">
-          <div class="feature-icon icon-purple" aria-hidden="true">🔒</div>
-          <h3>Private by Design</h3>
-          <p>Your health data belongs to you—and only you. Journey Tracker is built from the ground up around Apple's privacy infrastructure. We collect no advertising identifiers and operate no servers that store your health data.</p>
+          <div class="step-badge" aria-label="Step 4">Step 4</div>
+          <h3>Notice progress you can trust</h3>
+          <p>Every milestone is recorded. Every trend is yours. Biometric lock and Apple's CloudKit mean only you can see your data — and it's always there when you need it.</p>
           <ul class="feature-bullets">
             <li>Sign in with Apple keeps your identity private</li>
             <li>Face ID / Touch ID app lock for physical security</li>
-            <li>Data stored in your personal iCloud via CloudKit—not our servers</li>
-            <li>No ads, no analytics SDKs, no data sales—ever</li>
+            <li>Data stored in your personal iCloud via CloudKit — not our servers</li>
+            <li>No ads, no analytics SDKs, no data sales — ever</li>
           </ul>
         </div>
       </div>
 
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECONDARY FEATURES — compact card grid
+       Symptoms and hydration shown at lower visual weight so they
+       don't interrupt the primary 4-step narrative.
+  ============================================================ -->
+  <section id="more-features" aria-labelledby="more-features-heading">
+    <div class="container">
+      <div class="mini-features-header">
+        <h3 id="more-features-heading">Also built in</h3>
+      </div>
+      <div class="mini-features-grid">
+
+        <div class="mini-feature-card">
+          <div class="mini-feature-icon icon-orange" aria-hidden="true">🌡️</div>
+          <div class="mini-feature-text">
+            <h4>Symptom Tracking</h4>
+            <p>Log symptoms with severity ratings linked to each dose change. See what resolves over time and share an accurate summary with your provider.</p>
+          </div>
+        </div>
+
+        <div class="mini-feature-card">
+          <div class="mini-feature-icon icon-blue" aria-hidden="true">💧</div>
+          <div class="mini-feature-text">
+            <h4>Fasting &amp; Hydration</h4>
+            <p>Track daily water intake against your goals, monitor fasting windows, and celebrate consistency streaks. Syncs to Apple Health.</p>
+          </div>
+        </div>
+
+      </div>
     </div>
   </section>
 
@@ -2191,6 +2624,24 @@
           </div>
         </div>
 
+        <!-- Show-more button: reveals FAQ items 8-10.
+             aria-expanded toggled by toggleFaqMore() — WCAG 4.1.2 -->
+        <button
+          class="faq-more-btn"
+          id="faq-more-btn"
+          onclick="toggleFaqMore(this)"
+          aria-expanded="false"
+          aria-controls="faq-more-group"
+        >
+          Show more questions
+        </button>
+
+      </div><!-- /.faq-list (primary 7 items) -->
+
+      <!-- Secondary FAQ items — hidden by default.
+           aria-hidden toggled in sync with show-more button — WCAG 4.1.2 -->
+      <div class="faq-list faq-more-group" id="faq-more-group" aria-hidden="true">
+
         <div class="faq-item">
           <button id="faq-btn-8" class="faq-q" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-panel-8">
             Can I use Journey Tracker outside the United States?
@@ -2198,7 +2649,7 @@
           </button>
           <div class="faq-a" id="faq-panel-8" role="region" aria-labelledby="faq-btn-8">
             <div class="faq-a-inner">
-              Yes. Journey Tracker supports multiple units of measure so you can use the app in any country. Weight can be displayed in pounds (lbs), kilograms (kg), or stones (st). Height and length use inches (in) or centimeters (cm). Blood glucose can be shown in mg/dL (US standard) or mmol/L (international standard). Water and fluid intake display in ounces (fl oz) or milliliters (ml). App Store availability may vary by region. Note that certain medications may have different names, availability, or regulatory status in your country—always consult a local healthcare provider.
+              Yes. Journey Tracker supports multiple units of measure so you can use the app in any country. Weight can be displayed in pounds (lbs), kilograms (kg), or stones (st). Height and length use inches (in) or centimeters (cm). Blood glucose can be shown in mg/dL (US standard) or mmol/L (international standard). Water and fluid intake display in ounces (fl oz) or milliliters (ml). App Store availability may vary by region. Note that certain medications may have different names, availability, or regulatory status in your country — always consult a local healthcare provider.
             </div>
           </div>
         </div>
@@ -2227,283 +2678,74 @@
           </div>
         </div>
 
-      </div>
-    </div>
-  </section>
+      </div><!-- /.faq-more-group -->
 
-  <div class="section-divider"></div>
-
-  <!-- ============================================================
-       PRIVACY
-  ============================================================ -->
-  <section id="privacy">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-label">Privacy Policy</span>
-        <h2>Your health data stays yours.</h2>
-      </div>
-
-      <p class="policy-intro">
-        Journey Tracker is committed to protecting your privacy. We are not a healthcare provider, health plan, or healthcare clearinghouse. We collect only the information necessary to operate the app's features, and we never sell, rent, or trade your personal or health information to any third party for any purpose, including advertising.
+      <p class="faq-support-line">
+        Still have a question? Email us at <a href="mailto:support@journeytracker.app">support@journeytracker.app</a>
       </p>
 
-      <!-- What We Collect -->
-      <div class="policy-subsection">
-        <h3 class="policy-subsection-title">Information You Provide Directly</h3>
-        <ul class="policy-list">
-          <li><strong>Body measurements:</strong> Weight, body fat percentage, muscle mass, BMI, and related metrics</li>
-          <li><strong>Medication information:</strong> GLP-1 medication name, dose, injection dates, and injection site rotation</li>
-          <li><strong>Side effect logs:</strong> Symptoms experienced during therapy, severity, and associated notes</li>
-          <li><strong>Laboratory results:</strong> HbA1c, lipid panel, metabolic markers, thyroid markers, and other health markers you choose to enter</li>
-          <li><strong>Health goals:</strong> Target weight and hydration goals</li>
-          <li><strong>Notes:</strong> Free-text notes you add to any health entry</li>
-        </ul>
-      </div>
-
-      <!-- HealthKit -->
-      <div class="policy-subsection">
-        <h3 class="policy-subsection-title">Information Collected Through Apple Health (HealthKit)</h3>
-        <p style="margin-bottom: 14px; font-size: 0.9rem;">With your explicit permission, Journey Tracker may read from and write to Apple HealthKit. Data types accessed may include:</p>
-        <ul class="policy-list">
-          <li>Body weight and body composition metrics</li>
-          <li>Blood glucose readings</li>
-          <li>Blood pressure measurements</li>
-          <li>Dietary water intake</li>
-          <li>Laboratory results, if you connect your health system through Apple Health Records</li>
-        </ul>
-        <p style="margin-top: 14px; font-size: 0.88rem; color: var(--text-muted);">You control HealthKit access entirely. Revoke any permission at any time: iOS Settings → Privacy &amp; Security → Health → Journey Tracker.</p>
-      </div>
-
-      <!-- What We Don't Collect -->
-      <div class="policy-subsection">
-        <h3 class="policy-subsection-title">Information We Do NOT Collect</h3>
-        <!--
-          WCAG 1.4.1 / 1.3.1: The ✕ bullet on .policy-list.negative uses colour
-          (red) AND a symbol to convey meaning. A .sr-only prefix on each item
-          makes the "not collected" meaning explicit in the accessibility tree,
-          so it is conveyed without relying on colour or CSS pseudo-content alone.
-        -->
-        <ul class="policy-list negative" aria-label="Items we do not collect">
-          <li><span class="sr-only">Not collected:</span> Your full name</li>
-          <li><span class="sr-only">Not collected:</span> Your physical address or precise location</li>
-          <li><span class="sr-only">Not collected:</span> Your date of birth</li>
-          <li><span class="sr-only">Not collected:</span> Your Social Security Number or government-issued identifiers</li>
-          <li><span class="sr-only">Not collected:</span> Your health insurance information</li>
-          <li><span class="sr-only">Not collected:</span> Your prescribing physician's information</li>
-          <li><span class="sr-only">Not collected:</span> Payment card information — payments are processed entirely by Apple's App Store</li>
-        </ul>
-        <p style="margin-top: 14px; font-size: 0.88rem; color: var(--text-muted);">Sign in with Apple provides us only with a stable, opaque user identifier — not your Apple ID or real name.</p>
-      </div>
-
-      <!-- How We Store -->
-      <div class="policy-subsection">
-        <h3 class="policy-subsection-title">How We Store Your Information</h3>
-        <div class="policy-grid">
-          <div class="policy-card">
-            <div class="policy-card-icon" aria-hidden="true">📱</div>
-            <h3>On Your Device</h3>
-            <p>All health data is stored locally using Apple's Core Data framework with AES-256 encryption via iOS FileProtection. Your data is accessible only when your device is unlocked.</p>
-          </div>
-          <div class="policy-card">
-            <div class="policy-card-icon" aria-hidden="true">☁️</div>
-            <h3>Your iCloud Account</h3>
-            <p>If you have iCloud enabled, data syncs to <em>your personal iCloud account</em> via Apple's CloudKit framework — not any server controlled by us. Journey Tracker developers cannot access your data under any circumstances. You can disable iCloud backup at any time: iOS Settings → [Your Name] → iCloud → Apps Using iCloud.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- AI Analysis -->
-      <div class="policy-subsection">
-        <h3 class="policy-subsection-title">AI-Powered Lab Analysis (Pro Feature)</h3>
-        <p style="margin-bottom: 14px; font-size: 0.9rem;">If you subscribe to Journey Tracker Pro and choose to use the AI Lab Analysis feature, a <strong>de-identified</strong> version of your laboratory results and medication information is transmitted to Anthropic's Claude AI. <strong>Before this feature is activated, you will be shown a separate consent screen</strong> explaining exactly what data is transmitted.</p>
-        <div class="policy-grid">
-          <div class="policy-card">
-            <div class="policy-card-icon" aria-hidden="true">✅</div>
-            <h3>What Is Transmitted to the AI</h3>
-            <p>Your lab values as numbers (e.g., "HbA1c: 6.2") · GLP-1 medication name and current dose · Relative therapy duration (e.g., "Week 14") · Relative changes in your values over time</p>
-          </div>
-          <div class="policy-card">
-            <div class="policy-card-icon" aria-hidden="true">🚫</div>
-            <h3>What Is NEVER Transmitted</h3>
-            <p>Your name or any identifier · Exact dates or timestamps · Your Apple ID or account information · Any information that could identify you as an individual</p>
-          </div>
-        </div>
-        <p style="margin-top: 14px; font-size: 0.88rem; color: var(--text-muted);">Analysis results are cached on your device and in your personal iCloud account. We do not retain a copy on any server we control. You can disable AI Lab Analysis at any time: Settings → Privacy &amp; Security → AI Lab Analysis.</p>
-      </div>
-
-      <!-- Information Sharing -->
-      <div class="policy-subsection">
-        <h3 class="policy-subsection-title">Information Sharing</h3>
-        <ul class="policy-list">
-          <li><strong>Apple:</strong> We use Apple's platform services (HealthKit, CloudKit, Sign in with Apple, StoreKit). Your use of these services is subject to Apple's Privacy Policy (apple.com/privacy).</li>
-          <li><strong>Anthropic (AI Analysis feature only):</strong> If you consent, de-identified health data is transmitted to Anthropic, PBC for processing. Data is de-identified as described above and does not include any information that identifies you. Anthropic's privacy policy is available at anthropic.com/privacy.</li>
-          <li><strong>RevenueCat (subscription management):</strong> Subscription status information is shared with RevenueCat to verify your Pro subscription. RevenueCat's privacy policy is available at revenuecat.com/privacy.</li>
-          <li><strong>No other third-party sharing.</strong> We do not share your health or personal information with any other parties.</li>
-        </ul>
-      </div>
-
-      <!-- Your Rights -->
-      <div class="policy-subsection">
-        <h3 class="policy-subsection-title">Your Rights and Choices</h3>
-        <div class="policy-two-col">
-          <div class="policy-rights-box">
-            <h4>Access &amp; Delete Your Data</h4>
-            <ul>
-              <li>View all data within the Journey Tracker app at any time</li>
-              <li>Delete individual entries within the app</li>
-              <li>Use Settings → Data → Clear All Data to remove all on-device data</li>
-              <li>Delete the app to remove all on-device data</li>
-              <li>Manage iCloud backups: iOS Settings → [Your Name] → iCloud → Manage Account Storage</li>
-            </ul>
-          </div>
-          <div class="policy-rights-box">
-            <h4>State Privacy Rights</h4>
-            <ul>
-              <li><strong>California (CCPA/CPRA):</strong> Right to know, delete, opt out of sale (we do not sell data), and non-discrimination for exercising privacy rights</li>
-              <li><strong>Virginia (CDPA), Colorado (CPA), and other states:</strong> Similar rights to access, delete, and correct your personal information</li>
-              <li>To exercise these rights, contact us at support@journeytracker.app with the subject line "Privacy Rights Request"</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- Security -->
-      <div class="policy-subsection">
-        <h3 class="policy-subsection-title">Data Security</h3>
-        <ul class="policy-list">
-          <li><strong>On-device encryption:</strong> All health data is encrypted using AES-256 encryption</li>
-          <li><strong>Secure authentication:</strong> Sign in with Apple with optional biometric lock (Face ID / Touch ID)</li>
-          <li><strong>Secure transmission:</strong> All data transmitted over the internet uses TLS 1.3 encryption</li>
-          <li><strong>De-identification:</strong> Health data transmitted for AI analysis is de-identified before transmission</li>
-          <li><strong>No developer server access:</strong> We do not operate servers that store your health data</li>
-        </ul>
-        <p style="margin-top: 14px; font-size: 0.88rem; color: var(--text-muted);">No security system is perfect. In the event of a security breach affecting your health information, we will notify affected users in accordance with the FTC Health Breach Notification Rule and applicable state law.</p>
-      </div>
-
-      <!-- Children -->
-      <div class="policy-subsection">
-        <h3 class="policy-subsection-title">Children's Privacy</h3>
-        <p style="font-size: 0.9rem;">Journey Tracker is not intended for use by individuals under the age of 18. We do not knowingly collect personal information from children under 18. If you believe a child under 18 has provided health information through Journey Tracker, please contact us at <a href="mailto:support@journeytracker.app" style="color: var(--forest-light);">support@journeytracker.app</a> and we will take steps to delete that information.</p>
-      </div>
-
-      <div class="disclaimer-box">
-        <strong>Note:</strong> This is a summary of our Privacy Policy, provided here for convenience. It is not a substitute for the full Privacy Policy, which will be made available within the app and on this page before public release. For questions, contact us at <a href="mailto:support@journeytracker.app" style="color: var(--forest-light);">support@journeytracker.app</a>.
-      </div>
     </div>
   </section>
 
   <!-- ============================================================
-       HIPAA
+       PRIVACY & CREDIBILITY
+       Compact dark section replacing the three dense mid-page legal
+       sections. Four plain-language promise cards + links to the
+       standalone legal HTML pages. Keeps conversion flow clean while
+       preserving access to all legal content.
+       WCAG: section-label, aria-labelledby, decorative emojis hidden.
   ============================================================ -->
-  <section id="hipaa">
+  <section id="privacy-trust" aria-labelledby="privacy-heading">
     <div class="container">
       <div class="section-header">
-        <span class="section-label">HIPAA &amp; Health Information</span>
-        <h2>Not medical advice.<br>Not a covered entity.</h2>
-        <p>Plain-language disclosures about how Journey Tracker relates to healthcare regulations and your responsibilities as a user.</p>
+        <span class="section-label">Privacy</span>
+        <h2 id="privacy-heading">Your health information<br>stays with you.</h2>
+        <p>Journey Tracker was built so your most personal data stays exactly where it belongs — with you.</p>
       </div>
 
-      <div class="hipaa-grid">
-        <div class="hipaa-card">
-          <div class="hipaa-card-icon" aria-hidden="true">📋</div>
-          <h3>Not a HIPAA Covered Entity</h3>
-          <p>Journey Tracker is developed and operated by Apex Development Studio LLC as a consumer health application. We are not a healthcare provider, health plan, or healthcare clearinghouse. As a consumer app, Journey Tracker is not automatically subject to HIPAA as a "covered entity."</p>
+      <div class="privacy-promises">
+
+        <div class="privacy-promise-card">
+          <div class="privacy-promise-icon" aria-hidden="true">📱</div>
+          <div>
+            <h3>On your device &amp; your iCloud</h3>
+            <p>Your data is stored locally and synced to your personal iCloud account via Apple's CloudKit. We cannot access your health records — there is no Journey Tracker server database.</p>
+          </div>
         </div>
 
-        <div class="hipaa-card">
-          <div class="hipaa-card-icon" aria-hidden="true">🩺</div>
-          <h3>Not a Medical Device</h3>
-          <p>Journey Tracker is not a medical device, does not provide medical diagnoses, and does not constitute medical advice. The information and features provided by Journey Tracker are intended for general informational and personal tracking purposes only. Nothing in Journey Tracker is intended to diagnose any disease or health condition, or to recommend or prescribe any medication or treatment.</p>
+        <div class="privacy-promise-card">
+          <div class="privacy-promise-icon" aria-hidden="true">🚫</div>
+          <div>
+            <h3>No advertising. No data sales.</h3>
+            <p>We do not use advertising trackers, analytics SDKs, or third-party data brokers. Your data is never sold, rented, or traded for any purpose.</p>
+          </div>
         </div>
 
-        <div class="hipaa-card">
-          <div class="hipaa-card-icon" aria-hidden="true">🏥</div>
-          <h3>No Automatic Clinical Sharing</h3>
-          <p>Journey Tracker does not automatically transmit your data to doctors, clinics, insurance companies, or employers. Your records remain personal and under your control. Do not disregard or delay seeking professional medical advice based on anything you read or see in Journey Tracker.</p>
+        <div class="privacy-promise-card">
+          <div class="privacy-promise-icon" aria-hidden="true">✋</div>
+          <div>
+            <h3>HealthKit is always your choice</h3>
+            <p>You decide what Journey Tracker can read from Apple Health. Revoke any permission at any time from iOS Settings → Privacy &amp; Security → Health → Journey Tracker.</p>
+          </div>
         </div>
 
-        <div class="hipaa-card">
-          <div class="hipaa-card-icon" aria-hidden="true">🚨</div>
-          <h3>Emergency Situations</h3>
-          <p>Do not rely on Journey Tracker for emergency medical decisions or urgent clinical situations. If you believe you are experiencing a medical emergency, call 911 or your local emergency number immediately. Journey Tracker is for personal tracking and wellness logging only.</p>
+        <div class="privacy-promise-card">
+          <div class="privacy-promise-icon" aria-hidden="true">🩺</div>
+          <div>
+            <h3>Not medical advice</h3>
+            <p>Journey Tracker is a personal tracking tool, not a medical device. Nothing in the app constitutes medical advice. Always consult your healthcare provider about your treatment and health decisions.</p>
+          </div>
         </div>
+
       </div>
 
-      <div class="hipaa-disclaimer">
-        <strong>Medical Disclaimer:</strong> Journey Tracker is not a medical device, does not provide medical diagnoses, and does not constitute medical advice. The information, features, and AI-generated analysis provided by Journey Tracker are intended for general informational and personal tracking purposes only. Nothing in Journey Tracker is intended to replace the advice of a licensed healthcare provider or constitute the practice of medicine, nursing, or any other healthcare profession. <strong>Always consult with your prescribing physician or other qualified healthcare provider before making any decisions about your health, medications, or treatment plan.</strong> Journey Tracker expressly disclaims all liability for any health outcomes or adverse events resulting from reliance on the app's tracking features or AI analysis.
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       TERMS
-  ============================================================ -->
-  <section id="terms">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-label">Terms of Service</span>
-        <h2>Plain-language summary</h2>
+      <div class="legal-links-row">
+        <span>Full legal documents:</span>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="hipaa.html">HIPAA Disclosure</a>
+        <a href="terms.html">Terms of Service</a>
       </div>
 
-      <p class="terms-intro">
-        By downloading, installing, or using Journey Tracker, you confirm that you are at least 18 years of age, have read and understood these terms and our Privacy Policy, and agree to be bound by them. A complete, legally binding Terms of Service document will be made available before general release.
-      </p>
-
-      <ul class="terms-list">
-        <li>
-          <div class="terms-icon" aria-hidden="true">🩺</div>
-          <div class="terms-text">
-            <strong>Not Medical Advice — Important Disclaimer</strong>
-            <span>Journey Tracker is not a medical device, does not provide medical diagnoses, and does not constitute medical advice. Nothing in Journey Tracker is intended to diagnose any disease or health condition; recommend or prescribe any medication or treatment; replace the advice of a licensed healthcare provider; or constitute the practice of medicine, nursing, or any other healthcare profession. Always consult with your prescribing physician or other qualified healthcare provider before making any decisions about your health, medications, or treatment plan.</span>
-          </div>
-        </li>
-        <li>
-          <div class="terms-icon" aria-hidden="true">🤖</div>
-          <div class="terms-text">
-            <strong>AI Lab Analysis Feature (Pro)</strong>
-            <span>The AI Lab Analysis feature is powered by Anthropic's Claude AI and may produce inaccurate, incomplete, or inapplicable results. It does not have access to your complete medical history, does not consider all medications or health conditions you may have, and is not reviewed or approved by a licensed healthcare provider before delivery to you. All AI-generated analysis is clearly labeled as informational only. Journey Tracker expressly disclaims any liability for decisions made based on AI-generated analysis.</span>
-          </div>
-        </li>
-        <li>
-          <div class="terms-icon" aria-hidden="true">📱</div>
-          <div class="terms-text">
-            <strong>Subscriptions and Payments</strong>
-            <span>The free tier includes basic health tracking and up to two (2) laboratory result sessions. Journey Tracker Pro is available as a monthly subscription, annual subscription, or one-time lifetime purchase, and includes unlimited laboratory result tracking, AI-powered lab analysis, OCR lab report import, and additional features. All subscriptions are billed through Apple's App Store — we do not store payment card information. Subscriptions automatically renew unless cancelled at least 24 hours before the end of the current billing period. Cancellations and refunds are subject to Apple's App Store refund policy.</span>
-          </div>
-        </li>
-        <li>
-          <div class="terms-icon" aria-hidden="true">👤</div>
-          <div class="terms-text">
-            <strong>You Own Your Health Data</strong>
-            <span>You own your health data. Journey Tracker does not claim any ownership over the health information you enter into the app. Our right to process your data is limited to operating the features of Journey Tracker as described in these terms and our Privacy Policy.</span>
-          </div>
-        </li>
-        <li>
-          <div class="terms-icon" aria-hidden="true">🔧</div>
-          <div class="terms-text">
-            <strong>Provided "As Is" — No Warranty</strong>
-            <span>Journey Tracker is provided "as is" without warranty of any kind. We do not warrant that Journey Tracker will be error-free, uninterrupted, or that AI analysis will be accurate or applicable to your situation. The app and this website may change or be discontinued at any time.</span>
-          </div>
-        </li>
-        <li>
-          <div class="terms-icon" aria-hidden="true">⚖️</div>
-          <div class="terms-text">
-            <strong>Limitation of Liability</strong>
-            <span>To the maximum extent permitted by applicable law, Journey Tracker shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including damages arising from health decisions made based on Journey Tracker or its AI analysis feature. Our total liability for any claims arising from your use of Journey Tracker shall not exceed the amount you paid for Journey Tracker in the twelve (12) months preceding the claim. Journey Tracker expressly disclaims all liability for any health outcomes or adverse events resulting from reliance on the app.</span>
-          </div>
-        </li>
-        <li>
-          <div class="terms-icon" aria-hidden="true">📋</div>
-          <div class="terms-text">
-            <strong>Your Responsibilities</strong>
-            <span>You agree to use Journey Tracker only if you are at least 18 years of age; use it only for lawful personal health tracking purposes; maintain the security of your Apple ID and device; and not attempt to reverse-engineer, decompile, or extract the source code of Journey Tracker.</span>
-          </div>
-        </li>
-      </ul>
-
-      <div class="terms-disclaimer">
-        This is a non-binding plain-language summary only. A complete, legally binding Terms of Service document will be made available within the app and on this page before the general public release of Journey Tracker. For questions, contact <a href="mailto:support@journeytracker.app" style="color: var(--forest-light);">support@journeytracker.app</a>.
-      </div>
     </div>
   </section>
 
@@ -2518,8 +2760,8 @@
 
         <div class="contact-info">
           <span class="section-label">Contact &amp; Support</span>
-          <h2>We'd love to hear from you.</h2>
-          <p>Interested in Journey Tracker? Have a question or want to be notified when we launch? Reach out—we read every message and reply within 2 business days. For privacy rights requests, use the subject line "Privacy Rights Request."</p>
+          <h2>Get in touch.</h2>
+          <p>Want to be notified at launch? Have a question about the app or your privacy? We read every message and reply within 2 business days. For privacy rights requests, use the subject line "Privacy Rights Request."</p>
 
           <!-- SVG envelope icon is decorative — aria-hidden + focusable="false" — WCAG 1.1.1 / 4.1.2 -->
           <a href="mailto:support@journeytracker.app" class="contact-email-link">
@@ -3275,9 +3517,9 @@
           -->
           <h3>Legal &amp; Support</h3>
           <ul>
-            <li><a href="#privacy">Privacy Policy</a></li>
-            <li><a href="#hipaa">HIPAA &amp; Health Information</a></li>
-            <li><a href="#terms">Terms of Service</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="hipaa.html">HIPAA Disclosure</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
             <li><a href="#contact">Contact Support</a></li>
             <li><a href="#faqs">FAQs</a></li>
           </ul>
@@ -3468,6 +3710,39 @@
            animate from 0 → full height smoothly. */
         answer.style.maxHeight = answer.scrollHeight + 'px';
         btn.setAttribute('aria-expanded', 'true');
+      }
+    }
+
+
+    /* ============================================================
+       2b. FAQ SHOW-MORE TOGGLE — toggleFaqMore()
+       ============================================================
+       Reveals or hides FAQ items 8-10 (secondary questions).
+       Keeps the FAQ section conversion-focused by default while
+       still providing access to all 10 answers.
+       WCAG 4.1.2: aria-expanded on button, aria-hidden on group.
+    ============================================================ */
+
+    /**
+     * toggleFaqMore — reveals or hides the secondary FAQ group.
+     * @param {HTMLButtonElement} btn — the "Show more questions" button
+     */
+    function toggleFaqMore(btn) {
+      var group  = document.getElementById('faq-more-group');
+      var isOpen = btn.getAttribute('aria-expanded') === 'true';
+
+      if (isOpen) {
+        /* Collapse */
+        group.classList.remove('expanded');
+        group.setAttribute('aria-hidden', 'true');
+        btn.setAttribute('aria-expanded', 'false');
+        btn.textContent = 'Show more questions';
+      } else {
+        /* Expand */
+        group.classList.add('expanded');
+        group.setAttribute('aria-hidden', 'false');
+        btn.setAttribute('aria-expanded', 'true');
+        btn.textContent = 'Show fewer questions';
       }
     }
 
