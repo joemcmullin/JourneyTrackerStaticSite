@@ -105,7 +105,7 @@
              form submit feels instant when the user gets there.
     ================================================================
   -->
-  <link rel="preload" as="image" href="/images/dashboard-overview.png" fetchpriority="high" />
+  <link rel="preload" as="image" href="/images/home-dashboard.jpeg" fetchpriority="high" />
   <link rel="dns-prefetch" href="https://formspree.io" />
 
   <!--
@@ -1187,6 +1187,9 @@
       .feature-row.reversed .feature-phone,
       .feature-row.reversed .feature-text { order: unset; }
       .feature-phone { width: 220px; margin: 0 auto; }
+      .phone-carousel { width: 220px; margin: 0 auto; }
+      .carousel-frame { width: 220px; border-radius: 34px; }
+      .feature-row .phone-carousel { order: -1; }
       .feature-row.reversed .feature-text { justify-self: auto; }
       .feature-row.dual .feature-text { max-width: 440px; margin: 0 auto; }
       .feature-bullets { text-align: left; }
@@ -1795,45 +1798,136 @@
 
     .mini-features-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      max-width: 820px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      max-width: 980px;
       margin: 0 auto;
     }
 
     .mini-feature-card {
       background: var(--white);
       border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      padding: 24px 28px;
+      border-radius: var(--radius-lg);
+      padding: 28px 20px 24px;
       display: flex;
-      gap: 18px;
-      align-items: flex-start;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
     }
 
-    .mini-feature-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.3rem;
+    .mini-phone-thumb {
+      width: 130px;
+      border-radius: 26px;
+      border: 5px solid #111;
+      background: #111;
+      overflow: hidden;
+      box-shadow: 0 14px 36px rgba(26,58,42,0.2), 0 4px 12px rgba(0,0,0,0.12);
+      margin-bottom: 22px;
       flex-shrink: 0;
     }
 
+    .mini-phone-thumb img { width: 100%; display: block; }
+
     .mini-feature-text h4 {
-      font-size: 0.95rem;
+      font-size: 0.98rem;
+      font-weight: 700;
       color: var(--forest-dark);
-      margin-bottom: 6px;
+      margin-bottom: 8px;
     }
 
     .mini-feature-text p {
-      font-size: 0.87rem;
+      font-size: 0.86rem;
       color: var(--text-muted);
       line-height: 1.6;
       margin: 0;
     }
+
+    /* ── PHONE CAROUSEL ── */
+    .phone-carousel {
+      position: relative;
+      width: 260px;
+      flex-shrink: 0;
+    }
+
+    /* Mirror the .feature-phone order rules for reversed rows */
+    .feature-row.reversed .phone-carousel { order: 2; }
+    .feature-row.reversed:has(.phone-carousel) .feature-text { order: 1; justify-self: end; }
+
+    .carousel-frame {
+      width: 260px;
+      border-radius: 40px;
+      border: 7px solid #111;
+      background: #111;
+      overflow: hidden;
+      box-shadow: 0 24px 64px rgba(26,58,42,0.25), 0 6px 20px rgba(0,0,0,0.15);
+      position: relative;
+    }
+
+    /* Fixed aspect-ratio track — height never changes, eliminating layout shifts */
+    .carousel-track {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1320 / 2868; /* exact iPhone screenshot ratio */
+    }
+
+    .carousel-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.7s ease;
+    }
+
+    .carousel-slide.active { opacity: 1; }
+
+    .carousel-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .carousel-counter {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: rgba(0,0,0,0.48);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      color: rgba(255,255,255,0.92);
+      font-size: 0.67rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      padding: 3px 9px;
+      border-radius: 100px;
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 14px;
+    }
+
+    .carousel-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--border);
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      transition: background 0.25s, width 0.3s cubic-bezier(0.34,1.56,0.64,1);
+    }
+
+    .carousel-dot.active {
+      background: var(--forest-mid);
+      width: 22px;
+      border-radius: 4px;
+    }
+
+    .carousel-dot:hover:not(.active) { background: var(--forest-light); }
 
     @media (max-width: 640px) {
       .mini-features-grid { grid-template-columns: 1fr; }
@@ -2297,8 +2391,8 @@
       <div class="device-wrap">
         <div class="phone-frame">
           <img
-            src="images/dashboard-overview.png"
-            alt="Journey Tracker dashboard showing weight progress and milestones"
+            src="images/home-dashboard.jpeg"
+            alt="Journey Tracker home screen showing weight streak, next dose, lab trend, A1C, and AI health summary"
           />
         </div>
       </div>
@@ -2406,8 +2500,26 @@
 
       <!-- Step 1: Log or import -->
       <div class="feature-row reversed">
-        <div class="feature-phone">
-          <img src="images/feature-labs.png" alt="Lab Results screen showing HbA1c, LDL cholesterol, and metabolic markers with calendar view" loading="lazy" decoding="async" />
+        <div class="phone-carousel" aria-label="Lab features carousel">
+          <div class="carousel-frame">
+            <div class="carousel-track">
+              <div class="carousel-slide active">
+                <img src="images/lab-results-1.jpeg" alt="Lab Results screen with Deficiency Watch and AI Lab Insights showing Body Weight and Body Fat gauges" loading="lazy" decoding="async" />
+              </div>
+              <div class="carousel-slide">
+                <img src="images/lab-results-2.jpeg" alt="AI Lab Insights SNAPSHOT showing ALT, Cholesterol, HDL, LDL, Triglycerides with trend indicators" loading="lazy" decoding="async" />
+              </div>
+              <div class="carousel-slide">
+                <img src="images/lab-trends.jpeg" alt="Lab Trends screen showing 42 test types including HbA1c, Blood Glucose, and full lipid panel" loading="lazy" decoding="async" />
+              </div>
+            </div>
+            <div class="carousel-counter" aria-hidden="true">1 / 3</div>
+          </div>
+          <div class="carousel-dots" role="tablist" aria-label="Lab carousel slides">
+            <button class="carousel-dot active" role="tab" aria-label="Slide 1 of 3" aria-selected="true"></button>
+            <button class="carousel-dot" role="tab" aria-label="Slide 2 of 3" aria-selected="false"></button>
+            <button class="carousel-dot" role="tab" aria-label="Slide 3 of 3" aria-selected="false"></button>
+          </div>
         </div>
         <div class="feature-text">
           <div class="step-badge" aria-label="Step 1">Step 1</div>
@@ -2422,31 +2534,46 @@
         </div>
       </div>
 
-      <!-- Step 2: Review your trends (dual dashboard) -->
-      <div class="feature-row dual">
-        <div class="feature-phone">
-          <img src="images/dashboard-overview.png" alt="My Journey dashboard showing summit goal progress and weight trend" loading="lazy" decoding="async" />
+      <!-- Step 2: Review your trends (chart carousel) -->
+      <div class="feature-row">
+        <div class="phone-carousel" aria-label="Body composition charts carousel">
+          <div class="carousel-frame">
+            <div class="carousel-track">
+              <div class="carousel-slide active">
+                <img src="images/weight-chart.jpeg" alt="Weight chart showing 1-month trend from 200 lbs down to 184 lbs with trend line overlay" loading="lazy" decoding="async" />
+              </div>
+              <div class="carousel-slide">
+                <img src="images/body-fat-chart.jpeg" alt="Body Fat chart showing 1-month decline from 32% toward 26% with healthy range threshold" loading="lazy" decoding="async" />
+              </div>
+              <div class="carousel-slide">
+                <img src="images/bmi-chart.jpeg" alt="BMI chart showing 6-month downward trend from 33.6 toward normal range with overweight threshold marker" loading="lazy" decoding="async" />
+              </div>
+            </div>
+            <div class="carousel-counter" aria-hidden="true">1 / 3</div>
+          </div>
+          <div class="carousel-dots" role="tablist" aria-label="Charts carousel slides">
+            <button class="carousel-dot active" role="tab" aria-label="Weight chart" aria-selected="true"></button>
+            <button class="carousel-dot" role="tab" aria-label="Body fat chart" aria-selected="false"></button>
+            <button class="carousel-dot" role="tab" aria-label="BMI chart" aria-selected="false"></button>
+          </div>
         </div>
         <div class="feature-text">
           <div class="step-badge" aria-label="Step 2">Step 2</div>
           <h3>Review your trends</h3>
-          <p>Charts and calendar views show what's changing — and when it changed. See the full picture at a glance or drill into any date for more detail. Every weigh-in, every milestone, all in context.</p>
+          <p>Charts and calendar views show what's changing — and when it changed. Weight, body fat, BMI — track every metric over any time range and watch the picture come together.</p>
           <ul class="feature-bullets">
             <li>Weight trend charts from 1 week to all time</li>
+            <li>Body fat percentage and BMI tracked alongside weight</li>
             <li>Milestone badges you can share (down 5, 10, 25 lbs and more)</li>
-            <li>Hero cards for every metric: weight, hydration, therapy, fasting</li>
-            <li>Journey Points to mark consistent progress</li>
+            <li>Every weigh-in logged to the day — never lose your history</li>
           </ul>
-        </div>
-        <div class="feature-phone">
-          <img src="images/dashboard-detail.png" alt="Dose tracker and weight trend chart showing all-time progress" loading="lazy" decoding="async" />
         </div>
       </div>
 
       <!-- Step 3: Track your treatment -->
       <div class="feature-row reversed">
         <div class="feature-phone">
-          <img src="images/feature-therapy.png" alt="Therapy Trend screen showing Zepbound tirzepatide dose timeline" loading="lazy" decoding="async" />
+          <img src="images/therapy-dose.jpeg" alt="GLP-1 Therapy screen showing Dose Tracker with Zepbound 5mg schedule, upcoming doses, and next 30 days forecast" loading="lazy" decoding="async" />
         </div>
         <div class="feature-text">
           <div class="step-badge" aria-label="Step 3">Step 3</div>
@@ -2461,20 +2588,20 @@
         </div>
       </div>
 
-      <!-- Step 4: Notice progress you can trust -->
+      <!-- Step 4: Celebrate your progress -->
       <div class="feature-row">
         <div class="feature-phone">
-          <img src="images/feature-security.png" alt="Journey Tracker locked screen with Face ID biometric authentication" loading="lazy" decoding="async" />
+          <img src="images/progress-share.jpeg" alt="Progress share screen showing before and after photos with 27.8 lbs lost in 46 days" loading="lazy" decoding="async" />
         </div>
         <div class="feature-text">
           <div class="step-badge" aria-label="Step 4">Step 4</div>
-          <h3>Notice progress you can trust</h3>
-          <p>Every milestone is recorded. Every trend is yours. Biometric lock and Apple's CloudKit mean only you can see your data — and it's always there when you need it.</p>
+          <h3>Celebrate how far you've come</h3>
+          <p>Every milestone is captured automatically. Generate a shareable before-and-after card, see your streaks build week over week, and walk into every appointment knowing exactly what you've accomplished.</p>
           <ul class="feature-bullets">
-            <li>Sign in with Apple keeps your identity private</li>
-            <li>Face ID / Touch ID app lock for physical security</li>
-            <li>Data stored in your personal iCloud via CloudKit — not our servers</li>
-            <li>No ads, no analytics SDKs, no data sales — ever</li>
+            <li>Before &amp; after photo comparison built in</li>
+            <li>Shareable milestone cards — down 5, 10, 25 lbs and more</li>
+            <li>Dose streak and weight streak tracking keeps you consistent</li>
+            <li>Your full journey history, always in your iCloud</li>
           </ul>
         </div>
       </div>
@@ -2495,7 +2622,9 @@
       <div class="mini-features-grid">
 
         <div class="mini-feature-card">
-          <div class="mini-feature-icon icon-orange" aria-hidden="true">🌡️</div>
+          <div class="mini-phone-thumb" aria-hidden="true">
+            <img src="images/health-records.jpeg" alt="" decoding="async" loading="lazy" />
+          </div>
           <div class="mini-feature-text">
             <h4>Symptom Tracking</h4>
             <p>Log symptoms with severity ratings linked to each dose change. See what resolves over time and share an accurate summary with your provider.</p>
@@ -2503,10 +2632,22 @@
         </div>
 
         <div class="mini-feature-card">
-          <div class="mini-feature-icon icon-blue" aria-hidden="true">💧</div>
+          <div class="mini-phone-thumb" aria-hidden="true">
+            <img src="images/log-water.jpeg" alt="" decoding="async" loading="lazy" />
+          </div>
           <div class="mini-feature-text">
             <h4>Fasting &amp; Hydration</h4>
             <p>Track daily water intake against your goals, monitor fasting windows, and celebrate consistency streaks. Syncs to Apple Health.</p>
+          </div>
+        </div>
+
+        <div class="mini-feature-card">
+          <div class="mini-phone-thumb" aria-hidden="true">
+            <img src="images/streaks.jpeg" alt="" decoding="async" loading="lazy" />
+          </div>
+          <div class="mini-feature-text">
+            <h4>Streaks &amp; Consistency</h4>
+            <p>Build momentum with dose streaks, weight streaks, and hydration streaks. Small habits, logged daily, add up to visible results.</p>
           </div>
         </div>
 
@@ -4193,6 +4334,65 @@
       var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       window.scrollTo({ top: 0, behavior: prefersReduced ? 'auto' : 'smooth' });
     }
+
+    /* ============================================================
+       PHONE CAROUSELS
+       Auto-advancing image carousels with dot indicators.
+       Each .phone-carousel is independent — slides cross-fade
+       every 4 seconds. Pauses on hover. Touch-swipe supported.
+       WCAG: dot buttons have aria-label; counter is aria-hidden.
+    ============================================================ */
+    (function initCarousels() {
+      document.querySelectorAll('.phone-carousel').forEach(function (carousel) {
+        var slides  = carousel.querySelectorAll('.carousel-slide');
+        var dots    = carousel.querySelectorAll('.carousel-dot');
+        var counter = carousel.querySelector('.carousel-counter');
+        var total   = slides.length;
+        var current = 0;
+        var timer   = null;
+        var DELAY   = 4000;
+
+        function goTo(n) {
+          slides[current].classList.remove('active');
+          if (dots[current]) { dots[current].classList.remove('active'); dots[current].setAttribute('aria-selected', 'false'); }
+          current = ((n % total) + total) % total;
+          slides[current].classList.add('active');
+          if (dots[current]) { dots[current].classList.add('active'); dots[current].setAttribute('aria-selected', 'true'); }
+          if (counter) { counter.textContent = (current + 1) + ' / ' + total; }
+        }
+
+        function start() {
+          if (timer) clearInterval(timer);
+          timer = setInterval(function () { goTo(current + 1); }, DELAY);
+        }
+
+        function stop() { clearInterval(timer); timer = null; }
+
+        /* Dot clicks */
+        dots.forEach(function (dot, i) {
+          dot.addEventListener('click', function () { stop(); goTo(i); start(); });
+        });
+
+        /* Pause on hover */
+        carousel.addEventListener('mouseenter', stop);
+        carousel.addEventListener('mouseleave', start);
+
+        /* Touch swipe */
+        var touchX = 0;
+        carousel.addEventListener('touchstart', function (e) {
+          touchX = e.touches[0].clientX;
+          stop();
+        }, { passive: true });
+        carousel.addEventListener('touchend', function (e) {
+          var dx = e.changedTouches[0].clientX - touchX;
+          if (Math.abs(dx) > 40) { goTo(current + (dx < 0 ? 1 : -1)); }
+          start();
+        }, { passive: true });
+
+        goTo(0);
+        start();
+      });
+    })();
 
   </script>
 
