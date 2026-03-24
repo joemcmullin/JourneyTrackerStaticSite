@@ -125,7 +125,7 @@
   <meta property="og:image"       content="https://journeytracker.app/app-icon.jpg" />
   <meta property="og:image:width"  content="1024" />
   <meta property="og:image:height" content="1024" />
-  <meta property="og:image:alt"    content="Journey Tracker app icon — pine tree, mountains, and winding path on an orange background" />
+  <meta property="og:image:alt"    content="Journey Tracker app icon — compass and globe on an orange background" />
 
   <!--
     ================================================================
@@ -429,8 +429,8 @@
        Collapses to a single column on mobile with the
        phone image moving above the text (order: -1).
        The gradient background subtly shifts from green
-       to cream to warm orange, evoking a sunrise on a
-       mountain trail — consistent with the app's theme.
+       to cream to warm orange, evoking a golden-hour
+       travel horizon — consistent with the app's theme.
     ===================================================== */
     #home {
       padding: calc(var(--nav-height) + 48px) 0 80px;
@@ -471,8 +471,18 @@
     .hero-subtitle {
       font-size: 1.1rem;
       color: var(--text-mid);
-      margin-bottom: 36px;
+      margin-bottom: 12px;
       max-width: 480px;
+    }
+
+    .hero-travel-line {
+      font-size: 1.05rem;
+      font-style: italic;
+      color: var(--forest-light);
+      font-weight: 500;
+      margin-bottom: 32px;
+      max-width: 480px;
+      letter-spacing: 0.01em;
     }
 
     .hero-actions {
@@ -526,7 +536,7 @@
       background: #111;
     }
 
-    .phone-frame img { width: 100%; display: block; }
+    .phone-frame img { width: 100%; display: block; aspect-ratio: 1320 / 2868; }
 
     .device-wrap {
       display: flex;
@@ -591,7 +601,7 @@
       flex-shrink: 0;
     }
 
-    .feature-phone img { width: 100%; display: block; }
+    .feature-phone img { width: 100%; display: block; aspect-ratio: 1320 / 2868; }
 
     .feature-text { max-width: 440px; }
     .feature-row.reversed .feature-text { justify-self: end; }
@@ -1826,7 +1836,7 @@
       flex-shrink: 0;
     }
 
-    .mini-phone-thumb img { width: 100%; display: block; }
+    .mini-phone-thumb img { width: 100%; display: block; aspect-ratio: 1320 / 2868; }
 
     .mini-feature-text h4 {
       font-size: 0.98rem;
@@ -2070,6 +2080,180 @@
       text-decoration: underline;
       text-underline-offset: 2px;
       font-weight: 600;
+    }
+
+    /* ================================================================
+       PASSPORT & TIERS SECTION
+       Travel-themed tier ladder — Day Tripper → Journey Legend
+    ================================================================ */
+    #passport-tiers {
+      padding: 96px 0;
+      background: linear-gradient(160deg, #f0f7f2, var(--cream));
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .passport-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .passport-header .section-label {
+      margin-bottom: 12px;
+    }
+
+    .passport-header h2 {
+      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      font-weight: 700;
+      color: var(--forest-dark);
+      margin-bottom: 14px;
+    }
+
+    .passport-header p {
+      font-size: 1rem;
+      color: var(--text-mid);
+      max-width: 520px;
+      margin: 0 auto;
+      line-height: 1.65;
+    }
+
+    .tiers-track {
+      display: flex;
+      align-items: stretch;
+      gap: 0;
+      max-width: 980px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    /* Connecting line between tiers */
+    .tiers-track::before {
+      content: '';
+      position: absolute;
+      top: 44px;
+      left: 10%;
+      right: 10%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--border), var(--forest-light), var(--forest-mid), var(--forest-dark), #b8860b);
+      z-index: 0;
+    }
+
+    .tier-card {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0 12px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .tier-stamp {
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      margin-bottom: 18px;
+      border: 3px solid var(--border);
+      background: var(--cream);
+      box-shadow: 0 4px 16px rgba(26,58,42,0.1);
+      transition: transform 0.2s, box-shadow 0.2s;
+      position: relative;
+    }
+
+    .tier-card:hover .tier-stamp {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 28px rgba(26,58,42,0.18);
+    }
+
+    /* Pro tier gets special treatment */
+    .tier-card.tier-pro .tier-stamp {
+      background: linear-gradient(135deg, var(--forest-mid), var(--forest-dark));
+      border-color: var(--forest-mid);
+    }
+
+    .tier-card.tier-legend .tier-stamp {
+      background: linear-gradient(135deg, #b8860b, #d4a017);
+      border-color: #b8860b;
+    }
+
+    .tier-name {
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-dark);
+      margin-bottom: 4px;
+    }
+
+    .tier-level {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .tier-detail {
+      font-size: 0.8rem;
+      color: var(--text-mid);
+      line-height: 1.5;
+    }
+
+    .tier-badge-free {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 2px 8px;
+      border-radius: 100px;
+      background: rgba(74,138,94,0.1);
+      color: var(--forest-light);
+      border: 1px solid rgba(74,138,94,0.25);
+      margin-bottom: 8px;
+    }
+
+    .tier-badge-pro {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 2px 8px;
+      border-radius: 100px;
+      background: var(--forest-dark);
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 8px;
+    }
+
+    .tiers-cta {
+      text-align: center;
+      margin-top: 52px;
+    }
+
+    .tiers-cta p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .tiers-cta strong {
+      color: var(--forest-dark);
+    }
+
+    @media (max-width: 768px) {
+      .tiers-track {
+        flex-direction: column;
+        align-items: center;
+        gap: 28px;
+      }
+      .tiers-track::before { display: none; }
+      .tier-card { flex-direction: row; text-align: left; gap: 18px; max-width: 360px; width: 100%; padding: 0; }
+      .tier-stamp { width: 64px; height: 64px; font-size: 1.5rem; flex-shrink: 0; margin-bottom: 0; }
+      .tier-card .tier-info { display: flex; flex-direction: column; }
     }
 
   </style>
@@ -2348,7 +2532,7 @@
       <div class="hero-content">
         <div class="hero-badge">
           <!-- Decorative emoji hidden from AT — WCAG 1.1.1 -->
-          <span aria-hidden="true">🌿</span> GLP‑1 &amp; Weight Loss Companion
+          <span aria-hidden="true">✈️</span> GLP‑1 &amp; Weight Loss Companion
         </div>
 
         <h1 id="hero-heading" class="hero-title">
@@ -2358,6 +2542,7 @@
         <p class="hero-subtitle">
           Track your weight, lab results, and medication — organized, private, and always with you. Understand what's changing over time and walk into every appointment more informed.
         </p>
+        <p class="hero-travel-line" aria-label="Journey Tracker tagline">You're going somewhere you've never been before.</p>
 
         <div class="hero-actions">
           <!--
@@ -2654,6 +2839,80 @@
       </div>
     </div>
   </section>
+
+  <!-- ============================================================
+       PASSPORT & TIERS
+       Travel-themed tier ladder linking free → Pro
+  ============================================================ -->
+  <section id="passport-tiers" aria-labelledby="passport-tiers-heading">
+    <div class="container">
+
+      <div class="passport-header">
+        <span class="section-label">Your Journey Passport</span>
+        <h2 id="passport-tiers-heading">Every traveler starts somewhere</h2>
+        <p>Track your progress through five milestone tiers — from your very first weigh-in to the kind of results that change how you carry yourself in the world.</p>
+      </div>
+
+      <div class="tiers-track" role="list">
+
+        <div class="tier-card" role="listitem">
+          <div class="tier-stamp" aria-hidden="true">✈️</div>
+          <div class="tier-info">
+            <span class="tier-badge-free">Free</span>
+            <div class="tier-name">Day Tripper</div>
+            <div class="tier-level">Getting started</div>
+            <div class="tier-detail">Log your first measurements, set your goals, and take that first step.</div>
+          </div>
+        </div>
+
+        <div class="tier-card" role="listitem">
+          <div class="tier-stamp" aria-hidden="true">🧭</div>
+          <div class="tier-info">
+            <span class="tier-badge-free">Free</span>
+            <div class="tier-name">Wanderer</div>
+            <div class="tier-level">Finding your rhythm</div>
+            <div class="tier-detail">Consistent logging, your first weight trend line, and lab results taking shape.</div>
+          </div>
+        </div>
+
+        <div class="tier-card" role="listitem">
+          <div class="tier-stamp" aria-hidden="true">🗺️</div>
+          <div class="tier-info">
+            <span class="tier-badge-free">Free</span>
+            <div class="tier-name">Explorer</div>
+            <div class="tier-level">Building momentum</div>
+            <div class="tier-detail">Streaks forming, dose escalation tracked, appointments getting easier.</div>
+          </div>
+        </div>
+
+        <div class="tier-card tier-pro" role="listitem">
+          <div class="tier-stamp" aria-hidden="true">🌍</div>
+          <div class="tier-info">
+            <span class="tier-badge-pro">Pro</span>
+            <div class="tier-name">Globetrotter</div>
+            <div class="tier-level">Seeing the full picture</div>
+            <div class="tier-detail">AI lab analysis, unlimited sessions, dose-weight correlations, and full trend history.</div>
+          </div>
+        </div>
+
+        <div class="tier-card tier-legend" role="listitem">
+          <div class="tier-stamp" aria-hidden="true">🏆</div>
+          <div class="tier-info">
+            <span class="tier-badge-pro">Pro</span>
+            <div class="tier-name">Journey Legend</div>
+            <div class="tier-level">You arrived</div>
+            <div class="tier-detail">Real, lasting results. The kind you share — and the kind that stick.</div>
+          </div>
+        </div>
+
+      </div><!-- /.tiers-track -->
+
+      <div class="tiers-cta">
+        <p>Start free. Upgrade when you're ready. <strong>No pressure — just progress.</strong></p>
+      </div>
+
+    </div>
+  </section><!-- /#passport-tiers -->
 
   <div class="section-divider"></div>
 
@@ -3642,8 +3901,8 @@
       <div class="footer-inner">
         <div class="footer-brand">
           <div class="nav-logo" style="color: #fff;">
-            <!-- Decorative mountain emoji — WCAG 1.1.1 -->
-            <span class="nav-logo-icon" aria-hidden="true">🏔️</span>
+            <!-- Decorative travel emoji — WCAG 1.1.1 -->
+            <span class="nav-logo-icon" aria-hidden="true">✈️</span>
             Journey Tracker
           </div>
           <p>A private, beautiful health companion for your GLP‑1 and weight loss journey. Coming soon to the App Store for iPhone, iPad, and Mac.</p>
