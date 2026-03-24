@@ -2083,6 +2083,26 @@
     }
 
     /* ================================================================
+       TRAVEL BACKGROUND WATERMARK
+       Applied to light/cream sections via ::before pseudo-element so
+       content sits above the image (z-index isolation). The low opacity
+       keeps it subtle — texture, not distraction.
+    ================================================================ */
+    .travel-bg {
+      position: relative;
+      isolation: isolate;
+    }
+    .travel-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('/images/travel-bg.png') center / 680px no-repeat;
+      opacity: 0.055;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* ================================================================
        PASSPORT & TIERS SECTION
        Travel-themed tier ladder — Day Tripper → Journey Legend
     ================================================================ */
@@ -2527,7 +2547,7 @@
   <!-- ============================================================
        HERO
   ============================================================ -->
-  <section id="home" aria-labelledby="hero-heading">
+  <section id="home" class="travel-bg" aria-labelledby="hero-heading">
     <div class="container hero-inner">
       <div class="hero-content">
         <div class="hero-badge">
@@ -2637,7 +2657,7 @@
        Outcome-first framing before screenshot detail.
        Answers "what does this do for me" not "what the app does."
   ============================================================ -->
-  <section id="how-it-helps" aria-labelledby="help-heading">
+  <section id="how-it-helps" class="travel-bg" aria-labelledby="help-heading">
     <div class="container">
       <div class="section-header">
         <span class="section-label">What it does for you</span>
@@ -2675,7 +2695,7 @@
        Reuses .feature-row CSS. Step badges provide narrative flow.
        WCAG: all images have descriptive alt text — WCAG 1.1.1
   ============================================================ -->
-  <section id="walkthrough" aria-labelledby="walkthrough-heading">
+  <section id="walkthrough" class="travel-bg" aria-labelledby="walkthrough-heading">
     <div class="container">
       <div class="section-header">
         <span class="section-label">How it works</span>
@@ -2799,7 +2819,7 @@
        Symptoms and hydration shown at lower visual weight so they
        don't interrupt the primary 4-step narrative.
   ============================================================ -->
-  <section id="more-features" aria-labelledby="more-features-heading">
+  <section id="more-features" class="travel-bg" aria-labelledby="more-features-heading">
     <div class="container">
       <div class="mini-features-header">
         <h3 id="more-features-heading">Also built in</h3>
@@ -2844,7 +2864,7 @@
        PASSPORT & TIERS
        Travel-themed tier ladder linking free → Pro
   ============================================================ -->
-  <section id="passport-tiers" aria-labelledby="passport-tiers-heading">
+  <section id="passport-tiers" class="travel-bg" aria-labelledby="passport-tiers-heading">
     <div class="container">
 
       <div class="passport-header">
