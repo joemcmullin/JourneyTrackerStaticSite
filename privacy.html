@@ -192,7 +192,7 @@
       <h1>Privacy Policy</h1>
       <p class="doc-meta">
         Developed and operated by Apex Development Studio LLC &nbsp;·&nbsp;
-        Effective: March 16, 2026 &nbsp;·&nbsp; Last Updated: March 16, 2026
+        Effective: March 16, 2026 &nbsp;·&nbsp; Last Updated: March 25, 2026
       </p>
     </div>
 
@@ -256,7 +256,7 @@
       <p>Your health data is used solely to operate the features of Journey Tracker — displaying your health trends, generating charts, tracking your GLP-1 progress, and providing the features you use.</p>
 
       <h4>3.2 AI-Powered Lab Analysis (Pro Feature)</h4>
-      <p>If you subscribe to Journey Tracker Pro and use the AI Lab Analysis feature, a <strong>de-identified</strong> version of your laboratory results and medication information is transmitted to Anthropic's Claude AI to generate a personalized interpretation of your results.</p>
+      <p>If you subscribe to Journey Tracker Pro and use the AI Lab Analysis feature, a processed version of your laboratory results and medication information is transmitted to Anthropic's Claude AI to generate a personalized interpretation of your results. Before any data leaves your device, automated on-device processing strips personally identifiable information.</p>
       <p><strong>Before this feature is activated, you will be shown a separate consent screen</strong> explaining exactly what data is transmitted and giving you the opportunity to consent or decline.</p>
       <p><strong>What is transmitted to the AI:</strong></p>
       <ul>
@@ -265,14 +265,18 @@
         <li>How long you have been on therapy (relative duration, not a specific date)</li>
         <li>Changes in your lab values over time (relative timeframes)</li>
       </ul>
-      <p><strong>What is NEVER transmitted:</strong></p>
+      <p><strong>What we strip before transmission (automated on-device processing):</strong></p>
       <ul>
-        <li>Your name or any identifier</li>
-        <li>Exact dates or timestamps</li>
-        <li>Your Apple ID or account information</li>
-        <li>Any information that could identify you as an individual</li>
+        <li>Names, personal identifiers, and contact information</li>
+        <li>Exact dates, timestamps, and date of birth</li>
+        <li>Account numbers, Apple ID, and patient record numbers</li>
+        <li>Any text our on-device system identifies as personally identifiable</li>
       </ul>
-      <p>The AI analysis result is returned to your device and stored locally. It is informational only and does not constitute medical advice.</p>
+      <p>We use automated on-device processing (Apple Vision OCR and on-device natural language analysis) to remove personal information before any data is sent. While we make every effort to remove all identifying information, no automated system is perfect. You can review exactly what was sent after each analysis within the app.</p>
+      <p>The AI analysis result is returned to your device and stored locally. It is informational only and does not constitute medical advice. Always discuss your lab results with your doctor before making health decisions.</p>
+      <div class="callout">
+        <p><strong>De-identification is performed on a best-effort basis.</strong> By using the AI Lab Analysis feature, you acknowledge and accept that some information may not be fully removed by automated processing, and you accept the residual risk this represents.</p>
+      </div>
 
       <h4>3.3 We Do Not Sell Your Data</h4>
       <p>We do not sell, rent, or trade your personal or health information to any third party for any purpose, including advertising.</p>
@@ -308,7 +312,7 @@
       <p>We use Apple's platform services (HealthKit, CloudKit, Sign in with Apple, StoreKit) to operate Journey Tracker. Your use of these services is subject to Apple's Privacy Policy (apple.com/privacy).</p>
 
       <h4>5.2 Anthropic (AI Analysis Feature Only)</h4>
-      <p>If you consent to use the AI Lab Analysis feature, de-identified health data is transmitted to Anthropic, PBC for processing. Anthropic's privacy policy is available at anthropic.com/privacy. The data transmitted is de-identified as described in Section 3.2 and does not include any information that identifies you.</p>
+      <p>If you consent to use the AI Lab Analysis feature, processed health data is transmitted to Anthropic, PBC for processing. Personal information is stripped using automated on-device processing as described in Section 3.2. De-identification is performed on a best-effort basis — while we make every effort to remove all personal identifiers, no automated system is perfect. Anthropic's privacy policy is available at <a href="https://www.anthropic.com/privacy" target="_blank" rel="noopener">anthropic.com/privacy</a>.</p>
 
       <h4>5.3 RevenueCat (Subscription Management)</h4>
       <p>Subscription management is handled by RevenueCat. RevenueCat receives subscription status information to verify your Pro subscription. RevenueCat's privacy policy is available at revenuecat.com/privacy.</p>
@@ -360,6 +364,16 @@
       <h4>7.3 Emergency Situations</h4>
       <p>If you believe you are experiencing a medical emergency, call 911 or your local emergency number immediately. Do not rely on Journey Tracker or its AI analysis feature in an emergency.</p>
 
+      <h4>7.4 De-Identification and Data Flow</h4>
+      <p>When you use the AI Lab Analysis feature, your lab data passes through the following pipeline on your device before anything is transmitted:</p>
+      <ol>
+        <li><strong>On-device OCR:</strong> Lab values are extracted using Apple Vision framework (from camera capture, PDF, or image import)</li>
+        <li><strong>On-device de-identification:</strong> Names, dates, identifiers, contact information, and any text identified as personally identifiable are stripped using on-device natural language processing</li>
+        <li><strong>Transmission:</strong> Only de-identified lab values, medication name/dose, therapy duration, and trend data are sent to Anthropic's Claude AI</li>
+        <li><strong>On-device storage:</strong> Analysis results are returned to your device and stored in encrypted Core Data storage, synced only to your personal iCloud account</li>
+      </ol>
+      <p>De-identification is automated and best-effort. You can review what was sent after each analysis session within the app. Our privacy policy: <a href="https://journeytracker.app/privacy">journeytracker.app/privacy</a>. Anthropic's privacy policy: <a href="https://www.anthropic.com/privacy" target="_blank" rel="noopener">anthropic.com/privacy</a>.</p>
+
       <hr>
 
       <h3>8. Children's Privacy</h3>
@@ -373,7 +387,7 @@
         <li><strong>On-device encryption:</strong> All health data is encrypted using AES-256 encryption</li>
         <li><strong>Secure authentication:</strong> Sign in with Apple with optional biometric lock</li>
         <li><strong>Secure transmission:</strong> All data transmitted over the internet uses TLS 1.3 encryption</li>
-        <li><strong>De-identification:</strong> Health data transmitted for AI analysis is de-identified before transmission</li>
+        <li><strong>Best-effort de-identification:</strong> Before AI analysis, automated on-device processing strips names, identifiers, exact dates, and other personally identifiable information — no automated system is perfect, and users acknowledge and accept the residual risk</li>
         <li><strong>No developer server access:</strong> We do not operate servers that store your health data</li>
         <li><strong>Debug code exclusion:</strong> Developer and debug features are excluded from the production app</li>
       </ul>
@@ -401,7 +415,7 @@
       </p>
       <p>For data deletion requests or to exercise your privacy rights, please email <a href="mailto:support@journeytracker.app">support@journeytracker.app</a> with the subject line "Privacy Rights Request."</p>
 
-      <p class="doc-footer-note">This Privacy Policy is effective as of March 16, 2026. Journey Tracker is developed and operated by Apex Development Studio LLC. For questions, contact <a href="mailto:support@journeytracker.app">support@journeytracker.app</a>.</p>
+      <p class="doc-footer-note">This Privacy Policy is effective as of March 16, 2026 and was last updated March 25, 2026. Journey Tracker is developed and operated by Apex Development Studio LLC. For questions, contact <a href="mailto:support@journeytracker.app">support@journeytracker.app</a>.</p>
 
     </div><!-- /.doc-content -->
 
