@@ -221,31 +221,26 @@
       margin-top: 12px;
     }
 
-    /* ── FAQ ACCORDION ── */
+    /* ── FAQ ACCORDION (native <details>) ── */
     .faq-section { margin-bottom: 64px; }
-    .faq-list { display: flex; flex-direction: column; gap: 0; }
-    .faq-item { border-bottom: 1px solid var(--border); }
-    .faq-item:first-child { border-top: 1px solid var(--border); }
-    .faq-q {
-      width: 100%; text-align: left; background: none; border: none;
-      cursor: pointer; padding: 18px 0;
+    .faq-list { display: flex; flex-direction: column; gap: 0; list-style: none; padding: 0; margin: 0; }
+    details.faq-item { border-bottom: 1px solid var(--border); }
+    details.faq-item:first-of-type { border-top: 1px solid var(--border); }
+    details.faq-item summary {
+      list-style: none; cursor: pointer; padding: 18px 0;
       display: flex; justify-content: space-between; align-items: center;
       gap: 12px;
       font-size: 0.97rem; font-weight: 600; color: var(--text-dark);
-      transition: color 0.15s;
+      transition: color 0.15s; user-select: none;
     }
-    .faq-q:hover { color: var(--forest-mid); }
+    details.faq-item summary::-webkit-details-marker { display: none; }
+    details.faq-item summary::marker { display: none; }
+    details.faq-item summary:hover { color: var(--forest-mid); }
     .faq-chevron {
       width: 18px; height: 18px; flex-shrink: 0;
       stroke: var(--forest-light); transition: transform 0.25s ease;
     }
-    .faq-q[aria-expanded="true"] .faq-chevron { transform: rotate(180deg); }
-    .faq-a {
-      overflow: hidden;
-      max-height: 0;
-      transition: max-height 0.3s ease;
-    }
-    .faq-a[aria-hidden="false"] { max-height: 600px; }
+    details.faq-item[open] summary .faq-chevron { transform: rotate(180deg); }
     .faq-a-inner {
       padding: 0 0 18px;
       font-size: 0.93rem; color: var(--text-mid); line-height: 1.7;
@@ -536,58 +531,50 @@
         <p class="section-label">Subscription &amp; Billing</p>
         <h2 class="section-title" id="faq-sub-heading">Common billing questions</h2>
 
-        <ul class="faq-list" role="list">
+        <div class="faq-list">
 
-          <li class="faq-item">
-            <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-sub-1">
+          <details class="faq-item">
+            <summary>
               How do I cancel my Journey Tracker Pro subscription?
               <svg class="faq-chevron" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
-            </button>
-            <div class="faq-a" id="faq-sub-1" role="region" aria-hidden="true">
-              <div class="faq-a-inner">
-                <p>All Journey Tracker subscriptions are managed directly through Apple's App Store. To cancel, go to <strong>Settings → [Your Name] → Subscriptions</strong> on your iPhone or iPad, find Journey Tracker Pro, and tap Cancel Subscription. You'll retain access until the end of your current billing period.</p>
-                <p>We are unable to cancel subscriptions or issue refunds directly — all billing is handled by Apple. For refund requests, visit <a href="https://reportaproblem.apple.com" target="_blank" rel="noopener">reportaproblem.apple.com</a>.</p>
-              </div>
+            </summary>
+            <div class="faq-a-inner">
+              <p>All Journey Tracker subscriptions are managed directly through Apple's App Store. To cancel, go to <strong>Settings → [Your Name] → Subscriptions</strong> on your iPhone or iPad, find Journey Tracker Pro, and tap Cancel Subscription. You'll retain access until the end of your current billing period.</p>
+              <p>We are unable to cancel subscriptions or issue refunds directly — all billing is handled by Apple. For refund requests, visit <a href="https://reportaproblem.apple.com" target="_blank" rel="noopener">reportaproblem.apple.com</a>.</p>
             </div>
-          </li>
+          </details>
 
-          <li class="faq-item">
-            <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-sub-2">
+          <details class="faq-item">
+            <summary>
               I purchased Pro but the app shows the free tier. How do I restore?
               <svg class="faq-chevron" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
-            </button>
-            <div class="faq-a" id="faq-sub-2" role="region" aria-hidden="true">
-              <div class="faq-a-inner">
-                <p>Go to <strong>Settings → Subscription</strong> within Journey Tracker and tap <strong>Restore Purchases</strong>. Make sure you're signed into the same Apple ID used when you originally purchased. If the issue persists after restoring, force-quit the app and reopen it, or contact us below with your Apple ID email and we'll investigate.</p>
-              </div>
+            </summary>
+            <div class="faq-a-inner">
+              <p>Go to <strong>Settings → Subscription</strong> within Journey Tracker and tap <strong>Restore Purchases</strong>. Make sure you're signed into the same Apple ID used when you originally purchased. If the issue persists after restoring, force-quit the app and reopen it, or contact us below with your Apple ID email and we'll investigate.</p>
             </div>
-          </li>
+          </details>
 
-          <li class="faq-item">
-            <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-sub-3">
+          <details class="faq-item">
+            <summary>
               Can I use Journey Tracker Pro on multiple devices?
               <svg class="faq-chevron" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
-            </button>
-            <div class="faq-a" id="faq-sub-3" role="region" aria-hidden="true">
-              <div class="faq-a-inner">
-                <p>Yes. Your Pro subscription is tied to your Apple ID. As long as you're signed into the same Apple ID, you can use Journey Tracker Pro on any of your iPhone, iPad, or Mac devices. Use Restore Purchases on each device if needed.</p>
-              </div>
+            </summary>
+            <div class="faq-a-inner">
+              <p>Yes. Your Pro subscription is tied to your Apple ID. As long as you're signed into the same Apple ID, you can use Journey Tracker Pro on any of your iPhone, iPad, or Mac devices. Use Restore Purchases on each device if needed.</p>
             </div>
-          </li>
+          </details>
 
-          <li class="faq-item">
-            <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-sub-4">
+          <details class="faq-item">
+            <summary>
               What happens to my data if I downgrade to the free tier?
               <svg class="faq-chevron" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
-            </button>
-            <div class="faq-a" id="faq-sub-4" role="region" aria-hidden="true">
-              <div class="faq-a-inner">
-                <p>Your data is never deleted when you downgrade. All of your logged entries remain safely stored on your device and in your iCloud. You'll lose access to Pro-only features (AI lab analysis, unlimited lab sessions, etc.), but everything you've entered stays intact. If you re-subscribe, full access is instantly restored.</p>
-              </div>
+            </summary>
+            <div class="faq-a-inner">
+              <p>Your data is never deleted when you downgrade. All of your logged entries remain safely stored on your device and in your iCloud. You'll lose access to Pro-only features (AI lab analysis, unlimited lab sessions, etc.), but everything you've entered stays intact. If you re-subscribe, full access is instantly restored.</p>
             </div>
-          </li>
+          </details>
 
-        </ul>
+        </div>
       </section>
 
       <!-- ── FAQ: DATA & PRIVACY ── -->
@@ -595,63 +582,55 @@
         <p class="section-label">Data &amp; Privacy</p>
         <h2 class="section-title" id="faq-data-heading">Your data and your rights</h2>
 
-        <ul class="faq-list" role="list">
+        <div class="faq-list">
 
-          <li class="faq-item">
-            <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-data-1">
+          <details class="faq-item">
+            <summary>
               Where is my health data stored?
               <svg class="faq-chevron" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
-            </button>
-            <div class="faq-a" id="faq-data-1" role="region" aria-hidden="true">
-              <div class="faq-a-inner">
-                <p>All your health data is stored locally on your device using AES-256 encryption via iOS FileProtection. If you have iCloud enabled, data syncs to your personal iCloud account through Apple's CloudKit framework — stored in <em>your</em> iCloud, not any server we control. Journey Tracker developers cannot access your health records under any circumstances.</p>
-              </div>
+            </summary>
+            <div class="faq-a-inner">
+              <p>All your health data is stored locally on your device using AES-256 encryption via iOS FileProtection. If you have iCloud enabled, data syncs to your personal iCloud account through Apple's CloudKit framework — stored in <em>your</em> iCloud, not any server we control. Journey Tracker developers cannot access your health records under any circumstances.</p>
             </div>
-          </li>
+          </details>
 
-          <li class="faq-item">
-            <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-data-2">
+          <details class="faq-item">
+            <summary>
               What does the AI Lab Analysis feature send to the internet?
               <svg class="faq-chevron" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
-            </button>
-            <div class="faq-a" id="faq-data-2" role="region" aria-hidden="true">
-              <div class="faq-a-inner">
-                <p>When you use AI Lab Analysis (Pro), on-device automated processing strips personally identifiable information — names, dates, identifiers, contact details — before any data leaves your device. What is transmitted to Anthropic's Claude AI is: lab values as numbers, medication name and dose, approximate therapy duration, and lab trends over time.</p>
-                <p>De-identification is performed on a best-effort basis using Apple Vision OCR and on-device natural language analysis. You can review exactly what was sent after each analysis within the app. You must explicitly consent before this feature is activated, and you can disable it at any time in <strong>Settings → Privacy &amp; Security → AI Lab Analysis</strong>.</p>
-                <p>See <a href="privacy.html#ai-lab">our full Privacy Policy</a> and <a href="https://www.anthropic.com/privacy" target="_blank" rel="noopener">Anthropic's privacy policy</a> for complete details.</p>
-              </div>
+            </summary>
+            <div class="faq-a-inner">
+              <p>When you use AI Lab Analysis (Pro), on-device automated processing strips personally identifiable information — names, dates, identifiers, contact details — before any data leaves your device. What is transmitted to Anthropic's Claude AI is: lab values as numbers, medication name and dose, approximate therapy duration, and lab trends over time.</p>
+              <p>De-identification is performed on a best-effort basis using Apple Vision OCR and on-device natural language analysis. You can review exactly what was sent after each analysis within the app. You must explicitly consent before this feature is activated, and you can disable it at any time in <strong>Settings → Privacy &amp; Security → AI Lab Analysis</strong>.</p>
+              <p>See <a href="privacy.html#ai-lab">our full Privacy Policy</a> and <a href="https://www.anthropic.com/privacy" target="_blank" rel="noopener">Anthropic's privacy policy</a> for complete details.</p>
             </div>
-          </li>
+          </details>
 
-          <li class="faq-item">
-            <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-data-3">
+          <details class="faq-item">
+            <summary>
               How do I delete all my data?
               <svg class="faq-chevron" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
-            </button>
-            <div class="faq-a" id="faq-data-3" role="region" aria-hidden="true">
-              <div class="faq-a-inner">
-                <p>You can delete all Journey Tracker data in three ways:</p>
-                <p><strong>In-app:</strong> Go to <strong>Settings → Data → Clear All Data</strong> — this removes all on-device data immediately.</p>
-                <p><strong>Delete the app:</strong> Deleting Journey Tracker removes all local data from your device.</p>
-                <p><strong>iCloud:</strong> To remove cloud backups, go to <strong>iOS Settings → [Your Name] → iCloud → Manage Storage → Journey Tracker</strong> and delete the data there.</p>
-                <p>We do not retain any of your health data on our own servers — there is nothing on our end to delete.</p>
-              </div>
+            </summary>
+            <div class="faq-a-inner">
+              <p>You can delete all Journey Tracker data in three ways:</p>
+              <p><strong>In-app:</strong> Go to <strong>Settings → Data → Clear All Data</strong> — this removes all on-device data immediately.</p>
+              <p><strong>Delete the app:</strong> Deleting Journey Tracker removes all local data from your device.</p>
+              <p><strong>iCloud:</strong> To remove cloud backups, go to <strong>iOS Settings → [Your Name] → iCloud → Manage Storage → Journey Tracker</strong> and delete the data there.</p>
+              <p>We do not retain any of your health data on our own servers — there is nothing on our end to delete.</p>
             </div>
-          </li>
+          </details>
 
-          <li class="faq-item">
-            <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-data-4">
+          <details class="faq-item">
+            <summary>
               How do I submit a privacy rights request (CCPA / GDPR)?
               <svg class="faq-chevron" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
-            </button>
-            <div class="faq-a" id="faq-data-4" role="region" aria-hidden="true">
-              <div class="faq-a-inner">
-                <p>To exercise your privacy rights — including the right to access, correct, or delete personal information — contact us using the form below or email <a href="mailto:support@journeytracker.app">support@journeytracker.app</a> with the subject line <strong>"Privacy Rights Request"</strong>. Please include your Apple ID email address so we can identify your account. We will respond within 30 days as required by applicable law.</p>
-              </div>
+            </summary>
+            <div class="faq-a-inner">
+              <p>To exercise your privacy rights — including the right to access, correct, or delete personal information — contact us using the form below or email <a href="mailto:support@journeytracker.app">support@journeytracker.app</a> with the subject line <strong>"Privacy Rights Request"</strong>. Please include your Apple ID email address so we can identify your account. We will respond within 30 days as required by applicable law.</p>
             </div>
-          </li>
+          </details>
 
-        </ul>
+        </div>
       </section>
 
       <!-- ── FAQ: TECHNICAL ── -->
@@ -659,51 +638,45 @@
         <p class="section-label">Technical Help</p>
         <h2 class="section-title" id="faq-tech-heading">App &amp; sync issues</h2>
 
-        <ul class="faq-list" role="list">
+        <div class="faq-list">
 
-          <li class="faq-item">
-            <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-tech-1">
+          <details class="faq-item">
+            <summary>
               My data isn't syncing across my devices. What should I try?
               <svg class="faq-chevron" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
-            </button>
-            <div class="faq-a" id="faq-tech-1" role="region" aria-hidden="true">
-              <div class="faq-a-inner">
-                <p>Journey Tracker syncs via Apple's CloudKit. Try these steps in order:</p>
-                <p>1. Ensure all devices are signed into the <strong>same Apple ID</strong>.<br>
-                2. Go to <strong>iOS Settings → [Your Name] → iCloud → Apps Using iCloud</strong> and confirm Journey Tracker is toggled on.<br>
-                3. Check you have available iCloud storage (<strong>Settings → [Your Name] → iCloud</strong>).<br>
-                4. Force-quit and reopen Journey Tracker on both devices.<br>
-                5. If issues persist, toggle iCloud off and back on for Journey Tracker and wait a few minutes.</p>
-                <p>Still not working? Use the form below to contact us — include which devices and iOS versions you're running.</p>
-              </div>
+            </summary>
+            <div class="faq-a-inner">
+              <p>Journey Tracker syncs via Apple's CloudKit. Try these steps in order:</p>
+              <p>1. Ensure all devices are signed into the <strong>same Apple ID</strong>.<br>
+              2. Go to <strong>iOS Settings → [Your Name] → iCloud → Apps Using iCloud</strong> and confirm Journey Tracker is toggled on.<br>
+              3. Check you have available iCloud storage (<strong>Settings → [Your Name] → iCloud</strong>).<br>
+              4. Force-quit and reopen Journey Tracker on both devices.<br>
+              5. If issues persist, toggle iCloud off and back on for Journey Tracker and wait a few minutes.</p>
+              <p>Still not working? Use the form below to contact us — include which devices and iOS versions you're running.</p>
             </div>
-          </li>
+          </details>
 
-          <li class="faq-item">
-            <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-tech-2">
+          <details class="faq-item">
+            <summary>
               HealthKit isn't reading my weight data. How do I fix this?
               <svg class="faq-chevron" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
-            </button>
-            <div class="faq-a" id="faq-tech-2" role="region" aria-hidden="true">
-              <div class="faq-a-inner">
-                <p>Go to <strong>iOS Settings → Privacy &amp; Security → Health → Journey Tracker</strong> and confirm the data types you want to share are toggled on. You can also manage this inside the Apple Health app under <strong>Sharing → Apps → Journey Tracker</strong>. After granting permissions, return to Journey Tracker and pull-to-refresh on the weight log screen.</p>
-              </div>
+            </summary>
+            <div class="faq-a-inner">
+              <p>Go to <strong>iOS Settings → Privacy &amp; Security → Health → Journey Tracker</strong> and confirm the data types you want to share are toggled on. You can also manage this inside the Apple Health app under <strong>Sharing → Apps → Journey Tracker</strong>. After granting permissions, return to Journey Tracker and pull-to-refresh on the weight log screen.</p>
             </div>
-          </li>
+          </details>
 
-          <li class="faq-item">
-            <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-tech-3">
+          <details class="faq-item">
+            <summary>
               The AI lab analysis isn't working. What could be wrong?
               <svg class="faq-chevron" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
-            </button>
-            <div class="faq-a" id="faq-tech-3" role="region" aria-hidden="true">
-              <div class="faq-a-inner">
-                <p>First, confirm you have an active Pro subscription and a working internet connection. AI Lab Analysis requires consent — check <strong>Settings → Privacy &amp; Security → AI Lab Analysis</strong> to make sure it's enabled. If you recently reinstalled the app, you may need to re-consent. If the feature still fails, the issue may be a temporary service disruption — try again in a few minutes. If the problem continues, contact us with a description of what happens and which step it fails at.</p>
-              </div>
+            </summary>
+            <div class="faq-a-inner">
+              <p>First, confirm you have an active Pro subscription and a working internet connection. AI Lab Analysis requires consent — check <strong>Settings → Privacy &amp; Security → AI Lab Analysis</strong> to make sure it's enabled. If you recently reinstalled the app, you may need to re-consent. If the feature still fails, the issue may be a temporary service disruption — try again in a few minutes. If the problem continues, contact us with a description of what happens and which step it fails at.</p>
             </div>
-          </li>
+          </details>
 
-        </ul>
+        </div>
       </section>
 
       <!-- ── CONTACT FORM ── -->
@@ -882,15 +855,6 @@
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && mobileNav && mobileNav.classList.contains('open')) { closeMobileNav(); }
     });
-
-    /* ── FAQ ACCORDION ── */
-    function toggleFaq(btn) {
-      var expanded = btn.getAttribute('aria-expanded') === 'true';
-      var panelId  = btn.getAttribute('aria-controls');
-      var panel    = document.getElementById(panelId);
-      btn.setAttribute('aria-expanded', !expanded);
-      if (panel) panel.setAttribute('aria-hidden', expanded);
-    }
 
     /* ── CHARACTER COUNTER ── */
     var textarea = document.getElementById('s-message');
