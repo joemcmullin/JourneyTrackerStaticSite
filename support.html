@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="/favicon-blue.png" />
+  <link rel="apple-touch-icon" href="/logo-icon.png" />
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    script-src 'self' 'unsafe-inline';
+    style-src 'self' 'unsafe-inline';
+    img-src 'self' data:;
+    connect-src https://formspree.io;
+    form-action https://formspree.io 'self';
+    frame-ancestors 'none';
+    base-uri 'self';
+    object-src 'none';
+  " />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <title>Support Center — Journey Tracker</title>
+  <meta name="description" content="Get help with Journey Tracker — contact our support team, find answers to common questions, and manage your account or subscription." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://journeytracker.app/support.html" />
+  <meta name="theme-color" content="#1a3a2a" />
+  <link rel="dns-prefetch" href="https://formspree.io" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --forest-dark:  #1a3a2a;
+      --forest-mid:   #2d5a3d;
+      --forest-light: #4a8a5e;
+      --sunrise:      #e8792a;
+      --sunrise-light:#f5a05a;
+      --cream:        #faf7f2;
+      --white:        #ffffff;
+      --text-dark:    #1a2a1a;
+      --text-mid:     #3a4a3a;
+      --text-muted:   #585e58;
+      --border:       #e0e8df;
+    }
+    @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+    body {
+      font-family: -apple-system, system-ui, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+      background: var(--cream);
+      color: var(--text-dark);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--forest-light); text-decoration: underline; text-underline-offset: 2px; }
+    a:hover { color: var(--forest-dark); }
+    img { max-width: 100%; display: block; }
+
+    /* ── SKIP LINK ── */
+    .skip-link {
+      position: absolute; top: -100%; left: 0; z-index: 9999;
+      background: var(--forest-dark); color: #fff;
+      padding: 12px 24px; font-weight: 700; text-decoration: underline;
+    }
+    .skip-link:focus { top: 0; }
+
+    /* ── NAV ── */
+    .top-nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(250,247,242,0.95);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+      height: 60px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-brand {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 1.05rem; font-weight: 700; color: var(--forest-dark);
+      text-decoration: none;
+    }
+    .nav-brand img { width: 30px; height: 30px; border-radius: 7px; }
+    .nav-back {
+      font-size: 0.88rem; font-weight: 500; color: var(--forest-mid);
+      text-decoration: none;
+      padding: 6px 14px;
+      border: 1.5px solid var(--forest-mid);
+      border-radius: 100px;
+      transition: background 0.15s, color 0.15s;
+    }
+    .nav-back:hover { background: var(--forest-mid); color: var(--white); text-decoration: none; }
+
+    /* ── HERO ── */
+    .doc-hero {
+      background: linear-gradient(160deg, #edf5f0 0%, var(--cream) 100%);
+      padding: 64px 24px 52px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+    .doc-label {
+      display: inline-block;
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--forest-light);
+      background: rgba(74,138,94,0.1);
+      padding: 4px 12px; border-radius: 100px; margin-bottom: 16px;
+    }
+    .doc-hero h1 {
+      font-family: -apple-system, system-ui, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+      font-size: clamp(2rem, 4.5vw, 2.8rem);
+      font-weight: 700; color: var(--forest-dark); line-height: 1.15; margin-bottom: 14px;
+    }
+    .doc-hero .hero-sub {
+      font-size: 1.05rem; color: var(--text-mid); max-width: 520px; margin: 0 auto 28px;
+      line-height: 1.6;
+    }
+    .response-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(45,90,61,0.08);
+      border: 1px solid rgba(45,90,61,0.18);
+      border-radius: 100px;
+      padding: 7px 18px;
+      font-size: 0.85rem; color: var(--forest-mid); font-weight: 500;
+    }
+    .response-dot {
+      width: 8px; height: 8px; border-radius: 50%; background: #3aaa6a;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.85); }
+    }
+
+    /* ── LAYOUT ── */
+    .page-wrap {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 56px 24px 80px;
+    }
+    .section-label {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--forest-light);
+      margin-bottom: 8px;
+    }
+    .section-title {
+      font-family: -apple-system, system-ui, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+      font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+      font-weight: 700; color: var(--forest-dark); margin-bottom: 6px;
+    }
+    .section-sub {
+      font-size: 0.95rem; color: var(--text-muted); margin-bottom: 32px;
+    }
+
+    /* ── QUICK HELP CARDS ── */
+    .help-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-bottom: 64px;
+    }
+    .help-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      transition: box-shadow 0.2s, border-color 0.2s, transform 0.15s;
+      text-decoration: none;
+      display: block;
+      color: inherit;
+    }
+    .help-card:hover {
+      box-shadow: 0 8px 28px rgba(26,58,42,0.10);
+      border-color: rgba(45,90,61,0.28);
+      transform: translateY(-2px);
+      color: inherit;
+      text-decoration: none;
+    }
+    .help-card-icon {
+      font-size: 1.8rem; margin-bottom: 12px; line-height: 1;
+    }
+    .help-card h3 {
+      font-size: 0.97rem; font-weight: 700; color: var(--forest-dark); margin-bottom: 6px;
+    }
+    .help-card p {
+      font-size: 0.88rem; color: var(--text-muted); line-height: 1.55;
+    }
+    .help-card-arrow {
+      display: flex; align-items: center; gap: 4px;
+      font-size: 0.82rem; font-weight: 600; color: var(--forest-light);
+      margin-top: 12px;
+    }
+
+    /* ── FAQ ACCORDION ── */
+    .faq-section { margin-bottom: 64px; }
+    .faq-list { display: flex; flex-direction: column; gap: 0; }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-item:first-child { border-top: 1px solid var(--border); }
+    .faq-q {
+      width: 100%; text-align: left; background: none; border: none;
+      cursor: pointer; padding: 18px 0;
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 12px;
+      font-size: 0.97rem; font-weight: 600; color: var(--text-dark);
+      transition: color 0.15s;
+    }
+    .faq-q:hover { color: var(--forest-mid); }
+    .faq-chevron {
+      width: 18px; height: 18px; flex-shrink: 0;
+      stroke: var(--forest-light); transition: transform 0.25s ease;
+    }
+    .faq-q[aria-expanded="true"] .faq-chevron { transform: rotate(180deg); }
+    .faq-a {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.3s ease;
+    }
+    .faq-a[aria-hidden="false"] { max-height: 600px; }
+    .faq-a-inner {
+      padding: 0 0 18px;
+      font-size: 0.93rem; color: var(--text-mid); line-height: 1.7;
+    }
+    .faq-a-inner a { color: var(--forest-light); }
+    .faq-a-inner p { margin-bottom: 10px; }
+    .faq-a-inner p:last-child { margin-bottom: 0; }
+
+    /* ── CONTACT FORM ── */
+    .contact-section {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 40px 40px 44px;
+      margin-bottom: 48px;
+    }
+    .contact-form { display: flex; flex-direction: column; gap: 20px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group label {
+      font-size: 0.86rem; font-weight: 600; color: var(--text-dark);
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      font-family: inherit;
+      font-size: 0.93rem;
+      color: var(--text-dark);
+      background: var(--cream);
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      padding: 10px 14px;
+      transition: border-color 0.15s, box-shadow 0.15s;
+      width: 100%;
+    }
+    .form-group select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%234a8a5e' stroke-width='2.5'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      padding-right: 36px;
+      cursor: pointer;
+    }
+    .form-group textarea { resize: vertical; min-height: 130px; }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--forest-light);
+      box-shadow: 0 0 0 3px rgba(74,138,94,0.15);
+      background: var(--white);
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: #aab4aa; }
+    .form-note { font-size: 0.81rem; color: var(--text-muted); }
+    .char-counter { font-size: 0.8rem; color: var(--text-muted); text-align: right; }
+
+    .submit-row {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 12px;
+    }
+    .btn-submit {
+      background: var(--forest-mid);
+      color: var(--white);
+      font-family: inherit;
+      font-size: 0.95rem; font-weight: 700;
+      border: none; border-radius: 100px;
+      padding: 13px 32px;
+      cursor: pointer;
+      transition: background 0.15s, transform 0.1s, box-shadow 0.15s;
+    }
+    .btn-submit:hover { background: var(--forest-dark); box-shadow: 0 4px 16px rgba(26,58,42,0.22); }
+    .btn-submit:active { transform: scale(0.98); }
+    .btn-submit:disabled { opacity: 0.55; cursor: not-allowed; }
+    .privacy-note {
+      font-size: 0.8rem; color: var(--text-muted); line-height: 1.5;
+    }
+    .privacy-note a { color: var(--text-muted); }
+
+    /* Form status messages */
+    #form-status {
+      border-radius: 10px;
+      padding: 14px 18px;
+      font-size: 0.92rem;
+      font-weight: 500;
+      display: none;
+    }
+    #form-status.success {
+      background: rgba(58,170,106,0.1);
+      border: 1px solid rgba(58,170,106,0.3);
+      color: #1f6e42;
+      display: block;
+    }
+    #form-status.error {
+      background: rgba(192,57,43,0.07);
+      border: 1px solid rgba(192,57,43,0.2);
+      color: #c0392b;
+      display: block;
+    }
+
+    /* ── CONTACT ALTERNATIVES ── */
+    .alt-contact {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 64px;
+    }
+    .alt-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 22px 20px;
+      text-align: center;
+    }
+    .alt-card-icon { font-size: 1.6rem; margin-bottom: 10px; }
+    .alt-card h4 { font-size: 0.9rem; font-weight: 700; color: var(--forest-dark); margin-bottom: 5px; }
+    .alt-card p { font-size: 0.84rem; color: var(--text-muted); line-height: 1.5; }
+    .alt-card a { color: var(--forest-light); font-weight: 500; }
+
+    /* ── CALLOUT ── */
+    .callout {
+      background: rgba(45,90,61,0.06);
+      border-left: 3px solid var(--forest-mid);
+      border-radius: 0 8px 8px 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: 0.92rem; color: var(--text-mid); line-height: 1.65;
+    }
+    .callout strong { color: var(--text-dark); }
+
+    /* ── FOOTER ── */
+    .site-footer {
+      background: var(--forest-dark);
+      color: rgba(255,255,255,0.72);
+      padding: 40px 24px 32px;
+    }
+    .footer-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 40px;
+      align-items: start;
+      padding-bottom: 28px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .footer-brand { display: flex; flex-direction: column; gap: 10px; }
+    .footer-brand-name {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 1rem; font-weight: 700; color: rgba(255,255,255,0.95);
+    }
+    .footer-brand p { font-size: 0.85rem; color: rgba(255,255,255,0.55); max-width: 340px; line-height: 1.55; }
+    .footer-nav h3 {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: rgba(255,255,255,0.4);
+      margin-bottom: 12px;
+    }
+    .footer-nav ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .footer-nav a {
+      font-size: 0.88rem; color: rgba(255,255,255,0.72); text-decoration: none;
+      transition: color 0.15s;
+    }
+    .footer-nav a:hover { color: rgba(255,255,255,1); }
+    .footer-bottom {
+      max-width: 900px; margin: 0 auto; padding-top: 20px;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 8px;
+    }
+    .footer-bottom p { font-size: 0.82rem; color: rgba(255,255,255,0.4); }
+    .footer-medical-note { font-size: 0.78rem; color: rgba(255,255,255,0.32); font-style: italic; }
+
+    /* ── FOCUS / A11Y ── */
+    a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible, textarea:focus-visible {
+      outline: 3px solid var(--forest-light); outline-offset: 3px; border-radius: 4px;
+    }
+    .sr-only {
+      position: absolute; width: 1px; height: 1px;
+      padding: 0; margin: -1px; overflow: hidden;
+      clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 680px) {
+      .help-cards { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .alt-contact { grid-template-columns: 1fr; }
+      .contact-section { padding: 28px 20px 32px; }
+      .footer-inner { grid-template-columns: 1fr; gap: 24px; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; gap: 4px; }
+      .submit-row { flex-direction: column; align-items: stretch; }
+      .btn-submit { text-align: center; }
+      .page-wrap { padding: 40px 16px 64px; }
+    }
+    @media (max-width: 480px) {
+      .doc-hero { padding: 48px 16px 40px; }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- ── NAV ── -->
+  <header class="top-nav">
+    <a href="/" class="nav-brand" aria-label="Journey Tracker home">
+      <img src="/logo-icon.png" alt="" aria-hidden="true" width="30" height="30" />
+      Journey Tracker
+    </a>
+    <a href="/" class="nav-back">← Back to site</a>
+  </header>
+
+  <main id="main-content">
+
+    <!-- ── HERO ── -->
+    <div class="doc-hero">
+      <div class="doc-label">Support Center</div>
+      <h1>We're here for every step<br>of your journey.</h1>
+      <p class="hero-sub">Find quick answers, report a problem, or reach our team directly. We take every message seriously and respond personally.</p>
+      <span class="response-badge">
+        <span class="response-dot" aria-hidden="true"></span>
+        Typical response within 1–2 business days
+      </span>
+    </div>
+
+    <div class="page-wrap">
+
+      <!-- ── QUICK HELP CARDS ── -->
+      <section aria-labelledby="quick-help-heading">
+        <p class="section-label">Quick Help</p>
+        <h2 class="section-title" id="quick-help-heading">What do you need help with?</h2>
+        <p class="section-sub">Browse common topics or scroll down to contact us directly.</p>
+
+        <div class="help-cards">
+
+          <a href="#faq-sub" class="help-card" aria-label="Subscription and billing help">
+            <div class="help-card-icon" aria-hidden="true">💳</div>
+            <h3>Subscription &amp; Billing</h3>
+            <p>Managing your Pro subscription, changing plans, restoring purchases, or requesting a refund through Apple.</p>
+            <div class="help-card-arrow" aria-hidden="true">See answers →</div>
+          </a>
+
+          <a href="#faq-data" class="help-card" aria-label="Data and privacy help">
+            <div class="help-card-icon" aria-hidden="true">🔒</div>
+            <h3>Data &amp; Privacy</h3>
+            <p>How your health data is stored, what the AI Lab Analysis feature transmits, and how to exercise your privacy rights.</p>
+            <div class="help-card-arrow" aria-hidden="true">See answers →</div>
+          </a>
+
+          <a href="#faq-tech" class="help-card" aria-label="Technical support">
+            <div class="help-card-icon" aria-hidden="true">🛠</div>
+            <h3>Technical Help</h3>
+            <p>App not loading, sync issues, HealthKit not connecting, or data not appearing as expected.</p>
+            <div class="help-card-arrow" aria-hidden="true">See answers →</div>
+          </a>
+
+          <a href="#contact-form" class="help-card" aria-label="Send us a message">
+            <div class="help-card-icon" aria-hidden="true">✉️</div>
+            <h3>Contact Us Directly</h3>
+            <p>Didn't find your answer above? Send us a message and a real person on our team will respond.</p>
+            <div class="help-card-arrow" aria-hidden="true">Send a message →</div>
+          </a>
+
+        </div>
+      </section>
+
+      <!-- ── FAQ: SUBSCRIPTIONS ── -->
+      <section class="faq-section" id="faq-sub" aria-labelledby="faq-sub-heading">
+        <p class="section-label">Subscription &amp; Billing</p>
+        <h2 class="section-title" id="faq-sub-heading">Common billing questions</h2>
+
+        <ul class="faq-list" role="list">
+
+          <li class="faq-item">
+            <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-sub-1">
+              How do I cancel my Journey Tracker Pro subscription?
+              <svg class="faq-chevron" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="faq-a" id="faq-sub-1" role="region" aria-hidden="true">
+              <div class="faq-a-inner">
+                <p>All Journey Tracker subscriptions are managed directly through Apple's App Store. To cancel, go to <strong>Settings → [Your Name] → Subscriptions</strong> on your iPhone or iPad, find Journey Tracker Pro, and tap Cancel Subscription. You'll retain access until the end of your current billing period.</p>
+                <p>We are unable to cancel subscriptions or issue refunds directly — all billing is handled by Apple. For refund requests, visit <a href="https://reportaproblem.apple.com" target="_blank" rel="noopener">reportaproblem.apple.com</a>.</p>
+              </div>
+            </div>
+          </li>
+
+          <li class="faq-item">
+            <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-sub-2">
+              I purchased Pro but the app shows the free tier. How do I restore?
+              <svg class="faq-chevron" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="faq-a" id="faq-sub-2" role="region" aria-hidden="true">
+              <div class="faq-a-inner">
+                <p>Go to <strong>Settings → Subscription</strong> within Journey Tracker and tap <strong>Restore Purchases</strong>. Make sure you're signed into the same Apple ID used when you originally purchased. If the issue persists after restoring, force-quit the app and reopen it, or contact us below with your Apple ID email and we'll investigate.</p>
+              </div>
+            </div>
+          </li>
+
+          <li class="faq-item">
+            <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-sub-3">
+              Can I use Journey Tracker Pro on multiple devices?
+              <svg class="faq-chevron" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="faq-a" id="faq-sub-3" role="region" aria-hidden="true">
+              <div class="faq-a-inner">
+                <p>Yes. Your Pro subscription is tied to your Apple ID. As long as you're signed into the same Apple ID, you can use Journey Tracker Pro on any of your iPhone, iPad, or Mac devices. Use Restore Purchases on each device if needed.</p>
+              </div>
+            </div>
+          </li>
+
+          <li class="faq-item">
+            <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-sub-4">
+              What happens to my data if I downgrade to the free tier?
+              <svg class="faq-chevron" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="faq-a" id="faq-sub-4" role="region" aria-hidden="true">
+              <div class="faq-a-inner">
+                <p>Your data is never deleted when you downgrade. All of your logged entries remain safely stored on your device and in your iCloud. You'll lose access to Pro-only features (AI lab analysis, unlimited lab sessions, etc.), but everything you've entered stays intact. If you re-subscribe, full access is instantly restored.</p>
+              </div>
+            </div>
+          </li>
+
+        </ul>
+      </section>
+
+      <!-- ── FAQ: DATA & PRIVACY ── -->
+      <section class="faq-section" id="faq-data" aria-labelledby="faq-data-heading">
+        <p class="section-label">Data &amp; Privacy</p>
+        <h2 class="section-title" id="faq-data-heading">Your data and your rights</h2>
+
+        <ul class="faq-list" role="list">
+
+          <li class="faq-item">
+            <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-data-1">
+              Where is my health data stored?
+              <svg class="faq-chevron" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="faq-a" id="faq-data-1" role="region" aria-hidden="true">
+              <div class="faq-a-inner">
+                <p>All your health data is stored locally on your device using AES-256 encryption via iOS FileProtection. If you have iCloud enabled, data syncs to your personal iCloud account through Apple's CloudKit framework — stored in <em>your</em> iCloud, not any server we control. Journey Tracker developers cannot access your health records under any circumstances.</p>
+              </div>
+            </div>
+          </li>
+
+          <li class="faq-item">
+            <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-data-2">
+              What does the AI Lab Analysis feature send to the internet?
+              <svg class="faq-chevron" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="faq-a" id="faq-data-2" role="region" aria-hidden="true">
+              <div class="faq-a-inner">
+                <p>When you use AI Lab Analysis (Pro), on-device automated processing strips personally identifiable information — names, dates, identifiers, contact details — before any data leaves your device. What is transmitted to Anthropic's Claude AI is: lab values as numbers, medication name and dose, approximate therapy duration, and lab trends over time.</p>
+                <p>De-identification is performed on a best-effort basis using Apple Vision OCR and on-device natural language analysis. You can review exactly what was sent after each analysis within the app. You must explicitly consent before this feature is activated, and you can disable it at any time in <strong>Settings → Privacy &amp; Security → AI Lab Analysis</strong>.</p>
+                <p>See <a href="privacy.html#ai-lab">our full Privacy Policy</a> and <a href="https://www.anthropic.com/privacy" target="_blank" rel="noopener">Anthropic's privacy policy</a> for complete details.</p>
+              </div>
+            </div>
+          </li>
+
+          <li class="faq-item">
+            <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-data-3">
+              How do I delete all my data?
+              <svg class="faq-chevron" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="faq-a" id="faq-data-3" role="region" aria-hidden="true">
+              <div class="faq-a-inner">
+                <p>You can delete all Journey Tracker data in three ways:</p>
+                <p><strong>In-app:</strong> Go to <strong>Settings → Data → Clear All Data</strong> — this removes all on-device data immediately.</p>
+                <p><strong>Delete the app:</strong> Deleting Journey Tracker removes all local data from your device.</p>
+                <p><strong>iCloud:</strong> To remove cloud backups, go to <strong>iOS Settings → [Your Name] → iCloud → Manage Storage → Journey Tracker</strong> and delete the data there.</p>
+                <p>We do not retain any of your health data on our own servers — there is nothing on our end to delete.</p>
+              </div>
+            </div>
+          </li>
+
+          <li class="faq-item">
+            <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-data-4">
+              How do I submit a privacy rights request (CCPA / GDPR)?
+              <svg class="faq-chevron" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="faq-a" id="faq-data-4" role="region" aria-hidden="true">
+              <div class="faq-a-inner">
+                <p>To exercise your privacy rights — including the right to access, correct, or delete personal information — contact us using the form below or email <a href="mailto:support@journeytracker.app">support@journeytracker.app</a> with the subject line <strong>"Privacy Rights Request"</strong>. Please include your Apple ID email address so we can identify your account. We will respond within 30 days as required by applicable law.</p>
+              </div>
+            </div>
+          </li>
+
+        </ul>
+      </section>
+
+      <!-- ── FAQ: TECHNICAL ── -->
+      <section class="faq-section" id="faq-tech" aria-labelledby="faq-tech-heading">
+        <p class="section-label">Technical Help</p>
+        <h2 class="section-title" id="faq-tech-heading">App &amp; sync issues</h2>
+
+        <ul class="faq-list" role="list">
+
+          <li class="faq-item">
+            <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-tech-1">
+              My data isn't syncing across my devices. What should I try?
+              <svg class="faq-chevron" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="faq-a" id="faq-tech-1" role="region" aria-hidden="true">
+              <div class="faq-a-inner">
+                <p>Journey Tracker syncs via Apple's CloudKit. Try these steps in order:</p>
+                <p>1. Ensure all devices are signed into the <strong>same Apple ID</strong>.<br>
+                2. Go to <strong>iOS Settings → [Your Name] → iCloud → Apps Using iCloud</strong> and confirm Journey Tracker is toggled on.<br>
+                3. Check you have available iCloud storage (<strong>Settings → [Your Name] → iCloud</strong>).<br>
+                4. Force-quit and reopen Journey Tracker on both devices.<br>
+                5. If issues persist, toggle iCloud off and back on for Journey Tracker and wait a few minutes.</p>
+                <p>Still not working? Use the form below to contact us — include which devices and iOS versions you're running.</p>
+              </div>
+            </div>
+          </li>
+
+          <li class="faq-item">
+            <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-tech-2">
+              HealthKit isn't reading my weight data. How do I fix this?
+              <svg class="faq-chevron" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="faq-a" id="faq-tech-2" role="region" aria-hidden="true">
+              <div class="faq-a-inner">
+                <p>Go to <strong>iOS Settings → Privacy &amp; Security → Health → Journey Tracker</strong> and confirm the data types you want to share are toggled on. You can also manage this inside the Apple Health app under <strong>Sharing → Apps → Journey Tracker</strong>. After granting permissions, return to Journey Tracker and pull-to-refresh on the weight log screen.</p>
+              </div>
+            </div>
+          </li>
+
+          <li class="faq-item">
+            <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-tech-3">
+              The AI lab analysis isn't working. What could be wrong?
+              <svg class="faq-chevron" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="faq-a" id="faq-tech-3" role="region" aria-hidden="true">
+              <div class="faq-a-inner">
+                <p>First, confirm you have an active Pro subscription and a working internet connection. AI Lab Analysis requires consent — check <strong>Settings → Privacy &amp; Security → AI Lab Analysis</strong> to make sure it's enabled. If you recently reinstalled the app, you may need to re-consent. If the feature still fails, the issue may be a temporary service disruption — try again in a few minutes. If the problem continues, contact us with a description of what happens and which step it fails at.</p>
+              </div>
+            </div>
+          </li>
+
+        </ul>
+      </section>
+
+      <!-- ── CONTACT FORM ── -->
+      <section id="contact-form" aria-labelledby="contact-heading">
+        <p class="section-label">Get in Touch</p>
+        <h2 class="section-title" id="contact-heading">Send us a message</h2>
+        <p class="section-sub">We read every message and respond personally. No bots, no canned replies.</p>
+
+        <div class="contact-section">
+
+          <div id="form-status" role="alert" aria-live="polite"></div>
+
+          <form
+            id="support-form"
+            class="contact-form"
+            novalidate
+            aria-label="Support contact form"
+          >
+            <!-- Honeypot — hidden from humans, bots fill it in -->
+            <input type="text" name="_gotcha" style="display:none;" tabindex="-1" autocomplete="off" aria-hidden="true" />
+            <!-- Source tag so Formspree submissions are identifiable -->
+            <input type="hidden" name="_source" value="support-page" />
+
+            <p class="form-note">Fields marked <span aria-hidden="true">*</span><span class="sr-only">with an asterisk</span> are required.</p>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="s-name">Name <span aria-hidden="true">*</span></label>
+                <input type="text" id="s-name" name="name" placeholder="Your name"
+                  autocomplete="name" required maxlength="100"
+                  aria-required="true" aria-describedby="s-name-err" />
+                <span id="s-name-err" class="form-note" style="display:none; color:#c0392b;" role="alert"></span>
+              </div>
+              <div class="form-group">
+                <label for="s-email">Email <span aria-hidden="true">*</span></label>
+                <input type="email" id="s-email" name="_replyto" placeholder="you@example.com"
+                  autocomplete="email" required maxlength="254"
+                  pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}"
+                  aria-required="true" aria-describedby="s-email-err" />
+                <span id="s-email-err" class="form-note" style="display:none; color:#c0392b;" role="alert"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="s-topic">Topic <span aria-hidden="true">*</span></label>
+              <select id="s-topic" name="topic" required aria-required="true" aria-describedby="s-topic-err">
+                <option value="" disabled selected>Select a topic…</option>
+                <option value="Subscription / Billing">Subscription / Billing</option>
+                <option value="Restore Purchase">Restore Purchase</option>
+                <option value="Data & Privacy Rights">Data &amp; Privacy Rights</option>
+                <option value="AI Lab Analysis">AI Lab Analysis</option>
+                <option value="Bug Report">Bug Report</option>
+                <option value="App Not Working / Sync Issue">App Not Working / Sync Issue</option>
+                <option value="Feature Request">Feature Request</option>
+                <option value="Delete My Account / Data">Delete My Account / Data</option>
+                <option value="General Question">General Question</option>
+                <option value="Other">Other</option>
+              </select>
+              <span id="s-topic-err" class="form-note" style="display:none; color:#c0392b;" role="alert"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="s-device">Device &amp; iOS version <span class="form-note" style="font-weight:400;">(optional — helps us diagnose technical issues)</span></label>
+              <input type="text" id="s-device" name="device" placeholder="e.g. iPhone 15 Pro, iOS 18.3"
+                maxlength="120" autocomplete="off" />
+            </div>
+
+            <div class="form-group">
+              <label for="s-message">Message <span aria-hidden="true">*</span></label>
+              <textarea id="s-message" name="message" rows="6"
+                placeholder="Describe what's happening — the more detail, the faster we can help…"
+                required maxlength="5000"
+                aria-required="true" aria-describedby="s-message-err s-counter"></textarea>
+              <div style="display:flex; justify-content:space-between; align-items:center;">
+                <span id="s-message-err" class="form-note" style="display:none; color:#c0392b;" role="alert"></span>
+                <span id="s-counter" class="char-counter" aria-live="polite">0 / 5000</span>
+              </div>
+            </div>
+
+            <div class="submit-row">
+              <button type="submit" id="submit-btn" class="btn-submit">
+                Send Message
+              </button>
+              <p class="privacy-note">
+                Your message is submitted via <a href="https://formspree.io" target="_blank" rel="noopener">Formspree</a>.<br>
+                We do not sell or share your contact information. <a href="privacy.html">Privacy Policy</a>
+              </p>
+            </div>
+
+          </form>
+        </div>
+      </section>
+
+      <!-- ── ALTERNATIVE CONTACT ── -->
+      <section aria-labelledby="alt-contact-heading">
+        <h2 class="section-title" id="alt-contact-heading" style="margin-bottom:20px;">Other ways to reach us</h2>
+
+        <div class="alt-contact">
+
+          <div class="alt-card">
+            <div class="alt-card-icon" aria-hidden="true">📧</div>
+            <h4>Email Support</h4>
+            <p>Prefer to write directly?<br><a href="mailto:support@journeytracker.app">support@journeytracker.app</a></p>
+          </div>
+
+          <div class="alt-card">
+            <div class="alt-card-icon" aria-hidden="true">🔒</div>
+            <h4>Privacy Rights</h4>
+            <p>CCPA / GDPR requests or data deletion.<br><a href="mailto:support@journeytracker.app?subject=Privacy Rights Request">Send a privacy request</a></p>
+          </div>
+
+          <div class="alt-card">
+            <div class="alt-card-icon" aria-hidden="true">📋</div>
+            <h4>Legal Disclosures</h4>
+            <p><a href="privacy.html">Privacy Policy</a> · <a href="hipaa.html">HIPAA Disclosure</a> · <a href="terms.html">Terms of Service</a></p>
+          </div>
+
+        </div>
+
+        <div class="callout">
+          <strong>Medical emergencies:</strong> Journey Tracker is not a medical device. If you are experiencing a medical emergency, call <strong>911</strong> or your local emergency number immediately. Do not contact us for medical emergencies.
+        </div>
+      </section>
+
+    </div><!-- /.page-wrap -->
+
+  </main>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-brand-name" aria-hidden="false">
+          <span aria-hidden="true">✈️</span> Journey Tracker
+        </div>
+        <p>A private, beautiful health companion for your GLP‑1 and weight loss journey. Coming soon to the App Store for iPhone, iPad, and Mac.</p>
+      </div>
+      <nav class="footer-nav" aria-label="Legal and support links">
+        <h3>Legal &amp; Support</h3>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="hipaa.html">HIPAA Disclosure</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="support.html" aria-current="page">Support Center</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Apex Development Studio LLC. All rights reserved.</p>
+      <p class="footer-medical-note">Journey Tracker is not a medical device and does not provide medical advice. Always consult a qualified healthcare provider.</p>
+    </div>
+  </footer>
+
+  <script>
+    /* ── FAQ ACCORDION ── */
+    function toggleFaq(btn) {
+      var expanded = btn.getAttribute('aria-expanded') === 'true';
+      var panelId  = btn.getAttribute('aria-controls');
+      var panel    = document.getElementById(panelId);
+      btn.setAttribute('aria-expanded', !expanded);
+      if (panel) panel.setAttribute('aria-hidden', expanded);
+    }
+
+    /* ── CHARACTER COUNTER ── */
+    var textarea = document.getElementById('s-message');
+    var counter  = document.getElementById('s-counter');
+    if (textarea && counter) {
+      textarea.addEventListener('input', function () {
+        counter.textContent = textarea.value.length + ' / 5000';
+      });
+    }
+
+    /* ── FORM SUBMISSION ── */
+    var form       = document.getElementById('support-form');
+    var statusEl   = document.getElementById('form-status');
+    var submitBtn  = document.getElementById('submit-btn');
+    var lastSubmit = 0;
+
+    function showStatus(msg, type) {
+      statusEl.textContent = msg;
+      statusEl.className = type;
+      statusEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function clearError(id) {
+      var el = document.getElementById(id);
+      if (el) { el.textContent = ''; el.style.display = 'none'; }
+    }
+
+    function setError(id, msg) {
+      var el = document.getElementById(id);
+      if (el) { el.textContent = msg; el.style.display = 'block'; }
+    }
+
+    function validateForm() {
+      var ok = true;
+      clearError('s-name-err');
+      clearError('s-email-err');
+      clearError('s-topic-err');
+      clearError('s-message-err');
+
+      var name    = document.getElementById('s-name');
+      var email   = document.getElementById('s-email');
+      var topic   = document.getElementById('s-topic');
+      var message = document.getElementById('s-message');
+
+      if (!name.value.trim()) {
+        setError('s-name-err', 'Please enter your name.');
+        if (ok) name.focus();
+        ok = false;
+      }
+      var emailRe = /^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/;
+      if (!email.value.trim() || !emailRe.test(email.value.trim())) {
+        setError('s-email-err', 'Please enter a valid email address.');
+        if (ok) email.focus();
+        ok = false;
+      }
+      if (!topic.value) {
+        setError('s-topic-err', 'Please select a topic.');
+        if (ok) topic.focus();
+        ok = false;
+      }
+      if (!message.value.trim() || message.value.trim().length < 10) {
+        setError('s-message-err', 'Please enter a message (at least 10 characters).');
+        if (ok) message.focus();
+        ok = false;
+      }
+      return ok;
+    }
+
+    if (form) {
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        /* Rate limit: 30 seconds between submissions */
+        var now = Date.now();
+        if (now - lastSubmit < 30000) {
+          showStatus('Please wait a moment before sending another message.', 'error');
+          return;
+        }
+
+        if (!validateForm()) return;
+
+        /* Honeypot check */
+        var gotcha = form.querySelector('[name="_gotcha"]');
+        if (gotcha && gotcha.value) return;
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending…';
+        statusEl.className = '';
+        statusEl.style.display = 'none';
+
+        var data = new FormData(form);
+
+        fetch('https://formspree.io/f/maqpybrb', {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        })
+        .then(function (res) {
+          if (res.ok) {
+            lastSubmit = Date.now();
+            showStatus('✓ Message sent! We'll get back to you within 1–2 business days.', 'success');
+            form.reset();
+            if (counter) counter.textContent = '0 / 5000';
+            submitBtn.textContent = 'Message Sent';
+          } else {
+            return res.json().then(function (body) {
+              throw new Error(body.error || 'Submission failed.');
+            });
+          }
+        })
+        .catch(function () {
+          showStatus('Something went wrong. Please try again or email support@journeytracker.app directly.', 'error');
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Send Message';
+        });
+      });
+    }
+  </script>
+
+</body>
+</html>
