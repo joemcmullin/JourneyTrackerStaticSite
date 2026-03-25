@@ -34,6 +34,9 @@
       --text-mid:     #3a4a3a;
       --text-muted:   #585e58;
       --border:       #e0e8df;
+      --nav-height: 64px;
+      --max-w: 1024px;
+      --sunrise-light: #f59c55;
     }
     @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
     body {
@@ -43,32 +46,48 @@
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
     }
-    a { color: var(--forest-light); text-decoration: underline; text-underline-offset: 2px; }
-    a:hover { color: var(--forest-dark); }
+    a { color: inherit; text-decoration: none; }
     img { max-width: 100%; display: block; }
 
-    .top-nav {
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+
+    /* NAV */
+    #top-nav {
       position: sticky; top: 0; z-index: 100;
-      background: rgba(250,247,242,0.95);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      height: var(--nav-height);
+      background: rgba(250,247,242,0.92);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
       border-bottom: 1px solid var(--border);
-      padding: 0 24px; height: 60px;
-      display: flex; align-items: center; justify-content: space-between;
     }
-    .nav-brand {
-      display: flex; align-items: center; gap: 10px;
-      font-size: 1.05rem; font-weight: 700; color: var(--forest-dark);
-      text-decoration: none;
-    }
-    .nav-brand img { width: 30px; height: 30px; border-radius: 7px; }
-    .nav-back {
-      font-size: 0.88rem; font-weight: 500; color: var(--forest-mid);
-      text-decoration: none; padding: 6px 14px;
-      border: 1.5px solid var(--forest-mid); border-radius: 100px;
-      transition: background 0.15s, color 0.15s;
-    }
-    .nav-back:hover { background: var(--forest-mid); color: var(--white); text-decoration: none; }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 100%; }
+    .nav-logo { font-size: 1.15rem; font-weight: 700; color: var(--forest-dark); display: flex; align-items: center; gap: 8px; }
+    .nav-logo-icon { width: 48px; height: 48px; border-radius: 10px; object-fit: cover; display: block; flex-shrink: 0; }
+    .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
+    .nav-links a { display: block; padding: 6px 12px; font-size: 0.88rem; font-weight: 500; color: var(--text-mid); border-radius: 6px; transition: color 0.15s, background 0.15s; }
+    .nav-links a:hover { color: var(--forest-dark); background: rgba(74,138,94,0.1); }
+    .nav-links a[aria-current="page"] { color: var(--forest-dark); font-weight: 700; }
+    .nav-cta { margin-left: 8px; }
+    .nav-cta a { background: linear-gradient(135deg, var(--sunrise), var(--sunrise-light)); color: var(--white) !important; padding: 8px 18px !important; border-radius: 100px !important; font-weight: 600 !important; font-size: 0.82rem !important; }
+    .nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+    .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--forest-dark); border-radius: 2px; transition: transform 0.2s, opacity 0.2s; }
+    .mobile-nav { display: none; position: fixed; top: var(--nav-height); left: 0; right: 0; background: var(--cream); border-bottom: 1px solid var(--border); padding: 16px 24px 24px; z-index: 99; flex-direction: column; gap: 4px; }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a { padding: 12px 16px; font-size: 1rem; font-weight: 500; color: var(--text-mid); border-radius: 8px; }
+    .mobile-nav a:hover { background: rgba(74,138,94,0.1); color: var(--forest-dark); }
+
+    /* FOOTER */
+    footer { background: var(--forest-dark); color: rgba(255,255,255,0.7); padding: 48px 0 32px; }
+    .footer-inner { display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: start; padding-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 24px; }
+    .footer-brand p { font-size: 0.88rem; color: rgba(255,255,255,0.72); margin-top: 8px; max-width: 380px; line-height: 1.6; }
+    .footer-nav h3 { color: rgba(255,255,255,0.72); font-size: 0.82rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 14px; }
+    .footer-nav ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .footer-nav a { font-size: 0.9rem; color: rgba(255,255,255,0.82); transition: color 0.15s; }
+    .footer-nav a:hover { color: var(--white); }
+    .footer-nav a[aria-current="page"] { color: var(--white); font-weight: 600; }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .footer-bottom p { font-size: 0.85rem; color: rgba(255,255,255,0.65); }
+    .footer-medical-note { font-size: 0.85rem; color: rgba(255,255,255,0.60); font-style: italic; }
 
     .doc-hero {
       background: linear-gradient(160deg, #f0f7f2, var(--cream));
@@ -119,14 +138,6 @@
       margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--border);
     }
 
-    .site-footer {
-      background: var(--forest-dark); color: rgba(255,255,255,0.72);
-      padding: 32px 24px; text-align: center;
-    }
-    .site-footer p { font-size: 0.85rem; margin-bottom: 8px; color: rgba(255,255,255,0.72); }
-    .site-footer a { color: rgba(255,255,255,0.82); }
-    .site-footer a:hover { color: #fff; }
-
     .skip-link {
       position: absolute; top: -100%; left: 0; z-index: 9999;
       background: var(--forest-dark); color: #fff;
@@ -138,6 +149,12 @@
       outline: 3px solid var(--forest-light); outline-offset: 3px; border-radius: 4px;
     }
 
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-toggle { display: flex; }
+      .footer-inner { grid-template-columns: 1fr; gap: 24px; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; gap: 4px; }
+    }
     @media (max-width: 600px) {
       .doc-content { padding: 36px 16px 60px; }
       .doc-hero { padding: 40px 16px 28px; }
@@ -148,12 +165,36 @@
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <header class="top-nav">
-    <a href="/" class="nav-brand" aria-label="Journey Tracker home">
-      <img src="/logo-icon.png" alt="" aria-hidden="true" width="30" height="30" />
-      Journey Tracker
-    </a>
-    <a href="/" class="nav-back">← Back to site</a>
+  <header id="top-nav">
+    <nav class="container nav-inner" aria-label="Primary navigation">
+      <a href="/" class="nav-logo">
+        <img src="/logo-icon.png" class="nav-logo-icon" alt="" aria-hidden="true" width="48" height="48" />
+        Journey Tracker
+      </a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/#walkthrough">Features</a></li>
+        <li><a href="/#faqs">FAQs</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="support.html">Support</a></li>
+        <li><a href="/#documentation">Docs</a></li>
+        <li class="nav-cta"><a href="/#contact">Notify Me</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileNav">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </button>
+    </nav>
+    <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation" aria-hidden="true">
+      <a href="/" onclick="closeMobileNav()">Home</a>
+      <a href="/#walkthrough" onclick="closeMobileNav()">Features</a>
+      <a href="/#faqs" onclick="closeMobileNav()">FAQs</a>
+      <a href="privacy.html" onclick="closeMobileNav()">Privacy Policy</a>
+      <a href="support.html" onclick="closeMobileNav()">Support Center</a>
+      <a href="/#documentation" onclick="closeMobileNav()">Docs</a>
+      <a href="/#contact" onclick="closeMobileNav()">Notify Me</a>
+    </nav>
   </header>
 
   <main id="main-content">
@@ -311,11 +352,54 @@
 
   </main>
 
-  <footer class="site-footer">
-    <p>© 2026 Apex Development Studio LLC. All rights reserved.</p>
-    <p><a href="/">journeytracker.app</a> &nbsp;·&nbsp; <a href="support.html">Support Center</a> &nbsp;·&nbsp; <a href="mailto:support@journeytracker.app">support@journeytracker.app</a></p>
-    <p style="margin-top:12px; font-style:italic; font-size:0.82rem; color:rgba(255,255,255,0.5);">Journey Tracker is not a medical device and does not provide medical advice. Always consult a qualified healthcare provider.</p>
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <div class="nav-logo" style="color:#fff;">
+            <span class="nav-logo-icon" aria-hidden="true">✈️</span>
+            Journey Tracker
+          </div>
+          <p>A private, beautiful health companion for your GLP‑1 and weight loss journey. Coming soon to the App Store for iPhone, iPad, and Mac.</p>
+        </div>
+        <nav class="footer-nav" aria-label="Legal and support links">
+          <h3>Legal &amp; Support</h3>
+          <ul>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="hipaa.html">HIPAA Disclosure</a></li>
+            <li><a href="terms.html" aria-current="page">Terms of Service</a></li>
+            <li><a href="support.html">Support Center</a></li>
+            <li><a href="/#faqs">FAQs</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Apex Development Studio LLC. All rights reserved.</p>
+        <p class="footer-medical-note">Journey Tracker is not a medical device and does not provide medical advice. Always consult a qualified healthcare provider.</p>
+      </div>
+    </div>
   </footer>
 
+  <script>
+    var navToggle = document.getElementById('navToggle');
+    var mobileNav = document.getElementById('mobileNav');
+    if (navToggle && mobileNav) {
+      navToggle.addEventListener('click', function () {
+        var isOpen = mobileNav.classList.toggle('open');
+        navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        mobileNav.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+      });
+    }
+    function closeMobileNav() {
+      if (mobileNav) {
+        mobileNav.classList.remove('open');
+        mobileNav.setAttribute('aria-hidden', 'true');
+        if (navToggle) { navToggle.setAttribute('aria-expanded', 'false'); navToggle.focus(); }
+      }
+    }
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && mobileNav && mobileNav.classList.contains('open')) { closeMobileNav(); }
+    });
+  </script>
 </body>
 </html>
