@@ -290,7 +290,8 @@
       <p>Your health data is used solely to operate the features of Journey Tracker — displaying your health trends, generating charts, tracking your GLP-1 progress, and providing the features you use.</p>
 
       <h4>3.2 AI-Powered Lab Analysis (Pro Feature)</h4>
-      <p>If you subscribe to Journey Tracker Pro and use the AI Lab Analysis feature, a processed version of your laboratory results and medication information is transmitted to Google Gemini AI to generate a personalized interpretation of your results. Before any data leaves your device, automated on-device processing strips personally identifiable information.</p>
+      <p>If you subscribe to Journey Tracker Pro and use the AI Lab Analysis feature, a de-identified snapshot of your laboratory results and medication information is transmitted to the <strong>Google Gemini API</strong>, operated by Google LLC, to generate a personalized interpretation of your results. Before any data leaves your device, automated on-device processing strips personally identifiable information.</p>
+      <p><strong>Your data is never used to train AI models.</strong> Journey Tracker operates on a paid Google AI billing account (Tier 1). Under Google's Gemini API Terms of Service, data submitted through paid-tier accounts is not used to train or improve Google's AI models.</p>
       <p><strong>Before this feature is activated, you will be shown a separate consent screen</strong> explaining exactly what data is transmitted and giving you the opportunity to consent or decline.</p>
       <p><strong>What is transmitted to the AI:</strong></p>
       <ul>
@@ -345,8 +346,13 @@
       <h4>5.1 Apple</h4>
       <p>We use Apple's platform services (HealthKit, CloudKit, Sign in with Apple, StoreKit) to operate Journey Tracker. Your use of these services is subject to Apple's Privacy Policy (apple.com/privacy).</p>
 
-      <h4>5.2 Google (AI Analysis Feature Only)</h4>
-      <p>If you consent to use the AI Lab Analysis feature, processed health data is transmitted to Google LLC for processing. Personal information is stripped using automated on-device processing as described in Section 3.2. De-identification is performed on a best-effort basis — while we make every effort to remove all personal identifiers, no automated system is perfect. Gemini API terms are available at <a href="https://ai.google.dev/gemini-api/terms" target="_blank" rel="noopener">ai.google.dev/gemini-api/terms</a>, and Google's privacy policy at <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a>.</p>
+      <h4>5.2 Google LLC — Gemini API (AI Analysis Feature Only)</h4>
+      <p>If you consent to use the AI Lab Analysis feature, a de-identified snapshot of your health data is transmitted to Google LLC via the <strong>Google Gemini API</strong> for processing. Personal information is stripped using automated on-device processing as described in Section 3.2.</p>
+      <p><strong>Paid-tier account — your data is not used to train AI models.</strong> Journey Tracker operates on a paid Google AI billing account (Tier 1). Under Google's Gemini API Terms of Service, data submitted through paid-tier accounts is not used to train or improve Google's AI models.</p>
+      <p><strong>Data Processing Addendum.</strong> Your data is processed under Google's Data Processing Addendum, which governs how Google handles personal data submitted through the API.</p>
+      <p><strong>Log retention.</strong> Google retains API request logs only temporarily for security and abuse-prevention purposes — not for model training or any other purpose.</p>
+      <p><strong>Results storage.</strong> AI analysis results are stored exclusively on your device and in your personal iCloud account. They are never stored on Journey Tracker's servers.</p>
+      <p>For full details on how Google processes API data, see the <a href="https://ai.google.dev/gemini-api/terms" target="_blank" rel="noopener">Gemini API Terms of Service</a> and <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's privacy policy</a>.</p>
 
       <h4>5.3 RevenueCat (Subscription Management)</h4>
       <p>Subscription management is handled by RevenueCat. RevenueCat receives subscription status information to verify your Pro subscription. RevenueCat's privacy policy is available at revenuecat.com/privacy.</p>
