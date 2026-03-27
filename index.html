@@ -2048,24 +2048,30 @@
       display: flex;
     }
 
+    .faq-toggle-wrap {
+      text-align: center;
+      padding: 44px 0;
+    }
+
     .faq-more-btn {
-      display: block;
-      margin: 16px auto 0;
+      display: inline-block;
       background: none;
       border: 1.5px solid var(--forest-mid);
       color: var(--forest-mid);
       border-radius: 100px;
-      padding: 10px 24px;
+      padding: 13px 36px;
       font-size: 0.9rem;
       font-weight: 600;
       cursor: pointer;
       font-family: inherit;
-      transition: background 0.15s, color 0.15s;
+      letter-spacing: 0.01em;
+      transition: background 0.18s, color 0.18s, border-color 0.18s;
     }
 
     .faq-more-btn:hover {
       background: var(--forest-mid);
       color: var(--white);
+      border-color: var(--forest-mid);
     }
 
     .faq-support-line {
@@ -3044,8 +3050,11 @@
           </div>
         </div>
 
-        <!-- Show-more button: reveals FAQ items 8-10.
-             aria-expanded toggled by toggleFaqMore() — WCAG 4.1.2 -->
+      </div><!-- /.faq-list (primary 7 items) -->
+
+      <!-- Show-more button: sits between the two FAQ lists for clean spacing.
+           aria-expanded toggled by toggleFaqMore() — WCAG 4.1.2 -->
+      <div class="faq-toggle-wrap">
         <button
           class="faq-more-btn"
           id="faq-more-btn"
@@ -3055,8 +3064,7 @@
         >
           Show more questions
         </button>
-
-      </div><!-- /.faq-list (primary 7 items) -->
+      </div>
 
       <!-- Secondary FAQ items — hidden by default.
            aria-hidden toggled in sync with show-more button — WCAG 4.1.2 -->
