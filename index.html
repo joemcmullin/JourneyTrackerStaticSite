@@ -3096,10 +3096,26 @@
 
         <div class="faq-item">
           <button id="faq-btn-10" class="faq-q" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-panel-10">
-            How do I contact support?
+            My data isn't showing up on my other device yet. Is something wrong with sync?
             <svg class="faq-chevron" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="faq-a" id="faq-panel-10" role="region" aria-labelledby="faq-btn-10">
+            <div class="faq-a-inner">
+              Almost certainly not. Sync between devices runs through two separate Apple systems: iCloud (which carries Journey Tracker's own records) and Apple Health (which carries HealthKit data). Both operate on Apple's infrastructure on their own schedule—delays of a few seconds up to several minutes are completely normal right after logging a new entry. This is not a Journey Tracker issue, and it is not something the app can speed up.
+              <br><br>
+              The fastest way to check: open the <strong>Apple Health app</strong> on the receiving device and look for your entry there. If it's already in Apple Health, Journey Tracker will reflect it shortly—try closing and reopening the app to prompt a fresh read. If the entry isn't in Apple Health yet, the delay is happening upstream of Journey Tracker entirely, and it will arrive once Apple's sync catches up.
+              <br><br>
+              If sync seems consistently slow or stuck, confirm that both devices are signed into the same Apple ID, iCloud Drive is enabled on both (Settings → [Your Name] → iCloud → iCloud Drive), and Journey Tracker has HealthKit permission on each device (Settings → Privacy &amp; Security → Health → Journey Tracker). Low Power Mode can also throttle background sync, so it's worth checking that as well.
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button id="faq-btn-11" class="faq-q" onclick="toggleFaq(this)" aria-expanded="false" aria-controls="faq-panel-11">
+            How do I contact support?
+            <svg class="faq-chevron" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-a" id="faq-panel-11" role="region" aria-labelledby="faq-btn-11">
             <div class="faq-a-inner">
               You can reach the support team by emailing <a href="mailto:support@journeytracker.app" style="color: var(--forest-light);">support@journeytracker.app</a> or by using the contact form at the bottom of this page. For privacy rights requests, please use the subject line "Privacy Rights Request." We aim to respond to all inquiries within 2 business days.
             </div>
