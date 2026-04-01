@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="/favicon-blue.png" />
+  <link rel="apple-touch-icon" href="/logo-icon.png" />
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    script-src 'self' 'unsafe-inline';
+    style-src 'self' 'unsafe-inline';
+    img-src 'self' data:;
+    form-action 'none';
+    frame-ancestors 'none';
+    base-uri 'self';
+    object-src 'none';
+  " />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <title>Accessibility — Journey Tracker</title>
+  <meta name="description" content="Journey Tracker is built for everyone. Learn how VoiceOver, Dynamic Type, Audio Graphs, Voice Control, and more make GLP-1 tracking accessible to all." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://journeytracker.app/accessibility.html" />
+  <meta name="theme-color" content="#1a3a2a" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --forest-dark:   #1a3a2a;
+      --forest-mid:    #2d5a3d;
+      --forest-light:  #4a8a5e;
+      --sunrise:       #e8792a;
+      --sunrise-light: #f59c55;
+      --cream:         #faf7f2;
+      --white:         #ffffff;
+      --text-dark:     #1a2a1a;
+      --text-mid:      #3a4a3a;
+      --text-muted:    #585e58;
+      --border:        #e0e8df;
+      --nav-height:    64px;
+      --max-w:         1024px;
+    }
+    @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+    body {
+      font-family: -apple-system, system-ui, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+      background: var(--cream);
+      color: var(--text-dark);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+
+    /* ── SKIP LINK ── */
+    .skip-link {
+      position: absolute; top: -100%; left: 0; z-index: 9999;
+      background: var(--forest-dark); color: #fff;
+      padding: 12px 24px; font-weight: 700; text-decoration: underline;
+    }
+    .skip-link:focus { top: 0; }
+
+    /* ── NAV ── */
+    #top-nav {
+      position: sticky; top: 0; z-index: 100;
+      height: var(--nav-height);
+      background: rgba(250,247,242,0.92);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between; height: 100%;
+    }
+    .nav-logo {
+      font-size: 1.15rem; font-weight: 700; color: var(--forest-dark);
+      display: flex; align-items: center; gap: 8px;
+    }
+    .nav-logo-icon {
+      width: 48px; height: 48px; border-radius: 10px;
+      object-fit: cover; display: block; flex-shrink: 0;
+    }
+    .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
+    .nav-links a {
+      display: block; padding: 6px 12px; font-size: 0.88rem; font-weight: 500;
+      color: var(--text-mid); border-radius: 6px; transition: color 0.15s, background 0.15s;
+    }
+    .nav-links a:hover { color: var(--forest-dark); background: rgba(74,138,94,0.1); }
+    .nav-links a[aria-current="page"] { color: var(--forest-dark); font-weight: 700; }
+    .nav-cta { margin-left: 8px; }
+    .nav-cta a {
+      background: linear-gradient(135deg, var(--sunrise), var(--sunrise-light));
+      color: var(--white) !important; padding: 8px 18px !important;
+      border-radius: 100px !important; font-weight: 600 !important;
+      font-size: 0.82rem !important;
+    }
+    .nav-toggle {
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 4px;
+    }
+    .nav-toggle span {
+      display: block; width: 24px; height: 2px;
+      background: var(--forest-dark); border-radius: 2px;
+      transition: transform 0.2s, opacity 0.2s;
+    }
+    .mobile-nav {
+      display: none; position: fixed; top: var(--nav-height); left: 0; right: 0;
+      background: var(--cream); border-bottom: 1px solid var(--border);
+      padding: 16px 24px 24px; z-index: 99; flex-direction: column; gap: 4px;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+      padding: 12px 16px; font-size: 1rem; font-weight: 500;
+      color: var(--text-mid); border-radius: 8px;
+    }
+    .mobile-nav a:hover { background: rgba(74,138,94,0.1); color: var(--forest-dark); }
+    .mobile-nav a[aria-current="page"] { color: var(--forest-dark); font-weight: 700; }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-toggle { display: flex; }
+    }
+
+    /* ── HERO ── */
+    .a11y-hero {
+      background: linear-gradient(160deg, #e8f2ec 0%, var(--cream) 60%);
+      padding: 72px 24px 60px;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+    .a11y-hero::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 320px; height: 320px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(74,138,94,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .a11y-hero::after {
+      content: '';
+      position: absolute;
+      bottom: -60px; left: -60px;
+      width: 240px; height: 240px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(232,121,42,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-label {
+      display: inline-block;
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--forest-light);
+      background: rgba(74,138,94,0.1);
+      padding: 4px 14px; border-radius: 100px; margin-bottom: 20px;
+    }
+    .a11y-hero h1 {
+      font-family: -apple-system, system-ui, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700; color: var(--forest-dark); line-height: 1.12;
+      margin-bottom: 18px;
+    }
+    .a11y-hero .hero-sub {
+      font-size: 1.1rem; color: var(--text-mid);
+      max-width: 560px; margin: 0 auto 40px; line-height: 1.65;
+    }
+
+    /* Universal accessibility SVG graphic */
+    .a11y-graphic {
+      display: flex; justify-content: center; margin-bottom: 12px;
+    }
+
+    /* ── STANDARDS STRIP ── */
+    .standards-strip {
+      background: var(--forest-dark);
+      padding: 28px 24px;
+    }
+    .standards-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .standard-badge {
+      display: flex; align-items: center; gap: 12px;
+      color: rgba(255,255,255,0.92);
+    }
+    .standard-badge-icon {
+      width: 40px; height: 40px; flex-shrink: 0;
+    }
+    .standard-badge-text strong {
+      display: block; font-size: 0.95rem; font-weight: 700; color: #fff;
+    }
+    .standard-badge-text span {
+      font-size: 0.8rem; color: rgba(255,255,255,0.65);
+    }
+    .standards-divider {
+      width: 1px; height: 40px; background: rgba(255,255,255,0.15);
+    }
+    @media (max-width: 600px) { .standards-divider { display: none; } }
+
+    /* ── FEATURE GRID ── */
+    .features-section {
+      padding: 72px 24px 80px;
+    }
+    .features-intro {
+      text-align: center;
+      max-width: 620px;
+      margin: 0 auto 56px;
+    }
+    .section-label {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--forest-light);
+      margin-bottom: 10px;
+    }
+    .features-intro h2 {
+      font-family: -apple-system, system-ui, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 700; color: var(--forest-dark); margin-bottom: 12px; line-height: 1.2;
+    }
+    .features-intro p {
+      font-size: 1rem; color: var(--text-muted); line-height: 1.6;
+    }
+    .a11y-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+    @media (max-width: 900px) { .a11y-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px) { .a11y-grid { grid-template-columns: 1fr; } }
+
+    .a11y-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 28px 24px;
+      transition: box-shadow 0.2s, border-color 0.2s, transform 0.15s;
+    }
+    .a11y-card:hover {
+      box-shadow: 0 10px 32px rgba(26,58,42,0.10);
+      border-color: rgba(45,90,61,0.25);
+      transform: translateY(-3px);
+    }
+    .a11y-card-icon {
+      width: 48px; height: 48px;
+      background: linear-gradient(135deg, rgba(74,138,94,0.12), rgba(45,90,61,0.06));
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 16px;
+      flex-shrink: 0;
+    }
+    .a11y-card-icon svg { width: 26px; height: 26px; }
+    .a11y-card h3 {
+      font-size: 0.97rem; font-weight: 700; color: var(--forest-dark);
+      margin-bottom: 8px; line-height: 1.3;
+    }
+    .a11y-card p {
+      font-size: 0.875rem; color: var(--text-muted); line-height: 1.6;
+    }
+
+    /* ── HIGHLIGHT CALLOUT ── */
+    .a11y-callout {
+      background: linear-gradient(135deg, var(--forest-dark) 0%, var(--forest-mid) 100%);
+      border-radius: 24px;
+      padding: 52px 40px;
+      text-align: center;
+      max-width: var(--max-w);
+      margin: 0 auto 80px;
+    }
+    .a11y-callout-icon {
+      display: flex; justify-content: center; margin-bottom: 20px;
+    }
+    .a11y-callout h2 {
+      font-family: -apple-system, system-ui, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+      font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+      font-weight: 700; color: #fff; margin-bottom: 14px; line-height: 1.25;
+    }
+    .a11y-callout p {
+      font-size: 1rem; color: rgba(255,255,255,0.78);
+      max-width: 540px; margin: 0 auto 28px; line-height: 1.65;
+    }
+    .a11y-callout-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.22);
+      color: #fff; border-radius: 100px;
+      padding: 12px 28px; font-size: 0.9rem; font-weight: 600;
+      transition: background 0.18s;
+    }
+    .a11y-callout-link:hover { background: rgba(255,255,255,0.2); }
+    @media (max-width: 600px) { .a11y-callout { padding: 40px 24px; border-radius: 16px; } }
+
+    /* ── IOS SETTINGS GUIDE ── */
+    .settings-section {
+      background: linear-gradient(160deg, #edf5f0 0%, var(--cream) 100%);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 64px 24px;
+    }
+    .settings-inner {
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+    .settings-intro {
+      text-align: center; margin-bottom: 44px;
+    }
+    .settings-intro h2 {
+      font-family: -apple-system, system-ui, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+      font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+      font-weight: 700; color: var(--forest-dark); margin-bottom: 10px;
+    }
+    .settings-intro p {
+      font-size: 0.97rem; color: var(--text-muted); max-width: 520px; margin: 0 auto;
+    }
+    .settings-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+    @media (max-width: 640px) { .settings-grid { grid-template-columns: 1fr; } }
+    .settings-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 22px 24px;
+      display: flex; gap: 16px; align-items: flex-start;
+    }
+    .settings-card-icon {
+      font-size: 1.5rem; flex-shrink: 0; line-height: 1; margin-top: 2px;
+    }
+    .settings-card h4 {
+      font-size: 0.9rem; font-weight: 700; color: var(--forest-dark);
+      margin-bottom: 4px;
+    }
+    .settings-card p {
+      font-size: 0.83rem; color: var(--text-muted); line-height: 1.55;
+    }
+    .settings-path {
+      display: inline-block;
+      font-size: 0.78rem; font-weight: 600;
+      color: var(--forest-mid);
+      background: rgba(45,90,61,0.08);
+      border-radius: 6px;
+      padding: 2px 8px; margin-top: 6px;
+      font-family: "SF Mono", "Fira Code", monospace;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--forest-dark);
+      color: rgba(255,255,255,0.75);
+      padding: 48px 0 32px;
+    }
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 40px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      margin-bottom: 24px;
+    }
+    @media (max-width: 640px) { .footer-inner { grid-template-columns: 1fr; } }
+    .footer-brand p {
+      font-size: 0.88rem; line-height: 1.6; margin-top: 10px;
+      max-width: 300px;
+    }
+    .footer-nav h3 {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: rgba(255,255,255,0.45);
+      margin-bottom: 14px;
+    }
+    .footer-nav ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .footer-nav a {
+      font-size: 0.88rem; color: rgba(255,255,255,0.7);
+      transition: color 0.15s;
+    }
+    .footer-nav a:hover { color: #fff; }
+    .footer-nav a[aria-current="page"] { color: #fff; font-weight: 600; }
+    .footer-bottom { font-size: 0.82rem; color: rgba(255,255,255,0.45); }
+    .footer-bottom p + p { margin-top: 4px; }
+    .footer-medical-note { font-size: 0.78rem; color: rgba(255,255,255,0.35); font-style: italic; }
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <!-- ── NAV ── -->
+  <header id="top-nav">
+    <nav class="container nav-inner" aria-label="Primary navigation">
+      <a href="/" class="nav-logo">
+        <img src="/logo-icon.png" class="nav-logo-icon" alt="" aria-hidden="true" width="48" height="48" />
+        Journey Tracker
+      </a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/#walkthrough">Features</a></li>
+        <li><a href="/#faqs">FAQs</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="support.html">Support</a></li>
+        <li><a href="accessibility.html" aria-current="page">Accessibility</a></li>
+        <li><a href="/#documentation">Docs</a></li>
+        <li class="nav-cta"><a href="/#contact">Notify Me</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileNav">
+        <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+      </button>
+    </nav>
+    <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation" aria-hidden="true">
+      <a href="/" onclick="closeMobileNav()">Home</a>
+      <a href="/#walkthrough" onclick="closeMobileNav()">Features</a>
+      <a href="/#faqs" onclick="closeMobileNav()">FAQs</a>
+      <a href="privacy.html" onclick="closeMobileNav()">Privacy Policy</a>
+      <a href="support.html" onclick="closeMobileNav()">Support Center</a>
+      <a href="accessibility.html" onclick="closeMobileNav()" aria-current="page">Accessibility</a>
+      <a href="/#documentation" onclick="closeMobileNav()">Docs</a>
+      <a href="/#contact" onclick="closeMobileNav()" style="color:var(--sunrise);font-weight:700;">Notify Me at Launch</a>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <!-- ── HERO ── -->
+    <section class="a11y-hero" aria-labelledby="hero-heading">
+      <div class="container">
+        <p class="hero-label" aria-hidden="true">Accessibility</p>
+        <div class="a11y-graphic" aria-hidden="true">
+          <svg width="96" height="96" viewBox="0 0 96 96" fill="none" aria-hidden="true" focusable="false">
+            <!-- Outer ring -->
+            <circle cx="48" cy="48" r="46" stroke="#2d5a3d" stroke-width="2.5" fill="rgba(74,138,94,0.07)"/>
+            <!-- Person figure -->
+            <circle cx="48" cy="24" r="8" fill="#2d5a3d"/>
+            <!-- Arms outstretched -->
+            <path d="M20 44 Q34 38 48 42 Q62 38 76 44" stroke="#2d5a3d" stroke-width="4" stroke-linecap="round" fill="none"/>
+            <!-- Body -->
+            <path d="M48 42 L48 64" stroke="#2d5a3d" stroke-width="4" stroke-linecap="round"/>
+            <!-- Legs spread -->
+            <path d="M48 64 L34 80" stroke="#2d5a3d" stroke-width="4" stroke-linecap="round"/>
+            <path d="M48 64 L62 80" stroke="#2d5a3d" stroke-width="4" stroke-linecap="round"/>
+            <!-- Sunrise arc accent -->
+            <path d="M30 48 Q48 32 66 48" stroke="#e8792a" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.55"/>
+          </svg>
+        </div>
+        <h1 id="hero-heading">Built for everyone,<br>from the first line of code.</h1>
+        <p class="hero-sub">Journey Tracker is designed so every person tracking their GLP-1 therapy can use every feature, regardless of ability. Accessibility is not an afterthought — it is part of every screen from day one.</p>
+      </div>
+    </section>
+
+    <!-- ── STANDARDS STRIP ── -->
+    <div class="standards-strip" role="region" aria-label="Accessibility standards">
+      <div class="standards-inner">
+        <div class="standard-badge">
+          <svg class="standard-badge-icon" viewBox="0 0 40 40" fill="none" aria-hidden="true" focusable="false">
+            <circle cx="20" cy="20" r="18" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" fill="rgba(255,255,255,0.08)"/>
+            <path d="M12 20l5 5 11-11" stroke="#6fcf97" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <div class="standard-badge-text">
+            <strong>WCAG 2.1 AA</strong>
+            <span>Web Content Accessibility Guidelines</span>
+          </div>
+        </div>
+        <div class="standards-divider" aria-hidden="true"></div>
+        <div class="standard-badge">
+          <svg class="standard-badge-icon" viewBox="0 0 40 40" fill="none" aria-hidden="true" focusable="false">
+            <rect x="4" y="8" width="32" height="24" rx="4" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" fill="rgba(255,255,255,0.08)"/>
+            <path d="M12 20l5 5 11-11" stroke="#6fcf97" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <div class="standard-badge-text">
+            <strong>Section 508</strong>
+            <span>U.S. Federal Accessibility Standard</span>
+          </div>
+        </div>
+        <div class="standards-divider" aria-hidden="true"></div>
+        <div class="standard-badge">
+          <svg class="standard-badge-icon" viewBox="0 0 40 40" fill="none" aria-hidden="true" focusable="false">
+            <path d="M20 4 L24 14 L36 14 L26 21 L30 32 L20 25 L10 32 L14 21 L4 14 L16 14 Z" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" fill="rgba(255,255,255,0.08)"/>
+            <path d="M20 9 L22.5 16 L30 16 L24 20.5 L26.5 28 L20 23.5 L13.5 28 L16 20.5 L10 16 L17.5 16 Z" fill="rgba(111,207,151,0.5)"/>
+          </svg>
+          <div class="standard-badge-text">
+            <strong>Apple HIG</strong>
+            <span>Human Interface Guidelines compliant</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── FEATURE GRID ── -->
+    <section class="features-section" aria-labelledby="features-heading">
+      <div class="container">
+        <div class="features-intro">
+          <p class="section-label">What's supported</p>
+          <h2 id="features-heading">Every feature, for every user</h2>
+          <p>From screen readers to voice commands, here is exactly how Journey Tracker supports you.</p>
+        </div>
+
+        <div class="a11y-grid" role="list">
+
+          <!-- VoiceOver -->
+          <div class="a11y-card" role="listitem">
+            <div class="a11y-card-icon" aria-hidden="true">
+              <svg viewBox="0 0 26 26" fill="none" stroke="#2d5a3d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="10" cy="10" r="6"/>
+                <path d="M18 4 Q22 10 18 16"/>
+                <path d="M21 1 Q27 10 21 19"/>
+                <path d="M4 22 L10 16"/>
+              </svg>
+            </div>
+            <h3>VoiceOver from day one</h3>
+            <p>Every button, chart, toggle, and data point has a precise label. Tap any element and VoiceOver tells you exactly what it does and what happens next — no mystery icons, ever.</p>
+          </div>
+
+          <!-- Audio Graphs -->
+          <div class="a11y-card" role="listitem">
+            <div class="a11y-card-icon" aria-hidden="true">
+              <svg viewBox="0 0 26 26" fill="none" stroke="#2d5a3d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="2,20 7,12 11,16 16,8 20,14 24,6"/>
+                <path d="M2 23 Q5 20 8 23 Q11 26 14 23 Q17 20 20 23 Q23 26 24 23" stroke-width="1.5" opacity="0.5"/>
+              </svg>
+            </div>
+            <h3>Hear your data</h3>
+            <p>Weight and lab charts support Apple's Audio Graph. Double-tap and hold any chart to hear data read aloud — "down 5 lbs from last week" or "A1C at 5.8, optimal range." Progress is never locked behind a visual-only chart.</p>
+          </div>
+
+          <!-- Dynamic Type -->
+          <div class="a11y-card" role="listitem">
+            <div class="a11y-card-icon" aria-hidden="true">
+              <svg viewBox="0 0 26 26" fill="none" stroke="#2d5a3d" stroke-width="2" stroke-linecap="round">
+                <text x="3" y="20" font-size="16" font-weight="700" stroke="#2d5a3d" fill="#2d5a3d" font-family="sans-serif">A</text>
+                <text x="16" y="15" font-size="10" stroke="#2d5a3d" fill="#2d5a3d" font-family="sans-serif">a</text>
+                <line x1="3" y1="22" x2="23" y2="22"/>
+              </svg>
+            </div>
+            <h3>Your text size, your way</h3>
+            <p>Every screen scales with your iOS text size setting, from the smallest caption to the largest accessibility size. No text gets clipped and no layout breaks at any Dynamic Type level.</p>
+          </div>
+
+          <!-- Reduce Motion -->
+          <div class="a11y-card" role="listitem">
+            <div class="a11y-card-icon" aria-hidden="true">
+              <svg viewBox="0 0 26 26" fill="none" stroke="#2d5a3d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="13" cy="13" r="10"/>
+                <line x1="10" y1="9" x2="10" y2="17"/>
+                <line x1="16" y1="9" x2="16" y2="17"/>
+              </svg>
+            </div>
+            <h3>Respects Reduce Motion</h3>
+            <p>With Reduce Motion on, all spring animations, physics simulations, and bouncing transitions are replaced with gentle fades. The app looks identical — without the motion that causes discomfort.</p>
+          </div>
+
+          <!-- Color Not Only Signal -->
+          <div class="a11y-card" role="listitem">
+            <div class="a11y-card-icon" aria-hidden="true">
+              <svg viewBox="0 0 26 26" fill="none" stroke="#2d5a3d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="13" cy="13" r="10"/>
+                <circle cx="9" cy="12" r="2.5" fill="#2d5a3d" stroke="none"/>
+                <circle cx="17" cy="12" r="2.5" fill="#2d5a3d" stroke="none"/>
+                <path d="M9 17 Q13 20 17 17"/>
+              </svg>
+            </div>
+            <h3>Color is never the only signal</h3>
+            <p>Lab result indicators use symbols alongside color — you always know if a result is optimal, borderline, or needs attention. Enable Differentiate Without Color in iOS Settings and additional symbols appear automatically.</p>
+          </div>
+
+          <!-- Contrast -->
+          <div class="a11y-card" role="listitem">
+            <div class="a11y-card-icon" aria-hidden="true">
+              <svg viewBox="0 0 26 26" fill="none" stroke="#2d5a3d" stroke-width="2">
+                <circle cx="13" cy="13" r="10"/>
+                <path d="M13 3 A10 10 0 0 1 13 23 Z" fill="#2d5a3d" stroke="none"/>
+                <circle cx="13" cy="13" r="10" stroke="#2d5a3d" fill="none"/>
+              </svg>
+            </div>
+            <h3>Contrast that meets clinical standards</h3>
+            <p>All eight color themes meet WCAG 2.1 AA contrast ratios across light, dark, and sunset modes. Enable Increase Contrast in iOS Settings and accent colors deepen further for maximum readability.</p>
+          </div>
+
+          <!-- Touch Targets -->
+          <div class="a11y-card" role="listitem">
+            <div class="a11y-card-icon" aria-hidden="true">
+              <svg viewBox="0 0 26 26" fill="none" stroke="#2d5a3d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="13" cy="13" r="5" fill="rgba(45,90,61,0.15)"/>
+                <circle cx="13" cy="13" r="9" stroke-dasharray="3 3"/>
+                <line x1="13" y1="2" x2="13" y2="5"/>
+                <line x1="13" y1="21" x2="13" y2="24"/>
+                <line x1="2" y1="13" x2="5" y2="13"/>
+                <line x1="21" y1="13" x2="24" y2="13"/>
+              </svg>
+            </div>
+            <h3>Easy to tap</h3>
+            <p>Interactive elements have expanded touch targets throughout the app. Logging a dose, recording water intake, and capturing a photo all provide haptic feedback so you feel confirmation through your device.</p>
+          </div>
+
+          <!-- Voice Control -->
+          <div class="a11y-card" role="listitem">
+            <div class="a11y-card-icon" aria-hidden="true">
+              <svg viewBox="0 0 26 26" fill="none" stroke="#2d5a3d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="9" y="2" width="8" height="14" rx="4"/>
+                <path d="M5 14 Q5 22 13 22 Q21 22 21 14"/>
+                <line x1="13" y1="22" x2="13" y2="25"/>
+                <line x1="9" y1="25" x2="17" y2="25"/>
+              </svg>
+            </div>
+            <h3>Voice Control ready</h3>
+            <p>Say "Log dose," "Log water," or "Save weight" and Journey Tracker responds — no tapping required. Charts respond to increment and decrement commands for hands-free data navigation.</p>
+          </div>
+
+          <!-- Light / Dark Mode -->
+          <div class="a11y-card" role="listitem">
+            <div class="a11y-card-icon" aria-hidden="true">
+              <svg viewBox="0 0 26 26" fill="none" stroke="#2d5a3d" stroke-width="2" stroke-linecap="round">
+                <circle cx="13" cy="13" r="5"/>
+                <line x1="13" y1="2" x2="13" y2="5"/>
+                <line x1="13" y1="21" x2="13" y2="24"/>
+                <line x1="2" y1="13" x2="5" y2="13"/>
+                <line x1="21" y1="13" x2="24" y2="13"/>
+                <line x1="4.9" y1="4.9" x2="7" y2="7"/>
+                <line x1="19" y1="19" x2="21.1" y2="21.1"/>
+                <line x1="21.1" y1="4.9" x2="19" y2="7"/>
+                <line x1="7" y1="19" x2="4.9" y2="21.1"/>
+              </svg>
+            </div>
+            <h3>Light mode, dark mode, and everything between</h3>
+            <p>Journey Tracker follows your device appearance automatically. All eight themes are fully tested in both light and dark modes, with no untested combinations that could produce unreadable contrast.</p>
+          </div>
+
+          <!-- Empty States -->
+          <div class="a11y-card" role="listitem">
+            <div class="a11y-card-icon" aria-hidden="true">
+              <svg viewBox="0 0 26 26" fill="none" stroke="#2d5a3d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="4" y="3" width="18" height="20" rx="3"/>
+                <line x1="8" y1="9" x2="18" y2="9"/>
+                <line x1="8" y1="13" x2="14" y2="13"/>
+                <circle cx="18" cy="19" r="4" fill="rgba(45,90,61,0.1)"/>
+                <line x1="18" y1="17" x2="18" y2="19"/>
+                <circle cx="18" cy="20.5" r="0.6" fill="#2d5a3d" stroke="none"/>
+              </svg>
+            </div>
+            <h3>Clear empty states</h3>
+            <p>When a section has no data yet, Journey Tracker shows a clear message explaining what the section is for and how to get started — never a blank screen or a confusing unlabeled placeholder.</p>
+          </div>
+
+          <!-- Built-in Guide -->
+          <div class="a11y-card" role="listitem">
+            <div class="a11y-card-icon" aria-hidden="true">
+              <svg viewBox="0 0 26 26" fill="none" stroke="#2d5a3d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 3 Q4 2 5 2 L21 2 Q22 2 22 3 L22 23 Q22 24 21 24 L5 24 Q4 24 4 23 Z"/>
+                <path d="M4 3 Q7 5 13 5 Q19 5 22 3"/>
+                <line x1="8" y1="10" x2="18" y2="10"/>
+                <line x1="8" y1="14" x2="15" y2="14"/>
+              </svg>
+            </div>
+            <h3>Built-in Accessibility Guide</h3>
+            <p>A dedicated Accessibility section in Settings documents every supported feature in plain language so you always know what is available and exactly how to enable it.</p>
+          </div>
+
+          <!-- WCAG / 508 -->
+          <div class="a11y-card" role="listitem">
+            <div class="a11y-card-icon" aria-hidden="true">
+              <svg viewBox="0 0 26 26" fill="none" stroke="#2d5a3d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M13 2 L22 6 L22 14 Q22 20 13 24 Q4 20 4 14 L4 6 Z" fill="rgba(45,90,61,0.08)"/>
+                <path d="M9 13 L12 16 L17 10"/>
+              </svg>
+            </div>
+            <h3>Section 508 and WCAG 2.1 AA</h3>
+            <p>Every feature in Journey Tracker is reviewed against Section 508 and WCAG 2.1 AA standards before release. Accessibility is a release requirement, not a post-launch improvement.</p>
+          </div>
+
+        </div><!-- /.a11y-grid -->
+      </div>
+    </section>
+
+    <!-- ── iOS SETTINGS QUICK GUIDE ── -->
+    <section class="settings-section" aria-labelledby="settings-heading">
+      <div class="settings-inner">
+        <div class="settings-intro">
+          <p class="section-label">iOS Settings</p>
+          <h2 id="settings-heading">Enable on your device</h2>
+          <p>These iOS settings work automatically with Journey Tracker. Enable any of them in iOS Settings and the app adapts instantly.</p>
+        </div>
+        <div class="settings-grid">
+          <div class="settings-card">
+            <div class="settings-card-icon" aria-hidden="true">👁</div>
+            <div>
+              <h4>VoiceOver</h4>
+              <p>Full screen reader support throughout the app.</p>
+              <span class="settings-path">Settings → Accessibility → VoiceOver</span>
+            </div>
+          </div>
+          <div class="settings-card">
+            <div class="settings-card-icon" aria-hidden="true">✋</div>
+            <div>
+              <h4>Voice Control</h4>
+              <p>Hands-free navigation and data entry by voice.</p>
+              <span class="settings-path">Settings → Accessibility → Voice Control</span>
+            </div>
+          </div>
+          <div class="settings-card">
+            <div class="settings-card-icon" aria-hidden="true">Aa</div>
+            <div>
+              <h4>Larger Text (Dynamic Type)</h4>
+              <p>All text in Journey Tracker scales to match your preference.</p>
+              <span class="settings-path">Settings → Accessibility → Display &amp; Text Size → Larger Text</span>
+            </div>
+          </div>
+          <div class="settings-card">
+            <div class="settings-card-icon" aria-hidden="true">⏸</div>
+            <div>
+              <h4>Reduce Motion</h4>
+              <p>Replaces all animations with simple crossfades.</p>
+              <span class="settings-path">Settings → Accessibility → Motion → Reduce Motion</span>
+            </div>
+          </div>
+          <div class="settings-card">
+            <div class="settings-card-icon" aria-hidden="true">◑</div>
+            <div>
+              <h4>Increase Contrast</h4>
+              <p>Deepens accent colors for maximum readability.</p>
+              <span class="settings-path">Settings → Accessibility → Display &amp; Text Size → Increase Contrast</span>
+            </div>
+          </div>
+          <div class="settings-card">
+            <div class="settings-card-icon" aria-hidden="true">⬡</div>
+            <div>
+              <h4>Differentiate Without Color</h4>
+              <p>Adds shape and symbol indicators to all color-coded elements.</p>
+              <span class="settings-path">Settings → Accessibility → Display &amp; Text Size → Differentiate Without Color</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CALLOUT ── -->
+    <section style="padding: 72px 24px 0;" aria-labelledby="callout-heading">
+      <div class="a11y-callout">
+        <div class="a11y-callout-icon" aria-hidden="true">
+          <svg width="56" height="56" viewBox="0 0 56 56" fill="none" aria-hidden="true" focusable="false">
+            <circle cx="28" cy="28" r="26" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+            <path d="M20 28l6 6 10-12" stroke="#6fcf97" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h2 id="callout-heading">Need something we don't yet support?</h2>
+        <p>Accessibility is an ongoing commitment. If you rely on a feature or workflow that Journey Tracker does not currently support well, we want to hear about it. Every report shapes the next update.</p>
+        <a href="support.html" class="a11y-callout-link">
+          Contact Support
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4"/>
+          </svg>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── FOOTER ── -->
+  <footer style="margin-top: 80px;">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <div class="nav-logo" style="color:#fff;">
+            <span style="font-size:1.4rem;" aria-hidden="true">✈️</span>
+            Journey Tracker
+          </div>
+          <p>A private, beautiful health companion for your GLP‑1 and weight loss journey. Coming soon to iPhone, iPad, and Mac.</p>
+        </div>
+        <nav class="footer-nav" aria-label="Legal and support links">
+          <h3>Legal &amp; Support</h3>
+          <ul>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="hipaa.html">HIPAA Disclosure</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+            <li><a href="support.html">Support Center</a></li>
+            <li><a href="accessibility.html" aria-current="page">Accessibility</a></li>
+            <li><a href="/#faqs">FAQs</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Apex Development Studio LLC. All rights reserved.</p>
+        <p class="footer-medical-note">Journey Tracker is not a medical device and does not provide medical advice. Always consult a qualified healthcare provider.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    var navToggle = document.getElementById('navToggle');
+    var mobileNav = document.getElementById('mobileNav');
+    if (navToggle && mobileNav) {
+      navToggle.addEventListener('click', function () {
+        var isOpen = mobileNav.classList.toggle('open');
+        navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        mobileNav.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+      });
+    }
+    function closeMobileNav() {
+      if (mobileNav) {
+        mobileNav.classList.remove('open');
+        mobileNav.setAttribute('aria-hidden', 'true');
+        if (navToggle) { navToggle.setAttribute('aria-expanded', 'false'); navToggle.focus(); }
+      }
+    }
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && mobileNav && mobileNav.classList.contains('open')) { closeMobileNav(); }
+    });
+  </script>
+</body>
+</html>
