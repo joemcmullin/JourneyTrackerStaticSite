@@ -21,14 +21,14 @@
   <meta name="description" content="Journey Tracker is built for everyone. Learn how VoiceOver, Dynamic Type, Audio Graphs, Voice Control, and more make GLP-1 tracking accessible to all." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://journeytracker.app/accessibility.html" />
-  <meta name="theme-color" content="#1a3a2a" />
+  <meta name="theme-color" content="#0d3d38" />
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --forest-dark:   #1a3a2a;
-      --forest-mid:    #2d5a3d;
-      --forest-light:  #4a8a5e;
+      --forest-dark:   #0d3d38;
+      --forest-mid:    #197E72;
+      --forest-light:  #2aaa9e;
       --sunrise:       #e8792a;
       --sunrise-light: #f59c55;
       --cream:         #faf7f2;
@@ -85,7 +85,7 @@
       display: block; padding: 6px 12px; font-size: 0.88rem; font-weight: 500;
       color: var(--text-mid); border-radius: 6px; transition: color 0.15s, background 0.15s;
     }
-    .nav-links a:hover { color: var(--forest-dark); background: rgba(74,138,94,0.1); }
+    .nav-links a:hover { color: var(--forest-dark); background: rgba(42,170,158,0.1); }
     .nav-links a[aria-current="page"] { color: var(--forest-dark); font-weight: 700; }
     .nav-cta { margin-left: 8px; }
     .nav-cta a {
@@ -113,7 +113,7 @@
       padding: 12px 16px; font-size: 1rem; font-weight: 500;
       color: var(--text-mid); border-radius: 8px;
     }
-    .mobile-nav a:hover { background: rgba(74,138,94,0.1); color: var(--forest-dark); }
+    .mobile-nav a:hover { background: rgba(42,170,158,0.1); color: var(--forest-dark); }
     .mobile-nav a[aria-current="page"] { color: var(--forest-dark); font-weight: 700; }
     @media (max-width: 768px) {
       .nav-links { display: none; }
@@ -135,7 +135,7 @@
       top: -80px; right: -80px;
       width: 320px; height: 320px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(74,138,94,0.12) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(42,170,158,0.12) 0%, transparent 70%);
       pointer-events: none;
     }
     .a11y-hero::after {
@@ -151,7 +151,7 @@
       display: inline-block;
       font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em;
       text-transform: uppercase; color: var(--forest-light);
-      background: rgba(74,138,94,0.1);
+      background: rgba(42,170,158,0.1);
       padding: 4px 14px; border-radius: 100px; margin-bottom: 20px;
     }
     .a11y-hero h1 {
@@ -243,12 +243,12 @@
     }
     .a11y-card:hover {
       box-shadow: 0 10px 32px rgba(26,58,42,0.10);
-      border-color: rgba(45,90,61,0.25);
+      border-color: rgba(25,126,114,0.25);
       transform: translateY(-3px);
     }
     .a11y-card-icon {
       width: 48px; height: 48px;
-      background: linear-gradient(135deg, rgba(74,138,94,0.12), rgba(45,90,61,0.06));
+      background: linear-gradient(135deg, rgba(42,170,158,0.12), rgba(25,126,114,0.06));
       border-radius: 14px;
       display: flex; align-items: center; justify-content: center;
       margin-bottom: 16px;
@@ -344,7 +344,7 @@
       display: inline-block;
       font-size: 0.78rem; font-weight: 600;
       color: var(--forest-mid);
-      background: rgba(45,90,61,0.08);
+      background: rgba(25,126,114,0.08);
       border-radius: 6px;
       padding: 2px 8px; margin-top: 6px;
       font-family: "SF Mono", "Fira Code", monospace;
@@ -431,16 +431,16 @@
         <div class="a11y-graphic" aria-hidden="true">
           <svg width="96" height="96" viewBox="0 0 96 96" fill="none" aria-hidden="true" focusable="false">
             <!-- Outer ring -->
-            <circle cx="48" cy="48" r="46" stroke="#2d5a3d" stroke-width="2.5" fill="rgba(74,138,94,0.07)"/>
+            <circle cx="48" cy="48" r="46" stroke="#197E72" stroke-width="2.5" fill="rgba(42,170,158,0.07)"/>
             <!-- Person figure -->
-            <circle cx="48" cy="24" r="8" fill="#2d5a3d"/>
+            <circle cx="48" cy="24" r="8" fill="#197E72"/>
             <!-- Arms outstretched -->
-            <path d="M20 44 Q34 38 48 42 Q62 38 76 44" stroke="#2d5a3d" stroke-width="4" stroke-linecap="round" fill="none"/>
+            <path d="M20 44 Q34 38 48 42 Q62 38 76 44" stroke="#197E72" stroke-width="4" stroke-linecap="round" fill="none"/>
             <!-- Body -->
-            <path d="M48 42 L48 64" stroke="#2d5a3d" stroke-width="4" stroke-linecap="round"/>
+            <path d="M48 42 L48 64" stroke="#197E72" stroke-width="4" stroke-linecap="round"/>
             <!-- Legs spread -->
-            <path d="M48 64 L34 80" stroke="#2d5a3d" stroke-width="4" stroke-linecap="round"/>
-            <path d="M48 64 L62 80" stroke="#2d5a3d" stroke-width="4" stroke-linecap="round"/>
+            <path d="M48 64 L34 80" stroke="#197E72" stroke-width="4" stroke-linecap="round"/>
+            <path d="M48 64 L62 80" stroke="#197E72" stroke-width="4" stroke-linecap="round"/>
             <!-- Sunrise arc accent -->
             <path d="M30 48 Q48 32 66 48" stroke="#e8792a" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.55"/>
           </svg>
@@ -502,7 +502,7 @@
           <!-- VoiceOver -->
           <div class="a11y-card" role="listitem">
             <div class="a11y-card-icon" aria-hidden="true">
-              <svg viewBox="0 0 26 26" fill="none" stroke="#2d5a3d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg viewBox="0 0 26 26" fill="none" stroke="#197E72" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="10" cy="10" r="6"/>
                 <path d="M18 4 Q22 10 18 16"/>
                 <path d="M21 1 Q27 10 21 19"/>
@@ -516,7 +516,7 @@
           <!-- Audio Graphs -->
           <div class="a11y-card" role="listitem">
             <div class="a11y-card-icon" aria-hidden="true">
-              <svg viewBox="0 0 26 26" fill="none" stroke="#2d5a3d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg viewBox="0 0 26 26" fill="none" stroke="#197E72" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <polyline points="2,20 7,12 11,16 16,8 20,14 24,6"/>
                 <path d="M2 23 Q5 20 8 23 Q11 26 14 23 Q17 20 20 23 Q23 26 24 23" stroke-width="1.5" opacity="0.5"/>
               </svg>
@@ -528,9 +528,9 @@
           <!-- Dynamic Type -->
           <div class="a11y-card" role="listitem">
             <div class="a11y-card-icon" aria-hidden="true">
-              <svg viewBox="0 0 26 26" fill="none" stroke="#2d5a3d" stroke-width="2" stroke-linecap="round">
-                <text x="3" y="20" font-size="16" font-weight="700" stroke="#2d5a3d" fill="#2d5a3d" font-family="sans-serif">A</text>
-                <text x="16" y="15" font-size="10" stroke="#2d5a3d" fill="#2d5a3d" font-family="sans-serif">a</text>
+              <svg viewBox="0 0 26 26" fill="none" stroke="#197E72" stroke-width="2" stroke-linecap="round">
+                <text x="3" y="20" font-size="16" font-weight="700" stroke="#197E72" fill="#197E72" font-family="sans-serif">A</text>
+                <text x="16" y="15" font-size="10" stroke="#197E72" fill="#197E72" font-family="sans-serif">a</text>
                 <line x1="3" y1="22" x2="23" y2="22"/>
               </svg>
             </div>
@@ -541,7 +541,7 @@
           <!-- Reduce Motion -->
           <div class="a11y-card" role="listitem">
             <div class="a11y-card-icon" aria-hidden="true">
-              <svg viewBox="0 0 26 26" fill="none" stroke="#2d5a3d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg viewBox="0 0 26 26" fill="none" stroke="#197E72" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="13" cy="13" r="10"/>
                 <line x1="10" y1="9" x2="10" y2="17"/>
                 <line x1="16" y1="9" x2="16" y2="17"/>
@@ -554,10 +554,10 @@
           <!-- Color Not Only Signal -->
           <div class="a11y-card" role="listitem">
             <div class="a11y-card-icon" aria-hidden="true">
-              <svg viewBox="0 0 26 26" fill="none" stroke="#2d5a3d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg viewBox="0 0 26 26" fill="none" stroke="#197E72" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="13" cy="13" r="10"/>
-                <circle cx="9" cy="12" r="2.5" fill="#2d5a3d" stroke="none"/>
-                <circle cx="17" cy="12" r="2.5" fill="#2d5a3d" stroke="none"/>
+                <circle cx="9" cy="12" r="2.5" fill="#197E72" stroke="none"/>
+                <circle cx="17" cy="12" r="2.5" fill="#197E72" stroke="none"/>
                 <path d="M9 17 Q13 20 17 17"/>
               </svg>
             </div>
@@ -568,10 +568,10 @@
           <!-- Contrast -->
           <div class="a11y-card" role="listitem">
             <div class="a11y-card-icon" aria-hidden="true">
-              <svg viewBox="0 0 26 26" fill="none" stroke="#2d5a3d" stroke-width="2">
+              <svg viewBox="0 0 26 26" fill="none" stroke="#197E72" stroke-width="2">
                 <circle cx="13" cy="13" r="10"/>
-                <path d="M13 3 A10 10 0 0 1 13 23 Z" fill="#2d5a3d" stroke="none"/>
-                <circle cx="13" cy="13" r="10" stroke="#2d5a3d" fill="none"/>
+                <path d="M13 3 A10 10 0 0 1 13 23 Z" fill="#197E72" stroke="none"/>
+                <circle cx="13" cy="13" r="10" stroke="#197E72" fill="none"/>
               </svg>
             </div>
             <h3>Contrast that meets clinical standards</h3>
@@ -581,8 +581,8 @@
           <!-- Touch Targets -->
           <div class="a11y-card" role="listitem">
             <div class="a11y-card-icon" aria-hidden="true">
-              <svg viewBox="0 0 26 26" fill="none" stroke="#2d5a3d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="13" cy="13" r="5" fill="rgba(45,90,61,0.15)"/>
+              <svg viewBox="0 0 26 26" fill="none" stroke="#197E72" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="13" cy="13" r="5" fill="rgba(25,126,114,0.15)"/>
                 <circle cx="13" cy="13" r="9" stroke-dasharray="3 3"/>
                 <line x1="13" y1="2" x2="13" y2="5"/>
                 <line x1="13" y1="21" x2="13" y2="24"/>
@@ -597,7 +597,7 @@
           <!-- Voice Control -->
           <div class="a11y-card" role="listitem">
             <div class="a11y-card-icon" aria-hidden="true">
-              <svg viewBox="0 0 26 26" fill="none" stroke="#2d5a3d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg viewBox="0 0 26 26" fill="none" stroke="#197E72" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="9" y="2" width="8" height="14" rx="4"/>
                 <path d="M5 14 Q5 22 13 22 Q21 22 21 14"/>
                 <line x1="13" y1="22" x2="13" y2="25"/>
@@ -611,7 +611,7 @@
           <!-- Light / Dark Mode -->
           <div class="a11y-card" role="listitem">
             <div class="a11y-card-icon" aria-hidden="true">
-              <svg viewBox="0 0 26 26" fill="none" stroke="#2d5a3d" stroke-width="2" stroke-linecap="round">
+              <svg viewBox="0 0 26 26" fill="none" stroke="#197E72" stroke-width="2" stroke-linecap="round">
                 <circle cx="13" cy="13" r="5"/>
                 <line x1="13" y1="2" x2="13" y2="5"/>
                 <line x1="13" y1="21" x2="13" y2="24"/>
@@ -630,13 +630,13 @@
           <!-- Empty States -->
           <div class="a11y-card" role="listitem">
             <div class="a11y-card-icon" aria-hidden="true">
-              <svg viewBox="0 0 26 26" fill="none" stroke="#2d5a3d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg viewBox="0 0 26 26" fill="none" stroke="#197E72" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="4" y="3" width="18" height="20" rx="3"/>
                 <line x1="8" y1="9" x2="18" y2="9"/>
                 <line x1="8" y1="13" x2="14" y2="13"/>
-                <circle cx="18" cy="19" r="4" fill="rgba(45,90,61,0.1)"/>
+                <circle cx="18" cy="19" r="4" fill="rgba(25,126,114,0.1)"/>
                 <line x1="18" y1="17" x2="18" y2="19"/>
-                <circle cx="18" cy="20.5" r="0.6" fill="#2d5a3d" stroke="none"/>
+                <circle cx="18" cy="20.5" r="0.6" fill="#197E72" stroke="none"/>
               </svg>
             </div>
             <h3>Clear empty states</h3>
@@ -646,7 +646,7 @@
           <!-- Built-in Guide -->
           <div class="a11y-card" role="listitem">
             <div class="a11y-card-icon" aria-hidden="true">
-              <svg viewBox="0 0 26 26" fill="none" stroke="#2d5a3d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg viewBox="0 0 26 26" fill="none" stroke="#197E72" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M4 3 Q4 2 5 2 L21 2 Q22 2 22 3 L22 23 Q22 24 21 24 L5 24 Q4 24 4 23 Z"/>
                 <path d="M4 3 Q7 5 13 5 Q19 5 22 3"/>
                 <line x1="8" y1="10" x2="18" y2="10"/>
@@ -660,8 +660,8 @@
           <!-- WCAG / 508 -->
           <div class="a11y-card" role="listitem">
             <div class="a11y-card-icon" aria-hidden="true">
-              <svg viewBox="0 0 26 26" fill="none" stroke="#2d5a3d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M13 2 L22 6 L22 14 Q22 20 13 24 Q4 20 4 14 L4 6 Z" fill="rgba(45,90,61,0.08)"/>
+              <svg viewBox="0 0 26 26" fill="none" stroke="#197E72" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M13 2 L22 6 L22 14 Q22 20 13 24 Q4 20 4 14 L4 6 Z" fill="rgba(25,126,114,0.08)"/>
                 <path d="M9 13 L12 16 L17 10"/>
               </svg>
             </div>
