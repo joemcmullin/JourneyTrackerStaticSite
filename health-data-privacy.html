@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    script-src 'self' 'unsafe-inline';
+    style-src 'self' 'unsafe-inline';
+    img-src 'self' data:;
+    frame-ancestors 'none';
+    base-uri 'self';
+    object-src 'none';
+  " />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <title>Consumer Health Data Privacy Policy — Journey Tracker</title>
+  <meta name="description" content="Consumer Health Data Privacy Policy for Journey Tracker — how Apex Development Studio LLC collects, uses, shares, and protects your consumer health data under Washington's My Health My Data Act (MHMDA)." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://journeytracker.app/health-data-privacy.html" />
+  <meta name="theme-color" content="#0d3d38" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --forest-dark:  #0d3d38;
+      --forest-mid:   #197E72;
+      --forest-light: #2aaa9e;
+      --sunrise:      #e8792a;
+      --cream:        #faf7f2;
+      --white:        #ffffff;
+      --text-dark:    #1a2a1a;
+      --text-mid:     #3a4a3a;
+      --text-muted:   #585e58;
+      --border:       #e0e8df;
+      --nav-height: 64px;
+      --max-w: 1024px;
+      --sunrise-light: #f59c55;
+    }
+    @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+    body {
+      font-family: -apple-system, system-ui, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+      background: var(--cream);
+      color: var(--text-dark);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+
+    /* NAV */
+    #top-nav {
+      position: sticky; top: 0; z-index: 100;
+      height: var(--nav-height);
+      background: var(--forest-dark);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 100%; }
+.nav-logo { font-size: 1.15rem; font-weight: 700; color: #fff; display: flex; align-items: center; gap: 8px; }
+    .nav-logo-icon { width: 48px; height: 48px; border-radius: 10px; object-fit: contain; display: block; flex-shrink: 0; background: var(--forest-mid); padding: 6px; box-sizing: border-box; }
+    .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
+    .nav-links a { display: block; padding: 6px 12px; font-size: 0.88rem; font-weight: 500; color: rgba(255,255,255,0.82); border-radius: 6px; transition: color 0.15s, background 0.15s; }
+    .nav-links a:hover { color: #fff; background: rgba(255,255,255,0.1); }
+    .nav-links a[aria-current="page"] { color: #fff; font-weight: 700; }
+    .nav-cta { margin-left: 8px; }
+    .nav-cta a { background: linear-gradient(135deg, var(--sunrise), var(--sunrise-light)); color: var(--white) !important; padding: 8px 18px !important; border-radius: 100px !important; font-weight: 600 !important; font-size: 0.82rem !important; }
+    .nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+    .nav-toggle span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: transform 0.2s, opacity 0.2s; }
+    .mobile-nav { display: none; position: fixed; top: var(--nav-height); left: 0; right: 0; background: var(--cream); border-bottom: 1px solid rgba(255,255,255,0.1); padding: 16px 24px 24px; z-index: 99; flex-direction: column; gap: 4px; }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a { padding: 12px 16px; font-size: 1rem; font-weight: 500; color: var(--text-mid); border-radius: 8px; }
+    .mobile-nav a:hover { background: rgba(42,170,158,0.1); color: var(--forest-dark); }
+
+    /* FOOTER */
+    footer { background: var(--forest-dark); color: rgba(255,255,255,0.7); padding: 48px 0 32px; }
+    .footer-inner { display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: start; padding-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 24px; }
+    .footer-brand p { font-size: 0.88rem; color: rgba(255,255,255,0.72); margin-top: 8px; max-width: 380px; line-height: 1.6; }
+    .footer-nav h3 { color: rgba(255,255,255,0.72); font-size: 0.82rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 14px; }
+    .footer-nav ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .footer-nav a { font-size: 0.9rem; color: rgba(255,255,255,0.82); transition: color 0.15s; }
+    .footer-nav a:hover { color: var(--white); }
+    .footer-nav a[aria-current="page"] { color: var(--white); font-weight: 600; }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .footer-bottom p { font-size: 0.85rem; color: rgba(255,255,255,0.65); }
+    .footer-medical-note { font-size: 0.85rem; color: rgba(255,255,255,0.60); font-style: italic; }
+
+    /* HERO BAND */
+    .doc-hero {
+      background: linear-gradient(160deg, #f0f7f2, var(--cream));
+      padding: 56px 24px 40px;
+      text-align: center;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .doc-label {
+      display: inline-block;
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--forest-light);
+      background: rgba(42,170,158,0.1);
+      padding: 4px 12px; border-radius: 100px; margin-bottom: 14px;
+    }
+    .doc-hero h1 {
+      font-family: -apple-system, system-ui, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 700; color: var(--forest-dark); line-height: 1.2; margin-bottom: 12px;
+    }
+    .doc-meta {
+      font-size: 0.85rem; color: var(--text-muted); margin-top: 8px;
+    }
+
+    /* CONTENT */
+    .doc-content {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 56px 24px 80px;
+    }
+    .doc-content h3 {
+      font-size: 1.05rem; font-weight: 700;
+      color: var(--forest-dark);
+      margin: 36px 0 10px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .doc-content h3:first-child { margin-top: 0; }
+    .doc-content h4 {
+      font-size: 0.92rem; font-weight: 700;
+      color: var(--forest-mid);
+      margin: 20px 0 8px;
+    }
+    .doc-content p { color: var(--text-mid); font-size: 0.94rem; line-height: 1.75; margin-bottom: 14px; }
+    .doc-content ul, .doc-content ol {
+      padding-left: 22px; margin: 10px 0 16px;
+    }
+    .doc-content li { font-size: 0.93rem; color: var(--text-mid); line-height: 1.65; margin-bottom: 6px; }
+    .doc-content hr { border: none; border-top: 1px solid var(--border); margin: 28px 0; }
+    .doc-content strong { color: var(--text-dark); }
+
+    .callout {
+      background: rgba(25,126,114,0.06);
+      border-left: 3px solid var(--forest-mid);
+      border-radius: 0 8px 8px 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+    }
+    .callout.warning {
+      background: rgba(232,121,42,0.07);
+      border-left-color: var(--sunrise);
+    }
+    .callout p { margin-bottom: 8px; }
+    .callout p:last-child { margin-bottom: 0; }
+
+    .doc-footer-note {
+      font-size: 0.82rem; font-style: italic; color: var(--text-muted);
+      margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--border);
+    }
+
+    /* SKIP LINK */
+    .skip-link {
+      position: absolute; top: -100%; left: 0; z-index: 9999;
+      background: var(--forest-dark); color: #fff;
+      padding: 12px 24px; font-weight: 700; text-decoration: underline;
+    }
+    .skip-link:focus { top: 0; }
+
+    /* ACCESSIBILITY FOCUS */
+    a:focus-visible, button:focus-visible {
+      outline: 3px solid var(--forest-light); outline-offset: 3px; border-radius: 4px;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-toggle { display: flex; }
+      .footer-inner { grid-template-columns: 1fr; gap: 24px; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; gap: 4px; }
+    }
+    @media (max-width: 600px) {
+      .doc-content { padding: 36px 16px 60px; }
+      .doc-hero { padding: 40px 16px 28px; }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header id="top-nav">
+    <nav class="container nav-inner" aria-label="Primary navigation">
+      <a href="/" class="nav-logo">
+        <img src="/logo-icon.svg" class="nav-logo-icon" alt="" aria-hidden="true" width="48" height="48" />
+        Journey Tracker
+      </a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/#walkthrough">Features</a></li>
+        <li><a href="/#faqs">FAQs</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="support.html">Support</a></li>
+        <li><a href="accessibility.html">Accessibility</a></li>
+        <li><a href="/#documentation">Docs</a></li>
+        <li class="nav-cta"><a href="/#contact">Notify Me</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileNav">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </button>
+    </nav>
+    <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation" aria-hidden="true">
+      <a href="/" onclick="closeMobileNav()">Home</a>
+      <a href="/#walkthrough" onclick="closeMobileNav()">Features</a>
+      <a href="/#faqs" onclick="closeMobileNav()">FAQs</a>
+      <a href="privacy.html" onclick="closeMobileNav()">Privacy Policy</a>
+      <a href="support.html" onclick="closeMobileNav()">Support Center</a>
+      <a href="accessibility.html" onclick="closeMobileNav()">Accessibility</a>
+      <a href="/#documentation" onclick="closeMobileNav()">Docs</a>
+      <a href="/#contact" onclick="closeMobileNav()">Notify Me</a>
+    </nav>
+  </header>
+
+  <main id="main-content">
+
+    <div class="doc-hero">
+      <div class="doc-label">Legal Document</div>
+      <h1>Consumer Health Data Privacy Policy</h1>
+      <p class="doc-meta">
+        Developed and operated by Apex Development Studio LLC &nbsp;·&nbsp;
+        Effective: April 7, 2026 &nbsp;·&nbsp; Last Updated: April 7, 2026
+      </p>
+    </div>
+
+    <div class="doc-content">
+
+      <div class="callout">
+        <p><strong>This Consumer Health Data Privacy Policy is provided pursuant to Washington's My Health My Data Act (RCW 19.373)</strong> and supplements our general <a href="privacy.html">Privacy Policy</a>. It describes the consumer health data we collect, how we use and share it, and how you can exercise your rights.</p>
+      </div>
+
+      <hr>
+
+      <h3>1. Purpose and Scope</h3>
+      <p>This Consumer Health Data Privacy Policy is provided pursuant to Washington's My Health My Data Act (RCW 19.373). It applies to all consumer health data collected, used, shared, or stored by Journey Tracker, an iOS application developed and operated by Apex Development Studio LLC ("we," "our," or "us").</p>
+      <p>This policy applies to any consumer who uses Journey Tracker, with particular rights afforded to residents of Washington state under the My Health My Data Act. The rights and transparency commitments described in this policy extend to all users regardless of location.</p>
+      <p>Journey Tracker is a consumer health application designed to help individuals undergoing GLP-1 therapy track their health progress, medication history, laboratory results, and related health markers. Apex Development Studio LLC is not a healthcare provider, health plan, or healthcare clearinghouse. Journey Tracker is not a medical device and does not provide medical advice.</p>
+
+      <hr>
+
+      <h3>2. Categories of Consumer Health Data Collected</h3>
+      <p>Journey Tracker collects the following categories of consumer health data, each for the specific purpose described:</p>
+
+      <h4>2.1 Body Measurements</h4>
+      <p><strong>Data collected:</strong> Weight, body fat percentage, muscle mass, BMI, and waist circumference.</p>
+      <p><strong>Purpose:</strong> Health trend tracking, chart generation, and progress visualization against your personal goals.</p>
+
+      <h4>2.2 Medication Information</h4>
+      <p><strong>Data collected:</strong> GLP-1 medication name, dose, injection dates, and injection site.</p>
+      <p><strong>Purpose:</strong> Therapy adherence tracking and dose escalation timeline visualization.</p>
+
+      <h4>2.3 Side Effect and Symptom Logs</h4>
+      <p><strong>Data collected:</strong> Symptoms, severity ratings, and associated notes.</p>
+      <p><strong>Purpose:</strong> Symptom pattern identification and therapy correlation analysis.</p>
+
+      <h4>2.4 Laboratory Results</h4>
+      <p><strong>Data collected:</strong> HbA1c, lipid panel values, metabolic markers, thyroid markers, and other health markers you choose to enter.</p>
+      <p><strong>Purpose:</strong> Health marker tracking over time and, with your separate consent, optional AI-powered interpretive analysis.</p>
+
+      <h4>2.5 Health Goals</h4>
+      <p><strong>Data collected:</strong> Target weight and hydration goals.</p>
+      <p><strong>Purpose:</strong> Progress measurement against user-defined goals.</p>
+
+      <h4>2.6 Body Composition from Apple HealthKit</h4>
+      <p><strong>Data collected (with your explicit permission):</strong> Body weight, blood glucose, blood pressure, and dietary water.</p>
+      <p><strong>Purpose:</strong> Automated health data sync for trend tracking within the app.</p>
+
+      <h4>2.7 Notes</h4>
+      <p><strong>Data collected:</strong> Free-text notes you attach to health entries.</p>
+      <p><strong>Purpose:</strong> Personal record-keeping associated with your health data.</p>
+
+      <hr>
+
+      <h3>3. Sources of Consumer Health Data</h3>
+      <p>Journey Tracker collects consumer health data from the following sources:</p>
+      <ul>
+        <li><strong>Direct user input:</strong> Manual entry of health measurements, medication information, side effects, lab results, goals, and notes within the app</li>
+        <li><strong>OCR scanning:</strong> On-device optical character recognition (Apple Vision framework) used to extract lab values from photos, PDFs, or camera captures of lab reports</li>
+        <li><strong>Apple HealthKit:</strong> Automated sync of body weight, blood glucose, blood pressure, and dietary water data — collected only with your explicit permission through Apple's native HealthKit authorization dialog</li>
+        <li><strong>Apple Health Records:</strong> Clinical laboratory data from your connected health systems — collected only with your explicit permission through Apple's native Health Records authorization</li>
+      </ul>
+
+      <hr>
+
+      <h3>4. Third Parties and Affiliates Receiving Consumer Health Data</h3>
+      <p>The following is the <strong>exhaustive list</strong> of all third parties that receive, or may receive, consumer health data from Journey Tracker, along with each party's role and the categories of data shared:</p>
+
+      <h4>4.1 Apple Inc.</h4>
+      <ul>
+        <li><strong>HealthKit:</strong> Local on-device data sync between Journey Tracker and Apple Health. Health data remains on your device and in your personal iCloud account.</li>
+        <li><strong>CloudKit:</strong> Encrypted iCloud backup of your Journey Tracker data to your personal iCloud account. This data is stored in your account, not on any server controlled by Apex Development Studio LLC.</li>
+        <li><strong>Sign in with Apple:</strong> Authentication only. Apple provides an opaque user identifier — no health data is shared with Apple through this service.</li>
+        <li><strong>StoreKit:</strong> Subscription management only. No health data is transmitted to Apple through StoreKit.</li>
+      </ul>
+      <p>Apple's Privacy Policy: <a href="https://www.apple.com/privacy/" target="_blank" rel="noopener">apple.com/privacy</a></p>
+
+      <h4>4.2 Google LLC</h4>
+      <p>Google receives <strong>de-identified</strong> consumer health data via the Google Gemini API for the purpose of AI-powered lab analysis. The data transmitted includes: lab values (as numbers), medication name and current dose, therapy duration (relative, not specific dates), and changes in lab values over time (relative timeframes).</p>
+      <p>This data sharing occurs <strong>only when you explicitly consent</strong> by tapping "I Understand and Agree" on the in-app AI Lab Analysis consent screen. Data is de-identified using automated on-device processing before transmission.</p>
+      <p>Journey Tracker operates on a paid Google AI billing account (Tier 1). Under Google's Gemini API Terms of Service, data submitted through paid-tier accounts is <strong>not used to train or improve Google's AI models</strong>.</p>
+      <p>Google's Privacy Policy: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a><br>
+      Gemini API Terms: <a href="https://ai.google.dev/gemini-api/terms" target="_blank" rel="noopener">ai.google.dev/gemini-api/terms</a></p>
+
+      <h4>4.3 Cloudflare, Inc.</h4>
+      <p>Cloudflare operates as an API proxy, routing de-identified health data from the Journey Tracker app to Google's Gemini API. Consumer health data transits through Cloudflare's infrastructure during AI analysis requests.</p>
+      <p>Cloudflare <strong>does not store, retain, or process</strong> consumer health data beyond the transit necessary to route the API request. No health data is retained by Cloudflare after the request completes.</p>
+      <p>Cloudflare's Privacy Policy: <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">cloudflare.com/privacypolicy</a></p>
+
+      <h4>4.4 RevenueCat, Inc.</h4>
+      <p>RevenueCat receives <strong>subscription status information only</strong>. No consumer health data of any kind is transmitted to RevenueCat.</p>
+      <p>RevenueCat's Privacy Policy: <a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener">revenuecat.com/privacy</a></p>
+
+      <h4>4.5 Formspree, Inc.</h4>
+      <p>Formspree processes contact form submissions on the Journey Tracker website (journeytracker.app). Formspree receives your name, email address, and message content only. <strong>No consumer health data</strong> is transmitted to Formspree.</p>
+      <p>Formspree's Privacy Policy: <a href="https://formspree.io/legal/privacy-policy/" target="_blank" rel="noopener">formspree.io/legal/privacy-policy</a></p>
+
+      <h4>4.6 Affiliates</h4>
+      <p><strong>No affiliates receive consumer health data.</strong> Apex Development Studio LLC has no affiliates, subsidiaries, or parent companies. We are an independent limited liability company.</p>
+
+      <hr>
+
+      <h3>5. How to Exercise Your Rights Under MHMDA</h3>
+      <p>Washington state residents and all Journey Tracker users have the following rights with respect to their consumer health data:</p>
+
+      <h4>5.1 Right to Know</h4>
+      <p>You have the right to know what consumer health data is collected about you and how it is used. This policy fulfills that right by describing every category of data collected, its purpose, and every third party that receives it.</p>
+
+      <h4>5.2 Right to Access</h4>
+      <p>You can access all of your consumer health data at any time directly within the Journey Tracker app. All data you have entered or synced is available to you through the app's dashboard, charts, and detail views.</p>
+
+      <h4>5.3 Right to Delete</h4>
+      <p>You have the right to request deletion of your consumer health data. Here is how to delete your data from each location where it may exist:</p>
+      <ul>
+        <li><strong>On-device data:</strong> Open Journey Tracker, navigate to Settings → Privacy &amp; Security → Delete Account &amp; All Data. This permanently removes all health data stored on your device.</li>
+        <li><strong>iCloud data:</strong> Go to iOS Settings → [Your Name] → iCloud → Manage Storage → Journey Tracker → Delete Data. This removes all Journey Tracker data from your iCloud account.</li>
+        <li><strong>Google API logs:</strong> To request deletion of any data retained in Google's temporary API logs, email <a href="mailto:support@journeytracker.app">support@journeytracker.app</a>. Apex Development Studio LLC will submit a deletion request to Google on your behalf. Google's temporary log retention policies apply to the timing of deletion.</li>
+        <li><strong>Cloudflare:</strong> Cloudflare does not retain consumer health data. No deletion action is required.</li>
+        <li><strong>Apex server-side:</strong> Apex Development Studio LLC stores no consumer health data on any server it controls. No server-side deletion is required.</li>
+      </ul>
+
+      <h4>5.4 Right to Withdraw Consent</h4>
+      <p>You have the right to withdraw consent to the collection or sharing of your consumer health data at any time:</p>
+      <ul>
+        <li><strong>HealthKit data collection:</strong> Revoke Journey Tracker's HealthKit access at any time through iOS Settings → Privacy &amp; Security → Health → Journey Tracker. This immediately stops all HealthKit data collection.</li>
+        <li><strong>AI Lab Analysis (sharing with Google via Cloudflare):</strong> Disable this feature at any time through Journey Tracker Settings → Features → AI Lab Analysis → Off. Withdrawal of consent applies prospectively to all future sharing. Data previously transmitted to Google is subject to Google's temporary log retention policies.</li>
+      </ul>
+      <div class="callout">
+        <p><strong>Withdrawal of consent is always prospective.</strong> Revoking HealthKit access or disabling AI Lab Analysis immediately stops future data collection and sharing. It does not retroactively delete data that was previously collected or shared with your consent.</p>
+      </div>
+
+      <h4>5.5 Private Right of Action</h4>
+      <p>The My Health My Data Act provides a private right of action for violations of its provisions (RCW 19.373.040). If you believe your rights under MHMDA have been violated, you may bring a claim as provided under the statute.</p>
+
+      <hr>
+
+      <h3>6. Consent</h3>
+      <p>Journey Tracker collects consumer health data only with your affirmative consent. We do not collect health data passively or without your knowledge.</p>
+
+      <h4>6.1 HealthKit Data</h4>
+      <p>HealthKit data is collected only after you grant permission through Apple's native HealthKit authorization dialog. This dialog clearly describes the specific data types Journey Tracker requests access to. Granting permission through this dialog constitutes your consent to the collection of consumer health data for the purposes described in this policy.</p>
+
+      <h4>6.2 AI Lab Analysis (Sharing with Google)</h4>
+      <p>Before any consumer health data is shared with Google via the Gemini API, you are presented with a separate, dedicated in-app consent screen. This consent screen explains:</p>
+      <ul>
+        <li>Exactly what data will be transmitted</li>
+        <li>How the data is de-identified before transmission</li>
+        <li>That Google will receive and process the data</li>
+        <li>That data transits through Cloudflare's infrastructure</li>
+        <li>That Google does not use the data for AI model training (paid-tier account)</li>
+      </ul>
+      <p>You must tap <strong>"I Understand and Agree"</strong> before any health data is transmitted. No data is shared with Google or Cloudflare until you provide this explicit consent.</p>
+
+      <h4>6.3 Consent Standards</h4>
+      <p>All consent obtained by Journey Tracker is:</p>
+      <ul>
+        <li><strong>Freely given</strong> — you are not required to consent to use the core features of the app</li>
+        <li><strong>Specific</strong> — each consent request identifies the exact data and purpose</li>
+        <li><strong>Informed</strong> — you are told what data is collected, why, and who receives it</li>
+        <li><strong>Opt-in</strong> — no consumer health data is collected or shared by default</li>
+        <li><strong>Voluntary</strong> — declining consent does not prevent you from using Journey Tracker's core features</li>
+        <li><strong>Unambiguous</strong> — consent requires an affirmative action (granting a permission or tapping a consent button)</li>
+      </ul>
+      <p>These consent standards meet or exceed the requirements of RCW 19.373.020.</p>
+
+      <hr>
+
+      <h3>7. Contact</h3>
+      <p>To exercise your rights under this policy or Washington's My Health My Data Act, or to ask questions about how your consumer health data is handled:</p>
+      <p>
+        <strong>Email:</strong> <a href="mailto:support@journeytracker.app">support@journeytracker.app</a> (subject line: "Health Data Privacy Request")<br>
+        <strong>Website:</strong> <a href="https://journeytracker.app/support.html">journeytracker.app/support</a><br>
+        <strong>Company:</strong> Apex Development Studio LLC
+      </p>
+      <p>We will respond to all requests within the timeframes required by applicable law.</p>
+
+      <p class="doc-footer-note">This Consumer Health Data Privacy Policy is effective as of April 7, 2026. Journey Tracker is developed and operated by Apex Development Studio LLC.</p>
+
+    </div><!-- /.doc-content -->
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <div class="nav-logo" style="color:#fff;">
+            <img src="/logo-icon.svg" class="nav-logo-icon" alt="" aria-hidden="true" width="48" height="48" />
+            Journey Tracker
+          </div>
+          <p>A private, beautiful health companion for your GLP‑1 and weight loss journey. Coming soon to the App Store for iPhone, iPad, and Mac.</p>
+        </div>
+        <nav class="footer-nav" aria-label="Legal and support links">
+          <h3>Legal &amp; Support</h3>
+          <ul>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="health-data-privacy.html">Health Data Privacy</a></li>
+            <li><a href="hipaa.html">HIPAA Disclosure</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+            <li><a href="support.html">Support Center</a></li>
+            <li><a href="accessibility.html">Accessibility</a></li>
+            <li><a href="/#faqs">FAQs</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Apex Development Studio LLC. All rights reserved.</p>
+        <p class="footer-medical-note">Journey Tracker is not a medical device and does not provide medical advice. Always consult a qualified healthcare provider.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    var navToggle = document.getElementById('navToggle');
+    var mobileNav = document.getElementById('mobileNav');
+    if (navToggle && mobileNav) {
+      navToggle.addEventListener('click', function () {
+        var isOpen = mobileNav.classList.toggle('open');
+        navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        mobileNav.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+      });
+    }
+    function closeMobileNav() {
+      if (mobileNav) {
+        mobileNav.classList.remove('open');
+        mobileNav.setAttribute('aria-hidden', 'true');
+        if (navToggle) { navToggle.setAttribute('aria-expanded', 'false'); navToggle.focus(); }
+      }
+    }
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && mobileNav && mobileNav.classList.contains('open')) { closeMobileNav(); }
+    });
+  </script>
+</body>
+</html>
