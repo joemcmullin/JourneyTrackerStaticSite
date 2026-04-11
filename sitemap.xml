@@ -5,16 +5,51 @@
           http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
   <!--
-    Single-page site — one canonical URL.
-    lastmod: update this whenever meaningful content changes.
+    lastmod: update this whenever meaningful content changes are published.
     changefreq: how often Google should recrawl (hint, not a command).
     priority: 1.0 = highest importance (homepage always gets 1.0).
   -->
+
   <url>
     <loc>https://journeytracker.app/</loc>
-    <lastmod>2026-03-16</lastmod>
+    <lastmod>2026-04-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://journeytracker.app/privacy.html</loc>
+    <lastmod>2026-04-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://journeytracker.app/hipaa.html</loc>
+    <lastmod>2026-04-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://journeytracker.app/terms.html</loc>
+    <lastmod>2026-04-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://journeytracker.app/support.html</loc>
+    <lastmod>2026-04-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://journeytracker.app/accessibility.html</loc>
+    <lastmod>2026-04-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 
 </urlset>
