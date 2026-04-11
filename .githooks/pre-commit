@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+#
+# Pre-commit hook: auto-update sitemap.xml <lastmod> dates to today
+# whenever HTML files are part of the commit.
+#
+# Activated via: git config core.hooksPath .githooks
+#
+set -e
+
+# Only act if .html files are being added/modified/renamed in this commit
+if ! git diff --cached --name-only --diff-filter=ACMR | grep -qE '\.html$'; then
+  exit 0
+fi
+
+SITEMAP="sitemap.xml"
+[ -f "$SITEMAP" ] || exit 0
+
+TODAY=$(date +%Y-%m-%d)
+
+# If every existing <lastmod> already matches today, nothing to do
+if ! grep -oE "<lastmod>[0-9]{4}-[0-9]{2}-[0-9]{2}</lastmod>" "$SITEMAP" | grep -qv "$TODAY"; then
+  exit 0
+fi
+
+# Replace all ISO-date <lastmod> values with today's date (portable macOS/Linux sed)
+sed -i.bak -E "s|<lastmod>[0-9]{4}-[0-9]{2}-[0-9]{2}</lastmod>|<lastmod>$TODAY</lastmod>|g" "$SITEMAP"
+rm -f "$SITEMAP.bak"
+
+git add "$SITEMAP"
+echo "✓ pre-commit: updated $SITEMAP lastmod → $TODAY"
