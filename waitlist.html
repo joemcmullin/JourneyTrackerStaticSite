@@ -247,6 +247,27 @@
 
     .wl-form .btn-primary {
       align-self: flex-start; padding: 15px 36px; font-size: 1.05rem;
+      position: relative; overflow: hidden;
+    }
+
+    /* Subtle shimmer sweep across the button */
+    .wl-form .btn-primary::after {
+      content: '';
+      position: absolute; top: 0; left: -100%; width: 60%; height: 100%;
+      background: linear-gradient(
+        105deg,
+        transparent 20%,
+        rgba(255,255,255,0.18) 45%,
+        rgba(255,255,255,0.25) 50%,
+        rgba(255,255,255,0.18) 55%,
+        transparent 80%
+      );
+      animation: btn-shimmer 5s ease-in-out 2s infinite;
+    }
+    @keyframes btn-shimmer {
+      0%, 100% { left: -100%; }
+      20%      { left: 120%; }
+      21%      { left: -100%; }  /* reset instantly, then wait */
     }
 
     .form-trust {
@@ -344,28 +365,69 @@
     }
     .wl-timeline {
       display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px;
-      margin-top: 48px;
+      margin-top: 48px; position: relative;
     }
+
+    /* Connector line behind the numbered circles */
+    .wl-timeline::before {
+      content: '';
+      position: absolute;
+      top: 20px; /* vertically centered on 40px step-num */
+      left: calc(100% / 6);  /* center of first column */
+      right: calc(100% / 6); /* center of last column */
+      height: 2px;
+      background: var(--border);
+      z-index: 0;
+    }
+    /* Animated progress fill on the connector */
+    .wl-timeline::after {
+      content: '';
+      position: absolute;
+      top: 20px;
+      left: calc(100% / 6);
+      right: calc(100% / 6);
+      height: 2px;
+      background: var(--forest-mid);
+      z-index: 1;
+      transform-origin: left;
+      transform: scaleX(0);
+      transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .wl-timeline.in-view::after {
+      transform: scaleX(1);
+    }
+
     .wl-step {
       text-align: center; padding: 0 12px;
+      position: relative; z-index: 2;
+      /* Scroll-triggered animation: start hidden */
+      opacity: 0;
+      transform: translateY(24px) scale(0.95);
+      transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
     }
+    .wl-step:nth-child(2) { transition-delay: 0.2s; }
+    .wl-step:nth-child(3) { transition-delay: 0.4s; }
+
+    .wl-timeline.in-view .wl-step {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
     .wl-step-num {
       width: 40px; height: 40px; border-radius: 50%;
       background: var(--forest-mid); color: var(--white);
       display: flex; align-items: center; justify-content: center;
       font-weight: 700; font-size: 1rem; margin: 0 auto 16px;
+      position: relative;
+      transition: box-shadow 0.4s ease;
     }
+    /* Ring pulse when visible */
+    .wl-timeline.in-view .wl-step-num {
+      box-shadow: 0 0 0 6px rgba(25,126,114,0.15);
+    }
+
     .wl-step h3 { margin-bottom: 8px; font-size: 1.05rem; }
     .wl-step p { font-size: 0.9rem; line-height: 1.65; max-width: 280px; margin: 0 auto; }
-
-    /* Connector lines between steps */
-    .wl-timeline-row {
-      display: flex; align-items: flex-start; gap: 0;
-    }
-    .wl-connector {
-      flex: 1; height: 2px; background: var(--border);
-      margin-top: 20px; /* align with center of step-num */
-    }
 
     /* =====================================================
        FAQ
@@ -503,9 +565,19 @@
     /* =====================================================
        RESPONSIVE
     ===================================================== */
+    /* Respect reduced-motion — WCAG 2.3.3 */
+    @media (prefers-reduced-motion: reduce) {
+      .wl-form .btn-primary::after { animation: none; }
+      .wl-step { opacity: 1; transform: none; transition: none; }
+      .wl-timeline::after { transform: scaleX(1); transition: none; }
+      .wl-step-num { box-shadow: 0 0 0 6px rgba(25,126,114,0.15); }
+    }
+
     @media (max-width: 768px) {
       .nav-links { display: none; }
       .nav-toggle { display: flex; }
+      /* Hide horizontal connector on stacked mobile layout */
+      .wl-timeline::before, .wl-timeline::after { display: none; }
 
       .wl-hero-inner { grid-template-columns: 1fr; gap: 40px; text-align: center; }
       .wl-hero-sub { margin: 0 auto 32px; }
@@ -929,6 +1001,33 @@
         if (navToggle) navToggle.focus();
       }
     });
+
+    /* =====================================================
+       SCROLL-TRIGGERED TIMELINE ANIMATION
+       Uses IntersectionObserver to add .in-view when the
+       timeline enters the viewport. CSS handles the rest.
+    ===================================================== */
+    (function () {
+      var timeline = document.querySelector('.wl-timeline');
+      if (!timeline) return;
+
+      /* If user prefers reduced motion, show everything immediately */
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        timeline.classList.add('in-view');
+        return;
+      }
+
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            timeline.classList.add('in-view');
+            observer.unobserve(timeline); /* only animate once */
+          }
+        });
+      }, { threshold: 0.3 });
+
+      observer.observe(timeline);
+    })();
 
     /* =====================================================
        FAQ ACCORDION
