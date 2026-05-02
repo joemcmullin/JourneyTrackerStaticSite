@@ -2151,7 +2151,7 @@
       position: relative;
     }
 
-    /* Connecting line between tiers */
+    /* Static connecting line between tiers */
     .tiers-track::before {
       content: '';
       position: absolute;
@@ -2159,8 +2159,26 @@
       left: 10%;
       right: 10%;
       height: 2px;
-      background: linear-gradient(90deg, var(--border), var(--forest-light), var(--forest-mid), var(--forest-dark), #b8860b);
+      background: var(--border);
       z-index: 0;
+    }
+
+    /* Animated gradient fill on the connector */
+    .tiers-track::after {
+      content: '';
+      position: absolute;
+      top: 44px;
+      left: 10%;
+      right: 10%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--forest-light), var(--forest-mid), var(--forest-dark), #b8860b);
+      z-index: 0;
+      transform-origin: left;
+      transform: scaleX(0);
+      transition: transform 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .tiers-track.in-view::after {
+      transform: scaleX(1);
     }
 
     .tier-card {
@@ -2172,6 +2190,19 @@
       padding: 0 12px;
       position: relative;
       z-index: 1;
+      /* Scroll-triggered: start hidden */
+      opacity: 0;
+      transform: translateY(20px) scale(0.95);
+      transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .tier-card:nth-child(2) { transition-delay: 0.15s; }
+    .tier-card:nth-child(3) { transition-delay: 0.3s; }
+    .tier-card:nth-child(4) { transition-delay: 0.45s; }
+    .tier-card:nth-child(5) { transition-delay: 0.6s; }
+
+    .tiers-track.in-view .tier-card {
+      opacity: 1;
+      transform: translateY(0) scale(1);
     }
 
     .tier-stamp {
@@ -2188,6 +2219,35 @@
       box-shadow: 0 4px 16px rgba(26,58,42,0.1);
       transition: transform 0.2s, box-shadow 0.2s;
       position: relative;
+    }
+
+    /* Expanding ring-ping on each stamp */
+    .tier-stamp::after {
+      content: '';
+      position: absolute; top: -3px; left: -3px; right: -3px; bottom: -3px;
+      border-radius: 50%;
+      border: 2.5px solid var(--forest-mid);
+      opacity: 0;
+      transform: scale(1);
+    }
+    .tiers-track.in-view .tier-card:nth-child(1) .tier-stamp::after {
+      animation: tier-ping 1s cubic-bezier(0, 0, 0.2, 1) 0.2s 1 forwards;
+    }
+    .tiers-track.in-view .tier-card:nth-child(2) .tier-stamp::after {
+      animation: tier-ping 1s cubic-bezier(0, 0, 0.2, 1) 0.35s 1 forwards;
+    }
+    .tiers-track.in-view .tier-card:nth-child(3) .tier-stamp::after {
+      animation: tier-ping 1s cubic-bezier(0, 0, 0.2, 1) 0.5s 1 forwards;
+    }
+    .tiers-track.in-view .tier-card:nth-child(4) .tier-stamp::after {
+      animation: tier-ping 1s cubic-bezier(0, 0, 0.2, 1) 0.65s 1 forwards;
+    }
+    .tiers-track.in-view .tier-card:nth-child(5) .tier-stamp::after {
+      animation: tier-ping 1s cubic-bezier(0, 0, 0.2, 1) 0.8s 1 forwards;
+    }
+    @keyframes tier-ping {
+      0%   { transform: scale(1);   opacity: 0.6; }
+      100% { transform: scale(1.8); opacity: 0; }
     }
 
     .tier-card:hover .tier-stamp {
@@ -2269,13 +2329,20 @@
       color: var(--forest-dark);
     }
 
+    /* Respect reduced-motion for tier animations — WCAG 2.3.3 */
+    @media (prefers-reduced-motion: reduce) {
+      .tier-card { opacity: 1; transform: none; transition: none; }
+      .tiers-track::after { transform: scaleX(1); transition: none; }
+      .tier-stamp::after { animation: none !important; }
+    }
+
     @media (max-width: 768px) {
       .tiers-track {
         flex-direction: column;
         align-items: center;
         gap: 28px;
       }
-      .tiers-track::before { display: none; }
+      .tiers-track::before, .tiers-track::after { display: none; }
       .tier-card { flex-direction: row; text-align: left; gap: 18px; max-width: 360px; width: 100%; padding: 0; }
       .tier-stamp { width: 64px; height: 64px; font-size: 1.5rem; flex-shrink: 0; margin-bottom: 0; }
       .tier-card .tier-info { display: flex; flex-direction: column; }
@@ -4686,6 +4753,32 @@
       var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       window.scrollTo({ top: 0, behavior: prefersReduced ? 'auto' : 'smooth' });
     }
+
+    /* ============================================================
+       SCROLL-TRIGGERED TIER ANIMATION
+       Adds .in-view to .tiers-track when it enters the viewport,
+       triggering the staggered fade-up and ring-ping CSS animations.
+    ============================================================ */
+    (function () {
+      var tiersTrack = document.querySelector('.tiers-track');
+      if (!tiersTrack) return;
+
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        tiersTrack.classList.add('in-view');
+        return;
+      }
+
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            tiersTrack.classList.add('in-view');
+            observer.unobserve(tiersTrack);
+          }
+        });
+      }, { threshold: 0.25 });
+
+      observer.observe(tiersTrack);
+    })();
 
     /* ============================================================
        PHONE CAROUSELS
