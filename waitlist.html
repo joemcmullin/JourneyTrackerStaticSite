@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- FAVICON -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+
+  <!-- SECURITY -->
+  <meta http-equiv="Content-Security-Policy" content="
+    default-src 'self';
+    script-src 'self' 'unsafe-inline';
+    style-src 'self' 'unsafe-inline';
+    img-src 'self' data:;
+    connect-src https://formspree.io;
+    form-action https://formspree.io 'self';
+    frame-ancestors 'none';
+    base-uri 'self';
+    object-src 'none';
+  " />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+
+  <!-- SEO -->
+  <title>Join the Waitlist — Journey Tracker | GLP‑1 &amp; Weight Loss Companion</title>
+  <meta name="description" content="Be first to try Journey Tracker — a private GLP-1 tracking app for iPhone, iPad &amp; Mac. Join the waitlist for early access, launch updates, and TestFlight invites." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://journeytracker.app/waitlist.html" />
+  <meta name="theme-color" content="#0d3d38" />
+
+  <!-- OPEN GRAPH -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://journeytracker.app/waitlist.html" />
+  <meta property="og:title" content="Join the Waitlist — Journey Tracker" />
+  <meta property="og:description" content="Private GLP-1 tracking, launching soon. Sign up for early access and launch updates." />
+  <meta property="og:image" content="https://journeytracker.app/app-icon.jpg" />
+
+  <!-- TWITTER -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Join the Waitlist — Journey Tracker" />
+  <meta name="twitter:description" content="Private GLP-1 tracking, launching soon. Sign up for early access and launch updates." />
+  <meta name="twitter:image" content="https://journeytracker.app/app-icon.jpg" />
+
+  <!-- PERFORMANCE -->
+  <link rel="preload" as="image" href="/images/screenshots/ss-home-dashboard.jpg" fetchpriority="high" />
+  <link rel="dns-prefetch" href="https://formspree.io" />
+
+  <style>
+    /* ================================================================
+       JOURNEY TRACKER — WAITLIST PAGE STYLES
+       Matches the main site's design token system exactly.
+    ================================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --forest-dark:   #0d3d38;
+      --forest-mid:    #197E72;
+      --forest-light:  #2aaa9e;
+      --sunrise:       #e8792a;
+      --sunrise-light: #f59c55;
+      --cream:         #faf7f2;
+      --white:         #ffffff;
+      --text-dark:     #1a2a1a;
+      --text-mid:      #3a4a3a;
+      --text-muted:    #585e58;
+      --card-bg:       #ffffff;
+      --border:        #e0e8df;
+      --shadow-sm:     0 2px 8px rgba(13,61,56,0.08);
+      --shadow-md:     0 6px 24px rgba(13,61,56,0.12);
+      --shadow-lg:     0 16px 48px rgba(13,61,56,0.16);
+      --radius-sm:     8px;
+      --radius-md:     16px;
+      --radius-lg:     24px;
+      --nav-height:    64px;
+      --max-w:         1024px;
+      font-size: 16px;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      html { scroll-behavior: smooth; }
+    }
+
+    body {
+      font-family: -apple-system, system-ui, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+      background: var(--cream);
+      color: var(--text-dark);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+
+    /* TYPOGRAPHY */
+    h1, h2, h3, h4 {
+      font-family: -apple-system, system-ui, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+      font-weight: 700; line-height: 1.2; color: var(--forest-dark);
+    }
+    h1 { font-size: clamp(2.2rem, 5vw, 3.2rem); }
+    h2 { font-size: clamp(1.6rem, 3.5vw, 2.2rem); }
+    h3 { font-size: 1.15rem; }
+    p { color: var(--text-mid); line-height: 1.7; }
+
+    .section-label {
+      display: inline-block; font-size: 0.78rem; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--forest-light); background: rgba(42,170,158,0.12);
+      padding: 4px 12px; border-radius: 100px; margin-bottom: 12px;
+    }
+
+    /* BUTTONS */
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 28px; border-radius: 100px; font-size: 1rem;
+      font-weight: 600; cursor: pointer; border: none; white-space: nowrap;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn:active { transform: translateY(0); }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--forest-mid) 0%, var(--forest-dark) 100%);
+      color: var(--white); box-shadow: 0 4px 16px rgba(25,126,114,0.35);
+    }
+    .btn-primary:hover { box-shadow: 0 6px 20px rgba(25,126,114,0.45); }
+    .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+    .btn-secondary {
+      background: transparent; color: var(--forest-mid);
+      border: 2px solid var(--forest-mid);
+    }
+    .btn-secondary:hover { background: var(--forest-mid); color: var(--white); }
+
+    /* =====================================================
+       NAV — matches main site
+    ===================================================== */
+    #top-nav {
+      position: sticky; top: 0; z-index: 100;
+      height: var(--nav-height);
+      background: var(--forest-dark);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .nav-inner {
+      display: flex; align-items: center;
+      justify-content: space-between; height: 100%;
+    }
+    .nav-logo {
+      font-size: 1.15rem; font-weight: 700; color: var(--white);
+      display: flex; align-items: center; gap: 8px;
+    }
+    .nav-logo-icon {
+      width: 48px; height: 48px; border-radius: 10px;
+      object-fit: contain; display: block; flex-shrink: 0;
+    }
+    .nav-links {
+      display: flex; align-items: center; gap: 4px; list-style: none;
+    }
+    .nav-links a {
+      display: block; padding: 6px 12px; font-size: 0.88rem; font-weight: 500;
+      color: rgba(255,255,255,0.82); border-radius: 6px;
+      transition: color 0.15s, background 0.15s;
+    }
+    .nav-links a:hover { color: var(--white); background: rgba(255,255,255,0.1); }
+    .nav-links a[aria-current="page"] { color: var(--white); font-weight: 700; }
+
+    .nav-cta { margin-left: 8px; }
+    .nav-cta a {
+      background: linear-gradient(135deg, var(--sunrise), var(--sunrise-light));
+      color: var(--white) !important; padding: 8px 18px !important;
+      border-radius: 100px !important; font-weight: 600 !important;
+      font-size: 0.82rem !important;
+    }
+    .nav-cta a:hover { transform: translateY(-1px); }
+
+    .nav-toggle {
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 4px;
+    }
+    .nav-toggle span {
+      display: block; width: 24px; height: 2px;
+      background: var(--white); border-radius: 2px;
+      transition: transform 0.2s, opacity 0.2s;
+    }
+    .mobile-nav {
+      display: none; position: fixed; top: var(--nav-height);
+      left: 0; right: 0; background: var(--cream);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding: 16px 24px 24px; z-index: 99;
+      flex-direction: column; gap: 4px;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+      padding: 12px 16px; font-size: 1rem; font-weight: 500;
+      color: var(--text-mid); border-radius: 8px;
+    }
+    .mobile-nav a:hover { background: rgba(42,170,158,0.1); color: var(--forest-dark); }
+
+    /* =====================================================
+       HERO — waitlist-specific
+    ===================================================== */
+    .wl-hero {
+      padding: calc(var(--nav-height) + 56px) 0 80px;
+      background: linear-gradient(160deg, #edf5f4 0%, var(--cream) 55%, #fdf3ea 100%);
+      overflow: hidden;
+    }
+    .wl-hero-inner {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 56px; align-items: center;
+    }
+    .wl-hero-text { max-width: 520px; }
+    .wl-hero-title { margin-bottom: 16px; }
+    .wl-hero-title span {
+      background: linear-gradient(135deg, var(--forest-mid), var(--forest-light));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .wl-hero-sub {
+      font-size: 1.1rem; color: var(--text-mid);
+      margin-bottom: 32px; max-width: 440px; line-height: 1.7;
+    }
+
+    /* FORM */
+    .wl-form { display: flex; flex-direction: column; gap: 14px; }
+    .wl-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-group { display: flex; flex-direction: column; gap: 5px; }
+    .form-group label {
+      font-size: 0.85rem; font-weight: 600; color: var(--forest-dark);
+    }
+    .form-group input, .form-group select {
+      padding: 13px 16px; background: var(--white); border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm); font-size: 0.95rem; font-family: inherit;
+      color: var(--text-dark); transition: border-color 0.15s, box-shadow 0.15s;
+      outline: none;
+    }
+    .form-group input:focus, .form-group select:focus {
+      border-color: var(--forest-light);
+      box-shadow: 0 0 0 3px rgba(42,170,158,0.12);
+    }
+    .form-group input::placeholder { color: #9ca39c; }
+
+    .wl-form .btn-primary {
+      align-self: flex-start; padding: 15px 36px; font-size: 1.05rem;
+    }
+
+    .form-trust {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 0.82rem; color: var(--text-muted); margin-top: 2px;
+    }
+    .form-trust svg { flex-shrink: 0; opacity: 0.6; }
+
+    .form-note {
+      font-size: 0.78rem; color: var(--text-muted); margin-top: 4px;
+    }
+
+    /* Phone frame */
+    .wl-device {
+      display: flex; justify-content: center; align-items: center;
+    }
+    .phone-frame {
+      width: 260px; border-radius: 44px; border: 8px solid #111;
+      overflow: hidden; background: #111;
+      box-shadow:
+        0 32px 80px rgba(13,61,56,0.35),
+        0 8px 24px rgba(0,0,0,0.2),
+        0 0 0 1px rgba(255,255,255,0.08) inset;
+    }
+
+    /* =====================================================
+       TRUST STRIP
+    ===================================================== */
+    .wl-trust {
+      padding: 56px 0;
+      background: var(--white);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .wl-trust-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 32px; text-align: center;
+    }
+    .wl-trust-item {
+      display: flex; flex-direction: column; align-items: center; gap: 10px;
+    }
+    .wl-trust-icon {
+      width: 48px; height: 48px; border-radius: 14px;
+      background: rgba(42,170,158,0.08);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .wl-trust-icon svg { width: 22px; height: 22px; }
+    .wl-trust-item strong {
+      font-size: 0.92rem; color: var(--forest-dark);
+    }
+    .wl-trust-item span {
+      font-size: 0.82rem; color: var(--text-muted); line-height: 1.5;
+    }
+
+    /* =====================================================
+       WHY JOIN
+    ===================================================== */
+    .wl-why {
+      padding: 80px 0;
+      background: var(--cream);
+    }
+    .wl-section-header {
+      text-align: center; max-width: 600px; margin: 0 auto 48px;
+    }
+    .wl-section-header h2 { margin-bottom: 12px; }
+    .wl-section-header p { font-size: 1.05rem; }
+
+    .wl-benefits {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
+    }
+    .wl-benefit-card {
+      background: var(--white); border-radius: var(--radius-md);
+      padding: 32px 28px; border: 1px solid var(--border);
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .wl-benefit-card:hover {
+      box-shadow: var(--shadow-md); transform: translateY(-2px);
+    }
+    .wl-benefit-icon {
+      width: 44px; height: 44px; border-radius: 12px;
+      background: linear-gradient(135deg, rgba(42,170,158,0.12), rgba(25,126,114,0.06));
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 16px;
+    }
+    .wl-benefit-icon svg { width: 22px; height: 22px; stroke: var(--forest-mid); }
+    .wl-benefit-card h3 { margin-bottom: 10px; font-size: 1.1rem; }
+    .wl-benefit-card p { font-size: 0.92rem; line-height: 1.65; }
+
+    /* =====================================================
+       WHAT HAPPENS AFTER YOU JOIN
+    ===================================================== */
+    .wl-after {
+      padding: 80px 0;
+      background: var(--white);
+    }
+    .wl-timeline {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px;
+      margin-top: 48px;
+    }
+    .wl-step {
+      text-align: center; padding: 0 12px;
+    }
+    .wl-step-num {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--forest-mid); color: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 1rem; margin: 0 auto 16px;
+    }
+    .wl-step h3 { margin-bottom: 8px; font-size: 1.05rem; }
+    .wl-step p { font-size: 0.9rem; line-height: 1.65; max-width: 280px; margin: 0 auto; }
+
+    /* Connector lines between steps */
+    .wl-timeline-row {
+      display: flex; align-items: flex-start; gap: 0;
+    }
+    .wl-connector {
+      flex: 1; height: 2px; background: var(--border);
+      margin-top: 20px; /* align with center of step-num */
+    }
+
+    /* =====================================================
+       FAQ
+    ===================================================== */
+    .wl-faq { padding: 80px 0; background: var(--cream); }
+    .wl-faq-list {
+      max-width: 680px; margin: 0 auto;
+      display: flex; flex-direction: column; gap: 0;
+    }
+    .wl-faq-item {
+      border-bottom: 1px solid var(--border);
+    }
+    .wl-faq-item:first-child { border-top: 1px solid var(--border); }
+
+    .wl-faq-q {
+      width: 100%; background: none; border: none; cursor: pointer;
+      padding: 20px 0; display: flex; justify-content: space-between;
+      align-items: center; font-size: 1rem; font-weight: 600;
+      color: var(--forest-dark); font-family: inherit; text-align: left;
+      gap: 16px;
+    }
+    .wl-faq-q:hover { color: var(--forest-mid); }
+    .wl-faq-chevron {
+      width: 18px; height: 18px; stroke: var(--forest-mid);
+      flex-shrink: 0; transition: transform 0.25s ease;
+    }
+    .wl-faq-q[aria-expanded="true"] .wl-faq-chevron { transform: rotate(180deg); }
+
+    .wl-faq-a {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+    }
+    .wl-faq-a[aria-hidden="false"] {
+      max-height: 300px; padding-bottom: 20px;
+    }
+    .wl-faq-a p {
+      font-size: 0.92rem; line-height: 1.7; color: var(--text-mid);
+    }
+
+    /* =====================================================
+       FINAL CTA
+    ===================================================== */
+    .wl-final-cta {
+      padding: 96px 0;
+      background: linear-gradient(180deg, var(--forest-dark) 0%, #155e56 100%);
+      color: var(--white); text-align: center;
+    }
+    .wl-final-cta h2 { color: var(--white); margin-bottom: 12px; }
+    .wl-final-cta p { color: rgba(255,255,255,0.8); margin-bottom: 32px; font-size: 1.05rem; }
+
+    .wl-final-form {
+      display: flex; gap: 12px; max-width: 480px; margin: 0 auto;
+    }
+    .wl-final-form input {
+      flex: 1; padding: 14px 18px; border: 1.5px solid rgba(255,255,255,0.25);
+      border-radius: 100px; background: rgba(255,255,255,0.1);
+      color: var(--white); font-size: 0.95rem; font-family: inherit;
+      outline: none; transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .wl-final-form input::placeholder { color: rgba(255,255,255,0.5); }
+    .wl-final-form input:focus {
+      border-color: var(--forest-light);
+      box-shadow: 0 0 0 3px rgba(42,170,158,0.25);
+    }
+    .wl-final-form .btn-cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 28px; border-radius: 100px; font-size: 1rem;
+      font-weight: 600; cursor: pointer; border: none;
+      background: linear-gradient(135deg, var(--sunrise), var(--sunrise-light));
+      color: var(--white); box-shadow: 0 4px 16px rgba(232,121,42,0.35);
+      transition: transform 0.15s, box-shadow 0.15s;
+      white-space: nowrap;
+    }
+    .wl-final-form .btn-cta:hover {
+      transform: translateY(-1px); box-shadow: 0 6px 20px rgba(232,121,42,0.45);
+    }
+    .wl-final-form .btn-cta:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+    .wl-final-trust {
+      margin-top: 16px; font-size: 0.82rem; color: rgba(255,255,255,0.55);
+    }
+    .wl-final-status {
+      margin-top: 12px; font-size: 0.9rem; font-weight: 600; min-height: 24px;
+    }
+
+    /* =====================================================
+       FOOTER — matches main site
+    ===================================================== */
+    footer {
+      background: var(--forest-dark); color: rgba(255,255,255,0.7);
+      padding: 48px 0 32px;
+    }
+    .footer-inner {
+      display: grid; grid-template-columns: 1fr auto;
+      gap: 40px; align-items: start;
+      padding-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,0.1);
+      margin-bottom: 24px;
+    }
+    .footer-brand p {
+      font-size: 0.88rem; color: rgba(255,255,255,0.72);
+      margin-top: 8px; max-width: 380px; line-height: 1.6;
+    }
+    .footer-nav h3 {
+      color: rgba(255,255,255,0.72); font-size: 0.82rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 14px;
+    }
+    .footer-nav ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .footer-nav a { font-size: 0.9rem; color: rgba(255,255,255,0.82); transition: color 0.15s; }
+    .footer-nav a:hover { color: var(--white); }
+    .footer-bottom {
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 12px;
+    }
+    .footer-bottom p { font-size: 0.85rem; color: rgba(255,255,255,0.65); }
+    .footer-medical-note { font-size: 0.85rem; color: rgba(255,255,255,0.60); font-style: italic; }
+
+    /* =====================================================
+       SKIP LINK
+    ===================================================== */
+    .skip-link {
+      position: absolute; top: -100%; left: 0; z-index: 9999;
+      background: var(--forest-dark); color: var(--white);
+      padding: 12px 24px; font-weight: 600;
+    }
+    .skip-link:focus { top: 0; }
+
+    /* Focus ring for keyboard users */
+    :focus-visible {
+      outline: 3px solid var(--forest-light); outline-offset: 3px;
+    }
+    input:focus:not(:focus-visible),
+    button:focus:not(:focus-visible),
+    select:focus:not(:focus-visible) { outline: none; }
+
+    /* =====================================================
+       RESPONSIVE
+    ===================================================== */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-toggle { display: flex; }
+
+      .wl-hero-inner { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+      .wl-hero-sub { margin: 0 auto 32px; }
+      .wl-form .btn-primary { align-self: center; }
+      .wl-form-row { grid-template-columns: 1fr; }
+      .wl-device { order: -1; }
+      .form-trust { justify-content: center; }
+
+      .wl-trust-grid { grid-template-columns: 1fr 1fr; }
+      .wl-benefits { grid-template-columns: 1fr; }
+      .wl-timeline { grid-template-columns: 1fr; gap: 40px; }
+
+      .wl-final-form { flex-direction: column; }
+      .wl-final-form input { text-align: center; }
+      .wl-final-form .btn-cta { align-self: center; }
+
+      .footer-inner { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
+
+    @media (max-width: 520px) {
+      .phone-frame { width: 220px; }
+      .wl-trust-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SKIP LINK — WCAG 2.4.1 -->
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <!-- ============================================================
+       NAV — identical pattern to main site
+  ============================================================ -->
+  <header id="top-nav" role="banner">
+    <div class="container">
+      <nav class="nav-inner" aria-label="Main navigation">
+        <a href="/" class="nav-logo">
+          <img src="/logo-icon.svg" class="nav-logo-icon" alt="" aria-hidden="true" width="48" height="48" />
+          Journey Tracker
+        </a>
+        <ul class="nav-links">
+          <li><a href="/">Home</a></li>
+          <li><a href="/#walkthrough">Features</a></li>
+          <li><a href="/#faqs">FAQs</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+          <li><a href="support.html">Support</a></li>
+          <li><a href="accessibility.html">Accessibility</a></li>
+          <li class="nav-cta"><a href="#wl-hero-form">Join Waitlist</a></li>
+        </ul>
+        <button
+          class="nav-toggle"
+          id="navToggle"
+          aria-label="Open navigation menu"
+          aria-expanded="false"
+          aria-controls="mobileNav"
+        >
+          <span></span><span></span><span></span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation" aria-hidden="true">
+    <a href="/" onclick="closeMobileNav()">Home</a>
+    <a href="/#walkthrough" onclick="closeMobileNav()">Features</a>
+    <a href="/#faqs" onclick="closeMobileNav()">FAQs</a>
+    <a href="privacy.html" onclick="closeMobileNav()">Privacy</a>
+    <a href="support.html" onclick="closeMobileNav()">Support</a>
+    <a href="#wl-hero-form" onclick="closeMobileNav()">Join Waitlist</a>
+  </nav>
+
+  <!-- ============================================================
+       MAIN CONTENT
+  ============================================================ -->
+  <main id="main">
+
+    <!-- HERO -->
+    <section class="wl-hero" aria-labelledby="wl-heading">
+      <div class="container">
+        <div class="wl-hero-inner">
+          <div class="wl-hero-text">
+            <span class="section-label">Launching Soon</span>
+            <h1 id="wl-heading" class="wl-hero-title">
+              Be first to try<br><span>Journey Tracker.</span>
+            </h1>
+            <p class="wl-hero-sub">
+              A private, organized companion for your GLP&#8209;1 therapy, lab results, and weight loss journey. Built for iPhone, iPad, and Mac.
+            </p>
+
+            <form
+              id="wl-hero-form"
+              class="wl-form"
+              action="https://formspree.io/f/maqpybrb"
+              method="POST"
+              novalidate
+            >
+              <!-- Formspree hidden field to tag these as waitlist signups -->
+              <input type="hidden" name="subject" value="Waitlist Signup" />
+              <input type="hidden" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+
+              <div class="wl-form-row">
+                <div class="form-group">
+                  <label for="wl-name">First name</label>
+                  <input
+                    type="text"
+                    id="wl-name"
+                    name="name"
+                    placeholder="First name"
+                    autocomplete="given-name"
+                    maxlength="100"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="wl-email">Email <span aria-hidden="true">*</span></label>
+                  <input
+                    type="email"
+                    id="wl-email"
+                    name="_replyto"
+                    placeholder="you@example.com"
+                    autocomplete="email"
+                    required
+                    maxlength="254"
+                    pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}"
+                    aria-required="true"
+                    aria-describedby="wl-email-error"
+                  />
+                  <span id="wl-email-error" class="form-note" style="display:none; color:#c0392b;" role="alert"></span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="wl-interest">What are you most interested in?</label>
+                <select id="wl-interest" name="interest">
+                  <option value="early-access">Early access / TestFlight invite</option>
+                  <option value="launch-updates">Launch updates only</option>
+                  <option value="both" selected>Both</option>
+                </select>
+              </div>
+
+              <button type="submit" id="wl-submit" class="btn btn-primary">
+                Join the Waitlist
+              </button>
+
+              <p id="wl-hero-success" class="form-note" style="display:none; color: var(--forest-mid); font-weight:600;" role="status" aria-live="polite"></p>
+              <p id="wl-hero-error" class="form-note" style="display:none; color:#c0392b; font-weight:600;" role="alert"></p>
+
+              <div class="form-trust">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+                No spam. Just launch updates and early access news.
+              </div>
+            </form>
+          </div>
+
+          <div class="wl-device">
+            <div class="phone-frame">
+              <img
+                src="images/screenshots/ss-home-dashboard.jpg"
+                alt="Journey Tracker home screen showing weight streak, next dose, HbA1c, hydration, and AI weekly summary"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRUST STRIP -->
+    <section class="wl-trust" aria-labelledby="trust-heading">
+      <div class="container">
+        <h2 id="trust-heading" class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">Privacy and trust</h2>
+        <div class="wl-trust-grid">
+          <div class="wl-trust-item">
+            <div class="wl-trust-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#197E72" stroke-width="2" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            </div>
+            <strong>Private by design</strong>
+            <span>Your data never touches our servers</span>
+          </div>
+          <div class="wl-trust-item">
+            <div class="wl-trust-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#197E72" stroke-width="2" stroke-linecap="round"><rect x="5" y="2" width="14" height="20" rx="3"/><line x1="12" y1="18" x2="12" y2="18.01"/></svg>
+            </div>
+            <strong>On your device &amp; iCloud</strong>
+            <span>Stored in your personal iCloud, not ours</span>
+          </div>
+          <div class="wl-trust-item">
+            <div class="wl-trust-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#197E72" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
+            </div>
+            <strong>No ads. No data sales.</strong>
+            <span>We do not sell or share your health information</span>
+          </div>
+          <div class="wl-trust-item">
+            <div class="wl-trust-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#197E72" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </div>
+            <strong>Built for real progress</strong>
+            <span>Labs, doses, weight, and AI insights in one place</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY JOIN -->
+    <section class="wl-why" aria-labelledby="why-heading">
+      <div class="container">
+        <div class="wl-section-header">
+          <span class="section-label">Why join early</span>
+          <h2 id="why-heading">Everything your next appointment needs</h2>
+          <p>Journey Tracker brings your labs, doses, and progress into one clear picture you can actually share with your provider.</p>
+        </div>
+
+        <div class="wl-benefits">
+          <div class="wl-benefit-card">
+            <div class="wl-benefit-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            </div>
+            <h3>Full journey analysis and reports</h3>
+            <p>AI-powered lab summaries, dose history, and weight trends organized into clean, doctor-ready reports. Walk into every appointment prepared.</p>
+          </div>
+
+          <div class="wl-benefit-card">
+            <div class="wl-benefit-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <h3>Stay consistent with every dose</h3>
+            <p>Schedule injections, track dose escalations, and see exactly where you are in your protocol. Never miss a dose or forget when you last took it.</p>
+          </div>
+
+          <div class="wl-benefit-card">
+            <div class="wl-benefit-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+            </div>
+            <h3>See your progress clearly</h3>
+            <p>Weight charts, HbA1c trends, milestone badges, and habit streaks that show how far you've come. Track side effects and health changes over time.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHAT HAPPENS AFTER YOU JOIN -->
+    <section class="wl-after" aria-labelledby="after-heading">
+      <div class="container">
+        <div class="wl-section-header">
+          <span class="section-label">What to expect</span>
+          <h2 id="after-heading">What happens after you join</h2>
+          <p>No commitments. Just a front-row seat for launch day.</p>
+        </div>
+
+        <div class="wl-timeline">
+          <div class="wl-step">
+            <div class="wl-step-num" aria-hidden="true">1</div>
+            <h3>You're on the list</h3>
+            <p>You'll get a confirmation email and a spot on the early access list. That's it for now.</p>
+          </div>
+          <div class="wl-step">
+            <div class="wl-step-num" aria-hidden="true">2</div>
+            <h3>Early access invites</h3>
+            <p>When TestFlight builds are ready, waitlist members are the first to get invited. Try the app before anyone else.</p>
+          </div>
+          <div class="wl-step">
+            <div class="wl-step-num" aria-hidden="true">3</div>
+            <h3>Launch day notification</h3>
+            <p>When Journey Tracker hits the App Store, you'll be the first to know. Download it before the crowd.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="wl-faq" aria-labelledby="faq-heading">
+      <div class="container">
+        <div class="wl-section-header">
+          <span class="section-label">Questions</span>
+          <h2 id="faq-heading">Frequently asked</h2>
+        </div>
+
+        <div class="wl-faq-list">
+          <div class="wl-faq-item">
+            <button class="wl-faq-q" aria-expanded="false" aria-controls="faq-1">
+              When is Journey Tracker launching?
+              <svg class="wl-faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="wl-faq-a" id="faq-1" role="region" aria-hidden="true">
+              <p>We're targeting a 2026 launch on iPhone, iPad, and Mac. Waitlist members will be the first to hear the exact date and get access to early TestFlight builds as they become available.</p>
+            </div>
+          </div>
+
+          <div class="wl-faq-item">
+            <button class="wl-faq-q" aria-expanded="false" aria-controls="faq-2">
+              Do I need to be on GLP-1 medication to use it?
+              <svg class="wl-faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="wl-faq-a" id="faq-2" role="region" aria-hidden="true">
+              <p>No. Journey Tracker is built for anyone tracking weight loss, lab results, and health progress. The GLP-1 therapy features are there if you need them, but the app works just as well without medication tracking.</p>
+            </div>
+          </div>
+
+          <div class="wl-faq-item">
+            <button class="wl-faq-q" aria-expanded="false" aria-controls="faq-3">
+              Is my health data stored on your servers?
+              <svg class="wl-faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="wl-faq-a" id="faq-3" role="region" aria-hidden="true">
+              <p>No. All health data stays on your device and in your personal iCloud account. We do not have access to your health information, and it never passes through our servers. Your data belongs to you.</p>
+            </div>
+          </div>
+
+          <div class="wl-faq-item">
+            <button class="wl-faq-q" aria-expanded="false" aria-controls="faq-4">
+              Does Journey Tracker provide medical advice?
+              <svg class="wl-faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            <div class="wl-faq-a" id="faq-4" role="region" aria-hidden="true">
+              <p>No. Journey Tracker is a personal health tracking tool, not a medical device. It helps you organize and visualize your health data, but it does not diagnose, treat, or replace professional medical advice. Always consult your healthcare provider.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="wl-final-cta" aria-labelledby="final-heading">
+      <div class="container">
+        <span class="section-label" style="color: rgba(255,255,255,0.7); background: rgba(255,255,255,0.1);">Don't miss launch day</span>
+        <h2 id="final-heading">Your GLP-1 journey, organized.</h2>
+        <p>Join the waitlist and be the first to know when Journey Tracker is available.</p>
+
+        <form
+          id="wl-final-form"
+          class="wl-final-form"
+          action="https://formspree.io/f/maqpybrb"
+          method="POST"
+          novalidate
+        >
+          <input type="hidden" name="subject" value="Waitlist Signup (Footer)" />
+          <input type="hidden" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+          <input
+            type="email"
+            name="_replyto"
+            id="wl-final-email"
+            placeholder="Enter your email"
+            required
+            maxlength="254"
+            pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}"
+            aria-label="Email address"
+            aria-describedby="wl-final-status"
+          />
+          <button type="submit" class="btn-cta" id="wl-final-submit">Join Waitlist</button>
+        </form>
+        <p class="wl-final-trust">No spam. Unsubscribe anytime.</p>
+        <p id="wl-final-status" class="wl-final-status" role="status" aria-live="polite"></p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER — matches main site
+  ============================================================ -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <div class="nav-logo" style="color: #fff;">
+            <img src="/logo-icon.svg" class="nav-logo-icon" alt="" aria-hidden="true" width="48" height="48" />
+            Journey Tracker
+          </div>
+          <p>A private, beautiful health companion for your GLP&#8209;1 and weight loss journey. Coming soon to the App Store for iPhone, iPad, and Mac.</p>
+        </div>
+
+        <nav class="footer-nav" aria-label="Legal and support links">
+          <h3>Legal &amp; Support</h3>
+          <ul>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="hipaa.html">HIPAA Disclosure</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+            <li><a href="support.html">Support Center</a></li>
+            <li><a href="accessibility.html">Accessibility</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Apex Development Studio LLC. All rights reserved.</p>
+        <p class="footer-medical-note">Journey Tracker is not a medical device and does not provide medical advice. Always consult a qualified healthcare provider.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       JAVASCRIPT
+  ============================================================ -->
+  <script>
+    /* =====================================================
+       MOBILE NAV TOGGLE
+    ===================================================== */
+    var navToggle = document.getElementById('navToggle');
+    var mobileNav = document.getElementById('mobileNav');
+
+    if (navToggle && mobileNav) {
+      navToggle.addEventListener('click', function () {
+        var isOpen = mobileNav.classList.toggle('open');
+        navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        mobileNav.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+      });
+    }
+
+    function closeMobileNav() {
+      if (mobileNav) {
+        mobileNav.classList.remove('open');
+        mobileNav.setAttribute('aria-hidden', 'true');
+        if (navToggle) navToggle.setAttribute('aria-expanded', 'false');
+      }
+    }
+
+    /* Close mobile nav on Escape key — WCAG 2.1.1 */
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && mobileNav && mobileNav.classList.contains('open')) {
+        closeMobileNav();
+        if (navToggle) navToggle.focus();
+      }
+    });
+
+    /* =====================================================
+       FAQ ACCORDION
+    ===================================================== */
+    document.querySelectorAll('.wl-faq-q').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+        var target = document.getElementById(this.getAttribute('aria-controls'));
+
+        /* Close all others */
+        document.querySelectorAll('.wl-faq-q').forEach(function (other) {
+          other.setAttribute('aria-expanded', 'false');
+          var otherTarget = document.getElementById(other.getAttribute('aria-controls'));
+          if (otherTarget) otherTarget.setAttribute('aria-hidden', 'true');
+        });
+
+        /* Toggle this one */
+        if (!expanded) {
+          this.setAttribute('aria-expanded', 'true');
+          if (target) target.setAttribute('aria-hidden', 'false');
+        }
+      });
+    });
+
+    /* =====================================================
+       FORM SUBMISSION — Formspree via Fetch API
+    ===================================================== */
+    function handleWaitlistSubmit(form, submitBtn, successEl, errorEl) {
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        /* Find email input */
+        var emailInput = form.querySelector('input[type="email"]');
+        if (!emailInput || !emailInput.value.trim()) {
+          if (errorEl) {
+            errorEl.textContent = 'Please enter your email address.';
+            errorEl.style.display = 'block';
+          }
+          if (emailInput) emailInput.focus();
+          return;
+        }
+
+        /* Basic pattern check */
+        var emailPattern = /^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/;
+        if (!emailPattern.test(emailInput.value.trim())) {
+          if (errorEl) {
+            errorEl.textContent = 'Please enter a valid email address.';
+            errorEl.style.display = 'block';
+          }
+          emailInput.focus();
+          return;
+        }
+
+        /* Clear errors */
+        if (errorEl) errorEl.style.display = 'none';
+
+        /* Disable button */
+        var origText = submitBtn.textContent;
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Joining...';
+
+        fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        })
+        .then(function (res) {
+          if (res.ok) {
+            form.reset();
+            if (successEl) {
+              successEl.textContent = "You're on the list! We'll be in touch.";
+              successEl.style.display = 'block';
+            }
+            submitBtn.textContent = 'Joined!';
+            setTimeout(function () {
+              submitBtn.textContent = origText;
+              submitBtn.disabled = false;
+            }, 4000);
+          } else {
+            throw new Error('Form submission failed');
+          }
+        })
+        .catch(function () {
+          if (errorEl) {
+            errorEl.textContent = 'Something went wrong. Please try again or email support@journeytracker.app.';
+            errorEl.style.display = 'block';
+          }
+          submitBtn.textContent = origText;
+          submitBtn.disabled = false;
+        });
+      });
+    }
+
+    /* Wire up hero form */
+    var heroForm = document.getElementById('wl-hero-form');
+    if (heroForm) {
+      handleWaitlistSubmit(
+        heroForm,
+        document.getElementById('wl-submit'),
+        document.getElementById('wl-hero-success'),
+        document.getElementById('wl-hero-error')
+      );
+    }
+
+    /* Wire up final CTA form */
+    var finalForm = document.getElementById('wl-final-form');
+    if (finalForm) {
+      handleWaitlistSubmit(
+        finalForm,
+        document.getElementById('wl-final-submit'),
+        document.getElementById('wl-final-status'),
+        document.getElementById('wl-final-status')
+      );
+    }
+  </script>
+</body>
+</html>
