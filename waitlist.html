@@ -250,24 +250,24 @@
       position: relative; overflow: hidden;
     }
 
-    /* Subtle shimmer sweep across the button */
+    /* Shimmer sweep across the button */
     .wl-form .btn-primary::after {
       content: '';
-      position: absolute; top: 0; left: -100%; width: 60%; height: 100%;
+      position: absolute; top: 0; left: -100%; width: 80%; height: 100%;
       background: linear-gradient(
         105deg,
-        transparent 20%,
-        rgba(255,255,255,0.18) 45%,
-        rgba(255,255,255,0.25) 50%,
-        rgba(255,255,255,0.18) 55%,
-        transparent 80%
+        transparent 15%,
+        rgba(255,255,255,0.3) 40%,
+        rgba(255,255,255,0.5) 50%,
+        rgba(255,255,255,0.3) 60%,
+        transparent 85%
       );
-      animation: btn-shimmer 5s ease-in-out 2s infinite;
+      animation: btn-shimmer 4s ease-in-out 1.5s infinite;
     }
     @keyframes btn-shimmer {
       0%, 100% { left: -100%; }
-      20%      { left: 120%; }
-      21%      { left: -100%; }  /* reset instantly, then wait */
+      25%      { left: 130%; }
+      26%      { left: -100%; }  /* reset instantly, then wait */
     }
 
     .form-trust {
@@ -419,11 +419,33 @@
       display: flex; align-items: center; justify-content: center;
       font-weight: 700; font-size: 1rem; margin: 0 auto 16px;
       position: relative;
-      transition: box-shadow 0.4s ease;
+      transition: box-shadow 0.6s ease;
     }
-    /* Ring pulse when visible */
+
+    /* Expanding ring pulse behind each number */
+    .wl-step-num::after {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      border-radius: 50%;
+      border: 2.5px solid var(--forest-mid);
+      opacity: 0;
+      transform: scale(1);
+    }
     .wl-timeline.in-view .wl-step-num {
-      box-shadow: 0 0 0 6px rgba(25,126,114,0.15);
+      box-shadow: 0 0 0 5px rgba(25,126,114,0.18);
+    }
+    .wl-timeline.in-view .wl-step:nth-child(1) .wl-step-num::after {
+      animation: ring-ping 1s cubic-bezier(0, 0, 0.2, 1) 0.3s 1 forwards;
+    }
+    .wl-timeline.in-view .wl-step:nth-child(2) .wl-step-num::after {
+      animation: ring-ping 1s cubic-bezier(0, 0, 0.2, 1) 0.5s 1 forwards;
+    }
+    .wl-timeline.in-view .wl-step:nth-child(3) .wl-step-num::after {
+      animation: ring-ping 1s cubic-bezier(0, 0, 0.2, 1) 0.7s 1 forwards;
+    }
+    @keyframes ring-ping {
+      0%   { transform: scale(1);   opacity: 0.7; }
+      100% { transform: scale(2.2); opacity: 0; }
     }
 
     .wl-step h3 { margin-bottom: 8px; font-size: 1.05rem; }
@@ -570,7 +592,8 @@
       .wl-form .btn-primary::after { animation: none; }
       .wl-step { opacity: 1; transform: none; transition: none; }
       .wl-timeline::after { transform: scaleX(1); transition: none; }
-      .wl-step-num { box-shadow: 0 0 0 6px rgba(25,126,114,0.15); }
+      .wl-step-num { box-shadow: 0 0 0 5px rgba(25,126,114,0.18); }
+      .wl-step-num::after { animation: none !important; }
     }
 
     @media (max-width: 768px) {
