@@ -1,16 +1,20 @@
 <!--
-  COPY REVISION — May 2026
+  COPY REVISION — May 2026 (v2: waitlist repositioning)
   ────────────────────────────────────────────────────────
-  1. Hero sub: rewritten to lead with "Private GLP-1 tracking" — more specific, less generic
-  2. Trust strip: "AI insights" → "helpful summaries"
-  3. Why Join heading: "Everything your next appointment needs" → "One place for the parts of your journey you want to keep track of"
-  4. Why Join sub: softened — removed "share with your provider"
-  5. Benefit cards reordered: Doses (lead) → Labs & side effects → Progress
-  6. Card 1 (doses): "Never miss a dose…" → "Stay on top of your dosing schedule…"
-  7. Card 2 (labs): "AI-powered lab summaries…doctor-ready reports" → "clear summaries you can review yourself or share with your provider"
-  8. Card 3 (progress): removed "HbA1c trends" — less clinical; added "private, organized view"
-  9. FAQ answers: tightened for conciseness, softened "No." openers
-  10. Alt text: "AI weekly summary" → "weekly highlights"
+  v2 changes (launch-notification focus, no public TestFlight promises):
+  1. Hero form: removed "What are you most interested in?" dropdown
+     — form now collects first name + email only
+  2. Hero helper text: "early access news" → "occasional product news"
+  3. "What happens after you join" section fully rewritten:
+     — removed "early access list" and "TestFlight" language
+     — 4 steps: On the list → Product updates → Limited preview
+       opportunities → Launch day notification
+     — preview invites framed as "may invite a small group"
+  4. Timeline grid updated from 3-col to 4-col + 4th animation delay
+  5. Bottom CTA: kept as-is (already focuses on launch updates)
+
+  v1 changes (copy polish):
+  1–10: see original revision notes below
   ────────────────────────────────────────────────────────
 -->
 <!DOCTYPE html>
@@ -379,7 +383,7 @@
       background: var(--white);
     }
     .wl-timeline {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px;
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px;
       margin-top: 48px; position: relative;
     }
 
@@ -388,8 +392,8 @@
       content: '';
       position: absolute;
       top: 20px; /* vertically centered on 40px step-num */
-      left: calc(100% / 6);  /* center of first column */
-      right: calc(100% / 6); /* center of last column */
+      left: calc(100% / 8);  /* center of first column */
+      right: calc(100% / 8); /* center of last column */
       height: 2px;
       background: var(--border);
       z-index: 0;
@@ -399,8 +403,8 @@
       content: '';
       position: absolute;
       top: 20px;
-      left: calc(100% / 6);
-      right: calc(100% / 6);
+      left: calc(100% / 8);
+      right: calc(100% / 8);
       height: 2px;
       background: var(--forest-mid);
       z-index: 1;
@@ -422,6 +426,7 @@
     }
     .wl-step:nth-child(2) { transition-delay: 0.2s; }
     .wl-step:nth-child(3) { transition-delay: 0.4s; }
+    .wl-step:nth-child(4) { transition-delay: 0.6s; }
 
     .wl-timeline.in-view .wl-step {
       opacity: 1;
@@ -457,6 +462,9 @@
     }
     .wl-timeline.in-view .wl-step:nth-child(3) .wl-step-num::after {
       animation: ring-ping 1s cubic-bezier(0, 0, 0.2, 1) 0.7s 1 forwards;
+    }
+    .wl-timeline.in-view .wl-step:nth-child(4) .wl-step-num::after {
+      animation: ring-ping 1s cubic-bezier(0, 0, 0.2, 1) 0.9s 1 forwards;
     }
     @keyframes ring-ping {
       0%   { transform: scale(1);   opacity: 0.7; }
@@ -747,15 +755,6 @@
                 </div>
               </div>
 
-              <div class="form-group">
-                <label for="wl-interest">What are you most interested in?</label>
-                <select id="wl-interest" name="interest">
-                  <option value="early-access">Early access / TestFlight invite</option>
-                  <option value="launch-updates">Launch updates only</option>
-                  <option value="both" selected>Both</option>
-                </select>
-              </div>
-
               <button type="submit" id="wl-submit" class="btn btn-primary">
                 Join the Waitlist
               </button>
@@ -765,7 +764,7 @@
 
               <div class="form-trust">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-                No spam. Just launch updates and early access news.
+                No spam. Just launch updates and occasional product news.
               </div>
             </form>
           </div>
@@ -865,24 +864,29 @@
         <div class="wl-section-header">
           <span class="section-label">What to expect</span>
           <h2 id="after-heading">What happens after you join</h2>
-          <p>No commitments. Just a front-row seat for launch day.</p>
+          <p>No commitments. Just a simple way to stay in the loop.</p>
         </div>
 
         <div class="wl-timeline">
           <div class="wl-step">
             <div class="wl-step-num" aria-hidden="true">1</div>
             <h3>You're on the list</h3>
-            <p>You'll get a confirmation email and a spot on the early access list. That's it for now.</p>
+            <p>You'll get a confirmation email and occasional updates about launch progress.</p>
           </div>
           <div class="wl-step">
             <div class="wl-step-num" aria-hidden="true">2</div>
-            <h3>Early access invites</h3>
-            <p>When TestFlight builds are ready, waitlist members are the first to get invited. Try the app before anyone else.</p>
+            <h3>Product updates</h3>
+            <p>We'll share major product news, feature updates, and important launch announcements.</p>
           </div>
           <div class="wl-step">
             <div class="wl-step-num" aria-hidden="true">3</div>
+            <h3>Limited preview opportunities</h3>
+            <p>From time to time, we may invite a small group of subscribers to preview features or share feedback.</p>
+          </div>
+          <div class="wl-step">
+            <div class="wl-step-num" aria-hidden="true">4</div>
             <h3>Launch day notification</h3>
-            <p>When Journey Tracker hits the App Store, you'll be the first to know. Download it before the crowd.</p>
+            <p>When Journey Tracker is available on the App Store, you'll be among the first to know.</p>
           </div>
         </div>
       </div>
