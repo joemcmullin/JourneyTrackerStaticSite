@@ -195,155 +195,7 @@
         Journey Tracker
       </a>
       <ul class="nav-links">
-        <li><a href="/">Home</a></li>
-        <li><a href="/#walkthrough">Features</a></li>
-        <li><a href="/#faqs">FAQs</a></li>
-        <li><a href="privacy.html">Privacy</a></li>
-        <li><a href="support.html">Support</a></li>
-        <li><a href="accessibility.html">Accessibility</a></li>
-        <li><a href="/#documentation">Docs</a></li>
-        <li class="nav-cta"><a href="/#contact">Notify Me</a></li>
-      </ul>
-      <button class="nav-toggle" id="navToggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileNav">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-      </button>
-    </nav>
-    <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation" aria-hidden="true">
-      <a href="/" onclick="closeMobileNav()">Home</a>
-      <a href="/#walkthrough" onclick="closeMobileNav()">Features</a>
-      <a href="/#faqs" onclick="closeMobileNav()">FAQs</a>
-      <a href="privacy.html" onclick="closeMobileNav()">Privacy Policy</a>
-      <a href="support.html" onclick="closeMobileNav()">Support Center</a>
-      <a href="accessibility.html" onclick="closeMobileNav()">Accessibility</a>
-      <a href="/#documentation" onclick="closeMobileNav()">Docs</a>
-      <a href="/#contact" onclick="closeMobileNav()">Notify Me</a>
-    </nav>
-  </header>
-
-  <main id="main-content">
-
-    <div class="doc-hero">
-      <div class="doc-label">Legal Document</div>
-      <h1>Consumer Health Data Privacy Policy</h1>
-      <p class="doc-meta">
-        Developed and operated by Apex Development Studio LLC &nbsp;·&nbsp;
-        Effective: April 7, 2026 &nbsp;·&nbsp; Last Updated: April 7, 2026
-      </p>
-    </div>
-
-    <div class="doc-content">
-
-      <div class="callout">
-        <p><strong>This Consumer Health Data Privacy Policy is provided pursuant to Washington's My Health My Data Act (RCW 19.373)</strong> and supplements our general <a href="privacy.html">Privacy Policy</a>. It describes the consumer health data we collect, how we use and share it, and how you can exercise your rights.</p>
-      </div>
-
-      <hr>
-
-      <h3>1. Purpose and Scope</h3>
-      <p>This Consumer Health Data Privacy Policy is provided pursuant to Washington's My Health My Data Act (RCW 19.373). It applies to all consumer health data collected, used, shared, or stored by Journey Tracker, an iOS application developed and operated by Apex Development Studio LLC ("we," "our," or "us").</p>
-      <p>This policy applies to any consumer who uses Journey Tracker, with particular rights afforded to residents of Washington state under the My Health My Data Act. The rights and transparency commitments described in this policy extend to all users regardless of location.</p>
-      <p>Journey Tracker is a consumer health application designed to help individuals undergoing GLP-1 therapy track their health progress, medication history, laboratory results, and related health markers. Apex Development Studio LLC is not a healthcare provider, health plan, or healthcare clearinghouse. Journey Tracker is not a medical device and does not provide medical advice.</p>
-
-      <hr>
-
-      <h3>2. Categories of Consumer Health Data Collected</h3>
-      <p>Journey Tracker collects the following categories of consumer health data, each for the specific purpose described:</p>
-
-      <h4>2.1 Body Measurements</h4>
-      <p><strong>Data collected:</strong> Weight, body fat percentage, muscle mass, BMI, and waist circumference.</p>
-      <p><strong>Purpose:</strong> Health trend tracking, chart generation, and progress visualization against your personal goals.</p>
-
-      <h4>2.2 Medication Information</h4>
-      <p><strong>Data collected:</strong> GLP-1 medication name, dose, injection dates, and injection site.</p>
-      <p><strong>Purpose:</strong> Therapy adherence tracking and dose escalation timeline visualization.</p>
-
-      <h4>2.3 Side Effect and Symptom Logs</h4>
-      <p><strong>Data collected:</strong> Symptoms, severity ratings, and associated notes.</p>
-      <p><strong>Purpose:</strong> Symptom pattern identification and therapy correlation analysis.</p>
-
-      <h4>2.4 Laboratory Results</h4>
-      <p><strong>Data collected:</strong> HbA1c, lipid panel values, metabolic markers, thyroid markers, and other health markers you choose to enter.</p>
-      <p><strong>Purpose:</strong> Health marker tracking over time and, with your separate consent, optional AI-powered interpretive analysis.</p>
-
-      <h4>2.5 Health Goals</h4>
-      <p><strong>Data collected:</strong> Target weight and hydration goals.</p>
-      <p><strong>Purpose:</strong> Progress measurement against user-defined goals.</p>
-
-      <h4>2.6 Body Composition from Apple HealthKit</h4>
-      <p><strong>Data collected (with your explicit permission):</strong> Body weight, blood glucose, blood pressure, and dietary water.</p>
-      <p><strong>Purpose:</strong> Automated health data sync for trend tracking within the app.</p>
-
-      <h4>2.7 Notes</h4>
-      <p><strong>Data collected:</strong> Free-text notes you attach to health entries.</p>
-      <p><strong>Purpose:</strong> Personal record-keeping associated with your health data.</p>
-
-      <hr>
-
-      <h3>3. Sources of Consumer Health Data</h3>
-      <p>Journey Tracker collects consumer health data from the following sources:</p>
-      <ul>
-        <li><strong>Direct user input:</strong> Manual entry of health measurements, medication information, side effects, lab results, goals, and notes within the app</li>
-        <li><strong>OCR scanning:</strong> On-device optical character recognition (Apple Vision framework) used to extract lab values from photos, PDFs, or camera captures of lab reports</li>
-        <li><strong>Apple HealthKit:</strong> Automated sync of body weight, blood glucose, blood pressure, and dietary water data — collected only with your explicit permission through Apple's native HealthKit authorization dialog</li>
-        <li><strong>Apple Health Records:</strong> Clinical laboratory data from your connected health systems — collected only with your explicit permission through Apple's native Health Records authorization</li>
-      </ul>
-
-      <hr>
-
-      <h3>4. Third Parties and Affiliates Receiving Consumer Health Data</h3>
-      <p>The following is the <strong>exhaustive list</strong> of all third parties that receive, or may receive, consumer health data from Journey Tracker, along with each party's role and the categories of data shared:</p>
-
-      <h4>4.1 Apple Inc.</h4>
-      <ul>
-        <li><strong>HealthKit:</strong> Local on-device data sync between Journey Tracker and Apple Health. Health data remains on your device and in your personal iCloud account.</li>
-        <li><strong>CloudKit:</strong> Encrypted iCloud backup of your Journey Tracker data to your personal iCloud account. This data is stored in your account, not on any server controlled by Apex Development Studio LLC.</li>
-        <li><strong>Sign in with Apple:</strong> Authentication only. Apple provides an opaque user identifier — no health data is shared with Apple through this service.</li>
-        <li><strong>StoreKit:</strong> Subscription management only. No health data is transmitted to Apple through StoreKit.</li>
-      </ul>
-      <p>Apple's Privacy Policy: <a href="https://www.apple.com/privacy/" target="_blank" rel="noopener">apple.com/privacy</a></p>
-
-      <h4>4.2 Google LLC</h4>
-      <p>Google receives <strong>de-identified</strong> consumer health data via the Google Gemini API for the purpose of AI-powered lab analysis. The data transmitted includes: lab values (as numbers), medication name and current dose, therapy duration (relative, not specific dates), and changes in lab values over time (relative timeframes).</p>
-      <p>This data sharing occurs <strong>only when you explicitly consent</strong> by tapping "I Understand and Agree" on the in-app AI Lab Analysis consent screen. Data is de-identified using automated on-device processing before transmission.</p>
-      <p>Journey Tracker operates on a paid Google AI billing account (Tier 1). Under Google's Gemini API Terms of Service, data submitted through paid-tier accounts is <strong>not used to train or improve Google's AI models</strong>.</p>
-      <p>Google's Privacy Policy: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a><br>
-      Gemini API Terms: <a href="https://ai.google.dev/gemini-api/terms" target="_blank" rel="noopener">ai.google.dev/gemini-api/terms</a></p>
-
-      <h4>4.3 Cloudflare, Inc.</h4>
-      <p>Cloudflare operates as an API proxy, routing de-identified health data from the Journey Tracker app to Google's Gemini API. Consumer health data transits through Cloudflare's infrastructure during AI analysis requests.</p>
-      <p>Cloudflare <strong>does not store, retain, or process</strong> consumer health data beyond the transit necessary to route the API request. No health data is retained by Cloudflare after the request completes.</p>
-      <p>Cloudflare's Privacy Policy: <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">cloudflare.com/privacypolicy</a></p>
-
-      <h4>4.4 RevenueCat, Inc.</h4>
-      <p>RevenueCat receives <strong>subscription status information only</strong>. No consumer health data of any kind is transmitted to RevenueCat.</p>
-      <p>RevenueCat's Privacy Policy: <a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener">revenuecat.com/privacy</a></p>
-
-      <h4>4.5 Formspree, Inc.</h4>
-      <p>Formspree processes contact form submissions on the Journey Tracker website (journeytracker.app). Formspree receives your name, email address, and message content only. <strong>No consumer health data</strong> is transmitted to Formspree.</p>
-      <p>Formspree's Privacy Policy: <a href="https://formspree.io/legal/privacy-policy/" target="_blank" rel="noopener">formspree.io/legal/privacy-policy</a></p>
-
-      <h4>4.6 Affiliates</h4>
-      <p><strong>No affiliates receive consumer health data.</strong> Apex Development Studio LLC has no affiliates, subsidiaries, or parent companies. We are an independent limited liability company.</p>
-
-      <hr>
-
-      <h3>5. How to Exercise Your Rights Under MHMDA</h3>
-      <p>Washington state residents and all Journey Tracker users have the following rights with respect to their consumer health data:</p>
-
-      <h4>5.1 Right to Know</h4>
-      <p>You have the right to know what consumer health data is collected about you and how it is used. This policy fulfills that right by describing every category of data collected, its purpose, and every third party that receives it.</p>
-
-      <h4>5.2 Right to Access</h4>
-      <p>You can access all of your consumer health data at any time directly within the Journey Tracker app. All data you have entered or synced is available to you through the app's dashboard, charts, and detail views.</p>
-
-      <h4>5.3 Right to Delete</h4>
-      <p>You have the right to request deletion of your consumer health data. Here is how to delete your data from each location where it may exist:</p>
-      <ul>
-        <li><strong>On-device data:</strong> Open Journey Tracker, navigate to Settings → Privacy &amp; Security → Delete Account &amp; All Data. This permanently removes all health data stored on your device.</li>
-        <li><strong>iCloud data:</strong> Go to iOS Settings → [Your Name] → iCloud → Manage Storage → Journey Tracker → Delete Data. This removes all Journey Tracker data from your iCloud account.</li>
-        <li><strong>Google API logs:</strong> To request deletion of any data retained in Google's temporary API logs, email <a href="mailto:support@journeytracker.app">support@journeytracker.app</a>. Apex Development Studio LLC will submit a deletion request to Google on your behalf. Google's temporary log retention policies apply to the timing of deletion.</li>
+        
         <li><strong>Cloudflare:</strong> Cloudflare does not retain consumer health data. No deletion action is required.</li>
         <li><strong>Apex server-side:</strong> Apex Development Studio LLC stores no consumer health data on any server it controls. No server-side deletion is required.</li>
       </ul>
@@ -352,10 +204,10 @@
       <p>You have the right to withdraw consent to the collection or sharing of your consumer health data at any time:</p>
       <ul>
         <li><strong>HealthKit data collection:</strong> Revoke Journey Tracker's HealthKit access at any time through iOS Settings → Privacy &amp; Security → Health → Journey Tracker. This immediately stops all HealthKit data collection.</li>
-        <li><strong>AI Lab Analysis (sharing with Google via Cloudflare):</strong> Disable this feature at any time through Journey Tracker Settings → Features → AI Lab Analysis → Off. Withdrawal of consent applies prospectively to all future sharing. Data previously transmitted to Google is subject to Google's temporary log retention policies.</li>
+        
       </ul>
       <div class="callout">
-        <p><strong>Withdrawal of consent is always prospective.</strong> Revoking HealthKit access or disabling AI Lab Analysis immediately stops future data collection and sharing. It does not retroactively delete data that was previously collected or shared with your consent.</p>
+        <p><strong>Withdrawal of consent is always prospective.</strong> Revoking HealthKit access immediately stops future data collection. It does not retroactively delete data that was previously collected with your consent.</p>
       </div>
 
       <h4>5.5 Private Right of Action</h4>
@@ -368,17 +220,6 @@
 
       <h4>6.1 HealthKit Data</h4>
       <p>HealthKit data is collected only after you grant permission through Apple's native HealthKit authorization dialog. This dialog clearly describes the specific data types Journey Tracker requests access to. Granting permission through this dialog constitutes your consent to the collection of consumer health data for the purposes described in this policy.</p>
-
-      <h4>6.2 AI Lab Analysis (Sharing with Google)</h4>
-      <p>Before any consumer health data is shared with Google via the Gemini API, you are presented with a separate, dedicated in-app consent screen. This consent screen explains:</p>
-      <ul>
-        <li>Exactly what data will be transmitted</li>
-        <li>How the data is de-identified before transmission</li>
-        <li>That Google will receive and process the data</li>
-        <li>That data transits through Cloudflare's infrastructure</li>
-        <li>That Google does not use the data for AI model training (paid-tier account)</li>
-      </ul>
-      <p>You must tap <strong>"I Understand and Agree"</strong> before any health data is transmitted. No data is shared with Google or Cloudflare until you provide this explicit consent.</p>
 
       <h4>6.3 Consent Standards</h4>
       <p>All consent obtained by Journey Tracker is:</p>
@@ -403,7 +244,7 @@
       </p>
       <p>We will respond to all requests within the timeframes required by applicable law.</p>
 
-      <p class="doc-footer-note">This Consumer Health Data Privacy Policy is effective as of April 7, 2026. Journey Tracker is developed and operated by Apex Development Studio LLC.</p>
+      <p class="doc-footer-note">This Consumer Health Data Privacy Policy is effective as of May 22, 2026. Journey Tracker is developed and operated by Apex Development Studio LLC.</p>
 
     </div><!-- /.doc-content -->
 
