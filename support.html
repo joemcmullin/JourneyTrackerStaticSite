@@ -512,7 +512,7 @@
           <a href="#faq-data" class="help-card" aria-label="Data and privacy help">
             <div class="help-card-icon" aria-hidden="true">🔒</div>
             <h3>Data &amp; Privacy</h3>
-            <p>How your health data is stored, what the AI Lab Analysis feature transmits, and how to exercise your privacy rights.</p>
+            <p>How your health data is stored and how to exercise your privacy rights.</p>
             <div class="help-card-arrow" aria-hidden="true">See answers →</div>
           </a>
 
@@ -577,7 +577,7 @@
               <svg class="faq-chevron" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
             </summary>
             <div class="faq-a-inner">
-              <p>Your data is never deleted when you downgrade. All of your logged entries remain safely stored on your device and in your iCloud. You'll lose access to Pro-only features (AI lab analysis, unlimited lab sessions, etc.), but everything you've entered stays intact. If you re-subscribe, full access is instantly restored.</p>
+              <p>Your data is never deleted when you downgrade. All of your logged entries remain safely stored on your device and in your iCloud. You'll lose access to Pro-only features (unlimited lab storage, all reports, etc.), but everything you've entered stays intact. If you re-subscribe, full access is instantly restored.</p>
             </div>
           </details>
 
@@ -603,19 +603,6 @@
 
           <details class="faq-item">
             <summary>
-              What does the AI Lab Analysis feature send to the internet?
-              <svg class="faq-chevron" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
-            </summary>
-            <div class="faq-a-inner">
-              <p>When you use AI Lab Analysis (Pro), on-device automated processing strips personally identifiable information — names, dates, identifiers, contact details — before any data leaves your device. What is transmitted to the <strong>Google Gemini API</strong> is: lab values as numbers, medication name and dose, approximate therapy duration, and lab trends over time.</p>
-              <p><strong>Your data is never used to train AI models.</strong> Journey Tracker operates on a paid Google AI billing account (Tier 1). Under Google's Gemini API Terms of Service, paid-tier data is not used to train or improve Google's AI models. Your data is processed under Google's Data Processing Addendum, and API request logs are retained by Google only temporarily for security and abuse-prevention purposes.</p>
-              <p>De-identification is performed on a best-effort basis using Apple Vision OCR and on-device natural language analysis. You can review exactly what was sent after each analysis within the app. AI analysis results are stored only on your device and in iCloud — never on our servers. You must explicitly consent before this feature is activated, and you can disable it at any time in <strong>Settings → Features → AI Lab Analysis</strong>.</p>
-              <p>See <a href="privacy.html">our full Privacy Policy</a>, the <a href="https://ai.google.dev/gemini-api/terms" target="_blank" rel="noopener">Gemini API Terms of Service</a>, and <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's privacy policy</a> for complete details.</p>
-            </div>
-          </details>
-
-          <details class="faq-item">
-            <summary>
               How do I delete all my data?
               <svg class="faq-chevron" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
             </summary>
@@ -625,7 +612,6 @@
               <p><strong>Delete the app:</strong> Deleting Journey Tracker removes all local data from your device.</p>
               <p><strong>iCloud:</strong> To remove cloud backups, go to <strong>iOS Settings → [Your Name] → iCloud → Manage Storage → Journey Tracker</strong> and delete the data there.</p>
               <p>We do not retain any of your health data on our own servers — there is nothing on our end to delete.</p>
-              <p><strong>Third-party data:</strong> Apex Development Studio LLC does not store health data on any server it controls. If you have used the AI Lab Analysis feature, Google may retain temporary API request logs for security and abuse-prevention purposes. You may request that Apex submit a deletion request to Google on your behalf by emailing <a href="mailto:support@journeytracker.app">support@journeytracker.app</a> with the subject line "Health Data Deletion Request." Cloudflare, which routes AI analysis requests as an API proxy, does not retain health data beyond transit.</p>
             </div>
           </details>
 
@@ -672,16 +658,6 @@
             </summary>
             <div class="faq-a-inner">
               <p>Go to <strong>iOS Settings → Privacy &amp; Security → Health → Journey Tracker</strong> and confirm the data types you want to share are toggled on. You can also manage this inside the Apple Health app under <strong>Sharing → Apps → Journey Tracker</strong>. After granting permissions, return to Journey Tracker and pull-to-refresh on the weight log screen.</p>
-            </div>
-          </details>
-
-          <details class="faq-item">
-            <summary>
-              The AI lab analysis isn't working. What could be wrong?
-              <svg class="faq-chevron" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
-            </summary>
-            <div class="faq-a-inner">
-              <p>First, confirm you have an active Pro subscription and a working internet connection. AI Lab Analysis requires consent — check <strong>Settings → Features → AI Lab Analysis</strong> to make sure it's enabled. If you recently reinstalled the app, you may need to re-consent. If the feature still fails, the issue may be a temporary service disruption — try again in a few minutes. If the problem continues, contact us with a description of what happens and which step it fails at.</p>
             </div>
           </details>
 
@@ -736,7 +712,6 @@
                 <option value="Subscription / Billing">Subscription / Billing</option>
                 <option value="Restore Purchase">Restore Purchase</option>
                 <option value="Data & Privacy Rights">Data &amp; Privacy Rights</option>
-                <option value="AI Lab Analysis">AI Lab Analysis</option>
                 <option value="Bug Report">Bug Report</option>
                 <option value="App Not Working / Sync Issue">App Not Working / Sync Issue</option>
                 <option value="Feature Request">Feature Request</option>
