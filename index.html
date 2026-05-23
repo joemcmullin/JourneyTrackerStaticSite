@@ -2107,11 +2107,12 @@
       pointer-events: none;
     }
 
+
     /* ================================================================
-       PASSPORT & TIERS SECTION
-       Travel-themed tier ladder — Day Tripper → Journey Legend
+       FREE vs PRO PRICING
+       Two-card comparison replacing the old 5-tier ladder
     ================================================================ */
-    #passport-tiers {
+    #pricing {
       padding: 96px 0;
       background: linear-gradient(160deg, #f0f7f2, var(--cream));
       border-top: 1px solid var(--border);
@@ -2123,9 +2124,7 @@
       margin-bottom: 56px;
     }
 
-    .passport-header .section-label {
-      margin-bottom: 12px;
-    }
+    .passport-header .section-label { margin-bottom: 12px; }
 
     .passport-header h2 {
       font-size: clamp(1.6rem, 3.5vw, 2.2rem);
@@ -2142,210 +2141,76 @@
       line-height: 1.65;
     }
 
-    .tiers-track {
-      display: flex;
-      align-items: stretch;
-      gap: 0;
-      max-width: 980px;
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      max-width: 780px;
       margin: 0 auto;
-      position: relative;
     }
 
-    /* Static connecting line between tiers */
-    .tiers-track::before {
-      content: '';
-      position: absolute;
-      top: 44px;
-      left: 10%;
-      right: 10%;
-      height: 2px;
-      background: var(--border);
-      z-index: 0;
+    .pricing-card {
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 32px 28px;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .pricing-card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
     }
 
-    /* Animated gradient fill on the connector */
-    .tiers-track::after {
-      content: '';
-      position: absolute;
-      top: 44px;
-      left: 10%;
-      right: 10%;
-      height: 2px;
-      background: linear-gradient(90deg, var(--forest-light), var(--forest-mid), var(--forest-dark), #b8860b);
-      z-index: 0;
-      transform-origin: left;
-      transform: scaleX(0);
-      transition: transform 1.4s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-    .tiers-track.in-view::after {
-      transform: scaleX(1);
+    .pricing-card-pro {
+      border-color: var(--forest-mid);
+      box-shadow: 0 0 0 1px var(--forest-mid), var(--shadow-sm);
     }
 
-    .tier-card {
-      flex: 1;
+    .pricing-card-header { margin-bottom: 20px; }
+    .pricing-card-header h3 { font-size: 1.2rem; margin-top: 8px; }
+
+    .pricing-features {
+      list-style: none;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      text-align: center;
-      padding: 0 12px;
-      position: relative;
-      z-index: 1;
-      /* Scroll-triggered: start hidden */
-      opacity: 0;
-      transform: translateY(20px) scale(0.95);
-      transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+      gap: 12px;
     }
-    .tier-card:nth-child(2) { transition-delay: 0.15s; }
-    .tier-card:nth-child(3) { transition-delay: 0.3s; }
-    .tier-card:nth-child(4) { transition-delay: 0.45s; }
-    .tier-card:nth-child(5) { transition-delay: 0.6s; }
-
-    .tiers-track.in-view .tier-card {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-    }
-
-    .tier-stamp {
-      width: 88px;
-      height: 88px;
-      border-radius: 50%;
+    .pricing-features li {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2rem;
-      margin-bottom: 18px;
-      border: 3px solid var(--border);
-      background: var(--cream);
-      box-shadow: 0 4px 16px rgba(26,58,42,0.1);
-      transition: transform 0.2s, box-shadow 0.2s;
-      position: relative;
-    }
-
-    /* Expanding ring-ping on each stamp */
-    .tier-stamp::after {
-      content: '';
-      position: absolute; top: -3px; left: -3px; right: -3px; bottom: -3px;
-      border-radius: 50%;
-      border: 2.5px solid var(--forest-mid);
-      opacity: 0;
-      transform: scale(1);
-    }
-    .tiers-track.in-view .tier-card:nth-child(1) .tier-stamp::after {
-      animation: tier-ping 1s cubic-bezier(0, 0, 0.2, 1) 0.2s 1 forwards;
-    }
-    .tiers-track.in-view .tier-card:nth-child(2) .tier-stamp::after {
-      animation: tier-ping 1s cubic-bezier(0, 0, 0.2, 1) 0.35s 1 forwards;
-    }
-    .tiers-track.in-view .tier-card:nth-child(3) .tier-stamp::after {
-      animation: tier-ping 1s cubic-bezier(0, 0, 0.2, 1) 0.5s 1 forwards;
-    }
-    .tiers-track.in-view .tier-card:nth-child(4) .tier-stamp::after {
-      animation: tier-ping 1s cubic-bezier(0, 0, 0.2, 1) 0.65s 1 forwards;
-    }
-    .tiers-track.in-view .tier-card:nth-child(5) .tier-stamp::after {
-      animation: tier-ping 1s cubic-bezier(0, 0, 0.2, 1) 0.8s 1 forwards;
-    }
-    @keyframes tier-ping {
-      0%   { transform: scale(1);   opacity: 0.6; }
-      100% { transform: scale(1.8); opacity: 0; }
-    }
-
-    .tier-card:hover .tier-stamp {
-      transform: translateY(-4px);
-      box-shadow: 0 10px 28px rgba(26,58,42,0.18);
-    }
-
-    /* Pro tier gets special treatment */
-    .tier-card.tier-pro .tier-stamp {
-      background: linear-gradient(135deg, var(--forest-mid), var(--forest-dark));
-      border-color: var(--forest-mid);
-    }
-
-    .tier-card.tier-legend .tier-stamp {
-      background: linear-gradient(135deg, #b8860b, #d4a017);
-      border-color: #b8860b;
-    }
-
-    .tier-name {
-      font-size: 0.78rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--text-dark);
-      margin-bottom: 4px;
-    }
-
-    .tier-level {
-      font-size: 0.7rem;
-      color: var(--text-muted);
-      margin-bottom: 10px;
-    }
-
-    .tier-detail {
-      font-size: 0.8rem;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.88rem;
       color: var(--text-mid);
       line-height: 1.5;
     }
+    .pricing-features svg {
+      width: 18px; height: 18px;
+      flex-shrink: 0; margin-top: 1px;
+    }
 
     .tier-badge-free {
-      display: inline-block;
-      font-size: 0.65rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      padding: 2px 8px;
-      border-radius: 100px;
+      display: inline-block; font-size: 0.65rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.08em;
+      padding: 2px 8px; border-radius: 100px;
       background: rgba(42,170,158,0.1);
       color: var(--forest-light);
       border: 1px solid rgba(42,170,158,0.25);
-      margin-bottom: 8px;
     }
 
     .tier-badge-pro {
-      display: inline-block;
-      font-size: 0.65rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      padding: 2px 8px;
-      border-radius: 100px;
+      display: inline-block; font-size: 0.65rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.08em;
+      padding: 2px 8px; border-radius: 100px;
       background: var(--forest-dark);
       color: rgba(255,255,255,0.9);
-      margin-bottom: 8px;
     }
 
-    .tiers-cta {
-      text-align: center;
-      margin-top: 52px;
-    }
-
-    .tiers-cta p {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      margin-bottom: 6px;
-    }
-
-    .tiers-cta strong {
-      color: var(--forest-dark);
-    }
-
-    /* Respect reduced-motion for tier animations — WCAG 2.3.3 */
-    @media (prefers-reduced-motion: reduce) {
-      .tier-card { opacity: 1; transform: none; transition: none; }
-      .tiers-track::after { transform: scaleX(1); transition: none; }
-      .tier-stamp::after { animation: none !important; }
-    }
+    .tiers-cta { text-align: center; margin-top: 40px; }
+    .tiers-cta p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 6px; }
+    .tiers-cta strong { color: var(--forest-dark); }
 
     @media (max-width: 768px) {
-      .tiers-track {
-        flex-direction: column;
-        align-items: center;
-        gap: 28px;
-      }
-      .tiers-track::before, .tiers-track::after { display: none; }
-      .tier-card { flex-direction: row; text-align: left; gap: 18px; max-width: 360px; width: 100%; padding: 0; }
-      .tier-stamp { width: 64px; height: 64px; font-size: 1.5rem; flex-shrink: 0; margin-bottom: 0; }
-      .tier-card .tier-info { display: flex; flex-direction: column; }
+      .pricing-grid { grid-template-columns: 1fr; max-width: 400px; }
     }
 
   </style>
@@ -2404,7 +2269,7 @@
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     "name": "Journey Tracker",
-    "description": "Journey Tracker is a private, encrypted health tracking app for individuals on GLP-1 therapy (semaglutide, tirzepatide, Ozempic, Wegovy, Zepbound) and anyone tracking weight loss progress. Features include weight & body composition tracking, GLP-1 injection logging, lab results with AI analysis, symptom tracking, hydration, fasting, HealthKit integration, and iCloud sync.",
+    "description": "Journey Tracker is a private, encrypted health tracking app for individuals on GLP-1 therapy (semaglutide, tirzepatide, Ozempic, Wegovy, Zepbound) and anyone tracking weight loss progress. Features include weight and body composition tracking, GLP-1 injection logging, lab result storage, symptom tracking, hydration, fasting, HealthKit integration, and iCloud sync.",
     "applicationCategory": "HealthApplication",
     "applicationSubCategory": "Weight Loss, GLP-1 Therapy Tracking",
     "operatingSystem": "iOS 17, iPadOS 17, macOS 14 Sonoma",
@@ -2431,7 +2296,7 @@
     "featureList": [
       "GLP-1 injection logging and dose tracking",
       "Weight and body composition tracking",
-      "Lab results tracking with AI-powered analysis",
+      "Lab results storage and organization",
       "Symptom and side effect logging",
       "HealthKit integration",
       "iCloud sync across iPhone, iPad, and Mac",
@@ -2496,7 +2361,7 @@
         "name": "Is there a free version? What's included in Pro?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Journey Tracker offers a free tier that includes basic health tracking features: 90 days of weight tracking history, a basic injection log, lab result tracking for up to 2 sessions (baseline + one follow-up), 2 of the 5 available reports (GLP-1 Therapy Summary and Weight Loss Progress), up to 6 progress photos with 1 share template, and one app theme. Free tier users do not have access to AI lab analysis, unlimited lab tracking, the remaining 3 reports (Lab Trends, Body Composition, Full Journey), non-scale victories, the Insights Engine, iCloud sync, XLSX/CSV import, or home screen widgets. Journey Tracker Pro is available as a monthly or annual subscription, or as a one-time lifetime purchase. Pro unlocks all features, including unlimited lab tracking, AI-powered lab analysis, all 5 reports, OCR lab report import, non-scale victories, the Insights Engine, unlimited progress photos and share templates, iCloud sync, home screen widgets, all themes, and injection site analytics. All subscriptions are billed through Apple's App Store."
+          "text": "Journey Tracker offers a free tier that includes basic health tracking features: 90 days of weight tracking history, a basic injection log, lab result storage for up to 2 sessions (baseline + one follow-up), 2 of the 5 available reports (Therapy and Doses, Weight Progress), up to 6 progress photos with 1 share template, and one app theme. Free tier users do not have access to unlimited lab storage, the remaining 3 reports (Lab Results, Body Composition, Full Journey), non-scale victories, iCloud sync, XLSX/CSV import, or home screen widgets. Journey Tracker Pro is available as a monthly or annual subscription, or as a one-time lifetime purchase. Pro unlocks all features, including unlimited lab storage, all 5 reports, OCR lab report scanning, non-scale victories, unlimited progress photos and share templates, iCloud sync, home screen widgets, all themes, and injection site tracking. All subscriptions are billed through Apple's App Store."
         }
       },
       {
@@ -2735,21 +2600,21 @@
       <div class="section-header">
         <span class="section-label">What it does for you</span>
         <h2 id="help-heading">Three things Journey Tracker<br>does, every day.</h2>
-        <p>Built for the practical questions: What do my labs mean? Am I consistent with my treatment? How far have I come?</p>
+        <p>Built for the practical questions: Where are my lab results? Am I consistent with my doses? How far have I come?</p>
       </div>
 
       <div class="help-cards">
 
         <div class="help-card">
           <div class="help-card-icon icon-blue" aria-hidden="true">🧪</div>
-          <h3>Understand your lab results over time</h3>
-          <p>Log each blood test — HbA1c, cholesterol, metabolic markers — and watch your trends across months of treatment. Walk into your next appointment with your full lab history organized and visible.</p>
+          <h3>Keep your lab results organized</h3>
+          <p>Store each blood test — HbA1c, cholesterol, metabolic markers — and see your values side by side over time. Walk into your next appointment with your full lab history in one place.</p>
         </div>
 
         <div class="help-card">
           <div class="help-card-icon icon-orange" aria-hidden="true">💉</div>
-          <h3>Stay consistent with your treatment</h3>
-          <p>Log each dose, track how your body responds, and keep a symptom record that's accurate when your doctor asks. No more trying to remember what happened three weeks ago.</p>
+          <h3>Stay consistent with your doses</h3>
+          <p>Log each dose, record how you're feeling, and keep a symptom log that's accurate when your provider asks. No more trying to remember what happened three weeks ago.</p>
         </div>
 
         <div class="help-card">
@@ -2802,12 +2667,12 @@
         <div class="feature-text">
           <div class="step-badge" aria-label="Step 1">Step 1</div>
           <h3>Scan your labs. Every result, organized.</h3>
-          <p>Enter or import any lab result in seconds. Journey Tracker tracks HbA1c, cholesterol, metabolic markers, and more — building a timeline that shows exactly how your health is changing.</p>
+          <p>Enter or import any lab result in seconds. Journey Tracker stores your HbA1c, cholesterol, metabolic markers, and more — keeping everything your provider gave you organized in one place.</p>
           <ul class="feature-bullets">
-            <li>HbA1c, LDL, cholesterol, and 20+ biomarkers tracked</li>
-            <li>Trend charts reveal how labs shift as therapy progresses</li>
-            <li>AI-powered lab analysis breaks down what each result means</li>
+            <li>HbA1c, LDL, cholesterol, and 20+ biomarkers stored</li>
+            <li>See your lab values side by side across visits</li>
             <li>Calendar view shows exactly when each test was taken</li>
+            <li>All results stay on your device and in your iCloud</li>
           </ul>
         </div>
       </div>
@@ -2856,7 +2721,7 @@
         <div class="feature-text">
           <div class="step-badge" aria-label="Step 3">Step 3</div>
           <h3>Every dose, logged and scheduled.</h3>
-          <p>Log each injection in seconds, see your escalation timeline, and plan your next 30 days at a glance. Know exactly where you are in your protocol — and have an accurate record ready for every appointment.</p>
+          <p>Log each injection in seconds, see your dose history, and plan your next 30 days at a glance. Know exactly where you are in your dosing plan — and have an accurate record ready for every appointment.</p>
           <ul class="feature-bullets">
             <li>Schedule your next dose with a single tap</li>
             <li>30-day forecast lets you plan around travel or holidays</li>
@@ -2934,78 +2799,61 @@
   </section>
 
   <!-- ============================================================
-       PASSPORT & TIERS
-       Travel-themed tier ladder linking free → Pro
+       FREE vs PRO
+       Two-card feature comparison replacing the old 5-tier ladder
   ============================================================ -->
-  <section id="passport-tiers" class="travel-bg" aria-labelledby="passport-tiers-heading">
+  <section id="pricing" class="travel-bg" aria-labelledby="pricing-heading">
     <div class="container">
 
       <div class="passport-header">
-        <span class="section-label">Your Journey Passport</span>
-        <h2 id="passport-tiers-heading">Every traveler starts somewhere</h2>
-        <p>Track your progress through five milestone tiers — from your very first weigh-in to the kind of results that change how you carry yourself in the world.</p>
+        <span class="section-label">Free &amp; Pro</span>
+        <h2 id="pricing-heading">Start free. Upgrade when you're ready.</h2>
+        <p>Everything you need to get started is included at no cost. Pro unlocks the full toolkit when you want more.</p>
       </div>
 
-      <div class="tiers-track" role="list">
+      <div class="pricing-grid">
 
-        <div class="tier-card" role="listitem">
-          <div class="tier-stamp" aria-hidden="true">✈️</div>
-          <div class="tier-info">
+        <div class="pricing-card">
+          <div class="pricing-card-header">
             <span class="tier-badge-free">Free</span>
-            <div class="tier-name">Day Tripper</div>
-            <div class="tier-level">Getting started</div>
-            <div class="tier-detail">Log your first measurements, set your goals, and take that first step.</div>
+            <h3>Get Started</h3>
           </div>
+          <ul class="pricing-features">
+            <li><svg viewBox="0 0 20 20" fill="var(--forest-mid)" aria-hidden="true"><path d="M16.7 5.3a1 1 0 010 1.4l-8 8a1 1 0 01-1.4 0l-4-4a1 1 0 111.4-1.4L8 12.6l7.3-7.3a1 1 0 011.4 0z"/></svg>Weight &amp; body composition tracking (90 days)</li>
+            <li><svg viewBox="0 0 20 20" fill="var(--forest-mid)" aria-hidden="true"><path d="M16.7 5.3a1 1 0 010 1.4l-8 8a1 1 0 01-1.4 0l-4-4a1 1 0 111.4-1.4L8 12.6l7.3-7.3a1 1 0 011.4 0z"/></svg>Basic injection log</li>
+            <li><svg viewBox="0 0 20 20" fill="var(--forest-mid)" aria-hidden="true"><path d="M16.7 5.3a1 1 0 010 1.4l-8 8a1 1 0 01-1.4 0l-4-4a1 1 0 111.4-1.4L8 12.6l7.3-7.3a1 1 0 011.4 0z"/></svg>Lab result storage (2 sessions)</li>
+            <li><svg viewBox="0 0 20 20" fill="var(--forest-mid)" aria-hidden="true"><path d="M16.7 5.3a1 1 0 010 1.4l-8 8a1 1 0 01-1.4 0l-4-4a1 1 0 111.4-1.4L8 12.6l7.3-7.3a1 1 0 011.4 0z"/></svg>2 reports (Therapy &amp; Doses, Weight Progress)</li>
+            <li><svg viewBox="0 0 20 20" fill="var(--forest-mid)" aria-hidden="true"><path d="M16.7 5.3a1 1 0 010 1.4l-8 8a1 1 0 01-1.4 0l-4-4a1 1 0 111.4-1.4L8 12.6l7.3-7.3a1 1 0 011.4 0z"/></svg>Hydration &amp; fasting tracking</li>
+            <li><svg viewBox="0 0 20 20" fill="var(--forest-mid)" aria-hidden="true"><path d="M16.7 5.3a1 1 0 010 1.4l-8 8a1 1 0 01-1.4 0l-4-4a1 1 0 111.4-1.4L8 12.6l7.3-7.3a1 1 0 011.4 0z"/></svg>6 progress photos + 1 share template</li>
+            <li><svg viewBox="0 0 20 20" fill="var(--forest-mid)" aria-hidden="true"><path d="M16.7 5.3a1 1 0 010 1.4l-8 8a1 1 0 01-1.4 0l-4-4a1 1 0 111.4-1.4L8 12.6l7.3-7.3a1 1 0 011.4 0z"/></svg>HealthKit integration</li>
+          </ul>
         </div>
 
-        <div class="tier-card" role="listitem">
-          <div class="tier-stamp" aria-hidden="true">🧭</div>
-          <div class="tier-info">
-            <span class="tier-badge-free">Free</span>
-            <div class="tier-name">Wanderer</div>
-            <div class="tier-level">Finding your rhythm</div>
-            <div class="tier-detail">Consistent logging, your first weight trend line, and lab results taking shape.</div>
-          </div>
-        </div>
-
-        <div class="tier-card" role="listitem">
-          <div class="tier-stamp" aria-hidden="true">🗺️</div>
-          <div class="tier-info">
-            <span class="tier-badge-free">Free</span>
-            <div class="tier-name">Explorer</div>
-            <div class="tier-level">Building momentum</div>
-            <div class="tier-detail">Streaks forming, dose escalation tracked, appointments getting easier.</div>
-          </div>
-        </div>
-
-        <div class="tier-card tier-pro" role="listitem">
-          <div class="tier-stamp" aria-hidden="true">🌍</div>
-          <div class="tier-info">
+        <div class="pricing-card pricing-card-pro">
+          <div class="pricing-card-header">
             <span class="tier-badge-pro">Pro</span>
-            <div class="tier-name">Globetrotter</div>
-            <div class="tier-level">Seeing the full picture</div>
-            <div class="tier-detail">AI lab analysis, unlimited sessions, dose-weight correlations, and full trend history.</div>
+            <h3>Everything, Unlimited</h3>
           </div>
+          <ul class="pricing-features">
+            <li><svg viewBox="0 0 20 20" fill="var(--sunrise)" aria-hidden="true"><path d="M16.7 5.3a1 1 0 010 1.4l-8 8a1 1 0 01-1.4 0l-4-4a1 1 0 111.4-1.4L8 12.6l7.3-7.3a1 1 0 011.4 0z"/></svg>Unlimited weight &amp; body composition history</li>
+            <li><svg viewBox="0 0 20 20" fill="var(--sunrise)" aria-hidden="true"><path d="M16.7 5.3a1 1 0 010 1.4l-8 8a1 1 0 01-1.4 0l-4-4a1 1 0 111.4-1.4L8 12.6l7.3-7.3a1 1 0 011.4 0z"/></svg>Unlimited lab result storage</li>
+            <li><svg viewBox="0 0 20 20" fill="var(--sunrise)" aria-hidden="true"><path d="M16.7 5.3a1 1 0 010 1.4l-8 8a1 1 0 01-1.4 0l-4-4a1 1 0 111.4-1.4L8 12.6l7.3-7.3a1 1 0 011.4 0z"/></svg>OCR lab report scanning</li>
+            <li><svg viewBox="0 0 20 20" fill="var(--sunrise)" aria-hidden="true"><path d="M16.7 5.3a1 1 0 010 1.4l-8 8a1 1 0 01-1.4 0l-4-4a1 1 0 111.4-1.4L8 12.6l7.3-7.3a1 1 0 011.4 0z"/></svg>All 5 reports (Lab Results, Body Comp, Full Journey)</li>
+            <li><svg viewBox="0 0 20 20" fill="var(--sunrise)" aria-hidden="true"><path d="M16.7 5.3a1 1 0 010 1.4l-8 8a1 1 0 01-1.4 0l-4-4a1 1 0 111.4-1.4L8 12.6l7.3-7.3a1 1 0 011.4 0z"/></svg>Non-scale victories &amp; achievements</li>
+            <li><svg viewBox="0 0 20 20" fill="var(--sunrise)" aria-hidden="true"><path d="M16.7 5.3a1 1 0 010 1.4l-8 8a1 1 0 01-1.4 0l-4-4a1 1 0 111.4-1.4L8 12.6l7.3-7.3a1 1 0 011.4 0z"/></svg>Unlimited progress photos &amp; share templates</li>
+            <li><svg viewBox="0 0 20 20" fill="var(--sunrise)" aria-hidden="true"><path d="M16.7 5.3a1 1 0 010 1.4l-8 8a1 1 0 01-1.4 0l-4-4a1 1 0 111.4-1.4L8 12.6l7.3-7.3a1 1 0 011.4 0z"/></svg>iCloud sync, XLSX/CSV import, widgets</li>
+            <li><svg viewBox="0 0 20 20" fill="var(--sunrise)" aria-hidden="true"><path d="M16.7 5.3a1 1 0 010 1.4l-8 8a1 1 0 01-1.4 0l-4-4a1 1 0 111.4-1.4L8 12.6l7.3-7.3a1 1 0 011.4 0z"/></svg>All 8 themes &amp; injection site tracking</li>
+          </ul>
         </div>
 
-        <div class="tier-card tier-legend" role="listitem">
-          <div class="tier-stamp" aria-hidden="true">🏆</div>
-          <div class="tier-info">
-            <span class="tier-badge-pro">Pro</span>
-            <div class="tier-name">Journey Legend</div>
-            <div class="tier-level">You arrived</div>
-            <div class="tier-detail">Real, lasting results. The kind you share — and the kind that stick.</div>
-          </div>
-        </div>
-
-      </div><!-- /.tiers-track -->
+      </div>
 
       <div class="tiers-cta">
-        <p>Start free. Upgrade when you're ready. <strong>No pressure — just progress.</strong></p>
+        <p>Monthly, annual, or one-time lifetime purchase. <strong>No pressure — just progress.</strong></p>
       </div>
 
     </div>
-  </section><!-- /#passport-tiers -->
+  </section><!-- /#pricing -->
 
   <div class="section-divider"></div>
 
@@ -3040,7 +2888,7 @@
           </button>
           <div class="faq-a" id="faq-panel-1" role="region" aria-labelledby="faq-btn-1">
             <div class="faq-a-inner">
-              Journey Tracker is a personal health tracking application designed to help individuals undergoing GLP-1 therapy—including medications such as semaglutide, tirzepatide, and similar agents—monitor their health progress, medication history, laboratory results, and related health markers. It works equally well as a general weight management and body composition tracker, with no medication required to get value from the app.
+              Journey Tracker is a personal health tracking app for people on GLP-1 medications like semaglutide, tirzepatide, and similar — or anyone tracking weight and body composition. It helps you keep your doses, lab results, weight, and progress organized in one private place. No medication is required to use the app.
             </div>
           </div>
         </div>
@@ -3100,7 +2948,7 @@
           </button>
           <div class="faq-a" id="faq-panel-6" role="region" aria-labelledby="faq-btn-6">
             <div class="faq-a-inner">
-              Journey Tracker offers a free tier that includes basic health tracking features, including the ability to log up to two laboratory result sessions. Journey Tracker Pro is available as a monthly or annual subscription, or as a one-time lifetime purchase. Pro features include unlimited laboratory result tracking, AI-powered lab analysis, OCR lab report import, and additional features as described in the app. All subscriptions are billed through Apple's App Store—we do not store payment information.
+              Journey Tracker offers a free tier that includes basic health tracking features, including the ability to store up to two lab result sessions. Journey Tracker Pro is available as a monthly or annual subscription, or as a one-time lifetime purchase. Pro features include unlimited lab result storage, OCR lab report scanning, all 5 reports, non-scale victories, iCloud sync, and additional features as described in the app. All subscriptions are billed through Apple's App Store — we do not store payment information.
             </div>
           </div>
         </div>
