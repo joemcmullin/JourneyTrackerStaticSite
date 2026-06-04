@@ -10,11 +10,13 @@
   <link rel="manifest" href="/site.webmanifest" />
   <meta http-equiv="Content-Security-Policy" content="
     default-src 'self';
-    script-src 'self' 'unsafe-inline';
-    style-src 'self' 'unsafe-inline';
-    img-src 'self' data:;
-    connect-src https://formspree.io;
-    form-action https://formspree.io 'self';
+    script-src 'self' 'unsafe-inline' https://messenger.getfernand.com;
+    style-src 'self' 'unsafe-inline' https://messenger.getfernand.com;
+    img-src 'self' data: https://*.getfernand.com;
+    font-src 'self' data: https://*.getfernand.com;
+    connect-src 'self' https://api.getfernand.com https://messenger.getfernand.com wss://*.getfernand.com;
+    form-action 'self';
+    frame-src https://messenger.getfernand.com;
     frame-ancestors 'none';
     base-uri 'self';
     object-src 'none';
@@ -26,7 +28,7 @@
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://journeytracker.app/support.html" />
   <meta name="theme-color" content="#0d3d38" />
-  <link rel="dns-prefetch" href="https://formspree.io" />
+  <link rel="dns-prefetch" href="https://messenger.getfernand.com" />
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -682,7 +684,7 @@
           >
             <!-- Honeypot — hidden from humans, bots fill it in -->
             <input type="text" name="_gotcha" style="display:none;" tabindex="-1" autocomplete="off" aria-hidden="true" />
-            <!-- Source tag so Formspree submissions are identifiable -->
+            <!-- Source tag so submissions are identifiable in the support inbox -->
             <input type="hidden" name="_source" value="support-page" />
 
             <p class="form-note">Fields marked <span aria-hidden="true">*</span><span class="sr-only">with an asterisk</span> are required.</p>
@@ -745,7 +747,7 @@
                 Send Message
               </button>
               <p class="privacy-note">
-                Your message is submitted via <a href="https://formspree.io" target="_blank" rel="noopener">Formspree</a>.<br>
+                Your message is handled by our support platform, <a href="https://getfernand.com" target="_blank" rel="noopener">Fernand</a>.<br>
                 We do not sell or share your contact information. <a href="privacy.html">Privacy Policy</a>
               </p>
             </div>
@@ -928,23 +930,41 @@
         statusEl.className = '';
         statusEl.style.display = 'none';
 
-        var data = new FormData(form);
+        /* Map the form fields to Fernand's headless contact-form payload.
+           Topic becomes the conversation subject; the optional device string
+           is appended to the message body so it's visible to the agent. */
+        var topicVal   = document.getElementById('s-topic').value || 'Support request';
+        var deviceVal  = document.getElementById('s-device').value.trim();
+        var messageVal = document.getElementById('s-message').value.trim();
+        if (deviceVal) {
+          messageVal += '\n\n---\nDevice & iOS: ' + deviceVal;
+        }
 
-        fetch('https://formspree.io/f/xpqnlvnq', {
+        fetch('https://api.getfernand.com/messenger/contact', {
           method: 'POST',
-          body: data,
-          headers: { 'Accept': 'application/json' }
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'X-AppId': 'journey-tracker'
+          },
+          body: JSON.stringify({
+            slug: 'journey-tracker',
+            name: document.getElementById('s-name').value.trim(),
+            email: document.getElementById('s-email').value.trim(),
+            subject: topicVal,
+            message: messageVal
+          })
         })
         .then(function (res) {
           if (res.ok) {
             lastSubmit = Date.now();
-            showStatus('✓ Message sent! We'll get back to you within 1–2 business days.', 'success');
+            showStatus('✓ Message sent! We’ll get back to you within 1–2 business days.', 'success');
             form.reset();
             if (counter) counter.textContent = '0 / 5000';
             submitBtn.textContent = 'Message Sent';
           } else {
             return res.json().then(function (body) {
-              throw new Error(body.error || 'Submission failed.');
+              throw new Error((body && body.error) || 'Submission failed.');
             });
           }
         })
@@ -956,6 +976,13 @@
       });
     }
   </script>
+
+  <!-- Fernand support widget (live chat + knowledge base + AI agent) -->
+  <script>
+    (function (w){if (typeof w.Fernand !== "function") {var f = function () {f.q[arguments[0] == 'set' ? 'unshift' : 'push'](arguments);};f.q = [];w.Fernand = f;}})(window);
+    Fernand('init', { appId: 'journey-tracker' })
+  </script>
+  <script async src="https://messenger.getfernand.com/client.js"></script>
 
 </body>
 </html>

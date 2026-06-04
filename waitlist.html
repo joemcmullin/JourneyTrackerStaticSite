@@ -33,11 +33,13 @@
   <!-- SECURITY -->
   <meta http-equiv="Content-Security-Policy" content="
     default-src 'self';
-    script-src 'self' 'unsafe-inline';
-    style-src 'self' 'unsafe-inline';
-    img-src 'self' data:;
-    connect-src https://formspree.io;
-    form-action https://formspree.io 'self';
+    script-src 'self' 'unsafe-inline' https://messenger.getfernand.com;
+    style-src 'self' 'unsafe-inline' https://messenger.getfernand.com;
+    img-src 'self' data: https://*.getfernand.com;
+    font-src 'self' data: https://*.getfernand.com;
+    connect-src 'self' https://api.getfernand.com https://messenger.getfernand.com wss://*.getfernand.com;
+    form-action 'self';
+    frame-src https://messenger.getfernand.com;
     frame-ancestors 'none';
     base-uri 'self';
     object-src 'none';
@@ -67,7 +69,7 @@
 
   <!-- PERFORMANCE -->
   <link rel="preload" as="image" href="/images/screenshots/ss-home-dashboard.jpg" fetchpriority="high" />
-  <link rel="dns-prefetch" href="https://formspree.io" />
+  <link rel="dns-prefetch" href="https://messenger.getfernand.com" />
 
   <style>
     /* ================================================================
@@ -717,11 +719,11 @@
             <form
               id="wl-hero-form"
               class="wl-form"
-              action="https://formspree.io/f/xpqnlvnq"
+              action="https://api.getfernand.com/messenger/contact"
               method="POST"
               novalidate
             >
-              <!-- Formspree hidden field to tag these as waitlist signups -->
+              <!-- Hidden field becomes the Fernand conversation subject -->
               <input type="hidden" name="subject" value="Waitlist Signup" />
               <input type="hidden" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
 
@@ -954,7 +956,7 @@
         <form
           id="wl-final-form"
           class="wl-final-form"
-          action="https://formspree.io/f/xpqnlvnq"
+          action="https://api.getfernand.com/messenger/contact"
           method="POST"
           novalidate
         >
@@ -1098,7 +1100,7 @@
     });
 
     /* =====================================================
-       FORM SUBMISSION — Formspree via Fetch API
+       FORM SUBMISSION — Fernand headless contact endpoint via Fetch API
     ===================================================== */
     function handleWaitlistSubmit(form, submitBtn, successEl, errorEl) {
       form.addEventListener('submit', function (e) {
@@ -1126,6 +1128,14 @@
           return;
         }
 
+        /* Honeypot: the hidden _gotcha field is invisible to humans; if a bot
+           filled it, silently drop the submission (Fernand has no server-side
+           spam discard, so we enforce it here). */
+        var honeypot = form.querySelector('[name="_gotcha"]');
+        if (honeypot && honeypot.value) {
+          return;
+        }
+
         /* Clear errors */
         if (errorEl) errorEl.style.display = 'none';
 
@@ -1134,10 +1144,30 @@
         submitBtn.disabled = true;
         submitBtn.textContent = 'Joining...';
 
-        fetch(form.action, {
+        /* Build Fernand's JSON payload from this form's fields. Waitlist
+           forms only collect an email (and optionally a first name), so we
+           default the name and synthesize a short message body. The hidden
+           subject field distinguishes the hero form from the footer form. */
+        var nameField    = form.querySelector('input[name="name"]');
+        var subjectField = form.querySelector('input[name="subject"]');
+        var emailVal     = emailInput.value.trim();
+        var nameVal      = (nameField && nameField.value.trim()) || 'Waitlist subscriber';
+        var subjectVal   = (subjectField && subjectField.value) || 'Waitlist Signup';
+
+        fetch('https://api.getfernand.com/messenger/contact', {
           method: 'POST',
-          body: new FormData(form),
-          headers: { 'Accept': 'application/json' }
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept':       'application/json',
+            'X-AppId':      'journey-tracker'
+          },
+          body: JSON.stringify({
+            slug:    'journey-tracker',
+            name:    nameVal,
+            email:   emailVal,
+            subject: subjectVal,
+            message: 'New waitlist signup from the Journey Tracker website (' + subjectVal + ').'
+          })
         })
         .then(function (res) {
           if (res.ok) {
@@ -1188,5 +1218,12 @@
       );
     }
   </script>
+
+  <!-- Fernand support widget (live chat + knowledge base + AI agent) -->
+  <script>
+    (function (w){if (typeof w.Fernand !== "function") {var f = function () {f.q[arguments[0] == 'set' ? 'unshift' : 'push'](arguments);};f.q = [];w.Fernand = f;}})(window);
+    Fernand('init', { appId: 'journey-tracker' })
+  </script>
+  <script async src="https://messenger.getfernand.com/client.js"></script>
 </body>
 </html>

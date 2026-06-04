@@ -36,8 +36,9 @@
       script-src  'unsafe-inline'— Required because JS is inline in this single-file HTML
       style-src   'unsafe-inline'— Required because CSS is inline in this single-file HTML
       img-src     'self' data:   — Images from same origin only; data: URIs for inline SVG
-      connect-src formspree.io   — The contact form submits to Formspree; allow that fetch()
-      form-action formspree.io   — Restrict <form action> targets to Formspree
+      connect-src getfernand.com — The contact form posts to Fernand's API; the
+                                   support widget also opens a wss:// live-chat socket
+      form-action 'self'         — No native cross-origin form posts (we use fetch)
       frame-ancestors 'none'     — Prevent this page from being embedded in an <iframe>
                                    (clickjacking protection)
       base-uri    'self'         — Prevent <base href> injection attacks
@@ -45,11 +46,13 @@
   -->
   <meta http-equiv="Content-Security-Policy" content="
     default-src 'self';
-    script-src 'self' 'unsafe-inline';
-    style-src 'self' 'unsafe-inline';
-    img-src 'self' data:;
-    connect-src https://formspree.io;
-    form-action https://formspree.io 'self';
+    script-src 'self' 'unsafe-inline' https://messenger.getfernand.com;
+    style-src 'self' 'unsafe-inline' https://messenger.getfernand.com;
+    img-src 'self' data: https://*.getfernand.com;
+    font-src 'self' data: https://*.getfernand.com;
+    connect-src 'self' https://api.getfernand.com https://messenger.getfernand.com wss://*.getfernand.com;
+    form-action 'self';
+    frame-src https://messenger.getfernand.com;
     frame-ancestors 'none';
     base-uri 'self';
     object-src 'none';
@@ -104,12 +107,12 @@
              the Largest Contentful Paint (LCP) element — a direct
              Google ranking signal. This typically shaves 200-600ms
              off LCP on cold loads.
-    dns-prefetch: resolves the Formspree DNS early so the contact
-             form submit feels instant when the user gets there.
+    dns-prefetch: resolves Fernand's DNS early so the contact form
+             submit and support widget load feel instant.
     ================================================================
   -->
   <link rel="preload" as="image" href="/images/screenshots/ss-home-dashboard.jpg" fetchpriority="high" />
-  <link rel="dns-prefetch" href="https://formspree.io" />
+  <link rel="dns-prefetch" href="https://messenger.getfernand.com" />
 
   <!--
     ================================================================
@@ -986,7 +989,7 @@
     /* =====================================================
        CONTACT
        Two-column grid: contact info (left) + form (right).
-       The form is wired to Formspree via the Fetch API
+       The form is wired to Fernand via the Fetch API
        (see the JS section at the bottom of this file).
        Input focus states use a subtle green ring (box-shadow)
        to match the app's forest colour palette.
@@ -3136,7 +3139,7 @@
         <div>
           <!--
             CONTACT FORM
-            Submits via JavaScript fetch() to Formspree (see JS section below).
+            Submits via JavaScript fetch() to Fernand (see JS section below).
             The form never reloads the page — success/error messages appear inline.
 
             Security measures applied:
@@ -3144,9 +3147,9 @@
               - pattern on email enforces a minimal RFC-compliant email format client-side
               - required attributes enforce presence before the browser allows submission
               - _gotcha is a hidden honeypot field; bots fill it in, humans don't —
-                Formspree silently discards any submission where _gotcha is non-empty
-              - _replyto tells Formspree to set the Reply-To email header to the
-                visitor's address so that hitting Reply in Gmail goes to them, not Formspree
+                our submit handler silently drops any submission where _gotcha is non-empty
+              - the email field becomes the Fernand conversation's contact, so replying
+                inside Fernand goes straight back to the visitor
               - aria-describedby wires each input to its error message for screen readers
               - aria-live="polite" on status messages announces them to screen readers
                 without interrupting the user mid-sentence
@@ -3162,7 +3165,7 @@
 
             <!-- Honeypot: hidden from real users via CSS display:none + tabindex=-1.
                  Bots auto-fill every visible field; if this field has any value
-                 Formspree treats the submission as spam and drops it silently. -->
+                 our submit handler drops the submission silently. -->
             <input
               type="text"
               name="_gotcha"
@@ -3203,15 +3206,14 @@
               <div class="form-group">
                 <label for="contact-email">Email <span aria-hidden="true">*</span></label>
                 <!--
-                  name="_replyto" is a Formspree magic field:
-                  Formspree sets the Reply-To header on the notification email
-                  to this value, so replying in Gmail goes directly to the user.
+                  The email is sent to Fernand as the conversation contact,
+                  so replying inside Fernand goes directly back to the visitor.
                   maxlength="254" follows RFC 5321 maximum email address length.
                 -->
                 <input
                   type="email"
                   id="contact-email"
-                  name="_replyto"
+                  name="email"
                   placeholder="you@example.com"
                   autocomplete="email"
                   required
@@ -3264,7 +3266,7 @@
               Send Message
             </button>
 
-            <!-- Success message — shown after a confirmed Formspree 200 response -->
+            <!-- Success message — shown after a confirmed Fernand 200 response -->
             <p
               id="form-success"
               class="form-note"
@@ -3275,7 +3277,7 @@
               ✓ Message sent! We'll get back to you within 2 business days.
             </p>
 
-            <!-- Error message — shown if the Formspree request fails -->
+            <!-- Error message — shown if the Fernand request fails -->
             <p
               id="form-error"
               class="form-note"
@@ -3883,7 +3885,7 @@
     Sections:
       1. Mobile Navigation Toggle
       2. FAQ Accordion
-      3. Contact Form — Validation, Sanitisation & Formspree Submit
+      3. Contact Form — Validation, Sanitisation & Fernand Submit
       4. Cookie / Preference Banner
     ================================================================
     */
@@ -4093,9 +4095,9 @@
 
 
     /* ============================================================
-       4. CONTACT FORM — VALIDATION, SANITISATION & FORMSPREE SUBMIT
+       4. CONTACT FORM — VALIDATION, SANITISATION & FERNAND SUBMIT
        ============================================================
-       The form submits to Formspree via the Fetch API (AJAX), so
+       The form submits to Fernand via the Fetch API (AJAX), so
        the page never reloads. After a successful submission the form
        is reset and a green success message is shown. If the network
        request fails, a red error message with a mailto fallback link
@@ -4115,7 +4117,7 @@
                            stays disabled during the cooldown. This
                            reduces naive automated form flooding.
          • Honeypot      — the hidden _gotcha field (see HTML above) is
-                           checked by Formspree server-side; any submission
+                           checked in our submit handler; any submission
                            where it is non-empty is silently discarded.
          • maxlength     — enforced in HTML; we re-check in JS as a
                            second layer of defence.
@@ -4196,8 +4198,8 @@
 
       /* --- Email: required, basic format check, max 254 chars (RFC 5321) --- */
       var emailVal = document.getElementById('contact-email').value.trim();
-      /* Minimal email regex: local@domain.tld — we rely on Formspree for
-         full server-side validation; this is just a first-pass sanity check */
+      /* Minimal email regex: local@domain.tld — Fernand validates server-side
+         as well; this is just a first-pass sanity check */
       var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
       if (!emailVal) {
         showFieldError('contact-email', 'email-error', 'Please enter your email address.');
@@ -4261,7 +4263,7 @@
            ago, ignore this click. This prevents rapid re-submissions caused
            by double-clicking or impatient users hammering the button, and
            provides a light layer of bot resistance on the client side.
-           Note: Formspree also rate-limits on the server side. */
+           Note: Fernand also applies its own server-side limits. */
         var now = Date.now();
         if (now - lastSubmitTime < SUBMIT_COOLDOWN_MS) {
           return;
@@ -4271,6 +4273,16 @@
            If any field fails, validateForm() shows inline error messages
            and returns false, so we stop here and never call fetch(). */
         if (!validateForm()) {
+          return;
+        }
+
+        /* --- Honeypot check ---
+           The hidden _gotcha field is invisible to humans; bots tend to fill
+           every field. If it has any value, silently drop the submission.
+           (Formspree used to discard these server-side; Fernand does not, so
+           we enforce it here on the client.) */
+        var honeypot = contactForm.querySelector('[name="_gotcha"]');
+        if (honeypot && honeypot.value) {
           return;
         }
 
@@ -4286,34 +4298,45 @@
         lastSubmitTime = now;
 
         /*
-          Submit the form data to Formspree via the Fetch API.
+          Submit the form to Fernand's headless contact-form endpoint.
 
-          Why FormData instead of JSON?
-            FormData automatically picks up all named <input> and
-            <textarea> fields, including the hidden _gotcha honeypot
-            and _replyto fields, without us having to enumerate them.
+          Why JSON instead of FormData?
+            Fernand expects a JSON body with specific keys
+            (slug, name, email, subject, message). Our field names
+            don't match 1:1, so we read each element by id and build
+            the payload explicitly rather than relying on FormData.
 
-          Why 'Accept': 'application/json' in the header?
-            This tells Formspree to return a JSON response body
-            (containing an 'ok' property) instead of redirecting
-            to their hosted thank-you page, which lets us show our
-            own inline success message.
+          Why 'Accept': 'application/json'?
+            Asks Fernand to return a JSON response we can inspect for
+            success, so we can show our own inline confirmation instead
+            of a full-page redirect.
 
-          Formspree endpoint:
-            https://formspree.io/f/xpqnlvnq
-            Configured to deliver to: journeytrackersupport@gmail.com
-            Reply-To is set from the _replyto field (visitor's email).
+          Fernand endpoint:
+            https://api.getfernand.com/messenger/contact
+            appId / slug: journey-tracker
+            Delivers into the Fernand inbox for support@journeytracker.app,
+            where the visitor's email becomes the conversation's Reply-To.
         */
-        fetch('https://formspree.io/f/xpqnlvnq', {
+        fetch('https://api.getfernand.com/messenger/contact', {
           method:  'POST',
-          body:    new FormData(contactForm),
-          headers: { 'Accept': 'application/json' }
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept':       'application/json',
+            'X-AppId':      'journey-tracker'
+          },
+          body: JSON.stringify({
+            slug:    'journey-tracker',
+            name:    document.getElementById('contact-name').value.trim(),
+            email:   document.getElementById('contact-email').value.trim(),
+            subject: document.getElementById('contact-subject').value.trim() || 'Contact form message',
+            message: document.getElementById('contact-message').value.trim()
+          })
         })
         .then(function (response) {
           if (response.ok) {
             /* --- SUCCESS path ---
-               Formspree returned a 2xx status, meaning the message
-               was accepted and will be emailed to the inbox. */
+               Fernand returned a 2xx status, meaning the message
+               was accepted and created a conversation in the inbox. */
 
             /* Clear all form fields so the user can't accidentally re-submit */
             contactForm.reset();
@@ -4329,8 +4352,8 @@
             btn.disabled    = false;
 
           } else {
-            /* --- Formspree returned a non-2xx status ---
-               Parse the JSON body so we can inspect Formspree's error
+            /* --- Fernand returned a non-2xx status ---
+               Parse the JSON body so we can inspect Fernand's error
                details, then throw so the .catch() block handles display. */
             return response.json().then(function (data) {
               throw data;
@@ -4340,7 +4363,7 @@
         .catch(function (err) {
           /* --- FAILURE path ---
              Covers both network failures (fetch() rejected) and
-             Formspree error responses (thrown from .then above).
+             Fernand error responses (thrown from .then above).
              We log the error for debugging but never display raw
              error data to the user (to avoid leaking technical info). */
           console.error('Contact form submission error:', err);
@@ -4569,6 +4592,13 @@
     })();
 
   </script>
+
+  <!-- Fernand support widget (live chat + knowledge base + AI agent) -->
+  <script>
+    (function (w){if (typeof w.Fernand !== "function") {var f = function () {f.q[arguments[0] == 'set' ? 'unshift' : 'push'](arguments);};f.q = [];w.Fernand = f;}})(window);
+    Fernand('init', { appId: 'journey-tracker' })
+  </script>
+  <script async src="https://messenger.getfernand.com/client.js"></script>
 
 </body>
 </html>
