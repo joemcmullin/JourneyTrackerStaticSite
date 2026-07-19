@@ -232,7 +232,7 @@
       <h1>Privacy Policy</h1>
       <p class="doc-meta">
         Developed and operated by Apex Development Studio LLC &nbsp;·&nbsp;
-        Effective: May 22, 2026 &nbsp;·&nbsp; Last Updated: May 22, 2026
+        Effective: May 22, 2026 &nbsp;·&nbsp; Last Updated: July 19, 2026
       </p>
     </div>
 
@@ -265,22 +265,36 @@
       <h4>2.2 Information Collected Through Apple Health (HealthKit)</h4>
       <p>With your explicit permission, Journey Tracker may read from and write to Apple HealthKit. The specific data types accessed are listed during the permission request and may include:</p>
       <ul>
-        <li>Body weight and body composition metrics</li>
+        <li>Body weight and body composition metrics (body fat percentage, lean body mass, BMI, and waist circumference)</li>
         <li>Blood glucose readings</li>
         <li>Blood pressure measurements</li>
-        <li>Dietary water intake</li>
-        <li>Laboratory results (if you connect your health system through Apple Health Records)</li>
+        <li>Dietary water intake and dietary protein</li>
+        <li>Step counts, walking and running workouts, and active energy burned</li>
+        <li>Laboratory results (if you connect your health system through Apple Health Records — read-only)</li>
       </ul>
+      <p>With your permission, Journey Tracker may also write your daily water intake, dietary protein, and recorded walking workouts (including distance, active energy, and route) to Apple Health.</p>
       <p><strong>You control HealthKit access entirely.</strong> You can review and revoke any HealthKit permission at any time through iOS Settings → Privacy &amp; Security → Health → Journey Tracker.</p>
 
       <h4>2.3 Information Collected Through Sign in with Apple</h4>
       <p>We use Sign in with Apple for authentication. Apple provides us only with a stable, opaque user identifier — not your Apple ID, real name, or email address.</p>
 
-      <h4>2.4 Information We Do NOT Collect</h4>
+      <h4>2.4 Location &amp; Activity Data (Strides)</h4>
+      <p>Journey Tracker's Strides feature lets you record walking, running, and other physical activities. When you use Strides, the app collects — <strong>only while you are actively recording an activity</strong>:</p>
+      <ul>
+        <li><strong>Precise GPS location:</strong> used to map your route while you record. Journey Tracker uses the "While Using the App" location permission only — it never requests "Always" access, and location is never collected in the background outside an active recording. While a recording is in progress (including with the screen off), the iOS location indicator remains visible the entire time.</li>
+        <li><strong>Recorded route data:</strong> the route path, distance, and duration of each recorded activity</li>
+        <li><strong>Step counts:</strong> from your device's motion sensors (Motion &amp; Fitness permission), counted while you record an activity</li>
+        <li><strong>Activity photos (optional):</strong> photos you choose to attach to a recorded activity</li>
+        <li><strong>Planned and saved routes:</strong> routes you create with the route planner by dropping points on a map</li>
+      </ul>
+      <p>Like all of your health data, route and activity data stays on your device and in your private iCloud. It is never transmitted to any server operated by us or by any non-Apple third party. See Section 4 for storage details and Section 6 for how to revoke Location and Motion access.</p>
+
+      <h4>2.5 Information We Do NOT Collect</h4>
       <p>Journey Tracker does not collect:</p>
       <ul>
         <li>Your full name</li>
-        <li>Your physical address or precise location</li>
+        <li>Your physical address</li>
+        <li>Your location outside of an actively recorded Stride (see Section 2.4 — location is collected only while you record an activity, and never in the background)</li>
         <li>Your date of birth</li>
         <li>Your Social Security Number or government-issued identifiers</li>
         <li>Your health insurance information</li>
@@ -294,6 +308,15 @@
 
       <h4>3.1 To Provide the Application</h4>
       <p>Your health data is used solely to operate the features of Journey Tracker — displaying your health trends, generating charts, tracking your GLP-1 progress, and providing the features you use.</p>
+
+      <h4>3.2 Strides, Routes, and Fitness Trends</h4>
+      <p>Location, motion, and activity data collected during Strides (Section 2.4) is used to:</p>
+      <ul>
+        <li>Map and measure the walks, runs, and other activities you record — showing your route, distance, duration, and step count</li>
+        <li>Let you plan routes and follow them on a future activity</li>
+        <li>Show your fitness trends over time alongside your other health data</li>
+      </ul>
+      <p>This data is used for no other purpose.</p>
 
       <h4>3.3 We Do Not Sell Your Data</h4>
       <p>We do not sell, rent, or trade your personal or health information to any third party for any purpose, including advertising.</p>
@@ -318,19 +341,23 @@
       </ul>
       <p>You can disable iCloud backup for Journey Tracker at any time through iOS Settings → [Your Name] → iCloud → Apps Using iCloud.</p>
 
+      <h4>4.3 Route and Activity Data (Strides)</h4>
+      <p>Your recorded routes, planned routes, and activity data are stored the same way as the rest of your health data: on your device and, if iCloud is enabled, in your private iCloud database. <strong>No server operated by us — and no non-Apple third party — ever receives your location or route data.</strong></p>
+      <p>Map display and walking directions in the route planner are provided by <strong>Apple Maps</strong>. When you view a map or request walking directions, those requests are processed by Apple as a standard platform service under Apple's privacy policy (apple.com/privacy).</p>
+
       <h3>5. Information Sharing</h3>
 
       <h4>5.1 Apple</h4>
-      <p>We use Apple's platform services (HealthKit, CloudKit, Sign in with Apple, StoreKit) to operate Journey Tracker. Your use of these services is subject to Apple's Privacy Policy (apple.com/privacy).</p>
+      <p>We use Apple's platform services (HealthKit, CloudKit, Sign in with Apple, StoreKit, and Apple Maps for map display and walking directions) to operate Journey Tracker. Your use of these services is subject to Apple's Privacy Policy (apple.com/privacy).</p>
 
       <h4>5.3 RevenueCat (Subscription Management)</h4>
-      <p>Subscription management is handled by RevenueCat. RevenueCat receives subscription status information to verify your Pro subscription. RevenueCat's privacy policy is available at revenuecat.com/privacy.</p>
+      <p>Subscription management is handled by RevenueCat. RevenueCat receives subscription status information to verify your Pro subscription. RevenueCat receives <strong>no health data and no location data</strong> of any kind. RevenueCat's privacy policy is available at revenuecat.com/privacy.</p>
 
       <h4>5.4 Fernand (Contact Forms &amp; Support)</h4>
       <p>The contact, support, and waitlist forms on our site — and our live chat support widget — are processed by Fernand SAS, a third-party customer support platform organized under the laws of France. When you submit a form or use the chat widget, your name, email address, and message content are transmitted to and stored by Fernand in order to deliver your message to us and allow us to respond. Fernand does not use this data for advertising and does not sell it. For details, see <a href="https://getfernand.com/privacy/" target="_blank" rel="noopener">Fernand's Privacy Policy</a>.</p>
 
       <h4>5.6 No Other Third-Party Sharing</h4>
-      <p>We do not share your health or personal information with any other third parties.</p>
+      <p>We do not share your health or personal information with any other third parties. Your location and route data is never sold, never shared, and never used for advertising.</p>
 
       <hr>
 
@@ -349,6 +376,14 @@
       </ul>
       <p><strong>Third-party data:</strong> Apex Development Studio LLC does not store health data on any server it controls. There is nothing on our end to delete.</p>
 
+      <h4>6.3 Location and Motion Permissions</h4>
+      <p>You control Strides-related permissions entirely:</p>
+      <ul>
+        <li><strong>Location:</strong> revoke Journey Tracker's location access at any time through iOS Settings → Privacy &amp; Security → Location Services → Journey Tracker. Journey Tracker only ever requests "While Using the App" access.</li>
+        <li><strong>Motion &amp; Fitness:</strong> revoke step-counting access at any time through iOS Settings → Privacy &amp; Security → Motion &amp; Fitness → Journey Tracker.</li>
+        <li><strong>Deleting a Stride:</strong> deleting a recorded activity in the app removes its route, distance, duration, steps, and any attached photos.</li>
+      </ul>
+
       <h4>6.4 HealthKit Permissions</h4>
       <p>You can review and revoke any HealthKit permission at any time through iOS Settings → Privacy &amp; Security → Health → Journey Tracker.</p>
 
@@ -362,7 +397,7 @@
         <li><strong>Limit use of sensitive personal information</strong> to purposes explicitly disclosed in this policy</li>
         <li><strong>Non-discrimination</strong> for exercising your privacy rights</li>
       </ul>
-      <p><strong>Sensitive Personal Information:</strong> Journey Tracker collects the following categories of sensitive personal information as defined by the California Privacy Rights Act (CPRA): health data (body weight, body composition, blood glucose, blood pressure, medication information, laboratory results, and symptom logs). This data is used solely for the purposes disclosed in this policy and is never sold or shared for advertising. You have the right to limit the use of your sensitive personal information to the purposes described in this policy.</p>
+      <p><strong>Sensitive Personal Information:</strong> Journey Tracker collects the following categories of sensitive personal information as defined by the California Privacy Rights Act (CPRA): health data (body weight, body composition, blood glucose, blood pressure, medication information, laboratory results, symptom logs, physical activity data, and dietary intake) and precise geolocation (collected only while you actively record a Stride). This data is used solely for the purposes disclosed in this policy and is never sold or shared for advertising. You have the right to limit the use of your sensitive personal information to the purposes described in this policy.</p>
       <p>To exercise these rights, contact us at <a href="mailto:support@journeytracker.app">support@journeytracker.app</a>. We will respond within 45 days. If an extension is necessary, we will respond within 90 days total and notify you of the extension.</p>
 
       <h4>6.6 Virginia, Colorado, and Other State Residents</h4>
@@ -418,7 +453,7 @@
       </p>
       <p>For data deletion requests or to exercise your privacy rights, please email <a href="mailto:support@journeytracker.app">support@journeytracker.app</a> with the subject line "Privacy Rights Request."</p>
 
-      <p class="doc-footer-note">This Privacy Policy is effective as of May 22, 2026. Journey Tracker is developed and operated by Apex Development Studio LLC. For questions, contact <a href="mailto:support@journeytracker.app">support@journeytracker.app</a>.</p>
+      <p class="doc-footer-note">This Privacy Policy is effective as of May 22, 2026 and was last updated on July 19, 2026. Journey Tracker is developed and operated by Apex Development Studio LLC. For questions, contact <a href="mailto:support@journeytracker.app">support@journeytracker.app</a>.</p>
 
     </div><!-- /.doc-content -->
 

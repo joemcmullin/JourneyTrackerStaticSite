@@ -111,7 +111,7 @@
              submit and support widget load feel instant.
     ================================================================
   -->
-  <link rel="preload" as="image" href="/images/screenshots/ss-home-dashboard.jpg" fetchpriority="high" />
+  <link rel="preload" as="image" href="/images/screenshots/ss2-home-strides.jpg" fetchpriority="high" />
   <link rel="dns-prefetch" href="https://messenger.getfernand.com" />
 
   <!--
@@ -2272,7 +2272,7 @@
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     "name": "Journey Tracker",
-    "description": "Journey Tracker is a private, encrypted health tracking app for individuals on GLP-1 therapy (semaglutide, tirzepatide, Ozempic, Wegovy, Zepbound) and anyone tracking weight loss progress. Features include weight and body composition tracking, GLP-1 injection logging, lab result storage, symptom tracking, hydration, fasting, HealthKit integration, and iCloud sync.",
+    "description": "Journey Tracker is a private, encrypted health tracking app for individuals on GLP-1 therapy (semaglutide, tirzepatide, Ozempic, Wegovy, Zepbound) and anyone tracking weight loss progress. Features include weight and body composition tracking, GLP-1 injection logging, lab result storage, symptom tracking, Strides GPS walk and run recording with route planning, hydration by drink type, protein tracking, fasting, HealthKit integration, and iCloud sync.",
     "applicationCategory": "HealthApplication",
     "applicationSubCategory": "Weight Loss, GLP-1 Therapy Tracking",
     "operatingSystem": "iOS 17, iPadOS 17, macOS 14 Sonoma",
@@ -2305,7 +2305,10 @@
       "iCloud sync across iPhone, iPad, and Mac",
       "AES-256 encrypted local storage",
       "Face ID / Touch ID protection",
-      "Hydration tracking",
+      "Strides — GPS recording of walks, runs, and other activities",
+      "Route planner with saved routes and Apple Maps walking directions",
+      "Hydration tracking by drink type",
+      "Protein tracking",
       "Intermittent fasting tracker",
       "Milestone celebrations and progress charts"
     ],
@@ -2501,10 +2504,22 @@
         </h1>
 
         <p class="hero-subtitle">
-          Track your weight, lab results, and medication — organized, private, and always with you. Understand what's changing over time and walk into every appointment more informed.
+          Track your weight, lab results, medication — and now your walks — organized, private, and always with you. Understand what's changing over time and walk into every appointment more informed.
         </p>
         <p class="hero-travel-line" aria-label="Journey Tracker tagline">You're going somewhere you've never been before.</p>
 
+        <!-- ════════════════════════════════════════════════════════════
+             LAUNCH SWITCH — v1.1 App Store release
+             PHASE 1 (PRE-LAUNCH / WAITLIST) is LIVE below.
+             PHASE 2 (RELEASED) is staged in the comment that follows it.
+             TO FLIP ON RELEASE (only after Joe confirms the app is live):
+               1. Delete the PHASE 1 block (between the START/END markers).
+               2. Uncomment the PHASE 2 block.
+               3. Also update: the nav CTA ("Join Waitlist" → link to the
+                  App Store) in BOTH the desktop nav and mobile nav, and
+                  the footer "Coming soon to the App Store" line.
+             ════════════════════════════════════════════════════════════ -->
+        <!-- ── PHASE 1: PRE-LAUNCH — START ── -->
         <div class="hero-actions">
           <!--
             Primary CTA — links to the waitlist signup page.
@@ -2527,6 +2542,25 @@
             <span aria-hidden="true"> →</span>
           </a>
         </div>
+        <!-- ── PHASE 1: PRE-LAUNCH — END ── -->
+
+        <!-- ── PHASE 2: RELEASED — currently OFF. Uncomment on release. ──
+        <div class="hero-actions">
+          <a href="https://apps.apple.com/app/id6760089056" class="app-store-link" aria-label="Download Journey Tracker on the App Store">
+            <img src="images/app-store-badge.svg" alt="Download on the App Store" width="180" height="60" style="height:52px; width:auto;" />
+          </a>
+          <a href="#walkthrough" class="btn btn-secondary">See How It Works</a>
+        </div>
+
+        <div class="coming-soon-note">
+          <span class="coming-soon-dot" aria-hidden="true"></span>
+          Now available for iPhone, iPad &amp; Mac.
+          <a href="https://apps.apple.com/app/id6760089056" style="color: var(--forest-light); font-weight:600; margin-left: 4px;">
+            Download on the App Store
+            <span aria-hidden="true"> →</span>
+          </a>
+        </div>
+        ── PHASE 2: RELEASED — END ── -->
 
         <div class="hero-social-proof">
           <!-- Platform callout — decorative emoji — WCAG 1.1.1 -->
@@ -2537,8 +2571,8 @@
       <div class="device-wrap">
         <div class="phone-frame">
           <img
-            src="images/screenshots/ss-home-dashboard.jpg"
-            alt="Journey Tracker home screen showing dose streak, next dose, weight, mood check-in, and weekly recap summary"
+            src="images/screenshots/ss2-home-strides.jpg"
+            alt="Journey Tracker home screen showing dose streak, next dose, current weight, a Strides card with step count and Start Stride button, and weekly recap summary"
           />
         </div>
       </div>
@@ -2650,16 +2684,16 @@
           <div class="carousel-frame">
             <div class="carousel-track">
               <div class="carousel-slide active">
-                <img src="images/screenshots/ss-dose-tracker.jpg" alt="Lab results from Inova Health System showing AST, Creatinine, Hemoglobin A1C, and Total Cholesterol with reference ranges" loading="lazy" decoding="async" />
+                <img src="images/screenshots/ss2-lab-records.jpg" alt="Lab results from Inova Health System showing AST, Blood Glucose, Creatinine, and HDL Cholesterol with reference ranges" loading="lazy" decoding="async" />
               </div>
               <div class="carousel-slide">
-                <img src="images/screenshots/ss-add-lab-results.jpg" alt="Weight chart showing 1-year downward trend from 207 lbs to 160 lbs with low, average, and high markers" loading="lazy" decoding="async" />
+                <img src="images/screenshots/ss2-weight-trend.jpg" alt="Weight screen showing a 1-year downward trend chart with a maintaining status and trend insights" loading="lazy" decoding="async" />
               </div>
               <div class="carousel-slide">
-                <img src="images/screenshots/ss-lab-trends-report.jpg" alt="Streaks screen showing 19-day weight streak and 15-day dose streak with hydration tracking" loading="lazy" decoding="async" />
+                <img src="images/screenshots/ss2-streaks.jpg" alt="Streaks screen showing a 24-day dose streak and 11-day weight streak" loading="lazy" decoding="async" />
               </div>
               <div class="carousel-slide">
-                <img src="images/screenshots/ss-ai-weekly-summary.jpg" alt="Non-Scale Victories screen showing 15 of 16 journey achievements including weight and body fat milestones" loading="lazy" decoding="async" />
+                <img src="images/screenshots/ss2-victories.jpg" alt="Non-Scale Victories screen showing 14 of 16 journey achievements including weight and body fat milestones" loading="lazy" decoding="async" />
               </div>
             </div>
             <div class="carousel-counter" aria-hidden="true">1 / 4</div>
@@ -2690,21 +2724,21 @@
           <div class="carousel-frame">
             <div class="carousel-track">
               <div class="carousel-slide active">
-                <img src="images/screenshots/ss-hba1c-chart.jpg" alt="Body composition screen showing body fat 22.8%, BMI 26.1, lean mass 123.8 lbs with recent victories" loading="lazy" decoding="async" />
+                <img src="images/screenshots/ss2-weight-trend.jpg" alt="Weight chart showing a 1-year downward trend with maintaining status and trend insights" loading="lazy" decoding="async" />
               </div>
               <div class="carousel-slide">
-                <img src="images/screenshots/ss-weight-chart.jpg" alt="Weight chart showing 1-year trend from 207 lbs down to 160 lbs with journey notes" loading="lazy" decoding="async" />
+                <img src="images/screenshots/ss2-progress-photos.jpg" alt="Your Journey progress photos showing a before and after comparison with 51.4 pounds lost over 246 days" loading="lazy" decoding="async" />
               </div>
               <div class="carousel-slide">
-                <img src="images/screenshots/ss-full-journey-report.jpg" alt="Reports screen showing Therapy and Doses, Weight Progress, Lab Results, Body Composition, and Full Journey reports" loading="lazy" decoding="async" />
+                <img src="images/screenshots/ss2-reports.jpg" alt="Reports screen showing Therapy and Doses, Weight Progress Report, Lab Results, and Body Composition reports" loading="lazy" decoding="async" />
               </div>
             </div>
             <div class="carousel-counter" aria-hidden="true">1 / 3</div>
           </div>
           <div class="carousel-dots" role="tablist" aria-label="Charts carousel slides">
-            <button class="carousel-dot active" role="tab" aria-label="HbA1c chart" aria-selected="true"></button>
-            <button class="carousel-dot" role="tab" aria-label="Weight chart" aria-selected="false"></button>
-            <button class="carousel-dot" role="tab" aria-label="Full journey report" aria-selected="false"></button>
+            <button class="carousel-dot active" role="tab" aria-label="Weight chart" aria-selected="true"></button>
+            <button class="carousel-dot" role="tab" aria-label="Progress photos" aria-selected="false"></button>
+            <button class="carousel-dot" role="tab" aria-label="Reports" aria-selected="false"></button>
           </div>
         </div>
         <div class="feature-text">
@@ -2723,7 +2757,7 @@
       <!-- Step 3: Every dose, logged and scheduled -->
       <div class="feature-row reversed">
         <div class="feature-phone">
-          <img src="images/screenshots/ss-weight-chart.jpg" alt="GLP-1 Therapy dose tracker showing Zepbound 5mg schedule, upcoming doses, and 30-day forecast" loading="lazy" decoding="async" />
+          <img src="images/screenshots/ss2-dose-tracker.jpg" alt="GLP-1 Therapy dose tracker showing 25 logged doses, an upcoming Zepbound 5mg dose, and the next 30 days forecast" loading="lazy" decoding="async" />
         </div>
         <div class="feature-text">
           <div class="step-badge" aria-label="Step 3">Step 3</div>
@@ -2741,7 +2775,7 @@
       <!-- Step 4: Celebrate your progress -->
       <div class="feature-row">
         <div class="feature-phone">
-          <img src="images/screenshots/ss-reports.jpg" alt="Your Journey progress photos showing before and after comparison with face blur and sharing options" loading="lazy" decoding="async" />
+          <img src="images/screenshots/ss2-progress-photos.jpg" alt="Your Journey progress photos showing before and after comparison with weight lost, days in, and sharing options" loading="lazy" decoding="async" />
         </div>
         <div class="feature-text">
           <div class="step-badge" aria-label="Step 4">Step 4</div>
@@ -2752,6 +2786,58 @@
             <li>Shareable milestone cards — down 5, 10, 25 lbs and more</li>
             <li>Dose streak and weight streak tracking keeps you consistent</li>
             <li>Your full journey history, always in your iCloud</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       STRIDES — v1.1 HEADLINE FEATURE
+       GPS activity recording + route planner. Reuses .feature-row
+       and .section-header CSS from the walkthrough. Copy rules:
+       no medical-outcome claims; "your device / your private iCloud"
+       privacy framing; planner framed as follow-along, not navigation.
+  ============================================================ -->
+  <section id="strides" class="travel-bg" aria-labelledby="strides-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">New — Strides</span>
+        <h2 id="strides-heading">Your movement is part<br>of the journey now.</h2>
+        <p>Record walks, runs, and other activities with a live map — and watch your movement become part of your bigger picture, right alongside your weight, doses, and labs.</p>
+      </div>
+
+      <!-- Strides: record activities -->
+      <div class="feature-row reversed">
+        <div class="feature-phone">
+          <img src="images/screenshots/ss2-home-strides.jpg" alt="Journey Tracker home screen with a Strides card showing today's steps, a route map preview, and a Start Stride button" loading="lazy" decoding="async" />
+        </div>
+        <div class="feature-text">
+          <h3>Record your walks and runs, on a live map.</h3>
+          <p>Tap Start Stride and go. Journey Tracker maps your route and tracks your distance, duration, and steps while you record — then saves the activity to your journey history.</p>
+          <ul class="feature-bullets">
+            <li>Live map with distance, duration, and step count</li>
+            <li>Keeps recording with the screen off — location is used only while you record, never in the background otherwise</li>
+            <li>Attach photos to any recorded activity</li>
+            <li>Recorded walks sync to Apple Health; routes stay on your device and in your private iCloud</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Route planner -->
+      <div class="feature-row">
+        <div class="feature-phone">
+          <img src="images/screenshots/ss2-route-planner.jpg" alt="Route planner map with numbered points along a planned route showing 7 points and 5.97 miles, with return, one-way, and same-route options" loading="lazy" decoding="async" />
+        </div>
+        <div class="feature-text">
+          <h3>Map your own route. Then go walk it.</h3>
+          <p>Drop points on a map and Journey Tracker fills in walking directions between them using Apple Maps. Save your favorite loops and follow them on your next Stride.</p>
+          <ul class="feature-bullets">
+            <li>Plan a route by dropping points — walking directions fill in automatically</li>
+            <li>Save routes and reuse them anytime</li>
+            <li>Follow a planned route as an on-map guide while you record (a follow-along overlay, not turn-by-turn navigation)</li>
+            <li>Planned routes stay on your device and in your private iCloud — part of Journey Tracker Pro</li>
           </ul>
         </div>
       </div>
@@ -2773,7 +2859,7 @@
 
         <div class="mini-feature-card">
           <div class="mini-phone-thumb" aria-hidden="true">
-            <img src="images/screenshots/ss-full-journey-report.jpg" alt="" decoding="async" loading="lazy" />
+            <img src="images/screenshots/ss2-reports.jpg" alt="" decoding="async" loading="lazy" />
           </div>
           <div class="mini-feature-text">
             <h4>Reports Ready for Your Doctor</h4>
@@ -2786,14 +2872,14 @@
             <img src="images/log-water.jpeg" alt="" decoding="async" loading="lazy" />
           </div>
           <div class="mini-feature-text">
-            <h4>Fasting &amp; Hydration</h4>
-            <p>Track daily water intake against your goals, monitor fasting windows, and celebrate consistency streaks. Syncs to Apple Health.</p>
+            <h4>Hydration, Protein &amp; Fasting</h4>
+            <p>Log water by drink type — water, coffee, tea, and more — track daily protein against your goals, and monitor fasting windows. Syncs to Apple Health.</p>
           </div>
         </div>
 
         <div class="mini-feature-card">
           <div class="mini-phone-thumb" aria-hidden="true">
-            <img src="images/screenshots/ss-lab-trends-report.jpg" alt="" decoding="async" loading="lazy" />
+            <img src="images/screenshots/ss2-streaks.jpg" alt="" decoding="async" loading="lazy" />
           </div>
           <div class="mini-feature-text">
             <h4>Build Habits That Last</h4>
@@ -2830,7 +2916,8 @@
             <li><svg viewBox="0 0 20 20" fill="var(--forest-mid)" aria-hidden="true"><path d="M16.7 5.3a1 1 0 010 1.4l-8 8a1 1 0 01-1.4 0l-4-4a1 1 0 111.4-1.4L8 12.6l7.3-7.3a1 1 0 011.4 0z"/></svg>Basic injection log</li>
             <li><svg viewBox="0 0 20 20" fill="var(--forest-mid)" aria-hidden="true"><path d="M16.7 5.3a1 1 0 010 1.4l-8 8a1 1 0 01-1.4 0l-4-4a1 1 0 111.4-1.4L8 12.6l7.3-7.3a1 1 0 011.4 0z"/></svg>Lab result storage (2 sessions)</li>
             <li><svg viewBox="0 0 20 20" fill="var(--forest-mid)" aria-hidden="true"><path d="M16.7 5.3a1 1 0 010 1.4l-8 8a1 1 0 01-1.4 0l-4-4a1 1 0 111.4-1.4L8 12.6l7.3-7.3a1 1 0 011.4 0z"/></svg>2 reports (Therapy &amp; Doses, Weight Progress)</li>
-            <li><svg viewBox="0 0 20 20" fill="var(--forest-mid)" aria-hidden="true"><path d="M16.7 5.3a1 1 0 010 1.4l-8 8a1 1 0 01-1.4 0l-4-4a1 1 0 111.4-1.4L8 12.6l7.3-7.3a1 1 0 011.4 0z"/></svg>Hydration &amp; fasting tracking</li>
+            <li><svg viewBox="0 0 20 20" fill="var(--forest-mid)" aria-hidden="true"><path d="M16.7 5.3a1 1 0 010 1.4l-8 8a1 1 0 01-1.4 0l-4-4a1 1 0 111.4-1.4L8 12.6l7.3-7.3a1 1 0 011.4 0z"/></svg>Strides — record walks &amp; runs with a live map</li>
+            <li><svg viewBox="0 0 20 20" fill="var(--forest-mid)" aria-hidden="true"><path d="M16.7 5.3a1 1 0 010 1.4l-8 8a1 1 0 01-1.4 0l-4-4a1 1 0 111.4-1.4L8 12.6l7.3-7.3a1 1 0 011.4 0z"/></svg>Hydration (by drink type), protein &amp; fasting tracking</li>
             <li><svg viewBox="0 0 20 20" fill="var(--forest-mid)" aria-hidden="true"><path d="M16.7 5.3a1 1 0 010 1.4l-8 8a1 1 0 01-1.4 0l-4-4a1 1 0 111.4-1.4L8 12.6l7.3-7.3a1 1 0 011.4 0z"/></svg>6 progress photos + 1 share template</li>
             <li><svg viewBox="0 0 20 20" fill="var(--forest-mid)" aria-hidden="true"><path d="M16.7 5.3a1 1 0 010 1.4l-8 8a1 1 0 01-1.4 0l-4-4a1 1 0 111.4-1.4L8 12.6l7.3-7.3a1 1 0 011.4 0z"/></svg>HealthKit integration</li>
           </ul>
@@ -2848,6 +2935,7 @@
             <li><svg viewBox="0 0 20 20" fill="var(--sunrise)" aria-hidden="true"><path d="M16.7 5.3a1 1 0 010 1.4l-8 8a1 1 0 01-1.4 0l-4-4a1 1 0 111.4-1.4L8 12.6l7.3-7.3a1 1 0 011.4 0z"/></svg>All 5 reports (Lab Results, Body Comp, Full Journey)</li>
             <li><svg viewBox="0 0 20 20" fill="var(--sunrise)" aria-hidden="true"><path d="M16.7 5.3a1 1 0 010 1.4l-8 8a1 1 0 01-1.4 0l-4-4a1 1 0 111.4-1.4L8 12.6l7.3-7.3a1 1 0 011.4 0z"/></svg>Non-scale victories &amp; achievements</li>
             <li><svg viewBox="0 0 20 20" fill="var(--sunrise)" aria-hidden="true"><path d="M16.7 5.3a1 1 0 010 1.4l-8 8a1 1 0 01-1.4 0l-4-4a1 1 0 111.4-1.4L8 12.6l7.3-7.3a1 1 0 011.4 0z"/></svg>Unlimited progress photos &amp; share templates</li>
+            <li><svg viewBox="0 0 20 20" fill="var(--sunrise)" aria-hidden="true"><path d="M16.7 5.3a1 1 0 010 1.4l-8 8a1 1 0 01-1.4 0l-4-4a1 1 0 111.4-1.4L8 12.6l7.3-7.3a1 1 0 011.4 0z"/></svg>Route planner with saved routes</li>
             <li><svg viewBox="0 0 20 20" fill="var(--sunrise)" aria-hidden="true"><path d="M16.7 5.3a1 1 0 010 1.4l-8 8a1 1 0 01-1.4 0l-4-4a1 1 0 111.4-1.4L8 12.6l7.3-7.3a1 1 0 011.4 0z"/></svg>iCloud sync, XLSX/CSV import, widgets</li>
             <li><svg viewBox="0 0 20 20" fill="var(--sunrise)" aria-hidden="true"><path d="M16.7 5.3a1 1 0 010 1.4l-8 8a1 1 0 01-1.4 0l-4-4a1 1 0 111.4-1.4L8 12.6l7.3-7.3a1 1 0 011.4 0z"/></svg>All 8 themes &amp; injection site tracking</li>
           </ul>

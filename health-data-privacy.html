@@ -232,7 +232,7 @@
       <h1>Consumer Health Data Privacy Policy</h1>
       <p class="doc-meta">
         Developed and operated by Apex Development Studio LLC &nbsp;·&nbsp;
-        Effective: May 22, 2026 &nbsp;·&nbsp; Last Updated: May 22, 2026
+        Effective: May 22, 2026 &nbsp;·&nbsp; Last Updated: July 19, 2026
       </p>
     </div>
 
@@ -274,13 +274,22 @@
       <p><strong>Data collected:</strong> Target weight and hydration goals.</p>
       <p><strong>Purpose:</strong> Progress measurement against user-defined goals.</p>
 
-      <h4>2.6 Body Composition from Apple HealthKit</h4>
-      <p><strong>Data collected (with your explicit permission):</strong> Body weight, blood glucose, blood pressure, and dietary water.</p>
+      <h4>2.6 Health Data from Apple HealthKit</h4>
+      <p><strong>Data collected (with your explicit permission):</strong> Body weight and body composition (body fat, lean mass, BMI, waist circumference), blood glucose, blood pressure, dietary water, dietary protein, step counts, walking and running workouts, and active energy.</p>
       <p><strong>Purpose:</strong> Automated health data sync for trend tracking within the app.</p>
 
       <h4>2.7 Notes</h4>
       <p><strong>Data collected:</strong> Free-text notes you attach to health entries.</p>
       <p><strong>Purpose:</strong> Personal record-keeping associated with your health data.</p>
+
+      <h4>2.8 Location and Physical Activity Data (Strides)</h4>
+      <p><strong>Data collected (only while you actively record an activity, with your explicit permission):</strong> Precise GPS location tied to your fitness activity, walking/running activity and recorded routes, step counts from device motion sensors, distance, duration, active energy, optional activity photos, and planned/saved routes you create with the route planner.</p>
+      <p><strong>Purpose:</strong> Mapping and measuring the physical activities you choose to record, route planning, and fitness trend tracking.</p>
+      <p>Precise location tied to fitness activity is consumer health data under the My Health My Data Act. Location is collected <strong>only during an active recording</strong> using the iOS "While Using the App" permission — never in the background outside a recording, and never with "Always" access.</p>
+
+      <h4>2.9 Dietary Intake</h4>
+      <p><strong>Data collected:</strong> Water intake (logged by drink type) and protein intake.</p>
+      <p><strong>Purpose:</strong> Hydration and nutrition tracking against your personal goals.</p>
 
       <hr>
 
@@ -289,7 +298,8 @@
       <ul>
         <li><strong>Direct user input:</strong> Manual entry of health measurements, medication information, side effects, lab results, goals, and notes within the app</li>
         <li><strong>OCR scanning:</strong> On-device optical character recognition (Apple Vision framework) used to extract lab values from photos, PDFs, or camera captures of lab reports</li>
-        <li><strong>Apple HealthKit:</strong> Automated sync of body weight, blood glucose, blood pressure, and dietary water data — collected only with your explicit permission through Apple's native HealthKit authorization dialog</li>
+        <li><strong>Device GPS and motion sensors:</strong> Precise location and step counts collected only while you actively record a Stride, with your explicit permission through Apple's native Location and Motion &amp; Fitness authorization dialogs</li>
+        <li><strong>Apple HealthKit:</strong> Automated sync of body weight, body composition, blood glucose, blood pressure, dietary water, dietary protein, steps, workouts, and active energy data — collected only with your explicit permission through Apple's native HealthKit authorization dialog</li>
         <li><strong>Apple Health Records:</strong> Clinical laboratory data from your connected health systems — collected only with your explicit permission through Apple's native Health Records authorization</li>
       </ul>
 
@@ -304,6 +314,7 @@
         <li><strong>CloudKit:</strong> Encrypted iCloud backup of your Journey Tracker data to your personal iCloud account. This data is stored in your account, not on any server controlled by Apex Development Studio LLC.</li>
         <li><strong>Sign in with Apple:</strong> Authentication only. Apple provides an opaque user identifier — no health data is shared with Apple through this service.</li>
         <li><strong>StoreKit:</strong> Subscription management only. No health data is transmitted to Apple through StoreKit.</li>
+        <li><strong>Apple Maps (MapKit):</strong> Map display and walking-direction requests for the Strides route planner are processed by Apple as a standard platform service. Your recorded routes and activity data are not shared with Apple Maps — only the map tiles and direction requests needed to display maps and plan routes.</li>
       </ul>
       <p>Apple's Privacy Policy: <a href="https://www.apple.com/privacy/" target="_blank" rel="noopener">apple.com/privacy</a></p>
 
@@ -317,6 +328,7 @@
 
       <h4>4.4 Affiliates</h4>
       <p><strong>No affiliates receive consumer health data.</strong> Apex Development Studio LLC has no affiliates, subsidiaries, or parent companies. We are an independent limited liability company.</p>
+      <p>To reaffirm: <strong>no third party outside Apple's platform services receives your consumer health data — including your location, routes, and activity data.</strong> No server operated by Apex Development Studio LLC or any non-Apple third party ever receives your location or health data.</p>
 
       <hr>
 
@@ -341,6 +353,8 @@
       <p>You have the right to withdraw consent to the collection or sharing of your consumer health data at any time:</p>
       <ul>
         <li><strong>HealthKit data collection:</strong> Revoke Journey Tracker's HealthKit access at any time through iOS Settings → Privacy &amp; Security → Health → Journey Tracker. This immediately stops all HealthKit data collection.</li>
+        <li><strong>Location data collection:</strong> Revoke Journey Tracker's location access at any time through iOS Settings → Privacy &amp; Security → Location Services → Journey Tracker. This immediately stops all location collection.</li>
+        <li><strong>Motion &amp; Fitness data collection:</strong> Revoke Journey Tracker's step-counting access at any time through iOS Settings → Privacy &amp; Security → Motion &amp; Fitness → Journey Tracker.</li>
       </ul>
       <div class="callout">
         <p><strong>Withdrawal of consent is always prospective.</strong> Revoking HealthKit access immediately stops future data collection. It does not retroactively delete data that was previously collected with your consent.</p>
@@ -356,6 +370,9 @@
 
       <h4>6.1 HealthKit Data</h4>
       <p>HealthKit data is collected only after you grant permission through Apple's native HealthKit authorization dialog. This dialog clearly describes the specific data types Journey Tracker requests access to. Granting permission through this dialog constitutes your consent to the collection of consumer health data for the purposes described in this policy.</p>
+
+      <h4>6.2 Location and Motion Data</h4>
+      <p>Location and step data for Strides is collected only after you grant permission through Apple's native Location and Motion &amp; Fitness authorization dialogs, and only while you actively record an activity. Starting a recording is an affirmative act; no location or motion data is collected passively or outside an active recording.</p>
 
       <h4>6.3 Consent Standards</h4>
       <p>All consent obtained by Journey Tracker is:</p>
@@ -380,7 +397,7 @@
       </p>
       <p>We will respond to all requests within the timeframes required by applicable law.</p>
 
-      <p class="doc-footer-note">This Consumer Health Data Privacy Policy is effective as of May 22, 2026. Journey Tracker is developed and operated by Apex Development Studio LLC.</p>
+      <p class="doc-footer-note">This Consumer Health Data Privacy Policy is effective as of May 22, 2026 and was last updated on July 19, 2026. Journey Tracker is developed and operated by Apex Development Studio LLC.</p>
 
     </div><!-- /.doc-content -->
 
