@@ -4416,7 +4416,7 @@
             slug:    'journey-tracker',
             name:    document.getElementById('contact-name').value.trim(),
             email:   document.getElementById('contact-email').value.trim(),
-            subject: document.getElementById('contact-subject').value.trim() || 'Contact form message',
+            subject: '[Journey Tracker] ' + (document.getElementById('contact-subject').value.trim() || 'Contact form message'),
             message: document.getElementById('contact-message').value.trim()
           })
         })
