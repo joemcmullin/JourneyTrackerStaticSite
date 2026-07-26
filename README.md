@@ -2,7 +2,7 @@
 
 The marketing, support, and legal website for **Journey Tracker**, a native SwiftUI iPhone/iPad/Mac app for tracking GLP‑1 therapy, weight loss, lab results, body composition, hydration, and fasting. Pure static HTML/CSS/JS — no build step, no frameworks — deployed on GitHub Pages at **https://journeytracker.app**.
 
-> **App status:** In development — Coming Soon to the Apple App Store. The hero CTA links to a waitlist signup (`waitlist.html`), not an App Store link.
+> **App status:** LIVE on the Apple App Store (v1.1 launch, July 2026). The hero CTA is the "Download on the App Store" badge linking to `https://apps.apple.com/app/id6760089056`, with a stylized QR code (`images/qr-app-store.svg`, regenerated via `_dev/generate-qr.py` + verified via `_dev/verify-qr.sh`). The former waitlist page (`waitlist.html`) is retained as a post-launch landing page so old links resolve.
 
 ---
 
@@ -45,7 +45,7 @@ flowchart LR
 ```
 JourneyTrackerStaticSite/
 ├── index.html               # Single-page marketing site (HTML + embedded CSS + vanilla JS)
-├── waitlist.html            # Waitlist / "get notified at launch" signup
+├── waitlist.html            # Former waitlist — now a "we've launched" landing page
 ├── support.html             # Support page
 ├── privacy.html             # Full Privacy Policy
 ├── terms.html               # Full Terms of Service
@@ -67,7 +67,7 @@ JourneyTrackerStaticSite/
 
 | Section | Anchor | Notes |
 |---|---|---|
-| Hero | `#home` | Tagline, "Join the Waitlist" CTA (orange), platform callout, hero screenshot |
+| Hero | `#home` | Tagline, App Store download badge + stylized QR, platform callout, hero screenshot |
 | Walkthrough | `#walkthrough` | 4-step product story (nav labels this "Features") |
 | Pricing | (in page) | Free tier vs. Journey Tracker Pro (monthly / annual / lifetime) |
 | FAQs | `#faqs` | Accordion Q&A |
