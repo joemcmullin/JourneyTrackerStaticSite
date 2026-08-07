@@ -2,22 +2,22 @@
    FIRST LIGHT BRIDGE — 2026-08-07
    Loaded after each legacy page's embedded styles, this aligns the
    standalone pages (privacy, terms, support, …) with the redesigned
-   main site: Bricolage Grotesque type, Newsreader italic accents,
+   main site: Albert Sans type, Cormorant Garamond italic accents,
    IBM Plex Mono data, and the real brand mark. Layout is untouched.
    ═══════════════════════════════════════════════════════════════ */
 
 body {
-  font-family: 'Bricolage Grotesque', system-ui, -apple-system, sans-serif !important;
+  font-family: 'Albert Sans', system-ui, -apple-system, sans-serif !important;
 }
 
 h1, h2, h3, h4, h5,
 .nav-logo, .hero-title {
-  font-family: 'Bricolage Grotesque', system-ui, -apple-system, sans-serif !important;
+  font-family: 'Albert Sans', system-ui, -apple-system, sans-serif !important;
   letter-spacing: -0.02em;
 }
 
 em, .tagline, .lede-accent {
-  font-family: 'Newsreader', Georgia, serif;
+  font-family: 'Cormorant Garamond', Georgia, serif;
   font-style: italic;
 }
 
