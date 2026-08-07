@@ -128,10 +128,10 @@
   <meta property="og:locale"      content="en_US" />
   <meta property="og:title"       content="Journey Tracker — GLP‑1 &amp; Weight Loss Tracker" />
   <meta property="og:description" content="Track your GLP-1 therapy, weight loss, lab results &amp; injections. Private, encrypted, and built for iPhone, iPad &amp; Mac." />
-  <meta property="og:image"       content="https://journeytracker.app/app-icon.jpg" />
-  <meta property="og:image:width"  content="1024" />
-  <meta property="og:image:height" content="1024" />
-  <meta property="og:image:alt"    content="Journey Tracker app icon — compass and globe on an orange background" />
+  <meta property="og:image"       content="https://journeytracker.app/images/brand/og-card.jpg" />
+  <meta property="og:image:width"  content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt"    content="Golden sunrise cresting over rolling hills into a deep teal sky — Journey Tracker" />
 
   <!--
     ================================================================
@@ -143,8 +143,8 @@
   <meta name="twitter:card"        content="summary_large_image" />
   <meta name="twitter:title"       content="Journey Tracker — GLP‑1 &amp; Weight Loss Tracker" />
   <meta name="twitter:description" content="Track your GLP-1 therapy, weight loss, lab results &amp; injections. Private, encrypted, built for iPhone, iPad &amp; Mac." />
-  <meta name="twitter:image"       content="https://journeytracker.app/app-icon.jpg" />
-  <meta name="twitter:image:alt"   content="Journey Tracker app icon" />
+  <meta name="twitter:image"       content="https://journeytracker.app/images/brand/og-card.jpg" />
+  <meta name="twitter:image:alt"   content="Golden sunrise cresting over rolling hills into a deep teal sky — Journey Tracker" />
   <style>
     /*
     ================================================================
@@ -438,6 +438,45 @@
       padding: calc(var(--nav-height) + 48px) 0 80px;
       background: linear-gradient(160deg, #f0f7f2 0%, var(--cream) 60%, #fdf3ea 100%);
       overflow: hidden;
+      position: relative;
+    }
+
+    /* =====================================================
+       HERO MOTION BACKGROUND — First Light brand pack.
+       Slow-motion sunrise-run loop behind the hero, under a
+       warm cream veil that stays heaviest over the text
+       column so headline contrast is preserved. The light-
+       bloom overlay screen-blends a golden glow on top.
+       prefers-reduced-motion swaps the video for its poster
+       still. The #home gradient above remains the no-JS /
+       slow-network fallback.
+    ===================================================== */
+    .hero-media { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+    .hero-media video,
+    .hero-media-fallback {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+    .hero-media-fallback { display: none; }
+    .hero-media-veil {
+      position: absolute; inset: 0;
+      background: linear-gradient(100deg,
+        rgba(250,247,242,0.97) 0%,
+        rgba(250,247,242,0.92) 42%,
+        rgba(250,247,242,0.55) 100%);
+    }
+    .hero-media-bloom {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      mix-blend-mode: screen;
+      opacity: 0.4;
+    }
+    #home .hero-inner { position: relative; z-index: 1; }
+    @media (prefers-reduced-motion: reduce) {
+      .hero-media video { display: none; }
+      .hero-media-fallback { display: block; }
     }
 
     .hero-inner {
@@ -1688,9 +1727,23 @@
        Maslow foundation layer applied to product messaging.
     ================================================================ */
     #trust {
-      background: var(--forest-dark);
+      /* First Light pack: teal-depth texture under the dark band, with a
+         faint golden-particle overlay screen-blended above it. Both sit
+         behind .container (z-index below) and are quiet enough for the
+         white proof-point text to pass contrast. */
+      background: var(--forest-dark) url('/images/brand/texture-teal-depth.jpg') center / cover no-repeat;
       padding: 48px 0;
+      position: relative;
     }
+    #trust::after {
+      content: "";
+      position: absolute; inset: 0;
+      background: url('/images/brand/overlay-golden-particles.jpg') center / cover no-repeat;
+      mix-blend-mode: screen;
+      opacity: 0.3;
+      pointer-events: none;
+    }
+    #trust .container { position: relative; z-index: 1; }
 
     .trust-grid {
       display: grid;
@@ -1754,6 +1807,25 @@
       grid-template-columns: repeat(3, 1fr);
       gap: 24px;
       margin-top: 48px;
+    }
+
+    /* Full-bleed brand banner between sections — First Light pack */
+    .brand-interlude { margin: 0; }
+    .brand-interlude img {
+      display: block;
+      width: 100%;
+      height: clamp(220px, 36vw, 440px);
+      object-fit: cover;
+    }
+
+    /* Brand still on each outcome card — First Light pack */
+    .help-card-img {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 18px;
+      display: block;
     }
 
     .help-card {
@@ -2230,7 +2302,18 @@
       background: linear-gradient(160deg, #f0f7f2, var(--cream));
       border-top: 1px solid var(--border);
       border-bottom: 1px solid rgba(255,255,255,0.1);
+      position: relative;
     }
+    /* First Light pack: sunrise gradient-mesh texture at low opacity
+       beneath the pricing cards; content stays above it. */
+    #pricing::before {
+      content: "";
+      position: absolute; inset: 0;
+      background: url('/images/brand/texture-sunrise-mesh.jpg') center / cover no-repeat;
+      opacity: 0.45;
+      pointer-events: none;
+    }
+    #pricing .container { position: relative; z-index: 1; }
 
     .passport-header {
       text-align: center;
@@ -2603,6 +2686,17 @@
        HERO
   ============================================================ -->
   <section id="home" class="travel-bg" aria-labelledby="hero-heading">
+    <!-- Brand motion hero (First Light pack, 2026-08-07): muted looping
+         slow-motion sunrise-run clip. Decorative only — aria-hidden, with
+         the poster still standing in when reduced motion is requested. -->
+    <div class="hero-media" aria-hidden="true">
+      <video autoplay muted loop playsinline preload="metadata" poster="/images/brand/hero-poster.jpg">
+        <source src="/videos/hero-loop.mp4" type="video/mp4" />
+      </video>
+      <img class="hero-media-fallback" src="/images/brand/hero-poster.jpg" alt="" />
+      <div class="hero-media-veil"></div>
+      <img class="hero-media-bloom" src="/images/brand/overlay-light-bloom.jpg" alt="" />
+    </div>
     <div class="container hero-inner">
       <div class="hero-content">
         <div class="hero-badge">
@@ -2735,18 +2829,21 @@
       <div class="help-cards">
 
         <div class="help-card">
+          <img class="help-card-img" src="/images/brand/card-labs.jpg" alt="A linen-bound journal and teal ceramic mug on a desk in warm morning light" loading="lazy" width="900" height="900" />
           <div class="help-card-icon icon-blue" aria-hidden="true">🧪</div>
           <h3>Keep your lab results organized</h3>
           <p>Store each blood test — HbA1c, cholesterol, metabolic markers — and see your values side by side over time. Walk into your next appointment with your full lab history in one place.</p>
         </div>
 
         <div class="help-card">
+          <img class="help-card-img" src="/images/brand/card-doses.jpg" alt="A calm morning shelf with a teal keepsake box, a glass of water, and folded linen" loading="lazy" width="900" height="900" />
           <div class="help-card-icon icon-orange" aria-hidden="true">💉</div>
           <h3>Stay consistent with your doses</h3>
           <p>Log each dose, record how you're feeling, and keep a symptom log that's accurate when your provider asks. No more trying to remember what happened three weeks ago.</p>
         </div>
 
         <div class="help-card">
+          <img class="help-card-img" src="/images/brand/card-progress.jpg" alt="Cream pedestals rising like a staircase toward golden sunlight" loading="lazy" width="900" height="900" />
           <div class="help-card-icon icon-green" aria-hidden="true">📈</div>
           <h3>See how far you've come</h3>
           <p>Weight trends, milestone markers, and streak data — organized over time. Seeing your progress clearly is part of staying motivated to continue.</p>
@@ -3009,6 +3106,15 @@
        FREE vs PRO
        Two-card feature comparison replacing the old 5-tier ladder
   ============================================================ -->
+  <!-- ============================================================
+       BRAND INTERLUDE — First Light pack (2026-08-07)
+       Full-bleed morning-ritual banner as a photographic pause
+       before pricing. Decorative; empty alt keeps AT flow clean.
+  ============================================================ -->
+  <figure class="brand-interlude">
+    <img src="/images/brand/banner.jpg" alt="" loading="lazy" width="1920" height="1071" />
+  </figure>
+
   <section id="pricing" class="travel-bg" aria-labelledby="pricing-heading">
     <div class="container">
 
