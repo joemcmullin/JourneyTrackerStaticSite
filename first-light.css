@@ -1,0 +1,40 @@
+/* ═══════════════════════════════════════════════════════════════
+   FIRST LIGHT BRIDGE — 2026-08-07
+   Loaded after each legacy page's embedded styles, this aligns the
+   standalone pages (privacy, terms, support, …) with the redesigned
+   main site: Bricolage Grotesque type, Newsreader italic accents,
+   IBM Plex Mono data, and the real brand mark. Layout is untouched.
+   ═══════════════════════════════════════════════════════════════ */
+
+body {
+  font-family: 'Bricolage Grotesque', system-ui, -apple-system, sans-serif !important;
+}
+
+h1, h2, h3, h4, h5,
+.nav-logo, .hero-title {
+  font-family: 'Bricolage Grotesque', system-ui, -apple-system, sans-serif !important;
+  letter-spacing: -0.02em;
+}
+
+em, .tagline, .lede-accent {
+  font-family: 'Newsreader', Georgia, serif;
+  font-style: italic;
+}
+
+code, pre, .mono {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace !important;
+}
+
+/* The real mark, tile treatment */
+.nav-logo-icon, .footer-logo img {
+  border-radius: 27%;
+}
+
+/* Legacy nav styled the old SVG icon with its own chrome — the tile brings
+   its own; strip the double frame. */
+.nav-logo-icon {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+}
