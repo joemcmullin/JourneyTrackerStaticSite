@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>OG card — Journey Tracker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@600;800&family=Cormorant+Garamond:ital,wght@1,500;1,600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet" />
+<style>
+  * { margin: 0; box-sizing: border-box; }
+  body {
+    width: 1200px; height: 630px; overflow: hidden;
+    font-family: 'Albert Sans', sans-serif;
+    background: #0a1f1c; color: #faf7f2;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 0 84px; position: relative;
+  }
+  .glow { position: absolute; border-radius: 50%; filter: blur(10px); }
+  .g1 { width: 700px; height: 700px; right: -220px; top: -260px;
+        background: radial-gradient(circle, rgba(245,164,85,0.5), transparent 65%); }
+  .g2 { width: 520px; height: 520px; right: 140px; bottom: -300px;
+        background: radial-gradient(circle, rgba(232,121,42,0.3), transparent 65%); }
+  .g3 { width: 600px; height: 600px; left: -260px; bottom: -320px;
+        background: radial-gradient(circle, rgba(25,126,114,0.45), transparent 65%); }
+  .lockup { display: flex; align-items: center; gap: 22px; position: relative; }
+  .word { font-size: 44px; font-weight: 800; letter-spacing: -0.5px; }
+  .word .grad, .grad {
+    background: linear-gradient(92deg, #e8792a, #f5a455);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  h1 { position: relative; margin-top: 42px; font-size: 74px; font-weight: 800;
+       letter-spacing: -2px; line-height: 1.04; }
+  h1 .drama { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 500;
+              font-size: 100px; }
+  .sub { position: relative; margin-top: 26px; font-size: 26px; color: #a8bdb6; }
+  .pill { position: absolute; top: 56px; right: 84px;
+          display: inline-flex; align-items: center; gap: 10px;
+          background: rgba(52,199,89,0.12); border: 1px solid rgba(52,199,89,0.4);
+          color: #4cd674; border-radius: 999px; padding: 12px 22px;
+          font-family: 'IBM Plex Mono', monospace; font-size: 18px; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; background: #34c759; }
+</style>
+</head>
+<body>
+  <div class="glow g1"></div><div class="glow g2"></div><div class="glow g3"></div>
+  <div class="lockup">
+    <img src="public/brand/logo-tile.png" width="86" height="86" style="border-radius:23px" />
+    <div class="word">Journey <span class="grad">Tracker</span></div>
+  </div>
+  <div class="pill"><span class="dot"></span> AVAILABLE ON THE APP STORE</div>
+  <h1>The private companion for<br /><span class="drama grad">your comeback.</span></h1>
+  <div class="sub">Weight · doses · labs · milestones — yours alone, on iPhone, iPad &amp; Mac</div>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Journey Tracker — The GLP-1 companion for your comeback</title>
+    <meta name="description" content="Journey Tracker is the private GLP-1 companion for iPhone, iPad & Mac. Weight, doses, labs, and milestones — beautifully tracked, always yours." />
+
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="canonical" href="https://journeytracker.app/" />
+
+    <!-- Structured data: app listing + FAQ rich results -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Journey Tracker",
+      "operatingSystem": "iOS, iPadOS, macOS",
+      "applicationCategory": "HealthApplication",
+      "description": "The private GLP-1 companion for iPhone, iPad & Mac. Weight, doses, labs, and milestones — beautifully tracked, always yours.",
+      "url": "https://journeytracker.app/",
+      "image": "https://journeytracker.app/og-image.png",
+      "installUrl": "https://apps.apple.com/app/id6760089056",
+      "author": { "@type": "Organization", "name": "Apex Development Studio LLC" },
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD", "description": "Free tier with 7-day free Pro trial; Pro via monthly, annual, or lifetime purchase." }
+    }
+    </script>
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Journey Tracker" />
+    <meta property="og:title" content="Journey Tracker — The GLP-1 companion for your comeback" />
+    <meta property="og:description" content="Weight, doses, labs, and milestones — beautifully tracked, always yours. Free on the App Store for iPhone, iPad & Mac." />
+    <meta property="og:image" content="https://journeytracker.app/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Journey Tracker — The GLP-1 companion for your comeback" />
+    <meta name="twitter:image" content="https://journeytracker.app/og-image.png" />
+
+    <!-- Fonts: Albert Sans (headings/UI) · Cormorant Garamond italic (drama) · IBM Plex Mono (data) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@1,500;1,600&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Theme boot: apply saved / system theme before first paint to avoid flash -->
+    <script>
+      (function () {
+        var t = localStorage.getItem('theme');
+        var dark = t === 'dark' || (!t || t === 'system') && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (t === 'light') dark = false;
+        document.documentElement.classList.toggle('dark', dark);
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

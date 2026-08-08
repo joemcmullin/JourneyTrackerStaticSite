@@ -1,0 +1,146 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ═══════════════════════════════════════════════════════════════
+   FIRST LIGHT — design tokens
+   Warm cream dawn on light · deep horizon teal on dark.
+   Palette locked to the Journey Tracker brand pack (2026-08-07).
+   ═══════════════════════════════════════════════════════════════ */
+:root {
+  --bg: #faf7f2;            /* Morning Cream */
+  --bg-surface: #f3eee5;
+  --bg-card: #ffffff;
+  --bg-card-hover: #fbf8f2;
+  --primary: #0d3d38;       /* Horizon Teal */
+  --momentum: #197e72;      /* Momentum Teal */
+  --accent: #e8792a;        /* Daybreak Orange */
+  --gold: #f5a455;          /* Golden Hour */
+  --text-hi: #1e2a27;       /* Evergreen Ink */
+  --text-mid: #43524d;
+  --text-lo: #8a948f;
+  --ring: rgba(13, 61, 56, 0.12);
+}
+
+.dark {
+  --bg: #0a1f1c;
+  --bg-surface: #0d2622;
+  --bg-card: #123129;
+  --bg-card-hover: #173a31;
+  --primary: #197e72;
+  --momentum: #2aaa9e;
+  --accent: #e8792a;
+  --gold: #f5a455;
+  --text-hi: #faf7f2;
+  --text-mid: #a8bdb6;
+  --text-lo: #5f7a72;
+  --ring: rgba(250, 247, 242, 0.1);
+}
+
+/* Brand gradient — sunrise. One gradient, used everywhere. */
+.text-gradient {
+  background: linear-gradient(92deg, var(--accent) 0%, var(--gold) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text-hi);
+  font-family: 'Albert Sans', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* Global film-grain noise — kills flat digital gradients */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+::selection {
+  background: var(--gold);
+  color: #1e2a27;
+}
+
+/* Mark entrance: soft rise + settle. Resting state is fully visible — the
+   animation only runs from a hidden start via fill-mode, so no-JS/scraper
+   contexts always see the finished mark. */
+.mark-enter {
+  animation: mark-rise 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+@keyframes mark-rise {
+  from { opacity: 0; transform: translateY(10px) scale(0.94); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mark-enter { animation: none; }
+  html { scroll-behavior: auto; }
+}
+
+/* QA static mode: hero at a sane fixed height, no smooth scrolling */
+.static-mode { scroll-behavior: auto; }
+.static-mode section#top { min-height: 56rem !important; }
+.static-mode [data-step-inner] { min-height: 30rem !important; }
+
+/* Magnetic buttons */
+.btn-magnetic {
+  transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.35s ease;
+}
+.btn-magnetic:hover {
+  transform: scale(1.03);
+}
+.btn-magnetic:active {
+  transform: scale(0.98);
+}
+
+a, button {
+  transition: transform 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94), color 0.25s ease, background-color 0.25s ease, border-color 0.25s ease, opacity 0.25s ease;
+}
+
+/* Hairline borders that respect theme */
+.hairline {
+  border: 1px solid var(--ring);
+}
+
+/* Screenshot gallery — contained strip with rolling edge fade.
+   The mask fades shots in at the right edge and out at the left, so the
+   drift reads as a horizontal "rolling fade" inside the content column. */
+.gallery-fade {
+  -webkit-mask-image: linear-gradient(to right, transparent 0, black 9%, black 91%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0, black 9%, black 91%, transparent 100%);
+}
+.gallery-track {
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.gallery-track::-webkit-scrollbar { display: none; }
+
+/* Blinking cursor for the telemetry card */
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+.cursor-blink { animation: blink 1s step-end infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .cursor-blink { animation: none; }
+}
+
+/* Pulsing status dot */
+@keyframes pulse-dot {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(52, 199, 89, 0.5); }
+  50% { box-shadow: 0 0 0 6px rgba(52, 199, 89, 0); }
+}
+.status-dot { animation: pulse-dot 2s ease-out infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .status-dot { animation: none; }
+}

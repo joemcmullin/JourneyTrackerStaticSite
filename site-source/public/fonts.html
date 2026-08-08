@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Journey Tracker — Font Lab</title>
+<link rel="icon" type="image/png" href="/favicon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;800&family=Source+Serif+4:ital,opsz,wght@1,8..60,500&family=Hanken+Grotesk:wght@400;600;800&family=Playfair+Display:ital,wght@1,500;1,600&family=Outfit:wght@400;600;800&family=Lora:ital,wght@1,500;1,600&family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,600&family=Figtree:wght@400;600;800&family=Instrument+Serif:ital@1&family=Barlow+Semi+Condensed:wght@600;800&family=Barlow:wght@400;500&family=Crimson+Pro:ital,wght@1,500;1,600&family=Albert+Sans:wght@400;600;800&family=Cormorant+Garamond:ital,wght@1,500;1,600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #faf7f2; --card: #ffffff; --ink: #1e2a27; --mid: #43524d; --lo: #8a948f;
+    --teal: #197e72; --deep: #0d3d38; --orange: #e8792a; --gold: #f5a455;
+  }
+  * { margin: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--ink); padding: 56px clamp(20px, 5vw, 72px) 120px; }
+  .intro { max-width: 70rem; margin: 0 auto 48px; font-family: 'IBM Plex Mono', monospace; }
+  .intro h1 { font-size: 1.1rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal); }
+  .intro p { margin-top: 10px; font-size: 0.85rem; color: var(--mid); line-height: 1.7; }
+  .card {
+    max-width: 70rem; margin: 0 auto 40px; background: var(--card);
+    border: 1px solid rgba(13,61,56,0.12); border-radius: 2rem;
+    padding: clamp(28px, 4vw, 56px); box-shadow: 0 12px 40px rgba(13,61,56,0.05);
+  }
+  .tag { display: flex; flex-wrap: wrap; align-items: baseline; gap: 14px;
+         font-family: 'IBM Plex Mono', monospace; margin-bottom: 26px; }
+  .tag .num { background: var(--deep); color: #faf7f2; border-radius: 999px;
+              padding: 5px 14px; font-size: 0.8rem; font-weight: 500; }
+  .tag .name { font-size: 0.95rem; font-weight: 500; color: var(--orange); }
+  .tag .desc { font-size: 0.78rem; color: var(--lo); }
+  .h1 { font-size: clamp(2.2rem, 4.6vw, 3.6rem); line-height: 1.04; letter-spacing: -0.02em; }
+  .drama { display: block; margin-top: 6px; font-size: clamp(2.9rem, 6.2vw, 5rem);
+           background: linear-gradient(92deg, var(--orange), var(--gold));
+           -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .sub { margin-top: 30px; font-size: clamp(1.25rem, 2.2vw, 1.7rem); color: var(--deep); }
+  .body { margin-top: 14px; max-width: 62ch; font-size: 1.02rem; line-height: 1.75; color: var(--mid); }
+  .meta { margin-top: 22px; font-family: 'IBM Plex Mono', monospace; font-size: 0.75rem;
+          color: var(--lo); letter-spacing: 0.08em; }
+
+  /* ── Option 1: Athletic Editorial ── */
+  .o1 .h1, .o1 .sub { font-family: 'Archivo', sans-serif; font-weight: 800; }
+  .o1 .drama { font-family: 'Source Serif 4', serif; font-style: italic; font-weight: 500; }
+  .o1 .sub { font-weight: 600; }
+  .o1 .body { font-family: 'Archivo', sans-serif; font-weight: 500; }
+
+  /* ── Option 2: Refined Warmth ── */
+  .o2 .h1, .o2 .sub { font-family: 'Hanken Grotesk', sans-serif; font-weight: 800; }
+  .o2 .drama { font-family: 'Playfair Display', serif; font-style: italic; font-weight: 500; }
+  .o2 .sub { font-weight: 600; }
+  .o2 .body { font-family: 'Hanken Grotesk', sans-serif; }
+
+  /* ── Option 3: Modern Calm ── */
+  .o3 .h1, .o3 .sub { font-family: 'Outfit', sans-serif; font-weight: 800; }
+  .o3 .drama { font-family: 'Lora', serif; font-style: italic; font-weight: 500; }
+  .o3 .sub { font-weight: 600; }
+  .o3 .body { font-family: 'Outfit', sans-serif; }
+
+  /* ── Option 4: Magazine Flip (serif leads) ── */
+  .o4 .h1 { font-family: 'DM Serif Display', serif; font-weight: 400; letter-spacing: 0; }
+  .o4 .drama { font-family: 'DM Serif Display', serif; font-style: italic; }
+  .o4 .sub { font-family: 'DM Sans', sans-serif; font-weight: 600; }
+  .o4 .body { font-family: 'DM Sans', sans-serif; }
+
+  /* ── Option 5: Fresh Editorial ── */
+  .o5 .h1, .o5 .sub { font-family: 'Figtree', sans-serif; font-weight: 800; }
+  .o5 .drama { font-family: 'Instrument Serif', serif; font-style: italic; font-weight: 400; }
+  .o5 .sub { font-weight: 600; }
+  .o5 .body { font-family: 'Figtree', sans-serif; }
+
+  /* ── Option 6: Coach's Voice ── */
+  .o6 .h1, .o6 .sub { font-family: 'Barlow Semi Condensed', sans-serif; font-weight: 800;
+                      text-transform: none; letter-spacing: -0.01em; }
+  .o6 .drama { font-family: 'Crimson Pro', serif; font-style: italic; font-weight: 500; }
+  .o6 .sub { font-weight: 600; }
+  .o6 .body { font-family: 'Barlow', sans-serif; }
+
+  /* ── Option 7: Elegant Momentum ── */
+  .o7 .h1, .o7 .sub { font-family: 'Albert Sans', sans-serif; font-weight: 800; }
+  .o7 .drama { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 500; }
+  .o7 .sub { font-weight: 600; }
+  .o7 .body { font-family: 'Albert Sans', sans-serif; }
+</style>
+</head>
+<body>
+  <div class="intro">
+    <h1>Journey Tracker · Font Lab</h1>
+    <p>Seven pairings, each shown as the real hero header, the section sub-header, and body copy.
+       Mono stays IBM Plex Mono throughout. Say the number you like — or the number + a swap
+       ("5 but with the serif from 2").</p>
+  </div>
+
+  <section class="card o1">
+    <div class="tag"><span class="num">Option 1</span><span class="name">Archivo + Source Serif 4</span><span class="desc">athletic editorial — strong grotesk with a sturdy, bookish italic</span></div>
+    <h2 class="h1">The private companion for<span class="drama">your comeback.</span></h2>
+    <div class="sub">Three jobs. Done beautifully.</div>
+    <p class="body">Weight, doses, labs, walks, and every hard-won milestone of your GLP-1 journey — organized in one place that answers to nobody but you.</p>
+    <div class="meta">HEADERS: ARCHIVO 800 · DRAMA: SOURCE SERIF 4 ITALIC · BODY: ARCHIVO 500</div>
+  </section>
+
+  <section class="card o2">
+    <div class="tag"><span class="num">Option 2</span><span class="name">Hanken Grotesk + Playfair Display</span><span class="desc">refined warmth — quietly premium sans, classic high-contrast italic</span></div>
+    <h2 class="h1">The private companion for<span class="drama">your comeback.</span></h2>
+    <div class="sub">Three jobs. Done beautifully.</div>
+    <p class="body">Weight, doses, labs, walks, and every hard-won milestone of your GLP-1 journey — organized in one place that answers to nobody but you.</p>
+    <div class="meta">HEADERS: HANKEN GROTESK 800 · DRAMA: PLAYFAIR DISPLAY ITALIC · BODY: HANKEN GROTESK 400</div>
+  </section>
+
+  <section class="card o3">
+    <div class="tag"><span class="num">Option 3</span><span class="name">Outfit + Lora</span><span class="desc">modern calm — clean geometric sans, gentle literary italic</span></div>
+    <h2 class="h1">The private companion for<span class="drama">your comeback.</span></h2>
+    <div class="sub">Three jobs. Done beautifully.</div>
+    <p class="body">Weight, doses, labs, walks, and every hard-won milestone of your GLP-1 journey — organized in one place that answers to nobody but you.</p>
+    <div class="meta">HEADERS: OUTFIT 800 · DRAMA: LORA ITALIC · BODY: OUTFIT 400</div>
+  </section>
+
+  <section class="card o4">
+    <div class="tag"><span class="num">Option 4</span><span class="name">DM Serif Display + DM Sans</span><span class="desc">magazine flip — the serif leads the headline, the sans does the work</span></div>
+    <h2 class="h1">The private companion for<span class="drama">your comeback.</span></h2>
+    <div class="sub">Three jobs. Done beautifully.</div>
+    <p class="body">Weight, doses, labs, walks, and every hard-won milestone of your GLP-1 journey — organized in one place that answers to nobody but you.</p>
+    <div class="meta">HEADERS: DM SERIF DISPLAY · DRAMA: DM SERIF DISPLAY ITALIC · BODY/SUB: DM SANS</div>
+  </section>
+
+  <section class="card o5">
+    <div class="tag"><span class="num">Option 5</span><span class="name">Figtree + Instrument Serif</span><span class="desc">fresh editorial — friendly contemporary sans, sharp display italic</span></div>
+    <h2 class="h1">The private companion for<span class="drama">your comeback.</span></h2>
+    <div class="sub">Three jobs. Done beautifully.</div>
+    <p class="body">Weight, doses, labs, walks, and every hard-won milestone of your GLP-1 journey — organized in one place that answers to nobody but you.</p>
+    <div class="meta">HEADERS: FIGTREE 800 · DRAMA: INSTRUMENT SERIF ITALIC · BODY: FIGTREE 400</div>
+  </section>
+
+  <section class="card o6">
+    <div class="tag"><span class="num">Option 6</span><span class="name">Barlow Semi Condensed + Crimson Pro</span><span class="desc">coach's voice — tall confident sport sans, warm old-style italic</span></div>
+    <h2 class="h1">The private companion for<span class="drama">your comeback.</span></h2>
+    <div class="sub">Three jobs. Done beautifully.</div>
+    <p class="body">Weight, doses, labs, walks, and every hard-won milestone of your GLP-1 journey — organized in one place that answers to nobody but you.</p>
+    <div class="meta">HEADERS: BARLOW SEMI CONDENSED 800 · DRAMA: CRIMSON PRO ITALIC · BODY: BARLOW 400</div>
+  </section>
+
+  <section class="card o7">
+    <div class="tag"><span class="num">Option 7</span><span class="name">Albert Sans + Cormorant Garamond</span><span class="desc">elegant momentum — crisp neo-grotesk, graceful renaissance italic</span></div>
+    <h2 class="h1">The private companion for<span class="drama">your comeback.</span></h2>
+    <div class="sub">Three jobs. Done beautifully.</div>
+    <p class="body">Weight, doses, labs, walks, and every hard-won milestone of your GLP-1 journey — organized in one place that answers to nobody but you.</p>
+    <div class="meta">HEADERS: ALBERT SANS 800 · DRAMA: CORMORANT GARAMOND ITALIC · BODY: ALBERT SANS 400</div>
+  </section>
+</body>
+</html>
