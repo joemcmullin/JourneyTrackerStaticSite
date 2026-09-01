@@ -47,7 +47,7 @@ export default function Hero() {
       <div aria-hidden="true" className="absolute inset-0">
         <div className="absolute -right-[15%] -top-[25%] h-[70vh] w-[70vh] rounded-full bg-[radial-gradient(circle,rgba(245,164,85,0.4),transparent_65%)]" />
         <div className="absolute right-[20%] top-[45%] h-[50vh] w-[50vh] rounded-full bg-[radial-gradient(circle,rgba(232,121,42,0.22),transparent_65%)]" />
-        <div className="absolute -left-[10%] bottom-[-30%] h-[60vh] w-[60vh] rounded-full bg-[radial-gradient(circle,rgba(25,126,114,0.25),transparent_65%)]" />
+        <div className="absolute -left-[10%] bottom-[-30%] h-[60vh] w-[60vh] rounded-full bg-[radial-gradient(circle,rgba(16,116,130,0.25),transparent_65%)]" />
         {/* Horizon line */}
         <div className="absolute inset-x-0 bottom-0 h-[38vh] bg-gradient-to-t from-[var(--bg-surface)] to-transparent" />
       </div>

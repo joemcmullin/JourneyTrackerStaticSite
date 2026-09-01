@@ -12,14 +12,14 @@
   --bg-surface: #f3eee5;
   --bg-card: #ffffff;
   --bg-card-hover: #fbf8f2;
-  --primary: #0d3d38;       /* Horizon Teal */
-  --momentum: #197e72;      /* Momentum Teal */
+  --primary: #0e626d;       /* Horizon Teal */
+  --momentum: #107482;      /* Momentum Teal */
   --accent: #e8792a;        /* Daybreak Orange */
   --gold: #f5a455;          /* Golden Hour */
   --text-hi: #1e2a27;       /* Evergreen Ink */
   --text-mid: #43524d;
   --text-lo: #8a948f;
-  --ring: rgba(13, 61, 56, 0.12);
+  --ring: rgba(14, 98, 109, 0.12);
 }
 
 .dark {
@@ -27,8 +27,8 @@
   --bg-surface: #0d2622;
   --bg-card: #123129;
   --bg-card-hover: #173a31;
-  --primary: #197e72;
-  --momentum: #2aaa9e;
+  --primary: #107482;
+  --momentum: #49c5d6;
   --accent: #e8792a;
   --gold: #f5a455;
   --text-hi: #faf7f2;
