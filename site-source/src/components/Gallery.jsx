@@ -10,14 +10,16 @@ import { isStatic } from './motion'
  * motion: no drift, plain scrollable strip.
  */
 const SHOTS = [
-  { src: '/screenshots/ss2-home-strides.jpg', alt: 'Home dashboard with dose streak, weight, and Strides step tracking' },
-  { src: '/screenshots/ss2-weight-trend.jpg', alt: 'Weight trend chart with moving average' },
-  { src: '/screenshots/ss2-dose-tracker.jpg', alt: 'Dose tracker with schedule and history' },
-  { src: '/screenshots/ss2-lab-records.jpg', alt: 'Lab records timeline' },
-  { src: '/screenshots/ss2-victories.jpg', alt: 'Non-scale victories log' },
-  { src: '/screenshots/ss2-progress-photos.jpg', alt: 'Progress photos, kept private' },
-  { src: '/screenshots/ss2-reports.jpg', alt: 'Journey report export' },
-  { src: '/screenshots/ss2-themes.jpg', alt: 'Theme picker with eight themes' },
+  { src: '/screenshots/ss3-home.jpg', alt: 'Home dashboard: next dose countdown, total loss, Strides walking map, followed A1C marker, and weekly recap' },
+  { src: '/screenshots/ss3-levels-chart.jpg', alt: 'Estimated medication levels chart — each dose builds and fades' },
+  { src: '/screenshots/ss3-dose-counter.jpg', alt: 'Dose counter: three months of logged doses at a glance' },
+  { src: '/screenshots/ss3-injection-sites.jpg', alt: 'Injection site rotation on a body map, with the next recommended site' },
+  { src: '/screenshots/ss3-labs-by-marker.jpg', alt: 'Labs by marker: every lab test on its own trend line' },
+  { src: '/screenshots/ss3-marker-detail.jpg', alt: "Total Cholesterol detail: trend line with dated history on the provider's range" },
+  { src: '/screenshots/ss3-logbook.jpg', alt: 'Logbook: the whole journey in one continuous scroll' },
+  { src: '/screenshots/ss3-stride.jpg', alt: 'A Stride: mapped walk with route, stats, and photos' },
+  { src: '/screenshots/ss3-reports.jpg', alt: 'Reports: therapy, weight, labs, and body composition PDFs for your appointment' },
+  { src: '/screenshots/ss3-health-data.jpg', alt: 'Health & Data settings: Apple Health sync and lab record controls' },
 ]
 
 export default function Gallery() {
@@ -78,8 +80,8 @@ export default function Gallery() {
                     src={s.src}
                     alt={i < SHOTS.length ? s.alt : ''}
                     loading="lazy"
-                    width="590"
-                    height="1278"
+                    width="540"
+                    height="1173"
                     className="w-full rounded-[1.75rem]"
                   />
                 </div>

@@ -116,11 +116,11 @@ export default function Hero() {
             {/* Dynamic Island */}
             <div aria-hidden="true" className="absolute left-1/2 top-3 z-10 h-[26px] w-[96px] -translate-x-1/2 rounded-full bg-black" />
             <img
-              src="/screenshots/ss2-home-strides.jpg"
-              alt="Journey Tracker home screen: dose streak, next dose, current weight, Strides step tracking, and a weekly recap"
+              src="/screenshots/ss3-home.jpg"
+              alt="Journey Tracker home screen: next dose countdown, total loss, Strides walking map, followed A1C marker, and weekly recap"
               className="w-full rounded-[2.4rem]"
-              width="590"
-              height="1278"
+              width="540"
+              height="1173"
             />
           </div>
           <figcaption className="mt-4 text-center font-mono text-[0.72rem] uppercase tracking-[0.18em] text-text-lo">
