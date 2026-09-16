@@ -61,7 +61,7 @@ export default function Hero() {
             <div className="flex flex-col">
               <Wordmark className="text-[1.7rem] leading-none" />
               <span className="mt-1.5 font-mono text-[0.72rem] uppercase tracking-[0.22em] text-text-lo">
-                GLP-1 companion · iPhone · iPad · Mac
+                GLP-1 companion · iPhone · iPad
               </span>
             </div>
           </div>

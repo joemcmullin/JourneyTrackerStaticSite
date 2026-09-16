@@ -11,7 +11,7 @@ export default function Footer() {
         <div>
           <BrandBadge size={38} textClass="text-[1.15rem]" />
           <p className="mt-4 max-w-[36ch] text-[0.9rem] leading-relaxed text-[#5f7a72]">
-            The private GLP-1 companion for iPhone, iPad &amp; Mac. Your journey,
+            The private GLP-1 companion for iPhone &amp; iPad. Your journey,
             your data, your comeback.
           </p>
         </div>
