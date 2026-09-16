@@ -30,7 +30,7 @@ export default function Footer() {
         <nav aria-label="Support">
           <h3 className="font-mono text-[0.7rem] uppercase tracking-[0.2em] text-[#5f7a72]">Support</h3>
           <ul className="mt-4 space-y-2.5 text-[0.9rem] font-medium">
-            <li><a className="hover:text-[#faf7f2]" href={`${SITE}/support.html`}>Help &amp; contact</a></li>
+            <li><a className="hover:text-[#faf7f2]" href={`${SITE}/support.html`}>Support Center</a></li>
             <li><a className="hover:text-[#faf7f2]" href={`${SITE}/accessibility.html`}>Accessibility</a></li>
           </ul>
         </nav>
@@ -38,9 +38,10 @@ export default function Footer() {
         <nav aria-label="Legal">
           <h3 className="font-mono text-[0.7rem] uppercase tracking-[0.2em] text-[#5f7a72]">Legal</h3>
           <ul className="mt-4 space-y-2.5 text-[0.9rem] font-medium">
-            <li><a className="hover:text-[#faf7f2]" href={`${SITE}/privacy.html`}>Privacy</a></li>
-            <li><a className="hover:text-[#faf7f2]" href={`${SITE}/terms.html`}>Terms</a></li>
-            <li><a className="hover:text-[#faf7f2]" href={`${SITE}/health-data-privacy.html`}>Health data</a></li>
+            <li><a className="hover:text-[#faf7f2]" href={`${SITE}/privacy.html`}>Privacy Policy</a></li>
+            <li><a className="hover:text-[#faf7f2]" href={`${SITE}/health-data-privacy.html`}>Health Data Privacy</a></li>
+            <li><a className="hover:text-[#faf7f2]" href={`${SITE}/hipaa.html`}>HIPAA Disclosure</a></li>
+            <li><a className="hover:text-[#faf7f2]" href={`${SITE}/terms.html`}>Terms of Service</a></li>
           </ul>
         </nav>
       </div>
