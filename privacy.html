@@ -285,7 +285,7 @@
       <p><strong>You control HealthKit access entirely.</strong> You can review and revoke any HealthKit permission at any time through iOS Settings → Privacy &amp; Security → Health → Journey Tracker.</p>
 
       <h4>2.3 Information Collected Through Sign in with Apple</h4>
-      <p>We use Sign in with Apple for authentication. The app keeps Apple's anonymous user identifier in your device's Keychain and, if you share or enter one, your first name on your device. Journey Tracker does not store your email address, and none of this is sent to us.</p>
+      <p>We use Sign in with Apple for authentication. The app keeps Apple's anonymous user identifier in your device's Keychain and, if you share or enter one, your first name on your device. Journey Tracker does not store your email address. When you delete your account, the app sends a one-time Apple sign-in code to a service we run on Cloudflare, which passes it to Apple to end Journey Tracker's Sign in with Apple access. The service stores nothing and never receives health data.</p>
 
       <h4>2.4 Location &amp; Activity Data (Strides)</h4>
       <p>Journey Tracker's Strides feature lets you record walking, running, and other physical activities. When you use Strides, the app collects — <strong>only while you are actively recording an activity</strong>:</p>
@@ -386,7 +386,7 @@
       <p>You can delete all of your Journey Tracker data by:</p>
       <ul>
         <li>Deleting individual entries within the app</li>
-        <li>Using Settings → Privacy &amp; Security → Delete Account &amp; All Data within the app (removes all on-device data)</li>
+        <li>Using Settings → Privacy &amp; Security → Delete Account &amp; All Data within the app (removes all on-device data and ends Journey Tracker's Sign in with Apple access)</li>
         <li>Deleting the app (removes all on-device data)</li>
         <li>Managing your iCloud storage to remove Journey Tracker backups via iOS Settings</li>
         <li>Data Journey Tracker wrote to Apple Health (water, protein, blood pressure, and Strides workouts) stays in Apple Health; delete it in the Health app</li>
@@ -436,7 +436,7 @@
         <li><strong>Secure authentication:</strong> Sign in with Apple, plus an app lock (Face ID, Touch ID, or passcode) that is on by default</li>
         <li><strong>Secure transmission:</strong> Data the app sends over the internet is encrypted in transit (HTTPS)</li>
         
-        <li><strong>No developer server access:</strong> We do not operate servers that store your health data</li>
+        <li><strong>No developer server access:</strong> We do not operate servers that store your data. Our only service passes a one-time code to Apple at account deletion and keeps no record of it.</li>
         <li><strong>Debug code exclusion:</strong> Developer and debug features are excluded from the production app</li>
       </ul>
       <p>No security system is perfect. If we become aware of a security breach that affects your health information, we will notify you as required by applicable law.</p>
