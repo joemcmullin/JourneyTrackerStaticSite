@@ -23,7 +23,7 @@
   <meta name="referrer" content="strict-origin-when-cross-origin" />
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <title>Consumer Health Data Privacy Policy — Journey Tracker</title>
-  <meta name="description" content="Consumer Health Data Privacy Policy for Journey Tracker — how Apex Development Studio LLC collects, uses, shares, and protects your consumer health data under Washington's My Health My Data Act (MHMDA)." />
+  <meta name="description" content="Consumer Health Data Privacy Policy for Journey Tracker — what health data the app keeps on your device, what, if anything, leaves it, and your rights under Washington's My Health My Data Act (MHMDA)." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://journeytracker.app/health-data-privacy.html" />
   <meta name="theme-color" content="#0e626d" />
@@ -157,6 +157,18 @@
     .callout p { margin-bottom: 8px; }
     .callout p:last-child { margin-bottom: 0; }
 
+    .data-map { overflow-x: auto; margin: 12px 0 6px; }
+    .data-map table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    .data-map th, .data-map td {
+      text-align: left; vertical-align: top; padding: 9px 10px;
+      border-bottom: 1px solid var(--border); color: var(--text-mid); line-height: 1.55;
+    }
+    .data-map th {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--forest-mid);
+    }
+    .data-map td:first-child { color: var(--text-dark); font-weight: 600; }
+
     .doc-footer-note {
       font-size: 0.82rem; font-style: italic; color: var(--text-muted);
       margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--border);
@@ -241,8 +253,22 @@
     <div class="doc-content">
 
       <div class="callout">
-        <p><strong>This Consumer Health Data Privacy Policy is provided pursuant to Washington's My Health My Data Act (RCW 19.373)</strong> and supplements our general <a href="privacy.html">Privacy Policy</a>. It describes the consumer health data we collect, how we use and share it, and how you can exercise your rights.</p>
+        <p><strong>In plain terms:</strong> what you record in Journey Tracker stays on your iPhone and in your own iCloud account. Apex Development Studio LLC has no server that stores it and no account for you, and cannot see your weights, doses, symptoms, lab results, photos, routes, or notes.</p>
+        <p><strong>About the word "collect":</strong> Washington's My Health My Data Act (RCW 19.373) counts anything an app does with health data, including keeping it on your own phone, as "collecting" it. That is why this policy exists and lists everything the app keeps. It does not mean the data comes to us. Where this page says the app <em>keeps</em>, <em>reads</em> or <em>records</em> something, the law calls that collecting.</p>
+        <p>This policy supplements our general <a href="privacy.html">Privacy Policy</a>.</p>
       </div>
+
+      <div class="data-map">
+        <table>
+          <thead><tr><th>What</th><th>Where it is</th><th>Who can see it</th></tr></thead>
+          <tbody>
+            <tr><td>Everything you log, and what the app reads from Apple Health, Health Records, location and motion</td><td>On your device, and in your private iCloud if iCloud is on</td><td>You. Apple keeps the iCloud copy in your account; we have no access to it.</td></tr>
+            <tr><td>Usage analytics (section 4.4)</td><td>PostHog, our analytics processor</td><td>Us, tied to a random ID for your installation. Never the values you enter. In Journey Tracker 1.9.0 and earlier, some events name an action, such as that a dose was logged. You can turn analytics off.</td></tr>
+            <tr><td>Directions for a route you plan (section 4.1)</td><td>Sent to Apple Maps to draw the route</td><td>Apple, as a standard map service. The routes you record are not sent.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Subscription status (RevenueCat) and app install counts (AppsFlyer) involve no health data; section 4 describes them.</p>
 
       <hr>
 
@@ -253,64 +279,64 @@
 
       <hr>
 
-      <h3>2. Categories of Consumer Health Data Collected</h3>
-      <p>Journey Tracker collects the following categories of consumer health data, each for the specific purpose described:</p>
+      <h3>2. Consumer Health Data the App Keeps</h3>
+      <p>Journey Tracker keeps the following categories of consumer health data on your device, and in your iCloud account if iCloud is on, each for the purpose described. Section 4 lists everything that ever leaves your device.</p>
 
       <h4>2.1 Body Measurements</h4>
-      <p><strong>Data collected:</strong> Weight, body fat percentage, lean and muscle mass, body water, visceral fat, and BMI.</p>
+      <p><strong>Kept on your device:</strong> Weight, body fat percentage, lean and muscle mass, body water, visceral fat, and BMI.</p>
       <p><strong>Purpose:</strong> Health trend tracking, chart generation, and progress visualization against your personal goals.</p>
 
       <h4>2.2 Medication Information</h4>
-      <p><strong>Data collected:</strong> GLP-1 medication name, dose, injection dates, and injection site.</p>
+      <p><strong>Kept on your device:</strong> GLP-1 medication name, dose, injection dates, and injection site.</p>
       <p><strong>Purpose:</strong> Dose history and a timeline of dose changes.</p>
 
       <h4>2.3 Side Effect and Symptom Logs</h4>
-      <p><strong>Data collected:</strong> Symptoms, severity ratings, and associated notes.</p>
+      <p><strong>Kept on your device:</strong> Symptoms, severity ratings, and associated notes.</p>
       <p><strong>Purpose:</strong> Showing your symptom history over time.</p>
 
       <h4>2.4 Laboratory Results</h4>
-      <p><strong>Data collected:</strong> HbA1c, lipid panel values, metabolic markers, thyroid markers, other health markers you choose to enter, and blood pressure readings.</p>
+      <p><strong>Kept on your device:</strong> HbA1c, lipid panel values, metabolic markers, thyroid markers, other health markers you choose to enter, and blood pressure readings.</p>
       <p><strong>Purpose:</strong> Health marker tracking over time.</p>
 
       <h4>2.5 Health Goals</h4>
-      <p><strong>Data collected:</strong> Target weight and hydration goals.</p>
+      <p><strong>Kept on your device:</strong> Target weight and hydration goals.</p>
       <p><strong>Purpose:</strong> Progress measurement against user-defined goals.</p>
 
       <h4>2.6 Health Data from Apple HealthKit</h4>
-      <p><strong>Data collected (with your explicit permission):</strong> Body weight and body composition (body fat, lean mass, BMI), blood glucose, blood pressure, dietary water, dietary protein, date of birth, step counts, workouts, walking and running distance, walking speed, and active energy.</p>
+      <p><strong>Read from Apple Health (with your explicit permission):</strong> Body weight and body composition (body fat, lean mass, BMI), blood glucose, blood pressure, dietary water, dietary protein, date of birth, step counts, workouts, walking and running distance, walking speed, and active energy.</p>
       <p><strong>Purpose:</strong> Automated health data sync for trend tracking within the app.</p>
 
       <h4>2.7 Notes</h4>
-      <p><strong>Data collected:</strong> Free-text notes you attach to health entries.</p>
+      <p><strong>Kept on your device:</strong> Free-text notes you attach to health entries.</p>
       <p><strong>Purpose:</strong> Personal record-keeping associated with your health data.</p>
 
       <h4>2.8 Location and Physical Activity Data (Strides)</h4>
-      <p><strong>Data collected (only while you actively record an activity, with your explicit permission):</strong> Precise GPS location tied to your fitness activity, walking/running activity and recorded routes, step counts from device motion sensors, distance, duration, active energy, optional activity photos and where each was taken, and planned/saved routes you create with the route planner.</p>
+      <p><strong>Recorded and kept on your device (only while you actively record an activity, with your explicit permission):</strong> Precise GPS location tied to your fitness activity, walking/running activity and recorded routes, step counts from device motion sensors, distance, duration, active energy, optional activity photos and where each was taken, and planned/saved routes you create with the route planner.</p>
       <p><strong>Purpose:</strong> Mapping and measuring the physical activities you choose to record, route planning, and fitness trend tracking.</p>
-      <p>Precise location tied to fitness activity is consumer health data under the My Health My Data Act. Location is collected <strong>only during an active recording</strong> using the iOS "While Using the App" permission — never in the background outside a recording, and never with "Always" access.</p>
+      <p>Precise location tied to fitness activity is consumer health data under the My Health My Data Act. Location is recorded <strong>only during an active recording</strong> using the iOS "While Using the App" permission — never in the background outside a recording, and never with "Always" access.</p>
 
       <h4>2.9 Dietary Intake and Fasting</h4>
-      <p><strong>Data collected:</strong> Water intake (logged by drink type), protein intake, and fasting windows.</p>
+      <p><strong>Kept on your device:</strong> Water intake (logged by drink type), protein intake, and fasting windows.</p>
       <p><strong>Purpose:</strong> Hydration, nutrition, and fasting tracking against your personal goals.</p>
 
       <h4>2.10 Progress Photos</h4>
-      <p><strong>Data collected:</strong> Photos you take or import to see your progress. Location metadata is removed when a photo is saved.</p>
+      <p><strong>Kept on your device:</strong> Photos you take or import to see your progress. Location metadata is removed when a photo is saved.</p>
       <p><strong>Purpose:</strong> Visual progress tracking and comparisons you create.</p>
 
       <h4>2.11 Profile Details</h4>
-      <p><strong>Data collected (optional):</strong> Height, date of birth, and sex, kept on your device.</p>
+      <p><strong>Kept on your device (optional):</strong> Height, date of birth, and sex.</p>
       <p><strong>Purpose:</strong> Calculating BMI and personalizing body-fat ranges.</p>
 
       <hr>
 
       <h3>3. Sources of Consumer Health Data</h3>
-      <p>Journey Tracker collects consumer health data from the following sources:</p>
+      <p>The health data in Journey Tracker comes from these sources, all read and stored on your device:</p>
       <ul>
         <li><strong>Direct user input:</strong> Manual entry of health measurements, medication information, side effects, lab results, goals, and notes within the app</li>
         <li><strong>OCR scanning:</strong> On-device optical character recognition (Apple Vision framework) used to extract lab values from photos, PDFs, or camera captures of lab reports</li>
-        <li><strong>Device GPS and motion sensors:</strong> Precise location and step counts collected only while you actively record a Stride, with your explicit permission through Apple's native Location and Motion &amp; Fitness authorization dialogs</li>
-        <li><strong>Apple HealthKit:</strong> Automated sync of body weight, body composition, blood glucose, blood pressure, dietary water, dietary protein, steps, workouts, and active energy data — collected only with your explicit permission through Apple's native HealthKit authorization dialog</li>
-        <li><strong>Apple Health Records:</strong> Lab results only (ten common lab tests plus blood pressure) from your connected health systems — collected only with your explicit permission through Apple's native Health Records authorization</li>
+        <li><strong>Device GPS and motion sensors:</strong> Precise location and step counts recorded only while you actively record a Stride, with your explicit permission through Apple's native Location and Motion &amp; Fitness authorization dialogs</li>
+        <li><strong>Apple HealthKit:</strong> Automated sync of body weight, body composition, blood glucose, blood pressure, dietary water, dietary protein, steps, workouts, and active energy data — read only with your explicit permission through Apple's native HealthKit authorization dialog</li>
+        <li><strong>Apple Health Records:</strong> Lab results only (ten common lab tests plus blood pressure) from your connected health systems — read only with your explicit permission through Apple's native Health Records authorization</li>
         <li><strong>File import:</strong> CSV or XLSX files you choose to import from other apps or devices (such as Renpho), read on your device</li>
       </ul>
 
@@ -355,7 +381,7 @@
       <p>Washington state residents and all Journey Tracker users have the following rights with respect to their consumer health data:</p>
 
       <h4>5.1 Right to Know</h4>
-      <p>You have the right to know what consumer health data is collected about you and how it is used. This policy fulfills that right by describing every category of data collected, its purpose, and every third party that receives it.</p>
+      <p>You have the right to know what consumer health data is collected about you (in the law's sense, which includes data kept only on your device) and how it is used. This policy fulfills that right by describing every category of data the app keeps, its purpose, and every third party that receives any of it.</p>
 
       <h4>5.2 Right to Access</h4>
       <p>You can access all of your consumer health data at any time directly within the Journey Tracker app. All data you have entered or synced is available to you through the app's dashboard, charts, and detail views.</p>
@@ -372,13 +398,13 @@
       <h4>5.4 Right to Withdraw Consent</h4>
       <p>You have the right to withdraw consent to the collection or sharing of your consumer health data at any time:</p>
       <ul>
-        <li><strong>HealthKit data collection:</strong> Revoke Journey Tracker's HealthKit access at any time through iOS Settings → Privacy &amp; Security → Health → Journey Tracker. This immediately stops all HealthKit data collection.</li>
-        <li><strong>Location data collection:</strong> Revoke Journey Tracker's location access at any time through iOS Settings → Privacy &amp; Security → Location Services → Journey Tracker. This immediately stops all location collection.</li>
-        <li><strong>Motion &amp; Fitness data collection:</strong> Revoke Journey Tracker's step-counting access at any time through iOS Settings → Privacy &amp; Security → Motion &amp; Fitness → Journey Tracker.</li>
+        <li><strong>Apple Health:</strong> Revoke Journey Tracker's HealthKit access at any time through iOS Settings → Privacy &amp; Security → Health → Journey Tracker. The app immediately stops reading from Apple Health.</li>
+        <li><strong>Location:</strong> Revoke Journey Tracker's location access at any time through iOS Settings → Privacy &amp; Security → Location Services → Journey Tracker. The app immediately stops recording your location.</li>
+        <li><strong>Motion &amp; Fitness:</strong> Revoke Journey Tracker's step-counting access at any time through iOS Settings → Privacy &amp; Security → Motion &amp; Fitness → Journey Tracker.</li>
         <li><strong>Usage analytics:</strong> Turn off Settings → Privacy &amp; Security → "Share Usage Analytics" in the app. This immediately stops PostHog analytics and AppsFlyer.</li>
       </ul>
       <div class="callout">
-        <p><strong>Withdrawal of consent is always prospective.</strong> Revoking HealthKit access immediately stops future data collection. It does not retroactively delete data that was previously collected with your consent.</p>
+        <p><strong>Withdrawal of consent is always prospective.</strong> Revoking HealthKit access stops the app reading new data. It does not delete what the app already keeps on your device; section 5.3 explains how to delete it.</p>
       </div>
 
       <h4>5.5 Private Right of Action</h4>
@@ -391,21 +417,21 @@
       <hr>
 
       <h3>6. Consent</h3>
-      <p>Journey Tracker collects consumer health data from Apple Health, Apple Health Records, your location, and your device's motion sensors only with your affirmative consent, and the health values you enter stay on your device and in your iCloud account. We do not collect health data passively or without your knowledge. Usage analytics (section 4.4) is on by default and never contains the values you enter; you can turn it off at any time (section 5.4).</p>
+      <p>Journey Tracker reads data from Apple Health, Apple Health Records, your location, and your device's motion sensors only with your affirmative consent, and everything you enter or the app reads stays on your device and in your iCloud account. Nothing is gathered passively or without your knowledge. Usage analytics (section 4.4) is on by default and never contains the values you enter; you can turn it off at any time (section 5.4).</p>
 
       <h4>6.1 HealthKit Data</h4>
-      <p>HealthKit data is collected only after you grant permission through Apple's native HealthKit authorization dialog. This dialog clearly describes the specific data types Journey Tracker requests access to. Granting permission through this dialog constitutes your consent to the collection of consumer health data for the purposes described in this policy.</p>
+      <p>Journey Tracker reads HealthKit data only after you grant permission through Apple's native HealthKit authorization dialog. This dialog clearly describes the specific data types Journey Tracker requests access to. Granting permission through this dialog is your consent for the app to read that data and keep it on your device (what the law calls collection) for the purposes described in this policy.</p>
 
       <h4>6.2 Location and Motion Data</h4>
-      <p>Location and step data for Strides is collected only after you grant permission through Apple's native Location and Motion &amp; Fitness authorization dialogs, and only while you actively record an activity. Starting a recording is an affirmative act; no location or motion data is collected passively or outside an active recording.</p>
+      <p>Location and step data for Strides is recorded only after you grant permission through Apple's native Location and Motion &amp; Fitness authorization dialogs, and only while you actively record an activity. Starting a recording is an affirmative act; no location or motion data is recorded passively or outside an active recording.</p>
 
       <h4>6.3 Consent Standards</h4>
       <p>All consent obtained by Journey Tracker is:</p>
       <ul>
         <li><strong>Freely given</strong> — you are not required to consent to use the core features of the app</li>
         <li><strong>Specific</strong> — each consent request identifies the exact data and purpose</li>
-        <li><strong>Informed</strong> — you are told what data is collected, why, and who receives it</li>
-        <li><strong>Opt-in</strong> — no health data from Apple Health, Apple Health Records, your location, or your motion sensors is collected until you grant permission</li>
+        <li><strong>Informed</strong> — you are told what data the app keeps, why, and who, if anyone, receives it</li>
+        <li><strong>Opt-in</strong> — no health data from Apple Health, Apple Health Records, your location, or your motion sensors is read until you grant permission</li>
         <li><strong>Voluntary</strong> — declining consent does not prevent you from using Journey Tracker's core features</li>
         <li><strong>Unambiguous</strong> — consent requires an affirmative action (granting a permission or tapping a consent button)</li>
       </ul>
