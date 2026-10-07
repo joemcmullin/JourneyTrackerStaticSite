@@ -66,4 +66,28 @@
     <priority>0.4</priority>
   </url>
 
+  <url>
+    <loc>https://journeytracker.app/features/dose-tracker/</loc>
+    <lastmod>2026-10-07</lastmod>
+  </url>
+  <url>
+    <loc>https://journeytracker.app/features/labs/</loc>
+    <lastmod>2026-10-07</lastmod>
+  </url>
+  <url>
+    <loc>https://journeytracker.app/medications/</loc>
+    <lastmod>2026-10-07</lastmod>
+  </url>
+  <url>
+    <loc>https://journeytracker.app/how-it-works/</loc>
+    <lastmod>2026-10-07</lastmod>
+  </url>
+  <url>
+    <loc>https://journeytracker.app/your-data/</loc>
+    <lastmod>2026-10-07</lastmod>
+  </url>
+  <url>
+    <loc>https://journeytracker.app/faq/</loc>
+    <lastmod>2026-10-07</lastmod>
+  </url>
 </urlset>

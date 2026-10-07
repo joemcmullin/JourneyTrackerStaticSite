@@ -47,6 +47,16 @@
   </div>
   <div class="pill"><span class="dot"></span> AVAILABLE ON THE APP STORE</div>
   <h1>The private companion for<br /><span class="drama grad">your comeback.</span></h1>
-  <div class="sub">Weight · doses · labs · milestones — yours alone, on iPhone, iPad &amp; Mac</div>
+  <div class="sub">Weight · doses · labs · milestones — yours alone, on iPhone &amp; iPad</div>
+  <script>
+    // Per-page variants via QUERY PARAMS (never #fragments — a fragment change
+    // doesn't reload, so every render would capture the same card).
+    // t = headline HTML (may carry <span class="drama grad">), s = sub line.
+    const p = new URLSearchParams(location.search)
+    if (p.get('t')) {
+      document.querySelector('h1').innerHTML = p.get('t')
+      document.querySelector('.sub').textContent = p.get('s') || ''
+    }
+  </script>
 </body>
 </html>

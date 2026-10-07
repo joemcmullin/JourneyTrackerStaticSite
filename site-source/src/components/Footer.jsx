@@ -19,10 +19,11 @@ export default function Footer() {
         <nav aria-label="Product">
           <h3 className="font-mono text-[0.7rem] uppercase tracking-[0.2em] text-text-lo">Product</h3>
           <ul className="mt-4 space-y-2.5 text-[0.9rem] font-medium">
-            <li><a className="hover:text-[#faf7f2]" href="#features">Features</a></li>
-            <li><a className="hover:text-[#faf7f2]" href="#screens">Screens</a></li>
+            <li><a className="hover:text-[#faf7f2]" href="/features/dose-tracker/">Dose Tracker</a></li>
+            <li><a className="hover:text-[#faf7f2]" href="/features/labs/">Lab Tracking</a></li>
+            <li><a className="hover:text-[#faf7f2]" href="/medications/">Medications</a></li>
+            <li><a className="hover:text-[#faf7f2]" href="/how-it-works/">How It Works</a></li>
             <li><a className="hover:text-[#faf7f2]" href="#pricing">Pricing</a></li>
-            <li><a className="hover:text-[#faf7f2]" href="#faqs">FAQs</a></li>
             <li><a className="hover:text-[#faf7f2]" href="https://apps.apple.com/app/id6760089056">App Store</a></li>
           </ul>
         </nav>
@@ -30,7 +31,9 @@ export default function Footer() {
         <nav aria-label="Support">
           <h3 className="font-mono text-[0.7rem] uppercase tracking-[0.2em] text-text-lo">Support</h3>
           <ul className="mt-4 space-y-2.5 text-[0.9rem] font-medium">
+            <li><a className="hover:text-[#faf7f2]" href="/faq/">FAQ</a></li>
             <li><a className="hover:text-[#faf7f2]" href={`${SITE}/support.html`}>Support Center</a></li>
+            <li><a className="hover:text-[#faf7f2]" href="/your-data/">Your Data</a></li>
             <li><a className="hover:text-[#faf7f2]" href={`${SITE}/accessibility.html`}>Accessibility</a></li>
           </ul>
         </nav>

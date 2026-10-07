@@ -1,0 +1,133 @@
+/* ═══════════════════════════════════════════════════════════════
+   Inner pages — First Light tokens + shared chrome.
+   Used by /features/*, /medications/, /how-it-works/, /your-data/,
+   /faq/. The homepage keeps its own Tailwind bundle; these pages
+   share this one small sheet so they can't drift from each other.
+   Theme: same .dark class + localStorage key as the homepage.
+   ═══════════════════════════════════════════════════════════════ */
+:root {
+  --bg: #faf7f2;
+  --bg-surface: #f3eee5;
+  --bg-card: #ffffff;
+  --primary: #0e626d;
+  --momentum: #107482;
+  --accent: #e8792a;
+  --gold: #f5a455;
+  --text-hi: #1e2a27;
+  --text-mid: #43524d;
+  --text-lo: #606a65;
+  --ring: rgba(14, 98, 109, 0.12);
+}
+.dark {
+  --bg: #0a1f1c;
+  --bg-surface: #0d2622;
+  --bg-card: #123129;
+  --primary: #107482;
+  --momentum: #49c5d6;
+  --accent: #e8792a;
+  --gold: #f5a455;
+  --text-hi: #faf7f2;
+  --text-mid: #a8bdb6;
+  --text-lo: #85a098;
+  --ring: rgba(250, 247, 242, 0.1);
+}
+
+* { box-sizing: border-box; margin: 0; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  background: var(--bg); color: var(--text-hi);
+  font-family: 'Albert Sans', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased; line-height: 1.6;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; text-decoration: none; }
+.wrap { max-width: 74rem; margin: 0 auto; padding: 0 clamp(16px, 3vw, 24px); }
+.mono { font-family: 'IBM Plex Mono', ui-monospace, monospace; }
+.drama { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; }
+.grad {
+  background: linear-gradient(92deg, var(--accent) 0%, var(--gold) 100%);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+}
+
+/* ── Nav ── */
+.nav { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(12px); border-bottom: 1px solid var(--ring); }
+.nav-in { display: flex; align-items: center; gap: 20px; padding: 12px clamp(16px, 3vw, 24px); max-width: 74rem; margin: 0 auto; }
+.nav-brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.05rem; letter-spacing: -0.02em; }
+.nav-brand img { border-radius: 27%; }
+.nav-links { display: flex; gap: 22px; margin-left: auto; font-size: 0.92rem; font-weight: 600; color: var(--text-mid); }
+.nav-links a:hover { color: var(--text-hi); }
+.nav-cta { background: var(--accent); color: #1e2a27; font-weight: 700; font-size: 0.9rem; padding: 9px 18px; border-radius: 999px; }
+.nav-cta:hover { opacity: 0.9; }
+@media (max-width: 760px) { .nav-links { display: none; } .nav-cta { margin-left: auto; } }
+
+/* ── Breadcrumbs ── */
+.crumbs { font-size: 0.82rem; color: var(--text-lo); padding: 18px 0 0; }
+.crumbs ol { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.crumbs li + li::before { content: '›'; margin-right: 6px; color: var(--text-lo); }
+.crumbs a { color: var(--momentum); }
+.crumbs a:hover { text-decoration: underline; }
+
+/* ── Page hero ── */
+.phero { padding: 34px 0 8px; }
+.phero .eyebrow { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 0.75rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--primary); }
+.dark .phero .eyebrow { color: var(--momentum); }
+h1 { font-size: clamp(2rem, 4.6vw, 3.2rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1.08; margin-top: 10px; max-width: 24ch; }
+.lede { margin-top: 16px; max-width: 58ch; font-size: 1.05rem; color: var(--text-mid); }
+
+/* ── Sections ── */
+section.band { padding: 34px 0; }
+h2 { font-size: clamp(1.35rem, 2.6vw, 1.8rem); font-weight: 800; letter-spacing: -0.015em; }
+h3 { font-size: 1.08rem; font-weight: 700; }
+p { color: var(--text-mid); }
+.cols { display: grid; gap: 22px; margin-top: 22px; }
+@media (min-width: 760px) { .cols-2 { grid-template-columns: 1fr 1fr; } .cols-3 { grid-template-columns: repeat(3, 1fr); } }
+.card { background: var(--bg-card); border: 1px solid var(--ring); border-radius: 20px; padding: 22px; box-shadow: 0 6px 24px rgba(14, 98, 109, 0.05); }
+.card h3 { color: var(--text-hi); }
+.card p { margin-top: 8px; font-size: 0.93rem; }
+ul.ticks { list-style: none; padding: 0; margin-top: 10px; display: grid; gap: 8px; font-size: 0.93rem; color: var(--text-mid); }
+ul.ticks li { padding-left: 24px; position: relative; }
+ul.ticks li::before { content: '✓'; position: absolute; left: 0; color: var(--momentum); font-weight: 700; }
+
+/* ── Screenshot + copy row ── */
+.shotrow { display: grid; gap: 28px; align-items: center; margin-top: 26px; }
+@media (min-width: 820px) { .shotrow { grid-template-columns: 300px 1fr; } .shotrow.flip { grid-template-columns: 1fr 300px; } .shotrow.flip .shot { order: 2; } }
+.shot { width: min(72vw, 260px); margin: 0 auto; border: 7px solid #10201d; background: #10201d; border-radius: 2.2rem; box-shadow: 0 16px 48px rgba(0, 0, 0, 0.18); }
+.shot img { border-radius: 1.75rem; }
+
+/* ── FAQ accordion (no JS) ── */
+details.faq { background: var(--bg-card); border: 1px solid var(--ring); border-radius: 16px; margin-top: 12px; overflow: hidden; }
+details.faq summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; gap: 14px; align-items: center; padding: 16px 18px; font-weight: 700; color: var(--text-hi); }
+details.faq summary::-webkit-details-marker { display: none; }
+details.faq summary::after { content: '+'; font-weight: 700; color: var(--momentum); font-size: 1.15rem; flex: none; }
+details.faq[open] summary::after { content: '–'; }
+details.faq .a { padding: 0 18px 16px; font-size: 0.95rem; color: var(--text-mid); }
+
+/* ── Note / disclaimer ── */
+.note { background: var(--bg-surface); border-left: 3px solid var(--primary); border-radius: 0 12px 12px 0; padding: 14px 16px; font-size: 0.88rem; color: var(--text-mid); margin-top: 22px; }
+.dark .note { border-left-color: var(--momentum); }
+
+/* ── CTA band ── */
+.cta { margin: 44px 0 0; padding: 36px 0 44px; background: var(--bg-surface); border-top: 1px solid var(--ring); }
+.cta-in { display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: space-between; }
+.cta h2 { max-width: 22ch; }
+.cta .store { display: inline-flex; align-items: center; gap: 16px; }
+.cta .store img { height: 52px; width: auto; }
+.cta .fine { width: 100%; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 0.78rem; color: var(--text-lo); }
+
+/* ── Footer ── */
+footer.site { background: #081815; color: #a8bdb6; border-radius: 3.2rem 3.2rem 0 0; margin-top: 54px; padding: 48px 0 28px; }
+footer.site .wrap { display: grid; gap: 30px; }
+@media (min-width: 760px) { footer.site .wrap { grid-template-columns: 1.3fr 1fr 1fr 1fr; } }
+footer.site .fbrand { display: inline-flex; align-items: center; gap: 10px; color: #faf7f2; font-weight: 800; }
+footer.site .fbrand img { border-radius: 27%; }
+footer.site p.fdesc { margin-top: 14px; max-width: 36ch; font-size: 0.88rem; color: #85a098; }
+footer.site h2.fh { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: #85a098; font-weight: 600; }
+footer.site ul { list-style: none; padding: 0; margin-top: 12px; display: grid; gap: 8px; font-size: 0.9rem; }
+footer.site a:hover { color: #faf7f2; }
+footer.site .fbottom { grid-column: 1 / -1; border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 18px; display: flex; flex-wrap: wrap; gap: 10px 24px; justify-content: space-between; font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 0.75rem; color: #85a098; }
+
+/* Content links: never color alone */
+main p a, main .lede a, main ul.ticks a, main .note a { text-decoration: underline; text-underline-offset: 2px; }

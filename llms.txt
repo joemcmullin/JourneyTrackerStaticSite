@@ -12,6 +12,12 @@
 
 ## Pages
 - https://journeytracker.app/ — overview, screenshots, pricing, FAQ
+- https://journeytracker.app/features/dose-tracker/ — dose logging, schedules, injection-site rotation
+- https://journeytracker.app/features/labs/ — lab tracking by marker with provider reference ranges
+- https://journeytracker.app/medications/ — works with Ozempic®, Wegovy®, Mounjaro®, Zepbound®, compounded GLP-1s
+- https://journeytracker.app/how-it-works/ — getting-started walkthrough
+- https://journeytracker.app/your-data/ — the privacy story in plain words
+- https://journeytracker.app/faq/ — frequently asked questions
 - https://journeytracker.app/support.html — support center and contact
 - https://journeytracker.app/privacy.html — privacy policy
 - https://journeytracker.app/health-data-privacy.html — consumer health data privacy policy
