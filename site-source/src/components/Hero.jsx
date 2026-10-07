@@ -115,13 +115,28 @@ export default function Hero() {
           <div className="relative rounded-[3rem] border-[10px] border-[#10201d] bg-[#10201d] shadow-2xl shadow-black/30">
             {/* Dynamic Island */}
             <div aria-hidden="true" className="absolute left-1/2 top-3 z-10 h-[26px] w-[96px] -translate-x-1/2 rounded-full bg-black" />
-            <img
-              src="/screenshots/ss3-home.jpg"
-              alt="Journey Tracker home screen: next dose countdown, total loss, Strides walking map, followed A1C marker, and weekly recap"
-              className="w-full rounded-[2.4rem]"
-              width="540"
-              height="1173"
-            />
+            {/* LCP element: preloaded from index.html; AVIF→WebP→JPEG ladder */}
+            <picture>
+              <source
+                srcSet="/screenshots/ss3-home-760.avif 760w, /screenshots/ss3-home.avif 1080w"
+                sizes="(min-width: 1024px) 340px, 78vw"
+                type="image/avif"
+              />
+              <source
+                srcSet="/screenshots/ss3-home-760.webp 760w, /screenshots/ss3-home.webp 1080w"
+                sizes="(min-width: 1024px) 340px, 78vw"
+                type="image/webp"
+              />
+              <img
+                src="/screenshots/ss3-home.jpg"
+                alt="Journey Tracker home screen: next dose countdown, total loss, Strides walking map, followed A1C marker, and weekly recap"
+                className="w-full rounded-[2.4rem]"
+                width="540"
+                height="1173"
+                fetchPriority="high"
+                decoding="async"
+              />
+            </picture>
           </div>
           <figcaption className="mt-4 text-center font-mono text-[0.72rem] uppercase tracking-[0.18em] text-text-lo">
             Real app · shipping today

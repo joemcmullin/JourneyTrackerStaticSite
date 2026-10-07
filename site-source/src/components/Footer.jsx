@@ -10,14 +10,14 @@ export default function Footer() {
       <div className="mx-auto grid w-[min(94vw,74rem)] gap-12 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
         <div>
           <BrandBadge size={38} textClass="text-[1.15rem]" />
-          <p className="mt-4 max-w-[36ch] text-[0.9rem] leading-relaxed text-[#5f7a72]">
+          <p className="mt-4 max-w-[36ch] text-[0.9rem] leading-relaxed text-text-lo">
             The private GLP-1 companion for iPhone &amp; iPad. Your journey,
             your data, your comeback.
           </p>
         </div>
 
         <nav aria-label="Product">
-          <h3 className="font-mono text-[0.7rem] uppercase tracking-[0.2em] text-[#5f7a72]">Product</h3>
+          <h3 className="font-mono text-[0.7rem] uppercase tracking-[0.2em] text-text-lo">Product</h3>
           <ul className="mt-4 space-y-2.5 text-[0.9rem] font-medium">
             <li><a className="hover:text-[#faf7f2]" href="#features">Features</a></li>
             <li><a className="hover:text-[#faf7f2]" href="#screens">Screens</a></li>
@@ -28,7 +28,7 @@ export default function Footer() {
         </nav>
 
         <nav aria-label="Support">
-          <h3 className="font-mono text-[0.7rem] uppercase tracking-[0.2em] text-[#5f7a72]">Support</h3>
+          <h3 className="font-mono text-[0.7rem] uppercase tracking-[0.2em] text-text-lo">Support</h3>
           <ul className="mt-4 space-y-2.5 text-[0.9rem] font-medium">
             <li><a className="hover:text-[#faf7f2]" href={`${SITE}/support.html`}>Support Center</a></li>
             <li><a className="hover:text-[#faf7f2]" href={`${SITE}/accessibility.html`}>Accessibility</a></li>
@@ -36,7 +36,7 @@ export default function Footer() {
         </nav>
 
         <nav aria-label="Legal">
-          <h3 className="font-mono text-[0.7rem] uppercase tracking-[0.2em] text-[#5f7a72]">Legal</h3>
+          <h3 className="font-mono text-[0.7rem] uppercase tracking-[0.2em] text-text-lo">Legal</h3>
           <ul className="mt-4 space-y-2.5 text-[0.9rem] font-medium">
             <li><a className="hover:text-[#faf7f2]" href={`${SITE}/privacy.html`}>Privacy Policy</a></li>
             <li><a className="hover:text-[#faf7f2]" href={`${SITE}/health-data-privacy.html`}>Health Data Privacy</a></li>
@@ -47,10 +47,10 @@ export default function Footer() {
       </div>
 
       <div className="mx-auto mt-16 flex w-[min(94vw,74rem)] flex-wrap items-center justify-between gap-4 border-t border-white/5 pt-6">
-        <span className="font-mono text-[0.72rem] text-[#5f7a72]">
+        <span className="font-mono text-[0.72rem] text-text-lo">
           © {new Date().getFullYear()} Apex Development Studio LLC
         </span>
-        <span className="inline-flex items-center gap-2 font-mono text-[0.72rem] text-[#5f7a72]">
+        <span className="inline-flex items-center gap-2 font-mono text-[0.72rem] text-text-lo">
           <span className="status-dot h-2 w-2 rounded-full bg-[#34C759]" aria-hidden="true" />
           System operational
         </span>

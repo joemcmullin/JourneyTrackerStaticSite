@@ -76,14 +76,18 @@ export default function Gallery() {
             {shots.map((s, i) => (
               <figure key={`${s.src}-${i}`} className="w-[230px] shrink-0" aria-hidden={i >= SHOTS.length}>
                 <div className="rounded-[2.2rem] border-[7px] border-[#10201d] bg-[#10201d] shadow-xl shadow-black/15">
-                  <img
-                    src={s.src}
-                    alt={i < SHOTS.length ? s.alt : ''}
-                    loading="lazy"
-                    width="540"
-                    height="1173"
-                    className="w-full rounded-[1.75rem]"
-                  />
+                  <picture>
+                    <source srcSet={s.src.replace('.jpg', '.webp')} type="image/webp" />
+                    <img
+                      src={s.src}
+                      alt={i < SHOTS.length ? s.alt : ''}
+                      loading="lazy"
+                      width="540"
+                      height="1173"
+                      decoding="async"
+                      className="w-full rounded-[1.75rem]"
+                    />
+                  </picture>
                 </div>
               </figure>
             ))}

@@ -17,7 +17,6 @@
     connect-src 'self' https://api.getfernand.com https://messenger.getfernand.com wss://*.getfernand.com;
     form-action 'none';
     frame-src https://messenger.getfernand.com;
-    frame-ancestors 'none';
     base-uri 'self';
     object-src 'none';
   " />
@@ -199,7 +198,7 @@
       display: block; font-size: 0.95rem; font-weight: 700; color: #fff;
     }
     .standard-badge-text span {
-      font-size: 0.8rem; color: rgba(255,255,255,0.65);
+      font-size: 0.8rem; color: rgba(255,255,255,0.82);
     }
     .standards-divider {
       width: 1px; height: 40px; background: rgba(255,255,255,0.15);
@@ -337,7 +336,7 @@
     .settings-card-icon {
       font-size: 1.5rem; flex-shrink: 0; line-height: 1; margin-top: 2px;
     }
-    .settings-card h4 {
+    .settings-card h3 {
       font-size: 0.9rem; font-weight: 700; color: var(--forest-dark);
       margin-bottom: 4px;
     }
@@ -392,6 +391,24 @@
   <!-- First Light bridge: shared fonts + overrides (matches the redesigned main site) -->
   <link rel="stylesheet" href="/fonts/fonts.css" />
   <link rel="stylesheet" href="/first-light.css" />
+  <meta name="apple-itunes-app" content="app-id=6760089056" />
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/albert-sans-normal-400-800-latin.woff2" crossorigin />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Journey Tracker" />
+  <meta property="og:url" content="https://journeytracker.app/accessibility.html" />
+  <meta property="og:title" content="Accessibility — Journey Tracker" />
+  <meta property="og:description" content="Journey Tracker is built for everyone. Learn how VoiceOver, Dynamic Type, Audio Graphs, Voice Control, and more make GLP-1 tracking accessible to all." />
+  <meta property="og:image" content="https://journeytracker.app/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Journey Tracker — the private companion for your comeback" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Accessibility — Journey Tracker" />
+  <meta name="twitter:description" content="Journey Tracker is built for everyone. Learn how VoiceOver, Dynamic Type, Audio Graphs, Voice Control, and more make GLP-1 tracking accessible to all." />
+  <meta name="twitter:image" content="https://journeytracker.app/og-image.png" />
+  <script type="application/ld+json">
+  {"@context": "https://schema.org", "@graph": [{"@type": "WebPage", "@id": "https://journeytracker.app/accessibility.html", "url": "https://journeytracker.app/accessibility.html", "name": "Accessibility — Journey Tracker", "description": "Journey Tracker is built for everyone. Learn how VoiceOver, Dynamic Type, Audio Graphs, Voice Control, and more make GLP-1 tracking accessible to all.", "isPartOf": {"@id": "https://journeytracker.app/#website"}, "inLanguage": "en"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://journeytracker.app/"}, {"@type": "ListItem", "position": 2, "name": "Accessibility", "item": "https://journeytracker.app/accessibility.html"}]}]}
+  </script>
 </head>
 <body>
   <a href="#main" class="skip-link">Skip to main content</a>
@@ -453,7 +470,7 @@
         </div>
         <h1 id="hero-heading">Built for everyone,<br>from the first line of code.</h1>
         <p class="hero-sub">Journey Tracker is designed so every person tracking their GLP-1 therapy can use every feature, regardless of ability. Accessibility is not an afterthought — it is part of every screen from day one.</p>
-        <p class="doc-meta" style="font-size:0.85rem;color:rgba(255,255,255,0.65);margin:0.5rem 0 0;">
+        <p class="doc-meta" style="font-size:0.85rem;color:rgba(255,255,255,0.82);margin:0.5rem 0 0;">
           Created: March 16, 2026 &nbsp;·&nbsp; Last Updated: September 27, 2026
         </p>
       </div>
@@ -694,7 +711,7 @@
           <div class="settings-card">
             <div class="settings-card-icon" aria-hidden="true">👁</div>
             <div>
-              <h4>VoiceOver</h4>
+              <h3>VoiceOver</h3>
               <p>Full screen reader support throughout the app.</p>
               <span class="settings-path">Settings → Accessibility → VoiceOver</span>
             </div>
@@ -702,7 +719,7 @@
           <div class="settings-card">
             <div class="settings-card-icon" aria-hidden="true">✋</div>
             <div>
-              <h4>Voice Control</h4>
+              <h3>Voice Control</h3>
               <p>Hands-free navigation and data entry by voice.</p>
               <span class="settings-path">Settings → Accessibility → Voice Control</span>
             </div>
@@ -710,7 +727,7 @@
           <div class="settings-card">
             <div class="settings-card-icon" aria-hidden="true">Aa</div>
             <div>
-              <h4>Larger Text (Dynamic Type)</h4>
+              <h3>Larger Text (Dynamic Type)</h3>
               <p>All text in Journey Tracker scales to match your preference.</p>
               <span class="settings-path">Settings → Accessibility → Display &amp; Text Size → Larger Text</span>
             </div>
@@ -718,7 +735,7 @@
           <div class="settings-card">
             <div class="settings-card-icon" aria-hidden="true">⏸</div>
             <div>
-              <h4>Reduce Motion</h4>
+              <h3>Reduce Motion</h3>
               <p>Replaces all animations with simple crossfades.</p>
               <span class="settings-path">Settings → Accessibility → Motion → Reduce Motion</span>
             </div>
@@ -726,7 +743,7 @@
           <div class="settings-card">
             <div class="settings-card-icon" aria-hidden="true">◑</div>
             <div>
-              <h4>Increase Contrast</h4>
+              <h3>Increase Contrast</h3>
               <p>Deepens colors on key screens for readability.</p>
               <span class="settings-path">Settings → Accessibility → Display &amp; Text Size → Increase Contrast</span>
             </div>
@@ -734,7 +751,7 @@
           <div class="settings-card">
             <div class="settings-card-icon" aria-hidden="true">⬡</div>
             <div>
-              <h4>Differentiate Without Color</h4>
+              <h3>Differentiate Without Color</h3>
               <p>Adds symbol indicators to color-coded lab results.</p>
               <span class="settings-path">Settings → Accessibility → Display &amp; Text Size → Differentiate Without Color</span>
             </div>

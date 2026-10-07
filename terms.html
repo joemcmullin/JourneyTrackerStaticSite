@@ -16,7 +16,6 @@
     font-src 'self' data: https://*.getfernand.com;
     connect-src 'self' https://api.getfernand.com https://messenger.getfernand.com wss://*.getfernand.com;
     frame-src https://messenger.getfernand.com;
-    frame-ancestors 'none';
     base-uri 'self';
     object-src 'none';
   " />
@@ -83,15 +82,15 @@
     /* FOOTER */
     footer { background: var(--forest-dark); color: rgba(255,255,255,0.7); padding: 48px 0 32px; }
     .footer-inner { display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: start; padding-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 24px; }
-    .footer-brand p { font-size: 0.88rem; color: rgba(255,255,255,0.72); margin-top: 8px; max-width: 380px; line-height: 1.6; }
-    .footer-nav h3 { color: rgba(255,255,255,0.72); font-size: 0.82rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 14px; }
+    .footer-brand p { font-size: 0.88rem; color: rgba(255,255,255,0.85); margin-top: 8px; max-width: 380px; line-height: 1.6; }
+    .footer-nav h2 { color: rgba(255,255,255,0.85); font-size: 0.82rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 14px; }
     .footer-nav ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
     .footer-nav a { font-size: 0.9rem; color: rgba(255,255,255,0.82); transition: color 0.15s; }
     .footer-nav a:hover { color: var(--white); }
     .footer-nav a[aria-current="page"] { color: var(--white); font-weight: 600; }
     .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
-    .footer-bottom p { font-size: 0.85rem; color: rgba(255,255,255,0.65); }
-    .footer-medical-note { font-size: 0.85rem; color: rgba(255,255,255,0.60); font-style: italic; }
+    .footer-bottom p { font-size: 0.85rem; color: rgba(255,255,255,0.82); }
+    .footer-medical-note { font-size: 0.85rem; color: rgba(255,255,255,0.80); font-style: italic; }
 
     .doc-hero {
       background: linear-gradient(160deg, #f0f7f2, var(--cream));
@@ -115,12 +114,12 @@
     .doc-content {
       max-width: 760px; margin: 0 auto; padding: 56px 24px 80px;
     }
-    .doc-content h3 {
+    .doc-content h2 {
       font-size: 1.05rem; font-weight: 700; color: var(--forest-dark);
       margin: 36px 0 10px; padding-bottom: 8px; border-bottom: 1px solid rgba(255,255,255,0.1);
     }
-    .doc-content h3:first-child { margin-top: 0; }
-    .doc-content h4 { font-size: 0.92rem; font-weight: 700; color: var(--forest-mid); margin: 20px 0 8px; }
+    .doc-content h2:first-child { margin-top: 0; }
+    .doc-content h3 { font-size: 0.92rem; font-weight: 700; color: var(--forest-mid); margin: 20px 0 8px; }
     .doc-content p { color: var(--text-mid); font-size: 0.94rem; line-height: 1.75; margin-bottom: 14px; }
     .doc-content ul, .doc-content ol { padding-left: 22px; margin: 10px 0 16px; }
     .doc-content li { font-size: 0.93rem; color: var(--text-mid); line-height: 1.65; margin-bottom: 6px; }
@@ -167,6 +166,24 @@
   <!-- First Light bridge: shared fonts + overrides (matches the redesigned main site) -->
   <link rel="stylesheet" href="/fonts/fonts.css" />
   <link rel="stylesheet" href="/first-light.css" />
+  <meta name="apple-itunes-app" content="app-id=6760089056" />
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/albert-sans-normal-400-800-latin.woff2" crossorigin />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Journey Tracker" />
+  <meta property="og:url" content="https://journeytracker.app/terms.html" />
+  <meta property="og:title" content="Terms of Service — Journey Tracker" />
+  <meta property="og:description" content="Journey Tracker Terms of Service — the agreement between you and Apex Development Studio LLC when using the Journey Tracker app." />
+  <meta property="og:image" content="https://journeytracker.app/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Journey Tracker — the private companion for your comeback" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Terms of Service — Journey Tracker" />
+  <meta name="twitter:description" content="Journey Tracker Terms of Service — the agreement between you and Apex Development Studio LLC when using the Journey Tracker app." />
+  <meta name="twitter:image" content="https://journeytracker.app/og-image.png" />
+  <script type="application/ld+json">
+  {"@context": "https://schema.org", "@graph": [{"@type": "WebPage", "@id": "https://journeytracker.app/terms.html", "url": "https://journeytracker.app/terms.html", "name": "Terms of Service — Journey Tracker", "description": "Journey Tracker Terms of Service — the agreement between you and Apex Development Studio LLC when using the Journey Tracker app.", "isPartOf": {"@id": "https://journeytracker.app/#website"}, "inLanguage": "en"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://journeytracker.app/"}, {"@type": "ListItem", "position": 2, "name": "Terms of Service", "item": "https://journeytracker.app/terms.html"}]}]}
+  </script>
 </head>
 <body>
 
@@ -222,12 +239,12 @@
 
       <hr>
 
-      <h3>1. Acceptance of Terms</h3>
+      <h2>1. Acceptance of Terms</h2>
       <p>By using Journey Tracker, you confirm that you are at least 18 years of age, have read and understood these Terms and our Privacy Policy, and agree to be bound by them. If you do not agree, do not use Journey Tracker.</p>
 
       <hr>
 
-      <h3>2. Description of Service</h3>
+      <h2>2. Description of Service</h2>
       <p>Journey Tracker is a personal health tracking application designed to help individuals undergoing GLP-1 therapy monitor their health progress. Journey Tracker provides tools for tracking weight, body composition, medication history, side effects, laboratory results, and related health markers.</p>
       <p>Journey Tracker also includes fitness and nutrition features:</p>
       <ul>
@@ -240,7 +257,7 @@
 
       <hr>
 
-      <h3>3. Not Medical Advice — Important Disclaimer</h3>
+      <h2>3. Not Medical Advice — Important Disclaimer</h2>
       <div class="callout warning">
         <p><strong>Journey Tracker is not a medical device, does not provide medical diagnoses, and does not constitute medical advice.</strong></p>
         <p>Nothing in Journey Tracker is intended to diagnose any disease or health condition; recommend or prescribe any medication or treatment; replace the advice of a licensed healthcare provider; or constitute the practice of medicine, nursing, or any other healthcare profession.</p>
@@ -251,27 +268,27 @@
 
       <hr>
 
-      <h3>4. Subscriptions and Payments</h3>
+      <h2>4. Subscriptions and Payments</h2>
 
-      <h4>4.1 Free Version</h4>
+      <h3>4.1 Free Version</h3>
       <p>Journey Tracker is free to download and includes a free version with core tracking features, including the last 90 days of measurement history, dose, symptom, fasting, and water logging, your two most recent lab visits, Strides recording, two PDF reports, and iCloud sync. The features in the free version are described in the app and may change over time.</p>
 
-      <h4>4.2 Journey Tracker Pro</h4>
+      <h3>4.2 Journey Tracker Pro</h3>
       <p>Journey Tracker Pro is available as a monthly or annual subscription, or as a one-time lifetime purchase. Pro adds your full history, every lab visit, all PDF reports, widgets, and additional features as described in the app.</p>
 
-      <h4>4.3 Free Trial</h4>
+      <h3>4.3 Free Trial</h3>
       <p>Eligible new subscribers receive a seven (7) day free trial of Journey Tracker Pro. Your subscription will automatically convert to a paid subscription at the end of the free trial unless you cancel before the trial ends.</p>
       <p>If a trial or subscription ends, Journey Tracker continues with the free version, and your data is not deleted.</p>
 
-      <h4>4.4 Billing</h4>
+      <h3>4.4 Billing</h3>
       <p>All subscriptions are billed through Apple's App Store. Your payment information is managed entirely by Apple. We do not store payment card information. Subscriptions automatically renew unless cancelled at least 24 hours before the end of the current billing period.</p>
 
-      <h4>4.5 Cancellation and Refunds</h4>
+      <h3>4.5 Cancellation and Refunds</h3>
       <p>You may cancel your subscription at any time through iOS Settings → [Your Name] → Subscriptions. Cancellation takes effect at the end of the current billing period. Refunds are subject to Apple's App Store refund policy.</p>
 
       <hr>
 
-      <h3>5. User Responsibilities</h3>
+      <h2>5. User Responsibilities</h2>
       <p>You agree to:</p>
       <ul>
         <li>Provide accurate health information to the extent you choose to use the tracking features</li>
@@ -284,55 +301,55 @@
 
       <hr>
 
-      <h3>6. Data Ownership</h3>
+      <h2>6. Data Ownership</h2>
       <p>You own your health data. We do not claim any ownership over the health information you enter into Journey Tracker. This includes your recorded routes, planned routes, and all activity data collected through Strides — that data is yours. Our right to process your data is limited to operating the features of Journey Tracker as described in these Terms and our Privacy Policy.</p>
 
       <hr>
 
-      <h3>7. Intellectual Property</h3>
+      <h2>7. Intellectual Property</h2>
       <p>Journey Tracker, including its design, features, code, branding, and content (excluding your personal health data), is owned by Apex Development Studio LLC and protected by applicable intellectual property laws. You may not copy, modify, distribute, or create derivative works based on Journey Tracker without our express written permission.</p>
 
       <hr>
 
-      <h3>8. Disclaimers and Limitation of Liability</h3>
+      <h2>8. Disclaimers and Limitation of Liability</h2>
 
-      <h4>8.1 No Warranty</h4>
+      <h3>8.1 No Warranty</h3>
       <p>Journey Tracker is provided "as is" without warranty of any kind. We do not warrant that Journey Tracker will be error-free, uninterrupted.</p>
 
-      <h4>8.2 Limitation of Liability</h4>
+      <h3>8.2 Limitation of Liability</h3>
       <p>To the maximum extent permitted by applicable law, Journey Tracker shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including but not limited to damages arising from health decisions made based on Journey Tracker .</p>
       <p>Our total liability to you for any claims arising from your use of Journey Tracker shall not exceed the amount you paid for Journey Tracker in the twelve (12) months preceding the claim.</p>
 
-      <h4>8.3 Health Decisions</h4>
+      <h3>8.3 Health Decisions</h3>
       <p>We expressly disclaim all liability for any health outcomes, adverse events, or consequences resulting from reliance on Journey Tracker's tracking features. Health decisions must be made in consultation with qualified healthcare providers.</p>
 
       <hr>
 
-      <h3>9. Indemnification</h3>
+      <h2>9. Indemnification</h2>
       <p>You agree to indemnify and hold harmless Journey Tracker from any claims, damages, or expenses (including reasonable attorney's fees) arising from your use of Journey Tracker in violation of these Terms or applicable law.</p>
 
       <hr>
 
-      <h3>10. Changes to Terms</h3>
+      <h2>10. Changes to Terms</h2>
       <p>We may update these Terms from time to time. We will notify you of material changes through the app. Continued use of Journey Tracker after such notification constitutes acceptance of the updated Terms.</p>
 
       <hr>
 
-      <h3>11. Governing Law and Dispute Resolution</h3>
+      <h2>11. Governing Law and Dispute Resolution</h2>
       <p>These Terms are governed by the laws of the State of Delaware, without regard to conflict of law principles.</p>
 
-      <h4>11.1 Binding Arbitration</h4>
+      <h3>11.1 Binding Arbitration</h3>
       <p>Any dispute or claim arising from or relating to these Terms, your use of Journey Tracker, or any related matters between you and Apex Development Studio LLC shall be resolved through binding arbitration conducted in accordance with the rules of the American Arbitration Association (AAA) Consumer Arbitration Rules, rather than in court. Arbitration proceedings shall take place in the State of Delaware, or at a mutually agreed upon location.</p>
 
-      <h4>11.2 Class Action Waiver</h4>
+      <h3>11.2 Class Action Waiver</h3>
       <p><strong>You agree that any arbitration or legal proceeding shall be conducted on an individual basis only and not as a class, consolidated, or representative action.</strong> You waive your right to participate as a plaintiff or class member in any class action lawsuit, class-wide arbitration, or any other proceeding where a person acts in a representative capacity. If this class action waiver is found unenforceable for any reason, the entirety of Section 11.1 shall be deemed void.</p>
 
-      <h4>11.3 Exceptions</h4>
+      <h3>11.3 Exceptions</h3>
       <p>Notwithstanding the above, either party may seek injunctive or other equitable relief in any court of competent jurisdiction to prevent the actual or threatened infringement, misappropriation, or violation of intellectual property rights or confidential information.</p>
 
       <hr>
 
-      <h3>12. Contact</h3>
+      <h2>12. Contact</h2>
       <p>For questions about these Terms, please contact Apex Development Studio LLC:</p>
       <p>
         <strong>Company:</strong> Apex Development Studio LLC<br>
@@ -358,7 +375,7 @@
           <p>A private, beautiful health companion for your GLP‑1 and weight loss journey. Available now on the App Store for iPhone and iPad.</p>
         </div>
         <nav class="footer-nav" aria-label="Legal and support links">
-          <h3>Legal &amp; Support</h3>
+          <h2>Legal &amp; Support</h2>
           <ul>
             <li><a href="privacy.html">Privacy Policy</a></li>
             <li><a href="health-data-privacy.html">Health Data Privacy</a></li>

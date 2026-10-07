@@ -16,7 +16,6 @@
     font-src 'self' data: https://*.getfernand.com;
     connect-src 'self' https://api.getfernand.com https://messenger.getfernand.com wss://*.getfernand.com;
     frame-src https://messenger.getfernand.com;
-    frame-ancestors 'none';
     base-uri 'self';
     object-src 'none';
   " />
@@ -83,15 +82,15 @@
     /* FOOTER */
     footer { background: var(--forest-dark); color: rgba(255,255,255,0.7); padding: 48px 0 32px; }
     .footer-inner { display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: start; padding-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 24px; }
-    .footer-brand p { font-size: 0.88rem; color: rgba(255,255,255,0.72); margin-top: 8px; max-width: 380px; line-height: 1.6; }
-    .footer-nav h3 { color: rgba(255,255,255,0.72); font-size: 0.82rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 14px; }
+    .footer-brand p { font-size: 0.88rem; color: rgba(255,255,255,0.85); margin-top: 8px; max-width: 380px; line-height: 1.6; }
+    .footer-nav h2 { color: rgba(255,255,255,0.85); font-size: 0.82rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 14px; }
     .footer-nav ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
     .footer-nav a { font-size: 0.9rem; color: rgba(255,255,255,0.82); transition: color 0.15s; }
     .footer-nav a:hover { color: var(--white); }
     .footer-nav a[aria-current="page"] { color: var(--white); font-weight: 600; }
     .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
-    .footer-bottom p { font-size: 0.85rem; color: rgba(255,255,255,0.65); }
-    .footer-medical-note { font-size: 0.85rem; color: rgba(255,255,255,0.60); font-style: italic; }
+    .footer-bottom p { font-size: 0.85rem; color: rgba(255,255,255,0.82); }
+    .footer-medical-note { font-size: 0.85rem; color: rgba(255,255,255,0.80); font-style: italic; }
 
     /* HERO BAND */
     .doc-hero {
@@ -122,15 +121,15 @@
       margin: 0 auto;
       padding: 56px 24px 80px;
     }
-    .doc-content h3 {
+    .doc-content h2 {
       font-size: 1.05rem; font-weight: 700;
       color: var(--forest-dark);
       margin: 36px 0 10px;
       padding-bottom: 8px;
       border-bottom: 1px solid rgba(255,255,255,0.1);
     }
-    .doc-content h3:first-child { margin-top: 0; }
-    .doc-content h4 {
+    .doc-content h2:first-child { margin-top: 0; }
+    .doc-content h3 {
       font-size: 0.92rem; font-weight: 700;
       color: var(--forest-mid);
       margin: 20px 0 8px;
@@ -201,6 +200,24 @@
   <!-- First Light bridge: shared fonts + overrides (matches the redesigned main site) -->
   <link rel="stylesheet" href="/fonts/fonts.css" />
   <link rel="stylesheet" href="/first-light.css" />
+  <meta name="apple-itunes-app" content="app-id=6760089056" />
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/albert-sans-normal-400-800-latin.woff2" crossorigin />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Journey Tracker" />
+  <meta property="og:url" content="https://journeytracker.app/privacy.html" />
+  <meta property="og:title" content="Privacy Policy — Journey Tracker" />
+  <meta property="og:description" content="Journey Tracker Privacy Policy — how Apex Development Studio LLC collects, uses, and protects your health information." />
+  <meta property="og:image" content="https://journeytracker.app/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Journey Tracker — the private companion for your comeback" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Privacy Policy — Journey Tracker" />
+  <meta name="twitter:description" content="Journey Tracker Privacy Policy — how Apex Development Studio LLC collects, uses, and protects your health information." />
+  <meta name="twitter:image" content="https://journeytracker.app/og-image.png" />
+  <script type="application/ld+json">
+  {"@context": "https://schema.org", "@graph": [{"@type": "WebPage", "@id": "https://journeytracker.app/privacy.html", "url": "https://journeytracker.app/privacy.html", "name": "Privacy Policy — Journey Tracker", "description": "Journey Tracker Privacy Policy — how Apex Development Studio LLC collects, uses, and protects your health information.", "isPartOf": {"@id": "https://journeytracker.app/#website"}, "inLanguage": "en"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://journeytracker.app/"}, {"@type": "ListItem", "position": 2, "name": "Privacy Policy", "item": "https://journeytracker.app/privacy.html"}]}]}
+  </script>
 </head>
 <body>
 
@@ -274,15 +291,15 @@
 
       <hr>
 
-      <h3>1. Who We Are</h3>
+      <h2>1. Who We Are</h2>
       <p>Journey Tracker is an iOS application developed and operated by <strong>Apex Development Studio LLC</strong>. It is designed to help individuals undergoing GLP-1 therapy (including medications such as semaglutide, tirzepatide, and similar agents) track their health progress, medication history, laboratory results, and related health markers.</p>
       <p>Apex Development Studio LLC operates Journey Tracker as a consumer health application. We are not a healthcare provider, health plan, or healthcare clearinghouse.</p>
 
       <hr>
 
-      <h3>2. Information We Collect</h3>
+      <h2>2. Information We Collect</h2>
 
-      <h4>2.1 Information You Provide Directly</h4>
+      <h3>2.1 Information You Provide Directly</h3>
       <p>When you use Journey Tracker, you may enter the following health information, or import it from CSV or XLSX files (such as a Renpho export):</p>
       <ul>
         <li><strong>Body measurements:</strong> Weight, body fat percentage, muscle mass, BMI, and related metrics</li>
@@ -297,7 +314,7 @@
         <li><strong>Profile details (optional):</strong> Your first name, height, date of birth, and sex, kept on your device. Height, date of birth, and sex are used to calculate BMI and personalize body-fat ranges.</li>
       </ul>
 
-      <h4>2.2 Information Collected Through Apple Health (HealthKit)</h4>
+      <h3>2.2 Information Collected Through Apple Health (HealthKit)</h3>
       <p>With your explicit permission, Journey Tracker may read from and write to Apple HealthKit. The specific data types accessed are listed during the permission request and may include:</p>
       <ul>
         <li>Body weight and body composition metrics (body fat percentage, lean body mass, and BMI)</li>
@@ -311,10 +328,10 @@
       <p>With your permission, Journey Tracker may also write the water, protein, and blood pressure readings you enter, and the activities you record with Strides (including distance, active energy, and route), to Apple Health.</p>
       <p><strong>You control HealthKit access entirely.</strong> You can review and revoke any HealthKit permission at any time through iOS Settings → Privacy &amp; Security → Health → Journey Tracker.</p>
 
-      <h4>2.3 Sign in with Apple (Versions Before 1.9.0)</h4>
+      <h3>2.3 Sign in with Apple (Versions Before 1.9.0)</h3>
       <p>Journey Tracker 1.9.0 and later don't use Sign in with Apple, and no account is needed. Earlier versions kept Apple's anonymous user identifier in your device's Keychain and, if you shared or entered one, your first name on your device. Journey Tracker never stored your email address. The one exception: in 1.8.0, deleting your account sent a one-time code from Apple to our revocation service, which passed it straight to Apple so Apple could end Journey Tracker's Sign in with Apple access. The service stores nothing.</p>
 
-      <h4>2.4 Location &amp; Activity Data (Strides)</h4>
+      <h3>2.4 Location &amp; Activity Data (Strides)</h3>
       <p>Journey Tracker's Strides feature lets you record walking, running, and other physical activities. When you use Strides, the app collects — <strong>only while you are actively recording an activity</strong>:</p>
       <ul>
         <li><strong>Precise GPS location:</strong> used to map your route while you record. Journey Tracker uses the "While Using the App" location permission only — it never requests "Always" access, and location is never collected in the background outside an active recording. While a recording is in progress (including with the screen off), the iOS location indicator remains visible the entire time. When you open a Stride or the route planner, the app also uses your current location and heading, without saving them, to center the map.</li>
@@ -325,10 +342,10 @@
       </ul>
       <p>Like all of your health data, route and activity data stays on your device and in your private iCloud. It is never transmitted to any server operated by us or by any non-Apple third party. See Section 4 for storage details and Section 6 for how to revoke Location and Motion access.</p>
 
-      <h4>2.5 Idea Leaderboard (Optional)</h4>
+      <h3>2.5 Idea Leaderboard (Optional)</h3>
       <p>If you vote, suggest an idea or report one, Journey Tracker stores it in Apple's iCloud under an ID used only by this app. We see that ID, never your name, email or Apple Account. Other people never see who voted or who suggested an idea. Suggestions stay private until we review them, and one we don't add is erased 30 days later. To remove your votes and suggestions, tap “Delete my votes and suggestions” on the leaderboard. The email it opens includes that ID so we can find them.</p>
 
-      <h4>2.6 Information We Do NOT Collect</h4>
+      <h3>2.6 Information We Do NOT Collect</h3>
       <p>Journey Tracker does not collect:</p>
       <ul>
         <li>Your full name</li>
@@ -342,12 +359,12 @@
 
       <hr>
 
-      <h3>3. How We Use Your Information</h3>
+      <h2>3. How We Use Your Information</h2>
 
-      <h4>3.1 To Provide the Application</h4>
+      <h3>3.1 To Provide the Application</h3>
       <p>Your health data is used solely to operate the features of Journey Tracker — displaying your health trends, generating charts, tracking your GLP-1 progress, and providing the features you use.</p>
 
-      <h4>3.2 Strides, Routes, and Fitness Trends</h4>
+      <h3>3.2 Strides, Routes, and Fitness Trends</h3>
       <p>Location, motion, and activity data collected during Strides (Section 2.4) is used to:</p>
       <ul>
         <li>Map and measure the walks, runs, and other activities you record — showing your route, distance, duration, and step count</li>
@@ -356,20 +373,20 @@
       </ul>
       <p>This data is used for no other purpose.</p>
 
-      <h4>3.3 We Do Not Sell Your Data</h4>
+      <h3>3.3 We Do Not Sell Your Data</h3>
       <p>We do not sell, rent, or trade your personal or health information to any third party for any purpose, including advertising.</p>
 
-      <h4>3.4 We Do Not Use Your Data for Advertising</h4>
+      <h3>3.4 We Do Not Use Your Data for Advertising</h3>
       <p>Journey Tracker does not display advertisements and does not use your health data for advertising or marketing purposes of any kind.</p>
 
       <hr>
 
-      <h3>4. How We Store Your Information</h3>
+      <h2>4. How We Store Your Information</h2>
 
-      <h4>4.1 On Your Device</h4>
+      <h3>4.1 On Your Device</h3>
       <p>All of your health data is stored on your iPhone or iPad using Apple's Core Data framework and is encrypted at rest by iOS Data Protection (AES-256).</p>
 
-      <h4>4.2 iCloud Backup</h4>
+      <h3>4.2 iCloud Backup</h3>
       <p>If you have iCloud enabled, your Journey Tracker data may be backed up to your personal iCloud account through Apple's CloudKit framework. This data is:</p>
       <ul>
         <li>Stored in <strong>your personal iCloud account</strong>, not any server controlled by us</li>
@@ -379,38 +396,38 @@
       </ul>
       <p>You can disable iCloud backup for Journey Tracker at any time through iOS Settings → [Your Name] → iCloud → Apps Using iCloud.</p>
 
-      <h4>4.3 Route and Activity Data (Strides)</h4>
+      <h3>4.3 Route and Activity Data (Strides)</h3>
       <p>Your recorded routes, planned routes, and activity data are stored the same way as the rest of your health data: on your device and, if iCloud is enabled, in your private iCloud database. <strong>No server operated by us — and no non-Apple third party — ever receives your location or route data.</strong></p>
       <p>Map display and walking directions in the route planner are provided by <strong>Apple Maps</strong>. When you view a map or request walking directions, those requests are processed by Apple as a standard platform service under Apple's privacy policy (apple.com/privacy).</p>
 
-      <h3>5. Information Sharing</h3>
+      <h2>5. Information Sharing</h2>
 
-      <h4>5.1 Apple</h4>
+      <h3>5.1 Apple</h3>
       <p>We use Apple's platform services (HealthKit, CloudKit, StoreKit, and Apple Maps for map display and walking directions) to operate Journey Tracker. Your use of these services is subject to Apple's Privacy Policy (apple.com/privacy).</p>
 
-      <h4>5.2 RevenueCat (Subscription Management)</h4>
+      <h3>5.2 RevenueCat (Subscription Management)</h3>
       <p>Subscription management is handled by RevenueCat. RevenueCat receives your purchase and subscription status, an anonymous app user ID (shown in the app as your Support ID), and Apple's ad attribution token, which shows whether an install came from an Apple Search Ads ad and does not include your advertising identifier. RevenueCat receives <strong>no health data and no location data</strong> of any kind. RevenueCat's privacy policy is available at revenuecat.com/privacy.</p>
 
-      <h4>5.3 Fernand (Contact Forms &amp; Support)</h4>
+      <h3>5.3 Fernand (Contact Forms &amp; Support)</h3>
       <p>The contact, support, and waitlist forms on our site — and our live chat support widget — are processed by Fernand SAS, a third-party customer support platform organized under the laws of France. When you submit a form or use the chat widget, your name, email address, and message content are transmitted to and stored by Fernand in order to deliver your message to us and allow us to respond. Fernand does not use this data for advertising and does not sell it. For details, see <a href="https://getfernand.com/privacy/" target="_blank" rel="noopener">Fernand's Privacy Policy</a>.</p>
 
-      <h4>5.4 PostHog (Product Analytics)</h4>
+      <h3>5.4 PostHog (Product Analytics)</h3>
       <p>We use PostHog, Inc. ("PostHog," US Cloud region) to understand which features of the app are used and how well it performs, so we can improve it. PostHog receives feature-usage events — for example, that a weight entry was logged or a fast was started — and daily performance and stability summaries from Apple's MetricKit, such as launch time, hang and crash counts, and memory use (never crash logs or call stacks). Both include basic technical context such as device type, operating system version, and app version. PostHog <strong>never receives the values you enter</strong> — no weights, doses, medications, lab results, symptoms, photos, locations, or notes.</p>
       <p>Events are associated with a randomly generated identifier unique to your app installation. It is never your name, email address, or Apple ID. We have configured PostHog to discard IP addresses rather than store them, and we have disabled IP-based location lookup, so no location is derived or retained.</p>
       <p>PostHog processes this data solely on our behalf and is contractually required to protect it to the same standard described in this policy. Analytics events are kept under PostHog's data retention policy for our plan (currently one year). Share Usage Analytics is on by default. You can turn analytics off at any time under Settings → Privacy &amp; Security → "Share Usage Analytics," and deleting the app ends its random identifier. Because that identifier isn't shown in the app and isn't linked to you, we can't pick out one person's usage events on request. Subscription events tied to your Support ID can be deleted: email it to <a href="mailto:support@journeytracker.app">support@journeytracker.app</a>. PostHog's privacy policy: <a href="https://posthog.com/privacy" target="_blank" rel="noopener">posthog.com/privacy</a>.</p>
 
-      <h4>5.5 No Other Third-Party Sharing</h4>
+      <h3>5.5 No Other Third-Party Sharing</h3>
       <p>We do not share your health or personal information with any other third parties. Your location and route data is never sold, never shared, and never used for advertising.</p>
       <p>Journey Tracker 1.9.0 and earlier also include the AppsFlyer SDK, which sends basic technical details (never health data) to AppsFlyer when the app opens. We stopped using AppsFlyer on October 6, 2026 and asked it to delete our data. Versions after 1.9.0 don't include it.</p>
 
       <hr>
 
-      <h3>6. Your Rights and Choices</h3>
+      <h2>6. Your Rights and Choices</h2>
 
-      <h4>6.1 Access Your Data</h4>
+      <h3>6.1 Access Your Data</h3>
       <p>You can view all of your health data within the Journey Tracker app at any time. You can export your data as spreadsheet files, or save a full backup file (optionally protected with a password), from Settings → Export Data, and restore a backup from Settings → Import Data. The file is created on your device and goes only where you choose to save or share it.</p>
 
-      <h4>6.2 Delete Your Data</h4>
+      <h3>6.2 Delete Your Data</h3>
       <p>You can delete all of your Journey Tracker data by:</p>
       <ul>
         <li>Deleting individual entries within the app</li>
@@ -422,7 +439,7 @@
       </ul>
       <p><strong>Third-party data:</strong> Apex Development Studio LLC does not store your health data on servers it controls. The only records we keep are the Idea Leaderboard votes, suggestions and reports described in Section 2.5, identified only by the app-specific ID. RevenueCat and PostHog hold only the limited records described in Section 5.</p>
 
-      <h4>6.3 Location and Motion Permissions</h4>
+      <h3>6.3 Location and Motion Permissions</h3>
       <p>You control Strides-related permissions entirely:</p>
       <ul>
         <li><strong>Location:</strong> revoke Journey Tracker's location access at any time through iOS Settings → Privacy &amp; Security → Location Services → Journey Tracker. Journey Tracker only ever requests "While Using the App" access.</li>
@@ -430,10 +447,10 @@
         <li><strong>Deleting a Stride:</strong> deleting a recorded activity in the app removes its route, distance, duration, steps, and any attached photos.</li>
       </ul>
 
-      <h4>6.4 HealthKit Permissions</h4>
+      <h3>6.4 HealthKit Permissions</h3>
       <p>You can review and revoke any HealthKit permission at any time through iOS Settings → Privacy &amp; Security → Health → Journey Tracker.</p>
 
-      <h4>6.5 California Residents (CCPA/CPRA)</h4>
+      <h3>6.5 California Residents (CCPA/CPRA)</h3>
       <p>If you are a California resident, you have the right to:</p>
       <ul>
         <li><strong>Know</strong> what personal information we collect and how it is used</li>
@@ -446,19 +463,19 @@
       <p><strong>Sensitive Personal Information:</strong> Journey Tracker collects the following categories of sensitive personal information as defined by the California Privacy Rights Act (CPRA): health data (body weight, body composition, blood glucose, blood pressure, medication information, laboratory results, symptom logs, physical activity data, and dietary intake) and precise geolocation (collected only while you actively record a Stride). This data is used solely for the purposes disclosed in this policy and is never sold or shared for advertising. You have the right to limit the use of your sensitive personal information to the purposes described in this policy.</p>
       <p>To exercise these rights, contact us at <a href="mailto:support@journeytracker.app">support@journeytracker.app</a>. We will respond within 45 days. If an extension is necessary, we will respond within 90 days total and notify you of the extension.</p>
 
-      <h4>6.6 Virginia, Colorado, and Other State Residents</h4>
+      <h3>6.6 Virginia, Colorado, and Other State Residents</h3>
       <p>Residents of Virginia (CDPA), Colorado (CPA), and other states with consumer privacy laws have similar rights to access, delete, and correct their personal information. Contact us at <a href="mailto:support@journeytracker.app">support@journeytracker.app</a> to exercise these rights.</p>
 
       <hr>
 
-      <h3>7. Children's Privacy</h3>
+      <h2>7. Children's Privacy</h2>
       <p>Journey Tracker is not intended for use by individuals under the age of 18. We do not knowingly collect personal information from children under 18.</p>
       <p>Journey Tracker does not collect or store user data on our servers. All health data is stored locally on the user's device and, if iCloud is enabled, in the user's personal iCloud account — neither of which we control or can access. Because we have no server-side records, we are unable to identify or delete data belonging to any specific user, including minors.</p>
       <p>If you believe a child under 18 has used Journey Tracker, please contact us at <a href="mailto:support@journeytracker.app">support@journeytracker.app</a> and we will respond promptly. To remove all associated data, we recommend: <strong>(1)</strong> deleting the Journey Tracker app from the device, and <strong>(2)</strong> removing any iCloud data via <strong>iOS Settings → [Your Name] → iCloud → Manage Storage → Journey Tracker</strong>.</p>
 
       <hr>
 
-      <h3>8. Data Security</h3>
+      <h2>8. Data Security</h2>
       <p>We implement technical and organizational measures to protect your health information, including:</p>
       <ul>
         <li><strong>On-device encryption:</strong> All health data is encrypted using AES-256 encryption</li>
@@ -472,7 +489,7 @@
 
       <hr>
 
-      <h3>9. Breach Notification</h3>
+      <h2>9. Breach Notification</h2>
       <p>In the event of a security breach involving your health information, we will notify affected users in accordance with the FTC Health Breach Notification Rule (16 C.F.R. Part 318) and applicable state law, including Washington's My Health My Data Act where applicable.</p>
       <p><strong>Notification procedures:</strong></p>
       <ul>
@@ -484,12 +501,12 @@
 
       <hr>
 
-      <h3>10. Changes to This Policy</h3>
+      <h2>10. Changes to This Policy</h2>
       <p>We may update this Privacy Policy from time to time. When we make material changes, we will notify you through the app and update the "Last Updated" date at the top of this policy. Your continued use of Journey Tracker after such notification constitutes your acceptance of the updated policy. For material changes that affect how we process your health data, we will seek your renewed consent where required by law.</p>
 
       <hr>
 
-      <h3>11. Contact Us</h3>
+      <h2>11. Contact Us</h2>
       <p>If you have questions about this Privacy Policy or how we handle your health information, please contact us:</p>
       <p>
         <strong>Company:</strong> Apex Development Studio LLC<br>
@@ -516,7 +533,7 @@
           <p>A private, beautiful health companion for your GLP‑1 and weight loss journey. Available now on the App Store for iPhone and iPad.</p>
         </div>
         <nav class="footer-nav" aria-label="Legal and support links">
-          <h3>Legal &amp; Support</h3>
+          <h2>Legal &amp; Support</h2>
           <ul>
             <li><a href="privacy.html" aria-current="page">Privacy Policy</a></li>
             <li><a href="health-data-privacy.html">Health Data Privacy</a></li>

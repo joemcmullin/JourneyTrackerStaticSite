@@ -36,6 +36,7 @@ function LabShuffler() {
         return (
           <motion.div
             key={labIdx}
+            aria-hidden={pos !== 0}
             animate={{ y: pos * 26, scale: 1 - pos * 0.06, zIndex: 3 - pos, opacity: 1 - pos * 0.25 }}
             transition={spring}
             className="hairline absolute inset-x-0 top-0 rounded-2xl bg-card p-4 shadow-md shadow-black/5"
@@ -44,7 +45,7 @@ function LabShuffler() {
               <span className="font-mono text-[0.7rem] uppercase tracking-[0.14em] text-text-lo">{lab.label}</span>
               <span className="text-[1.35rem] font-extrabold text-momentum">{lab.value}</span>
             </div>
-            <div className="mt-2 font-mono text-[0.72rem] text-accent">{lab.trend}</div>
+            <div className="mt-2 font-mono text-[0.72rem] text-[#a54a0e] dark:text-gold">{lab.trend}</div>
           </motion.div>
         )
       })}
@@ -156,7 +157,7 @@ function TelemetryFeed() {
     <div className="hairline h-[190px] overflow-hidden rounded-2xl bg-[#0a1f1c] p-4 shadow-md shadow-black/5" aria-label="Live journey feed demo">
       <div className="flex items-center gap-2">
         <span className="status-dot h-2 w-2 rounded-full bg-[#34C759]" aria-hidden="true" />
-        <span className="font-mono text-[0.68rem] uppercase tracking-[0.16em] text-[#5f7a72]">Journey feed</span>
+        <span className="font-mono text-[0.68rem] uppercase tracking-[0.16em] text-text-lo">Journey feed</span>
       </div>
       <pre className="mt-3 whitespace-pre-wrap font-mono text-[0.78rem] leading-[1.7] text-[#a8bdb6]">
         {text}

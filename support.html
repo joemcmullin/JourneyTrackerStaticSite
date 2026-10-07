@@ -17,7 +17,6 @@
     connect-src 'self' https://api.getfernand.com https://messenger.getfernand.com wss://*.getfernand.com;
     form-action 'self';
     frame-src https://messenger.getfernand.com;
-    frame-ancestors 'none';
     base-uri 'self';
     object-src 'none';
   " />
@@ -360,7 +359,7 @@
       text-align: center;
     }
     .alt-card-icon { font-size: 1.6rem; margin-bottom: 10px; }
-    .alt-card h4 { font-size: 0.9rem; font-weight: 700; color: var(--forest-dark); margin-bottom: 5px; }
+    .alt-card h3 { font-size: 0.9rem; font-weight: 700; color: var(--forest-dark); margin-bottom: 5px; }
     .alt-card p { font-size: 0.84rem; color: var(--text-muted); line-height: 1.5; }
     .alt-card a { color: var(--forest-light); font-weight: 500; }
 
@@ -389,11 +388,11 @@
       margin-bottom: 24px;
     }
     .footer-brand p {
-      font-size: 0.88rem; color: rgba(255,255,255,0.72);
+      font-size: 0.88rem; color: rgba(255,255,255,0.85);
       margin-top: 8px; max-width: 380px; line-height: 1.6;
     }
     .footer-nav h3 {
-      color: rgba(255,255,255,0.72); font-size: 0.82rem; font-weight: 600;
+      color: rgba(255,255,255,0.85); font-size: 0.82rem; font-weight: 600;
       text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 14px;
     }
     .footer-nav ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
@@ -404,8 +403,8 @@
       display: flex; justify-content: space-between; align-items: center;
       flex-wrap: wrap; gap: 12px;
     }
-    .footer-bottom p { font-size: 0.85rem; color: rgba(255,255,255,0.65); }
-    .footer-medical-note { font-size: 0.85rem; color: rgba(255,255,255,0.60); font-style: italic; }
+    .footer-bottom p { font-size: 0.85rem; color: rgba(255,255,255,0.82); }
+    .footer-medical-note { font-size: 0.85rem; color: rgba(255,255,255,0.80); font-style: italic; }
 
     /* ── FOCUS / A11Y ── */
     a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible, textarea:focus-visible {
@@ -440,6 +439,24 @@
   <!-- First Light bridge: shared fonts + overrides (matches the redesigned main site) -->
   <link rel="stylesheet" href="/fonts/fonts.css" />
   <link rel="stylesheet" href="/first-light.css" />
+  <meta name="apple-itunes-app" content="app-id=6760089056" />
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/albert-sans-normal-400-800-latin.woff2" crossorigin />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Journey Tracker" />
+  <meta property="og:url" content="https://journeytracker.app/support.html" />
+  <meta property="og:title" content="Support Center — Journey Tracker" />
+  <meta property="og:description" content="Get help with Journey Tracker — contact our support team, find answers to common questions, and manage your account or subscription." />
+  <meta property="og:image" content="https://journeytracker.app/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Journey Tracker — the private companion for your comeback" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Support Center — Journey Tracker" />
+  <meta name="twitter:description" content="Get help with Journey Tracker — contact our support team, find answers to common questions, and manage your account or subscription." />
+  <meta name="twitter:image" content="https://journeytracker.app/og-image.png" />
+  <script type="application/ld+json">
+  {"@context": "https://schema.org", "@graph": [{"@type": "WebPage", "@id": "https://journeytracker.app/support.html", "url": "https://journeytracker.app/support.html", "name": "Support Center — Journey Tracker", "description": "Get help with Journey Tracker — contact our support team, find answers to common questions, and manage your account or subscription.", "isPartOf": {"@id": "https://journeytracker.app/#website"}, "inLanguage": "en"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://journeytracker.app/"}, {"@type": "ListItem", "position": 2, "name": "Support", "item": "https://journeytracker.app/support.html"}]}]}
+  </script>
 </head>
 <body>
 
@@ -506,28 +523,28 @@
 
         <div class="help-cards">
 
-          <a href="#faq-sub" class="help-card" aria-label="Subscription and billing help">
+          <a href="#faq-sub" class="help-card">
             <div class="help-card-icon" aria-hidden="true">💳</div>
             <h3>Subscription &amp; Billing</h3>
             <p>Managing your Pro subscription, changing plans, restoring purchases, or requesting a refund through Apple.</p>
             <div class="help-card-arrow" aria-hidden="true">See answers →</div>
           </a>
 
-          <a href="#faq-data" class="help-card" aria-label="Data and privacy help">
+          <a href="#faq-data" class="help-card">
             <div class="help-card-icon" aria-hidden="true">🔒</div>
             <h3>Data &amp; Privacy</h3>
             <p>How your health data is stored and how to exercise your privacy rights.</p>
             <div class="help-card-arrow" aria-hidden="true">See answers →</div>
           </a>
 
-          <a href="#faq-tech" class="help-card" aria-label="Technical support">
+          <a href="#faq-tech" class="help-card">
             <div class="help-card-icon" aria-hidden="true">🛠</div>
             <h3>Technical Help</h3>
             <p>App not loading, sync issues, HealthKit not connecting, or data not appearing as expected.</p>
             <div class="help-card-arrow" aria-hidden="true">See answers →</div>
           </a>
 
-          <a href="#contact-form" class="help-card" aria-label="Send us a message">
+          <a href="#contact-form" class="help-card">
             <div class="help-card-icon" aria-hidden="true">✉️</div>
             <h3>Contact Us Directly</h3>
             <p>Didn't find your answer above? Send us a message and a real person on our team will respond.</p>
@@ -797,19 +814,19 @@
 
           <div class="alt-card">
             <div class="alt-card-icon" aria-hidden="true">📧</div>
-            <h4>Email Support</h4>
+            <h3>Email Support</h3>
             <p>Prefer to write directly?<br><a href="mailto:support@journeytracker.app">support@journeytracker.app</a></p>
           </div>
 
           <div class="alt-card">
             <div class="alt-card-icon" aria-hidden="true">🔒</div>
-            <h4>Privacy Rights</h4>
+            <h3>Privacy Rights</h3>
             <p>CCPA / GDPR requests or data deletion.<br><a href="mailto:support@journeytracker.app?subject=Privacy Rights Request">Send a privacy request</a></p>
           </div>
 
           <div class="alt-card">
             <div class="alt-card-icon" aria-hidden="true">📋</div>
-            <h4>Legal Disclosures</h4>
+            <h3>Legal Disclosures</h3>
             <p><a href="privacy.html">Privacy Policy</a> · <a href="hipaa.html">HIPAA Disclosure</a> · <a href="terms.html">Terms of Service</a></p>
           </div>
 

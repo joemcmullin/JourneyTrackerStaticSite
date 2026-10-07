@@ -1,0 +1,26 @@
+# Journey Tracker
+
+> Journey Tracker is a privacy-first GLP-1 companion app for iPhone and iPad by Apex Development Studio LLC. It tracks weight, medication doses, labs, symptoms, walks, and milestones. Data stays on the device and in the user's private iCloud — no developer servers.
+
+## Features
+- Dose logging with schedules, a dose counter, and injection-site rotation on a body map
+- Labs by marker with the provider's reference ranges (Apple Health Records import)
+- Weight, body composition, hydration, fasting, and symptom tracking
+- Strides: mapped walks with routes, photos, and stats
+- PDF reports: therapy & doses, weight progress, lab results, body composition, full journey
+- Spreadsheet import (CSV/XLSX) and CSV export
+
+## Pages
+- https://journeytracker.app/ — overview, screenshots, pricing, FAQ
+- https://journeytracker.app/support.html — support center and contact
+- https://journeytracker.app/privacy.html — privacy policy
+- https://journeytracker.app/health-data-privacy.html — consumer health data privacy policy
+- https://journeytracker.app/hipaa.html — health information & HIPAA disclosure
+- https://journeytracker.app/terms.html — terms of service
+- https://journeytracker.app/accessibility.html — accessibility statement
+
+## Get the app
+- App Store (iPhone & iPad): https://apps.apple.com/app/id6760089056 — free download with a 7-day free Pro trial; Pro via monthly, annual, or lifetime purchase
+
+## Contact
+- support@journeytracker.app

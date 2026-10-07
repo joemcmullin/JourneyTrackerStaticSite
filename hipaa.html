@@ -16,7 +16,6 @@
     font-src 'self' data: https://*.getfernand.com;
     connect-src 'self' https://api.getfernand.com https://messenger.getfernand.com wss://*.getfernand.com;
     frame-src https://messenger.getfernand.com;
-    frame-ancestors 'none';
     base-uri 'self';
     object-src 'none';
   " />
@@ -83,15 +82,15 @@
     /* FOOTER */
     footer { background: var(--forest-dark); color: rgba(255,255,255,0.7); padding: 48px 0 32px; }
     .footer-inner { display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: start; padding-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 24px; }
-    .footer-brand p { font-size: 0.88rem; color: rgba(255,255,255,0.72); margin-top: 8px; max-width: 380px; line-height: 1.6; }
-    .footer-nav h3 { color: rgba(255,255,255,0.72); font-size: 0.82rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 14px; }
+    .footer-brand p { font-size: 0.88rem; color: rgba(255,255,255,0.85); margin-top: 8px; max-width: 380px; line-height: 1.6; }
+    .footer-nav h2 { color: rgba(255,255,255,0.85); font-size: 0.82rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 14px; }
     .footer-nav ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
     .footer-nav a { font-size: 0.9rem; color: rgba(255,255,255,0.82); transition: color 0.15s; }
     .footer-nav a:hover { color: var(--white); }
     .footer-nav a[aria-current="page"] { color: var(--white); font-weight: 600; }
     .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
-    .footer-bottom p { font-size: 0.85rem; color: rgba(255,255,255,0.65); }
-    .footer-medical-note { font-size: 0.85rem; color: rgba(255,255,255,0.60); font-style: italic; }
+    .footer-bottom p { font-size: 0.85rem; color: rgba(255,255,255,0.82); }
+    .footer-medical-note { font-size: 0.85rem; color: rgba(255,255,255,0.80); font-style: italic; }
 
     .doc-hero {
       background: linear-gradient(160deg, #f0f7f2, var(--cream));
@@ -115,12 +114,12 @@
     .doc-content {
       max-width: 760px; margin: 0 auto; padding: 56px 24px 80px;
     }
-    .doc-content h3 {
+    .doc-content h2 {
       font-size: 1.05rem; font-weight: 700; color: var(--forest-dark);
       margin: 36px 0 10px; padding-bottom: 8px; border-bottom: 1px solid rgba(255,255,255,0.1);
     }
-    .doc-content h3:first-child { margin-top: 0; }
-    .doc-content h4 { font-size: 0.92rem; font-weight: 700; color: var(--forest-mid); margin: 20px 0 8px; }
+    .doc-content h2:first-child { margin-top: 0; }
+    .doc-content h3 { font-size: 0.92rem; font-weight: 700; color: var(--forest-mid); margin: 20px 0 8px; }
     .doc-content p { color: var(--text-mid); font-size: 0.94rem; line-height: 1.75; margin-bottom: 14px; }
     .doc-content ul, .doc-content ol { padding-left: 22px; margin: 10px 0 16px; }
     .doc-content li { font-size: 0.93rem; color: var(--text-mid); line-height: 1.65; margin-bottom: 6px; }
@@ -167,6 +166,24 @@
   <!-- First Light bridge: shared fonts + overrides (matches the redesigned main site) -->
   <link rel="stylesheet" href="/fonts/fonts.css" />
   <link rel="stylesheet" href="/first-light.css" />
+  <meta name="apple-itunes-app" content="app-id=6760089056" />
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/albert-sans-normal-400-800-latin.woff2" crossorigin />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Journey Tracker" />
+  <meta property="og:url" content="https://journeytracker.app/hipaa.html" />
+  <meta property="og:title" content="Health Information &amp; HIPAA Disclosure — Journey Tracker" />
+  <meta property="og:description" content="Journey Tracker Health Information and HIPAA Disclosure — how Apex Development Studio LLC handles your health data and why HIPAA does not apply to this consumer app." />
+  <meta property="og:image" content="https://journeytracker.app/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Journey Tracker — the private companion for your comeback" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Health Information &amp; HIPAA Disclosure — Journey Tracker" />
+  <meta name="twitter:description" content="Journey Tracker Health Information and HIPAA Disclosure — how Apex Development Studio LLC handles your health data and why HIPAA does not apply to this consumer app." />
+  <meta name="twitter:image" content="https://journeytracker.app/og-image.png" />
+  <script type="application/ld+json">
+  {"@context": "https://schema.org", "@graph": [{"@type": "WebPage", "@id": "https://journeytracker.app/hipaa.html", "url": "https://journeytracker.app/hipaa.html", "name": "Health Information & HIPAA Disclosure — Journey Tracker", "description": "Journey Tracker Health Information and HIPAA Disclosure — how Apex Development Studio LLC handles your health data and why HIPAA does not apply to this consumer app.", "isPartOf": {"@id": "https://journeytracker.app/#website"}, "inLanguage": "en"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://journeytracker.app/"}, {"@type": "ListItem", "position": 2, "name": "HIPAA Disclosure", "item": "https://journeytracker.app/hipaa.html"}]}]}
+  </script>
 </head>
 <body>
 
@@ -222,19 +239,19 @@
 
       <hr>
 
-      <h3>1. HIPAA Status</h3>
+      <h2>1. HIPAA Status</h2>
       <p>Apex Development Studio LLC develops and operates Journey Tracker as a consumer mobile application. We are <strong>not</strong> a HIPAA-covered entity as defined by 45 C.F.R. § 160.103. Journey Tracker is not a healthcare provider, health plan, or healthcare clearinghouse.</p>
       <p>Your health data entered into Journey Tracker is <strong>not</strong> protected by HIPAA. The company has implemented AES-256 encryption, on-device storage, and iCloud private database isolation as described in the Privacy Policy. These safeguards are described in further detail throughout this disclosure.</p>
 
-      <h4>Why HIPAA Does Not Apply</h4>
+      <h3>Why HIPAA Does Not Apply</h3>
       <p>HIPAA protects health information when it is created, received, maintained, or transmitted by a covered entity or their business associates. Journey Tracker is a personal wellness application. The health data you enter is generated by you, stored on your personal device, and used only to operate the features you choose to use.</p>
 
-      <h4>Applicable State Health Privacy Laws</h4>
+      <h3>Applicable State Health Privacy Laws</h3>
       <p>Washington's My Health My Data Act (RCW 19.373) applies to Journey Tracker and imposes specific requirements for the collection, sharing, and deletion of consumer health data. Apex Development Studio LLC maintains a separate <a href="health-data-privacy.html">Consumer Health Data Privacy Policy</a> to address MHMDA compliance. Additional state consumer privacy laws — including Virginia's Consumer Data Protection Act (CDPA), Colorado's Privacy Act (CPA), and the California Consumer Privacy Act/California Privacy Rights Act (CCPA/CPRA, when applicable) — may provide additional rights. For details on your rights under these laws, see our <a href="privacy.html">Privacy Policy</a>.</p>
 
       <hr>
 
-      <h3>2. Health Information We Process</h3>
+      <h2>2. Health Information We Process</h2>
       <p>Through the app, you may voluntarily enter the following health information:</p>
       <ul>
         <li>Body weight, body fat percentage, muscle mass, and BMI</li>
@@ -250,7 +267,7 @@
 
       <hr>
 
-      <h3>3. Not a Medical Device</h3>
+      <h2>3. Not a Medical Device</h2>
       <p>Journey Tracker is <strong>not</strong> a medical device as defined by the Food and Drug Administration (21 U.S.C. § 321(h)). Journey Tracker does not:</p>
       <ul>
         <li>Diagnose any disease or health condition</li>
@@ -260,14 +277,14 @@
       </ul>
       <p>Journey Tracker is a personal health data organization and tracking tool. All information displayed by Journey Tracker is derived from data you enter and is provided for personal informational purposes only.</p>
 
-      <h4>Physical Activity and Fitness Tracking</h4>
+      <h3>Physical Activity and Fitness Tracking</h3>
       <div class="callout">
         <p><strong>The Strides feature is a fitness tracking tool, not medical advice.</strong> Recording your walks, runs, and other activities — including routes, distance, steps, and active energy — is for personal informational purposes only. Journey Tracker does not prescribe exercise programs or assess your fitness for physical activity. Consult your physician or another qualified healthcare provider before beginning any new exercise program, particularly if you have a medical condition or are undergoing GLP-1 therapy. Stop any activity and seek medical attention if you feel unwell.</p>
       </div>
 
       <hr>
 
-      <h3>4. Medical Disclaimer</h3>
+      <h2>4. Medical Disclaimer</h2>
       <div class="callout warning">
         <p><strong>The information and features provided by Journey Tracker are intended for general informational and personal tracking purposes only.</strong></p>
         <p>Nothing in Journey Tracker is intended to diagnose any disease or health condition; recommend or prescribe any medication or treatment; replace the advice of a licensed healthcare provider; or constitute the practice of medicine, nursing, or any other healthcare profession.</p>
@@ -276,7 +293,7 @@
 
       <hr>
 
-      <h3>5. GLP-1 Medication Tracking</h3>
+      <h2>5. GLP-1 Medication Tracking</h2>
       <p>Journey Tracker supports tracking of GLP-1 receptor agonist medications including, but not limited to, semaglutide (Ozempic®, Wegovy®, Rybelsus®), tirzepatide (Mounjaro®, Zepbound®), and other GLP-1 agents.</p>
       <div class="callout">
         <p><strong>The medication tracking features in Journey Tracker are for personal logging purposes only.</strong> Journey Tracker does not provide dosing recommendations, does not verify medication prescriptions, and does not communicate with healthcare providers on your behalf. All medication decisions must be made in consultation with your prescribing physician.</p>
@@ -284,7 +301,7 @@
 
       <hr>
 
-      <h3>6. Emergency Situations</h3>
+      <h2>6. Emergency Situations</h2>
       <div class="callout warning">
         <p><strong>If you believe you are experiencing a medical emergency, call 911 or your local emergency number immediately.</strong></p>
         <p>Do not rely on Journey Tracker in any emergency situation. Journey Tracker is not designed for and must not be used in emergency medical situations.</p>
@@ -292,22 +309,22 @@
 
       <hr>
 
-      <h3>7. Reporting Adverse Events</h3>
+      <h2>7. Reporting Adverse Events</h2>
       <p>If you experience an adverse event or side effect that you believe is related to your GLP-1 medication, consult your healthcare provider immediately. You can also report adverse events directly to the FDA through MedWatch at <strong>fda.gov/safety/medwatch</strong>.</p>
 
       <hr>
 
-      <h3>8. Regulatory Notices</h3>
+      <h2>8. Regulatory Notices</h2>
 
-      <h4>8.1 FDA Regulation</h4>
+      <h3>8.1 FDA Regulation</h3>
       <p>Journey Tracker has not been submitted to or reviewed by the FDA. It is not a regulated medical device. We consider Journey Tracker general wellness and administrative support software under applicable FDA digital health guidance. The application does not perform clinical decision support that would require FDA clearance or approval.</p>
 
-      <h4>8.2 No Prescription Verification</h4>
+      <h3>8.2 No Prescription Verification</h3>
       <p>Journey Tracker does not verify that any medication entered in the app has been prescribed to the user or is being used as directed. Users are responsible for using all medications only as prescribed by a licensed healthcare provider.</p>
 
       <hr>
 
-      <h3>9. Contact</h3>
+      <h2>9. Contact</h2>
       <p>If you have questions about this Health Information Disclosure, please contact us:</p>
       <p>
         <strong>Company:</strong> Apex Development Studio LLC<br>
@@ -333,7 +350,7 @@
           <p>A private, beautiful health companion for your GLP‑1 and weight loss journey. Available now on the App Store for iPhone and iPad.</p>
         </div>
         <nav class="footer-nav" aria-label="Legal and support links">
-          <h3>Legal &amp; Support</h3>
+          <h2>Legal &amp; Support</h2>
           <ul>
             <li><a href="privacy.html">Privacy Policy</a></li>
             <li><a href="health-data-privacy.html">Health Data Privacy</a></li>

@@ -45,15 +45,19 @@ export default function Philosophy() {
     <section ref={root} id="why" className="relative overflow-hidden bg-[#0a1f1c] py-32 text-[#faf7f2]">
       <img
         data-parallax
-        src="/brand/texture-teal-depth.jpg"
+        src="/brand/texture-teal-depth.webp"
         alt=""
         aria-hidden="true"
+        loading="lazy"
+        decoding="async"
         className="absolute inset-0 h-[120%] w-full object-cover opacity-60"
       />
       <img
-        src="/brand/overlay-golden-particles.jpg"
+        src="/brand/overlay-golden-particles.webp"
         alt=""
         aria-hidden="true"
+        loading="lazy"
+        decoding="async"
         className="absolute inset-0 h-full w-full object-cover opacity-30 mix-blend-screen"
       />
 

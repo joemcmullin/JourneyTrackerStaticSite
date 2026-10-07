@@ -52,7 +52,6 @@
     connect-src 'self' https://api.getfernand.com https://messenger.getfernand.com wss://*.getfernand.com;
     form-action 'self';
     frame-src https://messenger.getfernand.com;
-    frame-ancestors 'none';
     base-uri 'self';
     object-src 'none';
   " />
@@ -74,6 +73,9 @@
   <meta property="og:image" content="https://journeytracker.app/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Journey Tracker — the private companion for your comeback" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
 
   <!-- TWITTER -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -82,7 +84,7 @@
   <meta name="twitter:image" content="https://journeytracker.app/og-image.png" />
 
   <!-- PERFORMANCE -->
-  <link rel="preload" as="image" href="/images/screenshots/ss3-home.jpg" fetchpriority="high" />
+  <link rel="preload" as="image" href="/images/screenshots/ss3-home.webp" fetchpriority="high" />
   <link rel="dns-prefetch" href="https://messenger.getfernand.com" />
 
   <style>
@@ -129,7 +131,7 @@
     }
 
     a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; display: block; }
+    img { max-width: 100%; height: auto; display: block; }
 
     .container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
 
@@ -146,7 +148,7 @@
     .section-label {
       display: inline-block; font-size: 0.78rem; font-weight: 600;
       letter-spacing: 0.12em; text-transform: uppercase;
-      color: var(--forest-light); background: rgba(73,197,214,0.12);
+      color: var(--forest-dark); background: rgba(73,197,214,0.12);
       padding: 4px 12px; border-radius: 100px; margin-bottom: 12px;
     }
 
@@ -588,11 +590,11 @@
       margin-bottom: 24px;
     }
     .footer-brand p {
-      font-size: 0.88rem; color: rgba(255,255,255,0.72);
+      font-size: 0.88rem; color: rgba(255,255,255,0.85);
       margin-top: 8px; max-width: 380px; line-height: 1.6;
     }
     .footer-nav h3 {
-      color: rgba(255,255,255,0.72); font-size: 0.82rem; font-weight: 600;
+      color: rgba(255,255,255,0.85); font-size: 0.82rem; font-weight: 600;
       text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 14px;
     }
     .footer-nav ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
@@ -602,8 +604,8 @@
       display: flex; justify-content: space-between; align-items: center;
       flex-wrap: wrap; gap: 12px;
     }
-    .footer-bottom p { font-size: 0.85rem; color: rgba(255,255,255,0.65); }
-    .footer-medical-note { font-size: 0.85rem; color: rgba(255,255,255,0.60); font-style: italic; }
+    .footer-bottom p { font-size: 0.85rem; color: rgba(255,255,255,0.82); }
+    .footer-medical-note { font-size: 0.85rem; color: rgba(255,255,255,0.80); font-style: italic; }
 
     /* =====================================================
        SKIP LINK
@@ -668,6 +670,11 @@
   <!-- First Light bridge: shared fonts + overrides (matches the redesigned main site) -->
   <link rel="stylesheet" href="/fonts/fonts.css" />
   <link rel="stylesheet" href="/first-light.css" />
+  <meta name="apple-itunes-app" content="app-id=6760089056" />
+  <link rel="preload" as="font" type="font/woff2" href="/fonts/albert-sans-normal-400-800-latin.woff2" crossorigin />
+  <script type="application/ld+json">
+  {"@context": "https://schema.org", "@graph": [{"@type": "WebPage", "@id": "https://journeytracker.app/waitlist.html", "url": "https://journeytracker.app/waitlist.html", "name": "Journey Tracker Is Live — Download on the App Store | GLP‑1 & Weight Loss Companion", "description": "Journey Tracker is now available on the App Store for iPhone & iPad. Private GLP-1 tracking for your doses, labs, and progress — start your 7-day free trial.", "isPartOf": {"@id": "https://journeytracker.app/#website"}, "inLanguage": "en"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://journeytracker.app/"}, {"@type": "ListItem", "position": 2, "name": "Download", "item": "https://journeytracker.app/waitlist.html"}]}]}
+  </script>
 </head>
 <body>
 
@@ -752,7 +759,8 @@
           <div class="wl-device">
             <div class="phone-frame">
               <img
-                src="images/screenshots/ss3-home.jpg"
+                src="images/screenshots/ss3-home.webp"
+                width="1080" height="2347"
                 alt="Journey Tracker home screen showing the next dose countdown, total loss, a Strides card with walking map, a followed A1C marker, and weekly recap summary"
               />
             </div>

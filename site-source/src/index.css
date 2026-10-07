@@ -18,7 +18,7 @@
   --gold: #f5a455;          /* Golden Hour */
   --text-hi: #1e2a27;       /* Evergreen Ink */
   --text-mid: #43524d;
-  --text-lo: #8a948f;
+  --text-lo: #606a65;
   --ring: rgba(14, 98, 109, 0.12);
 }
 
@@ -33,7 +33,7 @@
   --gold: #f5a455;
   --text-hi: #faf7f2;
   --text-mid: #a8bdb6;
-  --text-lo: #5f7a72;
+  --text-lo: #85a098;
   --ring: rgba(250, 247, 242, 0.1);
 }
 

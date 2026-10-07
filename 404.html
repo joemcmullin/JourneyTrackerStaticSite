@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Page not found — Journey Tracker</title>
+  <meta name="robots" content="noindex" />
+  <link rel="icon" href="/favicon.ico" sizes="48x48" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="stylesheet" href="/fonts/fonts.css" />
+  <style>
+    :root { --bg:#faf7f2; --text:#1e2a27; --mid:#43524d; --teal:#107482; --teal-dark:#0e626d; }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg:#0a1f1c; --text:#faf7f2; --mid:#a8bdb6; --teal:#49c5d6; --teal-dark:#49c5d6; }
+    }
+    * { box-sizing: border-box; margin: 0; }
+    body {
+      background: var(--bg); color: var(--text); min-height: 100vh;
+      display: grid; place-items: center; padding: 24px;
+      font-family: 'Albert Sans', system-ui, -apple-system, sans-serif;
+      -webkit-font-smoothing: antialiased; text-align: center;
+    }
+    main { max-width: 480px; width: 100%; }
+    img { border-radius: 27%; }
+    .code { font-family: 'IBM Plex Mono', ui-monospace, monospace; font-size: 0.8rem; letter-spacing: 0.22em; color: var(--teal); text-transform: uppercase; margin: 28px 0 10px; }
+    h1 { font-size: clamp(1.8rem, 5vw, 2.6rem); font-weight: 800; letter-spacing: -0.02em; }
+    p { color: var(--mid); margin: 14px auto 28px; max-width: 42ch; line-height: 1.6; }
+    .btn { display: inline-block; background: var(--teal-dark); color: #fff; font-weight: 700; padding: 13px 28px; border-radius: 999px; text-decoration: none; }
+    @media (prefers-color-scheme: dark) { .btn { color: #0a1f1c; } }
+    nav { margin-top: 22px; display: flex; gap: 18px; justify-content: center; flex-wrap: wrap; }
+    nav a { color: var(--teal); font-size: 0.9rem; text-decoration: none; }
+    nav a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <main>
+    <img src="/brand/logo-tile.webp" alt="" width="72" height="72" />
+    <div class="code">404 · Page not found</div>
+    <h1>This page isn't on the map.</h1>
+    <p>The address may have changed or never existed. Everything about Journey Tracker still lives one tap away.</p>
+    <a class="btn" href="/">Back to the home page</a>
+    <nav aria-label="Helpful links">
+      <a href="/support.html">Support</a>
+      <a href="/privacy.html">Privacy</a>
+      <a href="/terms.html">Terms</a>
+      <a href="https://apps.apple.com/app/id6760089056">App Store</a>
+    </nav>
+  </main>
+</body>
+</html>

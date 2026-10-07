@@ -9,9 +9,11 @@ export default function CtaBand() {
   return (
     <section className="relative overflow-hidden">
       <img
-        src="/brand/banner.jpg"
+        src="/brand/banner.webp"
         alt=""
         aria-hidden="true"
+        loading="lazy"
+        decoding="async"
         className="absolute inset-0 h-full w-full object-cover object-right"
       />
       {/* Legibility veil, heaviest over the copy side */}

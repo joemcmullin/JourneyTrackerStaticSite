@@ -96,7 +96,7 @@ export default function Pricing() {
             <a
               href={APP_STORE}
               className={`btn-magnetic mt-8 block rounded-full py-3 text-center text-[0.95rem] font-bold ${
-                t.featured ? 'bg-accent text-white' : 'hairline text-text-hi hover:bg-card-hover'
+                t.featured ? 'bg-accent text-[#1e2a27]' : 'hairline text-text-hi hover:bg-card-hover'
               }`}
             >
               {t.cta}

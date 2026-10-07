@@ -9,7 +9,7 @@
 export function GlyphTile({ size = 48, armed = false, className = '' }) {
   return (
     <img
-      src="/brand/logo-tile.png"
+      src="/brand/logo-tile-192.webp"
       alt=""
       aria-hidden="true"
       width={size}
