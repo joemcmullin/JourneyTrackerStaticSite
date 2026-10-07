@@ -1,6 +1,12 @@
 # Journey Tracker — Static Marketing Site
 
-The marketing, support, and legal website for **Journey Tracker**, a native SwiftUI iPhone/iPad/Mac app for tracking GLP‑1 therapy, weight loss, lab results, body composition, hydration, and fasting. Pure static HTML/CSS/JS — no build step, no frameworks — deployed on GitHub Pages at **https://journeytracker.app**.
+The marketing, support, and legal website for **Journey Tracker**, a native SwiftUI iPhone/iPad app for tracking GLP‑1 therapy, weight loss, lab results, body composition, hydration, and fasting. Deployed on GitHub Pages at **https://journeytracker.app**.
+
+Two kinds of pages live here:
+- **Homepage** — React 19 + Vite + Tailwind, built from [`site-source/`](site-source/) and **prerendered** at build time (`site-source/scripts/prerender.mjs` splices the rendered DOM into `index.html`, so the page carries its full copy without JavaScript and stamps `apex-build`). Build: `cd site-source && npm install && npm run build && rsync -a dist/ ../`.
+- **Static pages** — support, privacy, health-data-privacy, HIPAA, terms, accessibility, waitlist, 404: hand-maintained HTML at the repo root (edit directly, no build).
+
+SEO foundation (Phase 1, 2026-10-07): per-page canonicals, Open Graph/Twitter cards, JSON-LD (`@graph` on the homepage; `WebPage` + `BreadcrumbList` on static pages), `llms.txt`, branded `404.html`, `sitemap.xml` + `robots.txt`, AVIF/WebP imagery with a preloaded hero, self-hosted preloaded fonts. When a rebuild renames the hashed bundles in `assets/`, keep the outgoing pair for one deploy (GitHub Pages caches HTML ~10 minutes) and delete it the deploy after.
 
 > **App status:** LIVE on the Apple App Store (v1.1 launch, July 2026). The hero CTA is the "Download on the App Store" badge linking to `https://apps.apple.com/app/id6760089056`, with a stylized QR code (`images/qr-app-store.svg`, regenerated via `_dev/generate-qr.py` + verified via `_dev/verify-qr.sh`). The former waitlist page (`waitlist.html`) is retained as a post-launch landing page so old links resolve.
 
