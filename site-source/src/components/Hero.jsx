@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
-import { GlyphTile, Wordmark } from './BrandMark'
+
 import { isStatic, runWhenVisible } from './motion'
 
 const APP_STORE = 'https://apps.apple.com/app/id6760089056'
@@ -52,19 +52,14 @@ export default function Hero() {
         <div className="absolute inset-x-0 bottom-0 h-[38vh] bg-gradient-to-t from-[var(--bg-surface)] to-transparent" />
       </div>
 
-      <div className="relative z-10 mx-auto grid w-[min(94vw,74rem)] items-center gap-14 py-24 lg:grid-cols-[1.15fr_0.85fr]">
+      <div className="relative z-10 mx-auto grid w-[min(94vw,74rem)] items-center gap-14 pb-24 pt-32 lg:grid-cols-[1.15fr_0.85fr]">
         {/* ── Copy column ─────────────────────────────────── */}
         <div>
-          {/* Large brand lockup — the hero owns the identity up here */}
-          <div data-hero-stagger className="mb-10 flex items-center gap-4">
-            <GlyphTile size={72} armed />
-            <div className="flex flex-col">
-              <Wordmark className="text-[1.7rem] leading-none" />
-              <span className="mt-1.5 font-mono text-[0.72rem] uppercase tracking-[0.22em] text-text-lo">
-                GLP-1 companion · iPhone · iPad
-              </span>
-            </div>
-          </div>
+          {/* Identity lives in the persistent navbar now (2026-10-07); the hero
+              keeps only the positioning eyebrow and leads with the headline. */}
+          <p data-hero-stagger className="mb-6 font-mono text-[0.78rem] uppercase tracking-[0.24em] text-text-lo">
+            GLP-1 companion · iPhone · iPad
+          </p>
 
           <h1 data-hero-stagger className="max-w-[13ch] text-[clamp(2.5rem,5.2vw,4.4rem)] font-extrabold leading-[1.02] tracking-tight text-text-hi">
             The private companion for
