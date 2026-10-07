@@ -268,7 +268,7 @@
           </tbody>
         </table>
       </div>
-      <p>Subscription status (RevenueCat) and app install counts (AppsFlyer) involve no health data; section 4 describes them.</p>
+      <p>Subscription status (RevenueCat) involves no health data; section 4.2 describes it.</p>
 
       <hr>
 
@@ -367,11 +367,9 @@
       <p>PostHog provides product analytics for the app. PostHog receives feature-usage events, daily performance and stability summaries from Apple's MetricKit (such as launch time and hang and crash counts), and basic device and app version information, tied to a random identifier unique to your app installation. Some feature-usage events name an action you took in the app — for example, that a dose, a weight entry, water, a fast or a walk was logged, or that the Labs screen was opened — and reminder events name the kind of reminder. It <strong>never receives the values you enter</strong> — no weights, doses, medication names, lab results, symptoms, photos, locations, or notes. IP addresses are discarded rather than stored, and IP-based location lookup is disabled, so no location or route data is derived or retained. PostHog acts solely as our processor and may not use this data for its own purposes. Analytics is on by default and can be turned off under Settings → Privacy &amp; Security → "Share Usage Analytics."</p>
       <p>PostHog's Privacy Policy: <a href="https://posthog.com/privacy" target="_blank" rel="noopener">posthog.com/privacy</a></p>
 
-      <h4>4.5 AppsFlyer Ltd.</h4>
-      <p>AppsFlyer measures how many installs come from our own ads, using only Apple's SKAdNetwork. When the app opens, AppsFlyer receives basic technical context such as app version, iOS version, device model, locale, and the network address of the request. It does not receive your advertising identifier, vendor identifier, or any account or user identifier. <strong>No consumer health data</strong> is transmitted to AppsFlyer, including location, routes, activity, lab, or photo data. The app never asks to track you and does not track you. Turning off Settings → Privacy &amp; Security → "Share Usage Analytics" stops AppsFlyer as well.</p>
-      <p>AppsFlyer's Privacy Policy: <a href="https://www.appsflyer.com/legal/privacy-policy/" target="_blank" rel="noopener">appsflyer.com/legal/privacy-policy</a></p>
+      <p>Journey Tracker 1.9.0 and earlier also include the AppsFlyer SDK, which sends basic technical details (never health data) to AppsFlyer when the app opens. We stopped using AppsFlyer on October 6, 2026 and asked it to delete our data. Versions after 1.9.0 don't include it.</p>
 
-      <h4>4.6 Affiliates</h4>
+      <h4>4.5 Affiliates</h4>
       <p><strong>No affiliates receive consumer health data.</strong> Apex Development Studio LLC has no affiliates, subsidiaries, or parent companies. We are an independent limited liability company.</p>
       <p>To reaffirm: apart from the feature-usage events described in 4.4, which can name an action but never contain what you entered, <strong>no third party outside Apple's platform services receives your consumer health data — including your location, routes, and activity data.</strong> No server operated by Apex Development Studio LLC or any non-Apple third party ever receives your location or the health values you record.</p>
 
@@ -401,7 +399,7 @@
         <li><strong>Apple Health:</strong> Revoke Journey Tracker's HealthKit access at any time through iOS Settings → Privacy &amp; Security → Health → Journey Tracker. The app immediately stops reading from Apple Health.</li>
         <li><strong>Location:</strong> Revoke Journey Tracker's location access at any time through iOS Settings → Privacy &amp; Security → Location Services → Journey Tracker. The app immediately stops recording your location.</li>
         <li><strong>Motion &amp; Fitness:</strong> Revoke Journey Tracker's step-counting access at any time through iOS Settings → Privacy &amp; Security → Motion &amp; Fitness → Journey Tracker.</li>
-        <li><strong>Usage analytics:</strong> Turn off Settings → Privacy &amp; Security → "Share Usage Analytics" in the app. This immediately stops PostHog analytics and AppsFlyer.</li>
+        <li><strong>Usage analytics:</strong> Turn off Settings → Privacy &amp; Security → "Share Usage Analytics" in the app. This immediately stops PostHog analytics.</li>
       </ul>
       <div class="callout">
         <p><strong>Withdrawal of consent is always prospective.</strong> Revoking HealthKit access stops the app reading new data. It does not delete what the app already keeps on your device; section 5.3 explains how to delete it.</p>

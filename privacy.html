@@ -157,6 +157,18 @@
     .callout p { margin-bottom: 8px; }
     .callout p:last-child { margin-bottom: 0; }
 
+    .data-map { overflow-x: auto; margin: 12px 0 6px; }
+    .data-map table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    .data-map th, .data-map td {
+      text-align: left; vertical-align: top; padding: 9px 10px;
+      border-bottom: 1px solid var(--border); color: var(--text-mid); line-height: 1.55;
+    }
+    .data-map th {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--forest-mid);
+    }
+    .data-map td:first-child { color: var(--text-dark); font-weight: 600; }
+
     .doc-footer-note {
       font-size: 0.82rem; font-style: italic; color: var(--text-muted);
       margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--border);
@@ -234,13 +246,30 @@
       <h1>Privacy Policy</h1>
       <p class="doc-meta">
         Developed and operated by Apex Development Studio LLC &nbsp;·&nbsp;
-        Effective: May 22, 2026 &nbsp;·&nbsp; Last Updated: September 27, 2026
+        Effective: May 22, 2026 &nbsp;·&nbsp; Last Updated: October 6, 2026
       </p>
     </div>
 
     <div class="doc-content">
 
       <p>Apex Development Studio LLC ("we," "our," or "us") develops and operates Journey Tracker and is committed to protecting your privacy. This Privacy Policy explains how we collect, use, store, and protect your health and personal information when you use the Journey Tracker iOS application and associated website (journeytracker.app).</p>
+      <div class="callout">
+        <p><strong>In plain terms:</strong> what you record in Journey Tracker stays on your iPhone and in your own iCloud account. Apex Development Studio LLC has no server that stores it and no account for you, and cannot see your weights, doses, symptoms, lab results, photos, routes, or notes.</p>
+        <p><strong>About the word "collect":</strong> some privacy laws, such as Washington's My Health My Data Act, count anything an app does with your data, including keeping it on your own phone, as "collecting" it. This policy uses the word the same way, so it lists everything the app handles. It does not mean the data comes to us. Section 5 lists everything that leaves your device.</p>
+      </div>
+
+      <div class="data-map">
+        <table>
+          <thead><tr><th>What</th><th>Where it is</th><th>Who can see it</th></tr></thead>
+          <tbody>
+            <tr><td>Everything you log, and what the app reads from Apple Health, Health Records, location and motion</td><td>On your device, and in your private iCloud if iCloud is on</td><td>You. Apple keeps the iCloud copy in your account; we have no access to it.</td></tr>
+            <tr><td>Usage analytics (section 5.4)</td><td>PostHog, our analytics processor</td><td>Us, tied to a random ID for your installation. Never the values you enter. In Journey Tracker 1.9.0 and earlier, some events name an action, such as that a dose was logged. You can turn analytics off.</td></tr>
+            <tr><td>Directions for a route you plan (section 5.1)</td><td>Sent to Apple Maps to draw the route</td><td>Apple, as a standard map service. The routes you record are not sent.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Subscription status (RevenueCat, section 5.2) involves no health data. The Idea Leaderboard (section 2.5) keeps only your votes and suggestions, under an ID used only by this app.</p>
+
       <p><strong>Please read this policy carefully.</strong> By using Journey Tracker, you agree to the practices described here.</p>
 
       <hr>
@@ -359,22 +388,20 @@
       <h4>5.1 Apple</h4>
       <p>We use Apple's platform services (HealthKit, CloudKit, StoreKit, and Apple Maps for map display and walking directions) to operate Journey Tracker. Your use of these services is subject to Apple's Privacy Policy (apple.com/privacy).</p>
 
-      <h4>5.2 AppsFlyer (Install Attribution)</h4>
-      <p>To measure how many installs come from our own ads, the app includes the AppsFlyer SDK (AppsFlyer Ltd.), configured to use only Apple's SKAdNetwork. When the app opens, AppsFlyer receives basic technical context such as app version, iOS version, device model, locale, and the network address of the request. It does not receive your device's advertising identifier or vendor identifier, any account or user identifier, any health, fitness, lab, photo, or location data, or anything you do in the app. The app never asks to track you across other companies' apps and websites, and it does not. Campaign results come from Apple as aggregated, anonymized reports. Turning off Settings → Privacy &amp; Security → "Share Usage Analytics" stops AppsFlyer as well. AppsFlyer's privacy policy: appsflyer.com/legal/privacy-policy.</p>
-
-      <h4>5.3 RevenueCat (Subscription Management)</h4>
+      <h4>5.2 RevenueCat (Subscription Management)</h4>
       <p>Subscription management is handled by RevenueCat. RevenueCat receives your purchase and subscription status, an anonymous app user ID (shown in the app as your Support ID), and Apple's ad attribution token, which shows whether an install came from an Apple Search Ads ad and does not include your advertising identifier. RevenueCat receives <strong>no health data and no location data</strong> of any kind. RevenueCat's privacy policy is available at revenuecat.com/privacy.</p>
 
-      <h4>5.4 Fernand (Contact Forms &amp; Support)</h4>
+      <h4>5.3 Fernand (Contact Forms &amp; Support)</h4>
       <p>The contact, support, and waitlist forms on our site — and our live chat support widget — are processed by Fernand SAS, a third-party customer support platform organized under the laws of France. When you submit a form or use the chat widget, your name, email address, and message content are transmitted to and stored by Fernand in order to deliver your message to us and allow us to respond. Fernand does not use this data for advertising and does not sell it. For details, see <a href="https://getfernand.com/privacy/" target="_blank" rel="noopener">Fernand's Privacy Policy</a>.</p>
 
-      <h4>5.5 PostHog (Product Analytics)</h4>
+      <h4>5.4 PostHog (Product Analytics)</h4>
       <p>We use PostHog, Inc. ("PostHog," US Cloud region) to understand which features of the app are used and how well it performs, so we can improve it. PostHog receives feature-usage events — for example, that a weight entry was logged or a fast was started — and daily performance and stability summaries from Apple's MetricKit, such as launch time, hang and crash counts, and memory use (never crash logs or call stacks). Both include basic technical context such as device type, operating system version, and app version. PostHog <strong>never receives the values you enter</strong> — no weights, doses, medications, lab results, symptoms, photos, locations, or notes.</p>
       <p>Events are associated with a randomly generated identifier unique to your app installation. It is never your name, email address, or Apple ID. We have configured PostHog to discard IP addresses rather than store them, and we have disabled IP-based location lookup, so no location is derived or retained.</p>
-      <p>PostHog processes this data solely on our behalf and is contractually required to protect it to the same standard described in this policy. Analytics events are kept under PostHog's data retention policy for our plan (currently one year). Share Usage Analytics is on by default. You can turn analytics off at any time under Settings → Privacy &amp; Security → "Share Usage Analytics," and you may request deletion of previously collected analytics data by contacting us at <a href="mailto:support@journeytracker.app">support@journeytracker.app</a>. PostHog's privacy policy: <a href="https://posthog.com/privacy" target="_blank" rel="noopener">posthog.com/privacy</a>.</p>
+      <p>PostHog processes this data solely on our behalf and is contractually required to protect it to the same standard described in this policy. Analytics events are kept under PostHog's data retention policy for our plan (currently one year). Share Usage Analytics is on by default. You can turn analytics off at any time under Settings → Privacy &amp; Security → "Share Usage Analytics," and deleting the app ends its random identifier. Because that identifier isn't shown in the app and isn't linked to you, we can't pick out one person's usage events on request. Subscription events tied to your Support ID can be deleted: email it to <a href="mailto:support@journeytracker.app">support@journeytracker.app</a>. PostHog's privacy policy: <a href="https://posthog.com/privacy" target="_blank" rel="noopener">posthog.com/privacy</a>.</p>
 
-      <h4>5.6 No Other Third-Party Sharing</h4>
+      <h4>5.5 No Other Third-Party Sharing</h4>
       <p>We do not share your health or personal information with any other third parties. Your location and route data is never sold, never shared, and never used for advertising.</p>
+      <p>Journey Tracker 1.9.0 and earlier also include the AppsFlyer SDK, which sends basic technical details (never health data) to AppsFlyer when the app opens. We stopped using AppsFlyer on October 6, 2026 and asked it to delete our data. Versions after 1.9.0 don't include it.</p>
 
       <hr>
 
@@ -393,7 +420,7 @@
         <li>Data Journey Tracker wrote to Apple Health (water, protein, blood pressure, and Strides workouts) stays in Apple Health; delete it in the Health app</li>
         <li>Idea Leaderboard votes and suggestions: tap “Delete my votes and suggestions” on the leaderboard (see Section 2.5)</li>
       </ul>
-      <p><strong>Third-party data:</strong> Apex Development Studio LLC does not store your health data on servers it controls. The only records we keep are the Idea Leaderboard votes, suggestions and reports described in Section 2.5, identified only by the app-specific ID. RevenueCat, PostHog, and AppsFlyer hold only the limited, non-health records described in Section 5.</p>
+      <p><strong>Third-party data:</strong> Apex Development Studio LLC does not store your health data on servers it controls. The only records we keep are the Idea Leaderboard votes, suggestions and reports described in Section 2.5, identified only by the app-specific ID. RevenueCat and PostHog hold only the limited records described in Section 5.</p>
 
       <h4>6.3 Location and Motion Permissions</h4>
       <p>You control Strides-related permissions entirely:</p>
