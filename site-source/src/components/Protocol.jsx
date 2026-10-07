@@ -8,67 +8,28 @@ gsap.registerPlugin(ScrollTrigger)
 /* ═══════════════════════════════════════════════════════════════
    PROTOCOL — "Sticky Stacking Archive"
    Three full-screen cards pin and stack: Track → Understand → Celebrate.
-   Each card carries its own living SVG motif. With reduced motion the
+   Each card carries a real app screenshot in a phone frame. With reduced motion the
    cards simply flow as a normal vertical stack.
    ═══════════════════════════════════════════════════════════════ */
 
-/* Motif 1: slowly rotating concentric progress rings */
-function Rings() {
+/* Owner decision 2026-10-07: the three beats show the real app, not motifs.
+   Same phone framing as the Gallery, one screenshot per beat. */
+function Shot({ src, alt }) {
   return (
-    <svg viewBox="0 0 200 200" className="h-44 w-44" aria-hidden="true">
-      <g className="origin-center animate-[spin_24s_linear_infinite] motion-reduce:animate-none">
-        {[80, 62, 44].map((r, i) => (
-          <circle
-            key={r}
-            cx="100" cy="100" r={r}
-            fill="none"
-            stroke={i === 1 ? 'var(--accent)' : 'var(--momentum)'}
-            strokeOpacity={0.85 - i * 0.2}
-            strokeWidth="3"
-            strokeDasharray={`${r * 4.4} ${r * 2}`}
-            strokeLinecap="round"
-          />
-        ))}
-      </g>
-      <circle cx="100" cy="100" r="7" fill="var(--gold)" />
-    </svg>
-  )
-}
-
-/* Motif 2: scanning laser line across a dot grid */
-function Scanner() {
-  return (
-    <svg viewBox="0 0 200 200" className="h-44 w-44" aria-hidden="true">
-      {Array.from({ length: 7 }).map((_, row) =>
-        Array.from({ length: 7 }).map((_, col) => (
-          <circle key={`${row}-${col}`} cx={30 + col * 23.5} cy={30 + row * 23.5} r="3" fill="var(--momentum)" opacity="0.35" />
-        ))
-      )}
-      <rect x="20" y="0" width="160" height="3.5" rx="2" fill="var(--accent)" className="animate-[scan_3.2s_ease-in-out_infinite] motion-reduce:animate-none">
-      </rect>
-      <style>{`@keyframes scan { 0%,100% { transform: translateY(24px); } 50% { transform: translateY(172px); } }`}</style>
-    </svg>
-  )
-}
-
-/* Motif 3: pulsing milestone waveform (EKG of the journey) */
-function Waveform() {
-  return (
-    <svg viewBox="0 0 220 120" className="h-44 w-52" aria-hidden="true">
-      <path
-        d="M 5 70 L 45 70 L 60 40 L 75 92 L 90 55 L 110 70 L 150 70 L 163 30 L 176 70 L 215 70"
-        fill="none"
-        stroke="var(--accent)"
-        strokeWidth="4"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        pathLength="100"
-        strokeDasharray="100"
-        className="animate-[wave_2.8s_ease-in-out_infinite] motion-reduce:animate-none"
-      />
-      <style>{`@keyframes wave { 0% { stroke-dashoffset: 100; } 55%, 100% { stroke-dashoffset: 0; } }`}</style>
-      <circle cx="163" cy="30" r="6" fill="var(--gold)" />
-    </svg>
+    <div className="w-[min(60vw,250px)] rounded-[2.2rem] border-[7px] border-[#10201d] bg-[#10201d] shadow-xl shadow-black/15">
+      <picture>
+        <source srcSet={src.replace('.jpg', '.webp')} type="image/webp" />
+        <img
+          src={src}
+          alt={alt}
+          loading="lazy"
+          decoding="async"
+          width="540"
+          height="1173"
+          className="w-full rounded-[1.75rem]"
+        />
+      </picture>
+    </div>
   )
 }
 
@@ -77,19 +38,19 @@ const STEPS = [
     n: '01',
     title: 'Track every signal',
     body: 'Weight, body composition, doses, symptoms, labs, photos, walks — two-tap logging and HealthKit sync mean the record keeps itself.',
-    motif: <Rings />,
+    motif: <Shot src="/screenshots/ss3-labs-by-marker.jpg" alt="Labs by marker: every lab test on its own trend line" />,
   },
   {
     n: '02',
     title: 'See what’s working',
     body: 'Trends, stall detection, and dose-response insights turn months of entries into answers you can bring to your next appointment.',
-    motif: <Scanner />,
+    motif: <Shot src="/screenshots/ss3-weekly-recap.jpg" alt="Weekly recap: the last 7 days, highlights, and the week at a glance" />,
   },
   {
     n: '03',
     title: 'Celebrate every win',
     body: 'Milestones, streaks, and non-scale victories — because the jeans that fit again deserve a place in the record too.',
-    motif: <Waveform />,
+    motif: <Shot src="/screenshots/ss3-achievements.jpg" alt="Achievements: medallion streaks for weight, doses, and hydration" />,
   },
 ]
 
