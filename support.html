@@ -252,6 +252,38 @@
     .faq-a-inner p { margin-bottom: 10px; }
     .faq-a-inner p:last-child { margin-bottom: 0; }
 
+    /* ── RELEASE HISTORY (reuses the FAQ section + native <details> patterns) ── */
+    .release-history { scroll-margin-top: calc(var(--nav-height) + 16px); }
+    .release-history .section-sub { margin-bottom: 18px; }
+    .release { padding: 20px 0 22px; border-top: 1px solid var(--border); }
+    .release-title {
+      font-size: 1.05rem; font-weight: 700; color: var(--forest-dark);
+      margin-bottom: 12px; line-height: 1.3;
+    }
+    .release-title time { font-weight: 500; color: var(--text-muted); }
+    .release-notes { list-style: none; display: flex; flex-direction: column; gap: 9px; padding: 0; margin: 0; }
+    .release-notes li {
+      display: flex; align-items: baseline; gap: 12px;
+      font-size: 0.93rem; color: var(--text-mid); line-height: 1.6;
+    }
+    .release-text { min-width: 0; overflow-wrap: anywhere; }
+    .release-tag {
+      flex: 0 0 4.9rem; text-align: center;
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase;
+      line-height: 1.2; padding: 3px 0; border-radius: 100px;
+    }
+    .release-tag--new { background: rgba(16,116,130,0.11); color: var(--forest-dark); }
+    .release-tag--improved { background: rgba(26,42,26,0.07); color: var(--text-mid); }
+    .release-notes a { color: var(--forest-mid); text-decoration: underline; text-underline-offset: 2px; }
+    .release-earlier { margin: 28px 0 10px; }
+    .release-archive details.faq-item { border-bottom-color: var(--border); }
+    .release-summary-text { min-width: 0; }
+    .release-summary-text time { font-weight: 500; color: var(--text-muted); }
+    @media (max-width: 480px) {
+      .release-notes li { gap: 10px; }
+      .release-tag { flex-basis: 4.6rem; font-size: 0.64rem; }
+    }
+
     /* ── CONTACT FORM ── */
     .contact-section {
       background: var(--white);
@@ -710,6 +742,178 @@
             </summary>
             <div class="faq-a-inner">
               <p>GPS does use more battery than normal app use, but only <strong>while you're actively recording</strong> a Stride — the same as any walk or run tracker. The moment you finish (or discard) a recording, location stops entirely; Journey Tracker never tracks location in the background outside a recording. For a typical 30–60 minute walk the impact is modest, and recording with the screen off helps.</p>
+            </div>
+          </details>
+
+        </div>
+      </section>
+
+      <!-- ── RELEASE HISTORY ── -->
+      <section class="faq-section release-history" id="release-history" aria-labelledby="release-history-heading">
+        <p class="section-label">What's New</p>
+        <h2 class="section-title" id="release-history-heading">Release history</h2>
+        <p class="section-sub">Every Journey Tracker update, newest first.</p>
+
+        <article class="release">
+          <h3 class="release-title">1.9.0 <span aria-hidden="true">·</span> <time datetime="2026-10">October 2026</time></h3>
+          <ul class="release-notes">
+            <li><span class="release-tag release-tag--new">New</span><span class="release-text">Idea Leaderboard: vote for what we build next, suggest your own ideas, and see what's planned and shipped</span></li>
+            <li><span class="release-tag release-tag--improved">Improved</span><span class="release-text">Medication history is easier to set up and keep right: tell its story once, fix doubled weeks from the calendar, see every schedule change on one screen with more Repeat options, and zoom the levels chart in to 2 or 3 weeks (Pro)</span></li>
+            <li><span class="release-tag release-tag--improved">Improved</span><span class="release-text">Before and Now photos: choose your own pair, add photos from your library, and fix a photo's date</span></li>
+            <li><span class="release-tag release-tag--improved">Improved</span><span class="release-text">Share cards: pick the photo right on the card, set the accent color and corners, and show the change between photos</span></li>
+            <li><span class="release-tag release-tag--improved">Improved</span><span class="release-text">Symptom check-ins now follow your dose, on the days after it that you pick, each with a reminder</span></li>
+            <li><span class="release-tag release-tag--improved">Improved</span><span class="release-text">Export Data can now save a full backup (your records, Strides and photos) and Import Data restores it on any device</span></li>
+            <li><span class="release-tag release-tag--improved">Improved</span><span class="release-text">Settings reorganized around what you track, and no more sign-in: your data stays in your own iCloud</span></li>
+            <li><span class="release-tag release-tag--improved">Improved</span><span class="release-text">Tips and prompts now wait for a quieter moment, so they don't stack up</span></li>
+            <li><span class="release-tag release-tag--improved">Improved</span><span class="release-text">Use Journey Tracker on more than one device? Update each one so your schedule stays in step</span></li>
+          </ul>
+        </article>
+
+        <article class="release">
+          <h3 class="release-title">1.8.0 <span aria-hidden="true">·</span> <time datetime="2026-09">September 2026</time></h3>
+          <ul class="release-notes">
+            <li><span class="release-tag release-tag--new">New</span><span class="release-text">A walk now holds 100 photos, and the camera counts down the last ten for you</span></li>
+            <li><span class="release-tag release-tag--new">New</span><span class="release-text">Pick the photos you share: tap up to 20, numbered in the order you tapped them</span></li>
+            <li><span class="release-tag release-tag--new">New</span><span class="release-text">Pace colors on your route, splits and elevation, from your slowest stretches to your fastest (Pro)</span></li>
+            <li><span class="release-tag release-tag--new">New</span><span class="release-text">Pace on your share card too, with mile markers on longer walks and a resizable elevation block (Pro)</span></li>
+            <li><span class="release-tag release-tag--improved">Improved</span><span class="release-text">The App Store code on your journey share cards sits in the footer now, plus dozens of refinements across Strides and sharing</span></li>
+            <li><span class="release-tag release-tag--improved">Improved</span><span class="release-text">We updated our <a href="privacy.html">Privacy Policy</a>, <a href="health-data-privacy.html">Health Data Privacy Policy</a> and <a href="terms.html">Terms of Service</a> on September 16, 2026. Read them any time in Settings</span></li>
+          </ul>
+        </article>
+
+        <p class="section-label release-earlier">Earlier releases</p>
+        <div class="faq-list release-archive">
+
+          <details class="faq-item">
+            <summary>
+              <span class="release-summary-text"><strong>1.7.1</strong> <span aria-hidden="true">·</span> <time datetime="2026-09">September 2026</time></span>
+              <svg class="faq-chevron" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="faq-a-inner">
+              <ul class="release-notes">
+                <li><span class="release-tag release-tag--new">New</span><span class="release-text">Your weekly summary, your way: choose the five tiles up top, then tap any tile or day to jump straight to it</span></li>
+                <li><span class="release-tag release-tag--new">New</span><span class="release-text">Log blood pressure and protein right in the app. Readings can save to Apple Health too</span></li>
+                <li><span class="release-tag release-tag--new">New</span><span class="release-text">Open a scale app's export straight into Journey Tracker to import your measurements</span></li>
+                <li><span class="release-tag release-tag--improved">Improved</span><span class="release-text">Free accounts now see their two latest lab visits</span></li>
+                <li><span class="release-tag release-tag--improved">Improved</span><span class="release-text">Cleaner, same-size Home tiles, Show Tips Again in Settings, and dozens of refinements</span></li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <span class="release-summary-text"><strong>1.7.0</strong> <span aria-hidden="true">·</span> <time datetime="2026-09">September 2026</time></span>
+              <svg class="faq-chevron" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="faq-a-inner">
+              <ul class="release-notes">
+                <li><span class="release-tag release-tag--new">New</span><span class="release-text">Share a Stride: turn any walk into images with your route, the map, or your own photo behind the stats</span></li>
+                <li><span class="release-tag release-tag--new">New</span><span class="release-text">A camera inside Strides: take photos mid-walk without leaving the map</span></li>
+                <li><span class="release-tag release-tag--new">New</span><span class="release-text">Pick your own color: the app and your share cards follow it</span></li>
+                <li><span class="release-tag release-tag--new">New</span><span class="release-text">Redesigned reports: all five PDF reports share one clean layout with an optional cover page</span></li>
+                <li><span class="release-tag release-tag--improved">Improved</span><span class="release-text">Thinner route lines and dozens of refinements across Strides, photos, and reports</span></li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <span class="release-summary-text"><strong>1.5.0</strong> <span aria-hidden="true">·</span> <time datetime="2026-08">August 2026</time></span>
+              <svg class="faq-chevron" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="faq-a-inner">
+              <ul class="release-notes">
+                <li><span class="release-tag release-tag--new">New</span><span class="release-text">Estimated medication levels: see how each dose builds up and fades between injections, estimated from your medication's FDA label</span></li>
+                <li><span class="release-tag release-tag--new">New</span><span class="release-text">A new Logbook: doses, weight, labs, symptoms and walks in one timeline. Pinch the date bar to move across days, weeks, months and years</span></li>
+                <li><span class="release-tag release-tag--new">New</span><span class="release-text">Three views on one card: Levels chart, Fuel Gauge, and Dose Counter, switchable on the GLP-1 Therapy screen</span></li>
+                <li><span class="release-tag release-tag--new">New</span><span class="release-text">Medication tile on Home: vial ring, dose dial, or fuel gauge. Tap for the bigger view</span></li>
+                <li><span class="release-tag release-tag--new">New</span><span class="release-text">Off-schedule doses: logging early or late now asks whether to keep or shift your schedule</span></li>
+                <li><span class="release-tag release-tag--improved">Improved</span><span class="release-text">Daily (oral) medications now schedule correctly</span></li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <span class="release-summary-text"><strong>1.4.1</strong> <span aria-hidden="true">·</span> <time datetime="2026-08">August 2026</time></span>
+              <svg class="faq-chevron" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="faq-a-inner">
+              <ul class="release-notes">
+                <li><span class="release-tag release-tag--new">New</span><span class="release-text">Achievements on Home: an award ribbon and the Journey Tracker medallion mark your wins the moment you open the app</span></li>
+                <li><span class="release-tag release-tag--new">New</span><span class="release-text">All your victories in one place: medallions, streaks, and non-scale wins live together on the Achievements hub in the Logbook</span></li>
+                <li><span class="release-tag release-tag--new">New</span><span class="release-text">Support ID: find yours in Settings › About to get faster help when you write in</span></li>
+                <li><span class="release-tag release-tag--improved">Improved</span><span class="release-text">Home hero tiles and the weekly recap now follow your feature toggles</span></li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <span class="release-summary-text"><strong>1.4.0</strong> <span aria-hidden="true">·</span> <time datetime="2026-08">August 2026</time></span>
+              <svg class="faq-chevron" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="faq-a-inner">
+              <ul class="release-notes">
+                <li><span class="release-tag release-tag--new">New</span><span class="release-text">Your labs, right from Home: a new Home tile puts your latest visit and results one tap away</span></li>
+                <li><span class="release-tag release-tag--new">New</span><span class="release-text">Easier to browse your lab history: visits mapped month by month, and every result shown with its date, so finding past labs takes seconds</span></li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <span class="release-summary-text"><strong>1.3.0</strong> <span aria-hidden="true">·</span> <time datetime="2026-08">August 2026</time></span>
+              <svg class="faq-chevron" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="faq-a-inner">
+              <ul class="release-notes">
+                <li><span class="release-tag release-tag--new">New</span><span class="release-text">Fasting schedules: build a rhythm that matches how you fast, with daily windows, specific days, or multi-week cycles with rest weeks</span></li>
+                <li><span class="release-tag release-tag--new">New</span><span class="release-text">Multiple saved schedules: keep more than one and switch whenever your week changes</span></li>
+                <li><span class="release-tag release-tag--new">New</span><span class="release-text">Weekly summary notification: a nudge the evening before your next dose, when your week's recap is ready</span></li>
+                <li><span class="release-tag release-tag--new">New</span><span class="release-text">Celebration medallions: doses, distance, hydration, and fasting milestones now earn a moment of their own</span></li>
+                <li><span class="release-tag release-tag--new">New</span><span class="release-text">Elevation on Strides: shown alongside direction, with every map overlay individually switchable</span></li>
+                <li><span class="release-tag release-tag--new">New</span><span class="release-text">Logbook reorganized: clearer sections, with fasting where you'd expect to find it</span></li>
+                <li><span class="release-tag release-tag--new">New</span><span class="release-text">Update notices: the app now tells you when a new version is available</span></li>
+                <li><span class="release-tag release-tag--improved">Improved</span><span class="release-text">Sharper progress photos, with a clear indicator when a photo is still loading from iCloud</span></li>
+                <li><span class="release-tag release-tag--improved">Improved</span><span class="release-text">Swipe any fast or schedule to edit or delete it</span></li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <span class="release-summary-text"><strong>1.2</strong> <span aria-hidden="true">·</span> <time datetime="2026-08">August 2026</time></span>
+              <svg class="faq-chevron" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="faq-a-inner">
+              <ul class="release-notes">
+                <li><span class="release-tag release-tag--new">New</span><span class="release-text">Scenic Sessions: photographic backdrops and a goal ring for your indoor sessions</span></li>
+                <li><span class="release-tag release-tag--new">New</span><span class="release-text">Indoor Strides: track treadmill, bike, and other machine workouts with live stats</span></li>
+                <li><span class="release-tag release-tag--new">New</span><span class="release-text">Stride Photos: capture moments mid-walk, pinned to your route map and gathered in an album</span></li>
+                <li><span class="release-tag release-tag--new">New</span><span class="release-text">Route trim: cut the start or end of a recorded route, and distance and splits recalculate</span></li>
+                <li><span class="release-tag release-tag--new">New</span><span class="release-text">Edit saved Strides: adjust a walk's details after saving</span></li>
+                <li><span class="release-tag release-tag--new">New</span><span class="release-text">Full-screen maps: expand any Stride's route map to pan, zoom, and replay your walk</span></li>
+                <li><span class="release-tag release-tag--new">New</span><span class="release-text">What's New &amp; What's Coming: release notes and a look ahead, now in Settings</span></li>
+                <li><span class="release-tag release-tag--improved">Improved</span><span class="release-text">Sharper contrast and easier-to-tap controls in every theme</span></li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              <span class="release-summary-text"><strong>1.1</strong> <span aria-hidden="true">·</span> <time datetime="2026-07">July 2026</time></span>
+              <svg class="faq-chevron" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="faq-a-inner">
+              <ul class="release-notes">
+                <li><span class="release-tag release-tag--new">New</span><span class="release-text">Strides: record walks, runs, and more with a live map, distance, steps, and routes</span></li>
+                <li><span class="release-tag release-tag--new">New</span><span class="release-text">Route planner: map your own route by dropping points, then follow it on your next Stride</span></li>
+                <li><span class="release-tag release-tag--new">New</span><span class="release-text">Hydration by drink type: log water, coffee, tea, and other drinks separately</span></li>
+                <li><span class="release-tag release-tag--new">New</span><span class="release-text">Protein tracking: keep an eye on your daily protein alongside hydration</span></li>
+                <li><span class="release-tag release-tag--improved">Improved</span><span class="release-text">Expanded Apple Health sync: more of your data stays in step across your apps</span></li>
+                <li><span class="release-tag release-tag--improved">Improved</span><span class="release-text">Sharper contrast for buttons in dark mode across every theme</span></li>
+              </ul>
             </div>
           </details>
 
