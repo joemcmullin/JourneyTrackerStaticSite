@@ -1,0 +1,25 @@
+# Written by ApexSuite (server/security/ciSync.ts). Do not edit here: change it in
+# ApexSuite and run `npm run site:security -- --sync-ci`.
+#
+# Live check for Journey Tracker after each GitHub Pages build: certificate, HTTPS
+# redirect and security headers. Fails on an expiring certificate or a missing
+# redirect; missing headers are warnings (tracked in ApexSuite).
+name: Live check
+
+on:
+  page_build:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  live:
+    name: Live check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node .github/security/live-check.mjs https://journeytracker.app --wait 60

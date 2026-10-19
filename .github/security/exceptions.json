@@ -1,0 +1,19 @@
+{
+  "_note": "Written by ApexSuite from its accepted findings. Do not edit here.",
+  "npm": [
+    {
+      "packages": [
+        "tailwindcss",
+        "braces",
+        "chokidar",
+        "fast-glob",
+        "micromatch"
+      ],
+      "reason": "Build-time only: Tailwind CSS 3 and its file-watching dependencies run on the build machine and never ship to visitors. The only fix is the Tailwind 4 migration, done when each site is next redesigned.",
+      "acceptedBy": "Joseph B. McMullin",
+      "accepted": "2026-10-18",
+      "review": "2027-04-18"
+    }
+  ],
+  "semgrep": []
+}
