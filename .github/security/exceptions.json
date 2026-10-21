@@ -15,5 +15,41 @@
       "review": "2027-04-18"
     }
   ],
-  "semgrep": []
+  "semgrep": [
+    {
+      "rule": "html.security.audit.missing-integrity.missing-integrity",
+      "path": "accessibility.html",
+      "reason": "Not fixable here: the Fernand chat widget (messenger.getfernand.com/client.js) is updated by Fernand, so an integrity hash would break it on their next release. Accepted by Joseph B. McMullin on 2026-10-20, review 2027-04-20."
+    },
+    {
+      "rule": "html.security.audit.missing-integrity.missing-integrity",
+      "path": "health-data-privacy.html",
+      "reason": "Not fixable here: the Fernand chat widget (messenger.getfernand.com/client.js) is updated by Fernand, so an integrity hash would break it on their next release. Accepted by Joseph B. McMullin on 2026-10-20, review 2027-04-20."
+    },
+    {
+      "rule": "html.security.audit.missing-integrity.missing-integrity",
+      "path": "hipaa.html",
+      "reason": "Not fixable here: the Fernand chat widget (messenger.getfernand.com/client.js) is updated by Fernand, so an integrity hash would break it on their next release. Accepted by Joseph B. McMullin on 2026-10-20, review 2027-04-20."
+    },
+    {
+      "rule": "html.security.audit.missing-integrity.missing-integrity",
+      "path": "privacy.html",
+      "reason": "Not fixable here: the Fernand chat widget (messenger.getfernand.com/client.js) is updated by Fernand, so an integrity hash would break it on their next release. Accepted by Joseph B. McMullin on 2026-10-20, review 2027-04-20."
+    },
+    {
+      "rule": "html.security.audit.missing-integrity.missing-integrity",
+      "path": "terms.html",
+      "reason": "Not fixable here: the Fernand chat widget (messenger.getfernand.com/client.js) is updated by Fernand, so an integrity hash would break it on their next release. Accepted by Joseph B. McMullin on 2026-10-20, review 2027-04-20."
+    },
+    {
+      "rule": "html.security.audit.missing-integrity.missing-integrity",
+      "path": "waitlist.html",
+      "reason": "Not fixable here: the Fernand chat widget (messenger.getfernand.com/client.js) is updated by Fernand, so an integrity hash would break it on their next release. Accepted by Joseph B. McMullin on 2026-10-20, review 2027-04-20."
+    },
+    {
+      "rule": "html.security.audit.missing-integrity.missing-integrity",
+      "path": "support.html",
+      "reason": "Not fixable here: the Fernand chat widget (messenger.getfernand.com/client.js) is updated by Fernand, so an integrity hash would break it on their next release. Accepted by Joseph B. McMullin on 2026-10-20, review 2027-04-20."
+    }
+  ]
 }
