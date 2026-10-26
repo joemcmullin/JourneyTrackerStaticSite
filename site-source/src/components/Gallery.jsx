@@ -9,17 +9,20 @@ import { isStatic } from './motion'
  * pauses the drift; it resumes after a moment of quiet. Static/reduced
  * motion: no drift, plain scrollable strip.
  */
+/* The App Store shelf (1.10.0) in store order, then two screens from the same
+   capture run that the store does not carry. */
 const SHOTS = [
-  { src: '/screenshots/ss3-home.jpg', alt: 'Home dashboard: next dose countdown, total loss, Strides walking map, followed A1C marker, and weekly recap' },
-  { src: '/screenshots/ss3-levels-chart.jpg', alt: 'Estimated medication levels chart — each dose builds and fades' },
-  { src: '/screenshots/ss3-dose-counter.jpg', alt: 'Dose counter: three months of logged doses at a glance' },
-  { src: '/screenshots/ss3-injection-sites.jpg', alt: 'Injection site rotation on a body map, with the next recommended site' },
-  { src: '/screenshots/ss3-labs-by-marker.jpg', alt: 'Labs by marker: every lab test on its own trend line' },
-  { src: '/screenshots/ss3-marker-detail.jpg', alt: "Total Cholesterol detail: trend line with dated history on the provider's range" },
-  { src: '/screenshots/ss3-logbook.jpg', alt: 'Logbook: the whole journey in one continuous scroll' },
-  { src: '/screenshots/ss3-stride.jpg', alt: 'A Stride: mapped walk with route, stats, and photos' },
-  { src: '/screenshots/ss3-reports.jpg', alt: 'Reports: therapy, weight, labs, and body composition PDFs for your appointment' },
-  { src: '/screenshots/ss3-health-data.jpg', alt: 'Health & Data settings: Apple Health sync and lab record controls' },
+  { src: '/screenshots/ss4-home.jpg', alt: "Home screen: today's medicines on a dose ring, the next Zepbound dose and estimated level, A1C, weight and a Strides walking map" },
+  { src: '/screenshots/ss4-medications.jpg', alt: 'Medications: every medicine on one daily schedule, grouped by the time you take it' },
+  { src: '/screenshots/ss4-scan-label.jpg', alt: 'Scan the Label: a sample Ondansetron 4 mg pharmacy label, with the name, strength, form, directions and prescription status found' },
+  { src: '/screenshots/ss4-dose-history.jpg', alt: 'Dose History: 236 planned doses, 235 taken, 1 skipped and 0 missed, with each day listed by time' },
+  { src: '/screenshots/ss4-levels.jpg', alt: 'Zepbound page: the estimated level chart from the product label, the weekly schedule and the last injection site' },
+  { src: '/screenshots/ss4-labs.jpg', alt: 'Labs by marker: Hemoglobin A1C followed at the top, with glucose, cholesterol, triglycerides, ALT and creatinine on their own trend lines' },
+  { src: '/screenshots/ss4-injection-sites.jpg', alt: 'Injection Sites: a body map of past sites, with the left arm recommended next' },
+  { src: '/screenshots/ss4-reports.jpg', alt: 'Reports: medication, weight progress, lab results and body composition PDFs to preview and share' },
+  { src: '/screenshots/ss4-export-data.jpg', alt: 'Export Data: pack your records into one file as a full backup or spreadsheets' },
+  { src: '/screenshots/ss4-logbook.jpg', alt: "Logbook: a week strip on top, then each day's walks, weight, labs, blood pressure and wins in one scroll" },
+  { src: '/screenshots/ss4-strides.jpg', alt: 'Strides: walking distance by day, with each mapped walk listed below' },
 ]
 
 export default function Gallery() {

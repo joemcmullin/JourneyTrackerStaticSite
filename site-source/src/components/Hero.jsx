@@ -113,18 +113,18 @@ export default function Hero() {
             {/* LCP element: preloaded from index.html; AVIF→WebP→JPEG ladder */}
             <picture>
               <source
-                srcSet="/screenshots/ss3-home-760.avif 760w, /screenshots/ss3-home.avif 1080w"
+                srcSet="/screenshots/ss4-home-760.avif 760w, /screenshots/ss4-home.avif 1080w"
                 sizes="(min-width: 1024px) 340px, 78vw"
                 type="image/avif"
               />
               <source
-                srcSet="/screenshots/ss3-home-760.webp 760w, /screenshots/ss3-home.webp 1080w"
+                srcSet="/screenshots/ss4-home-760.webp 760w, /screenshots/ss4-home.webp 1080w"
                 sizes="(min-width: 1024px) 340px, 78vw"
                 type="image/webp"
               />
               <img
-                src="/screenshots/ss3-home.jpg"
-                alt="Journey Tracker home screen: next dose countdown, total loss, Strides walking map, followed A1C marker, and weekly recap"
+                src="/screenshots/ss4-home.jpg"
+                alt="Journey Tracker home screen: today's medicines on a dose ring, the next Zepbound dose and estimated level, A1C, weight and a Strides walking map"
                 className="w-full rounded-[2.4rem]"
                 width="540"
                 height="1173"

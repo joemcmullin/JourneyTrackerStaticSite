@@ -38,19 +38,19 @@ const STEPS = [
     n: '01',
     title: 'Track every signal',
     body: 'Weight, body composition, doses, symptoms, labs, photos, walks — two-tap logging and HealthKit sync mean the record keeps itself.',
-    motif: <Shot src="/screenshots/ss3-labs-by-marker.jpg" alt="Labs by marker: every lab test on its own trend line" />,
+    motif: <Shot src="/screenshots/ss4-labs.jpg" alt="Labs by marker: Hemoglobin A1C followed at the top, with glucose, cholesterol, triglycerides, ALT and creatinine on their own trend lines" />,
   },
   {
     n: '02',
     title: 'See what’s working',
     body: 'Trends, stall detection, and dose-response insights turn months of entries into answers you can bring to your next appointment.',
-    motif: <Shot src="/screenshots/ss3-weekly-recap.jpg" alt="Weekly recap: the last 7 days, highlights, and the week at a glance" />,
+    motif: <Shot src="/screenshots/ss4-weekly-recap.jpg" alt="Weekly recap: the last 7 days, highlights and the week at a glance" />,
   },
   {
     n: '03',
     title: 'Celebrate every win',
     body: 'Milestones, streaks, and non-scale victories — because the jeans that fit again deserve a place in the record too.',
-    motif: <Shot src="/screenshots/ss3-achievements.jpg" alt="Achievements: medallion streaks for weight, doses, and hydration" />,
+    motif: <Shot src="/screenshots/ss4-achievements.jpg" alt="Achievements: medallion streaks for weight, medication and hydration, plus non-scale victories" />,
   },
 ]
 
