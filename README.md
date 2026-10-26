@@ -75,7 +75,7 @@ JourneyTrackerStaticSite/
 |---|---|---|
 | Hero | `#home` | Tagline, App Store download badge + stylized QR, platform callout, hero screenshot |
 | Walkthrough | `#walkthrough` | 4-step product story (nav labels this "Features") |
-| Pricing | (in page) | Free tier vs. Journey Tracker Pro (monthly / annual / lifetime) |
+| Pricing | (in page) | Free tier vs. Journey Tracker Pro (monthly / annual) |
 | FAQs | `#faqs` | Accordion Q&A |
 | Privacy & trust | `#privacy` | Plain-language summary; links to `privacy.html`, `hipaa.html`, `terms.html` |
 | Contact | `#contact` | Fernand-powered form + `mailto:support@journeytracker.app` |

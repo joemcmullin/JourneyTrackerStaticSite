@@ -3,9 +3,10 @@ import { Check } from 'lucide-react'
 const APP_STORE = 'https://apps.apple.com/app/id6760089056'
 
 /**
- * Membership — the app's real model: free basic tier, Pro subscription
- * (monthly / annual), and a one-time Lifetime purchase. All billing happens
- * through the App Store; no invented price points on the site.
+ * Membership — the app's real model: free basic tier and a Pro subscription
+ * (monthly / annual). All billing happens through the App Store; no invented
+ * price points on the site. Lifetime came off sale with 1.10.1 (2026-10-26);
+ * earlier purchases stay active, so the footer line says so.
  */
 const TIERS = [
   {
@@ -29,25 +30,12 @@ const TIERS = [
     features: [
       'Full history — every entry beyond 90 days',
       'Every lab visit & weekly summary',
-      'Medication levels & injection site map',
+      'Levels chart & injection site map',
       'Full photo history, victories & widgets',
       'Imports, all themes & custom color',
     ],
     cta: 'Start free trial',
     featured: true,
-  },
-  {
-    name: 'Lifetime',
-    tag: 'One-time',
-    blurb: 'Pay once. Yours for good.',
-    features: [
-      'Everything in Pro',
-      'No subscription, ever',
-      'All future updates included',
-      'Billed once via your Apple ID',
-    ],
-    cta: 'Get Lifetime',
-    featured: false,
   },
 ]
 
@@ -63,7 +51,7 @@ export default function Pricing() {
         details, and everything you log stays yours either way.
       </p>
 
-      <div className="mt-14 grid gap-6 md:grid-cols-3">
+      <div className="mx-auto mt-14 grid max-w-[54rem] gap-6 md:grid-cols-2">
         {TIERS.map((t) => (
           <article
             key={t.name}
@@ -107,7 +95,7 @@ export default function Pricing() {
       </div>
 
       <p className="mt-8 text-center font-mono text-[0.78rem] text-text-lo">
-        Monthly · annual · or one-time lifetime — all through the App Store.
+        Monthly or annual, all through the App Store. Bought Lifetime before? It stays active.
       </p>
     </section>
   )
