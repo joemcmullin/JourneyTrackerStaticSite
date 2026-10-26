@@ -62,7 +62,7 @@ try {
 
   // 5. Prove it: the H1 and real copy must be in the static HTML
   const text = html.replace(/<script[\s\S]*?<\/script>/g, '').replace(/<style[\s\S]*?<\/style>/g, '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ')
-  const mustContain = ['The private companion for', 'your comeback', 'Three jobs', 'Questions,']
+  const mustContain = ['The private companion for', 'your comeback', 'Track everything', 'Questions,']
   const missing = mustContain.filter((s) => !text.includes(s))
   if (missing.length) throw new Error('prerendered HTML is missing expected copy: ' + missing.join(' | '))
   console.log(`prerender OK — ${Math.round(rendered.length / 1024)} KB of static DOM, build ${sha}, no-JS text ${text.length} chars`)

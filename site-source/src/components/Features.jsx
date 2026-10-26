@@ -3,9 +3,11 @@ import { motion } from 'framer-motion'
 
 /* ═══════════════════════════════════════════════════════════════
    FEATURES — three functional micro-UIs, not marketing cards.
-   1. Labs      → Diagnostic Shuffler (cards cycle with spring bounce)
-   2. Doses     → Cursor Protocol Scheduler (cursor picks dose day)
-   3. Progress  → Telemetry Typewriter (live journey feed types itself)
+   1. Medicines → Today's Doses (each dose ticks over to taken)
+   2. Labs      → Diagnostic Shuffler (cards cycle with spring bounce)
+   3. Feedback  → Recap Typewriter (today and this week type themselves)
+   Owner decision 2026-10-26: the three pillars are every medicine, labs, and
+   daily and weekly feedback, with the rest of the record listed below.
    ═══════════════════════════════════════════════════════════════ */
 
 import { isStatic } from './motion'
@@ -13,11 +15,66 @@ import { isStatic } from './motion'
 const spring = { duration: 0.55, ease: [0.34, 1.56, 0.64, 1] }
 const reduced = isStatic
 
-/* ── 1 · Diagnostic Shuffler ─────────────────────────────────── */
+/* ── 1 · Today's Doses ───────────────────────────────────────── */
+/* The app's sample medicines: Zepbound is the one brand, the rest go by generic name. */
+const MEDS = [
+  { time: '08:00', name: 'Zepbound', dose: '2.5 mg' },
+  { time: '08:00', name: 'Lisinopril', dose: '10 mg' },
+  { time: '08:00', name: 'Vitamin D3', dose: '2000 IU' },
+  { time: '20:00', name: 'Magnesium Glycinate', dose: '120 mg' },
+]
+
+function TodaysDoses() {
+  const [taken, setTaken] = useState(() => (reduced() ? 3 : 0))
+  useEffect(() => {
+    if (reduced()) return
+    let alive = true
+    const loop = async () => {
+      const wait = (ms) => new Promise((r) => setTimeout(r, ms))
+      while (alive) {
+        setTaken(0); await wait(1000)
+        for (let n = 1; n <= 3 && alive; n++) { setTaken(n); await wait(900) }
+        await wait(2400)
+      }
+    }
+    loop()
+    return () => { alive = false }
+  }, [])
+
+  return (
+    <div className="hairline h-[190px] rounded-2xl bg-card p-4 shadow-md shadow-black/5" aria-label="Animated demo: today's medicines checked off as taken">
+      <div className="flex items-baseline justify-between">
+        <span className="font-mono text-[0.7rem] uppercase tracking-[0.14em] text-text-lo">Today · Thu</span>
+        <span className="font-mono text-[0.7rem] text-momentum">{taken} of {MEDS.length} taken</span>
+      </div>
+      <ul className="mt-3 space-y-2.5">
+        {MEDS.map((m, i) => (
+          <li key={m.name} className="flex items-center gap-2.5">
+            <span className="w-9 shrink-0 font-mono text-[0.68rem] text-text-lo">{m.time}</span>
+            <span className="min-w-0 flex-1 truncate text-[0.82rem] font-bold text-text-hi">
+              {m.name} <span className="font-normal text-text-lo">{m.dose}</span>
+            </span>
+            <span
+              aria-hidden="true"
+              className={`grid h-5 w-5 shrink-0 place-items-center rounded-full text-[0.62rem] font-bold transition-colors duration-300 ${
+                i < taken ? 'bg-momentum text-white' : 'hairline text-transparent'
+              }`}
+            >
+              ✓
+            </span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+}
+
+/* ── 2 · Diagnostic Shuffler ─────────────────────────────────── */
+/* One card per way results arrive: Apple Health, a scanned report, typed in. */
 const LABS = [
-  { label: 'HbA1c', value: '5.4%', trend: '▼ 0.8 since start' },
-  { label: 'Total Cholesterol', value: '168', trend: '▼ 22 mg/dL' },
-  { label: 'Fasting Glucose', value: '92', trend: '▼ steady 6 wks' },
+  { label: 'Hemoglobin A1C', value: '4.9%', trend: '5 readings · from Apple Health' },
+  { label: 'LDL Cholesterol', value: '93.1', trend: '4 readings · from a scanned report' },
+  { label: 'Blood Glucose', value: '86.2', trend: '6 readings · typed in' },
 ]
 
 function LabShuffler() {
@@ -30,7 +87,7 @@ function LabShuffler() {
     return () => clearInterval(t)
   }, [])
   return (
-    <div className="relative h-[190px]" aria-label="Lab results cycling: HbA1c, cholesterol, fasting glucose">
+    <div className="relative h-[190px]" aria-label="Lab results cycling: Hemoglobin A1C, LDL cholesterol, blood glucose">
       {order.map((labIdx, pos) => {
         const lab = LABS[labIdx]
         return (
@@ -53,84 +110,18 @@ function LabShuffler() {
   )
 }
 
-/* ── 2 · Cursor Protocol Scheduler ───────────────────────────── */
-const DAYS = ['S', 'M', 'T', 'W', 'T', 'F', 'S']
-
-function DoseScheduler() {
-  const [phase, setPhase] = useState('idle') // idle → moving → clicked → saving → done
-  useEffect(() => {
-    if (reduced()) { setPhase('clicked'); return }
-    let alive = true
-    const loop = async () => {
-      const wait = (ms) => new Promise((r) => setTimeout(r, ms))
-      while (alive) {
-        setPhase('idle'); await wait(900)
-        setPhase('moving'); await wait(1100)
-        setPhase('clicked'); await wait(900)
-        setPhase('saving'); await wait(1100)
-        setPhase('done'); await wait(1400)
-      }
-    }
-    loop()
-    return () => { alive = false }
-  }, [])
-
-  const cursorPos =
-    phase === 'idle' ? { x: 180, y: 120, opacity: 0 }
-    : phase === 'moving' ? { x: 46, y: 34, opacity: 1 }
-    : phase === 'clicked' ? { x: 46, y: 34, opacity: 1, scale: 0.9 }
-    : phase === 'saving' ? { x: 150, y: 106, opacity: 1 }
-    : { x: 150, y: 106, opacity: 0 }
-
-  return (
-    <div className="relative h-[190px] select-none" aria-label="Animated demo: choosing Monday as dose day and saving">
-      <div className="hairline rounded-2xl bg-card p-4 shadow-md shadow-black/5">
-        <span className="font-mono text-[0.7rem] uppercase tracking-[0.14em] text-text-lo">Dose day</span>
-        <div className="mt-3 grid grid-cols-7 gap-1.5">
-          {DAYS.map((d, i) => (
-            <div
-              key={i}
-              className={`grid h-9 place-items-center rounded-lg text-[0.8rem] font-bold transition-colors duration-300 ${
-                i === 1 && (phase === 'clicked' || phase === 'saving' || phase === 'done')
-                  ? 'bg-accent text-white'
-                  : 'bg-surface text-text-mid'
-              }`}
-            >
-              {d}
-            </div>
-          ))}
-        </div>
-        <div
-          className={`mt-3 inline-flex rounded-full px-4 py-1.5 text-[0.78rem] font-bold transition-colors duration-300 ${
-            phase === 'done' ? 'bg-momentum text-white' : 'hairline text-text-mid'
-          }`}
-        >
-          {phase === 'done' ? 'Saved ✓' : 'Save'}
-        </div>
-      </div>
-      {/* Animated cursor */}
-      <motion.svg
-        viewBox="0 0 24 24"
-        className="absolute left-0 top-0 h-5 w-5 drop-shadow"
-        animate={cursorPos}
-        transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
-        aria-hidden="true"
-      >
-        <path d="M4 2 L20 12 L12.5 13.5 L9 21 Z" fill="var(--text-hi)" stroke="var(--bg)" strokeWidth="1.5" />
-      </motion.svg>
-    </div>
-  )
-}
-
-/* ── 3 · Telemetry Typewriter ────────────────────────────────── */
+/* ── 3 · Recap Typewriter ────────────────────────────────────── */
+/* Today's line, then the weekly recap's own numbers from the app's sample week.
+   Keep each line under ~34 characters so it never wraps in a narrow card. */
 const FEED_LINES = [
-  '> week 12 · weight trend ▼ 1.1 lb/wk — steady',
-  '> dose streak: 84 days · longest yet',
-  '> milestone: first 15 lb — logged 6:41 AM',
-  '> non-scale victory: "old jeans fit."',
+  '> today · 3 of 4 doses taken',
+  '> this week · weight ▼ 0.3 lb',
+  '> 48 doses · BP avg 118/75',
+  '> 8 new lab results · 4 Strides',
+  '> 1 win logged this week',
 ]
 
-function TelemetryFeed() {
+function RecapFeed() {
   const [text, setText] = useState(() => (reduced() ? FEED_LINES.join('\n') : ''))
   const idx = useRef({ line: 0, ch: 0 })
   useEffect(() => {
@@ -154,10 +145,10 @@ function TelemetryFeed() {
     return () => clearInterval(t)
   }, [])
   return (
-    <div className="hairline h-[190px] overflow-hidden rounded-2xl bg-[#0a1f1c] p-4 shadow-md shadow-black/5" aria-label="Live journey feed demo">
+    <div className="hairline h-[190px] overflow-hidden rounded-2xl bg-[#0a1f1c] p-4 shadow-md shadow-black/5" aria-label="Recap demo: today and this week, typed out line by line">
       <div className="flex items-center gap-2">
         <span className="status-dot h-2 w-2 rounded-full bg-[#34C759]" aria-hidden="true" />
-        <span className="font-mono text-[0.68rem] uppercase tracking-[0.16em] text-text-lo">Journey feed</span>
+        <span className="font-mono text-[0.68rem] uppercase tracking-[0.16em] text-text-lo">Your recap</span>
       </div>
       <pre className="mt-3 whitespace-pre-wrap font-mono text-[0.78rem] leading-[1.7] text-[#a8bdb6]">
         {text}
@@ -170,20 +161,26 @@ function TelemetryFeed() {
 /* ── Section shell ───────────────────────────────────────────── */
 const CARDS = [
   {
+    title: 'Every medicine, one schedule',
+    body: 'Your GLP-1, tablets, vitamins and supplements on one daily schedule. Scan the pharmacy label to add one. Every dose counts as taken, skipped or missed.',
+    ui: <TodaysDoses />,
+  },
+  {
     title: 'Labs, finally organized',
-    body: 'Every blood panel in one timeline — HbA1c, cholesterol, metabolic markers — side by side across your whole journey. Walk into appointments with the full picture.',
+    body: 'Every panel in one timeline. A1C, cholesterol and glucose side by side, from Apple Health, a scanned report or typed in.',
     ui: <LabShuffler />,
   },
   {
-    title: 'Doses without memory games',
-    body: 'Set your day, log in two taps, and let streaks do the motivating. Your symptom log stays accurate when your provider asks about week three.',
-    ui: <DoseScheduler />,
+    title: 'Feedback every day and every week',
+    body: 'Weight, doses, symptoms, blood pressure and Strides land in one record. Home shows your day. The weekly recap shows how the week went.',
+    ui: <RecapFeed />,
   },
-  {
-    title: 'Progress you can feel',
-    body: 'Weight trends, milestones, and non-scale victories — the whole story of how far you’ve come, told in numbers and in moments.',
-    ui: <TelemetryFeed />,
-  },
+]
+
+/* Everything else the record holds, so the three cards never read as the whole app. */
+const TRACKED = [
+  'Weight', 'Body measurements', 'Symptoms', 'Blood pressure', 'Fasting',
+  'Hydration', 'Protein', 'Strides', 'Progress photos', 'Non-scale victories',
 ]
 
 export default function Features() {
@@ -191,8 +188,8 @@ export default function Features() {
     <section id="features" className="relative mx-auto w-[min(94vw,74rem)] py-28">
       <p className="font-mono text-[0.75rem] uppercase tracking-[0.24em] text-accent">What it does</p>
       <h2 className="mt-3 max-w-[24ch] text-[clamp(1.9rem,3.6vw,2.9rem)] font-extrabold leading-tight tracking-tight text-text-hi">
-        Three jobs. Done{' '}
-        <span className="font-drama italic text-gradient">beautifully.</span>
+        Track everything.{' '}
+        <span className="font-drama italic text-gradient">See how it’s going.</span>
       </h2>
 
       <div className="mt-14 grid gap-6 md:grid-cols-3">
@@ -206,6 +203,17 @@ export default function Features() {
             <p className="mt-2.5 text-[0.92rem] leading-relaxed text-text-mid">{c.body}</p>
           </article>
         ))}
+      </div>
+
+      <div className="mt-10">
+        <p className="font-mono text-[0.72rem] uppercase tracking-[0.2em] text-text-lo">Also in the record</p>
+        <ul className="mt-3 flex flex-wrap gap-2">
+          {TRACKED.map((t) => (
+            <li key={t} className="hairline rounded-full bg-card px-3.5 py-1.5 text-[0.85rem] font-semibold text-text-mid">
+              {t}
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   )
